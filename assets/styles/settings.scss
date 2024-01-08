@@ -1,0 +1,5 @@
+@use 'vuetify/settings' with (
+	$utilities: false,
+	$button-height: 40px,
+	$text-field-details-padding-inline: 2px
+);
