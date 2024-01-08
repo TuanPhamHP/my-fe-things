@@ -56,5 +56,35 @@ export const useAuthStore = defineStore('auth', {
 					window.location.href = '/login';
 				});
 		},
+		getUserInfoHardCode() {
+			const authCookie = useCookie('auth-token');
+			const token = authCookie.value || (this.token as string);
+			if (token) {
+				const user = {
+					avatar: 'http://xc-id-dev.maychudev.com/assets/images/user.png',
+					code: 'XC-0001',
+					email: 'admin@gmail.com',
+					id: 1,
+					is_active: true,
+					name: 'Admin',
+					position: {
+						department: {
+							children: null,
+							id: 1,
+							level: null,
+							name: 'Phòng Công Nghệ',
+							parent_id: null,
+							short_code: null,
+							system_code: null,
+						},
+						id: 1,
+						level: null,
+						name: 'Nhân viên lập trình',
+					},
+				};
+				this.token = `make-up-token`;
+				this.user = { ...user, name: user.name, id: user.id, token: `${authCookie.value}` };
+			}
+		},
 	},
 });

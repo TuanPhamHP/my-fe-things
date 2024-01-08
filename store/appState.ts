@@ -16,6 +16,7 @@ export const useAppStateStore = defineStore('appState', {
 			},
 		] as breadCrumb[],
 		currentState: 1, // 1: Check Auth | 2: Fetching Data | 3: Ready | 0: Errors
+		currentTheme: 'light' as string,
 	}),
 
 	actions: {
@@ -54,6 +55,14 @@ export const useAppStateStore = defineStore('appState', {
 		},
 		triggerLogout(b: boolean) {
 			this.onLogout = b;
+		},
+		syncCurrentTheme() {
+			this.currentTheme = localStorage.getItem('theme') || 'light';
+		},
+		toggleTheme() {
+			const nextTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+			this.currentTheme = nextTheme;
+			localStorage.setItem('theme', nextTheme);
 		},
 	},
 });

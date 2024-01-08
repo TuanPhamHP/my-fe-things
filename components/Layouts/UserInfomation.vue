@@ -1,14 +1,14 @@
 <template>
-	<div class="text-right ml-3 border border-white rounded-half md:ml-auto">
+	<div class="text-right mx-3 rounded-half md:ml-auto">
 		<Menu as="div" class="relative block text-left">
 			<div>
 				<MenuButton
 					class="flex w-full items-center justify-center hover:bg-neutral-200/50 rounded-half px-2 py-1 text-sm focus:outline-none"
 				>
 					<UserAvatarPreview :user="userAvatar" :size="32" />
-					<p class="pl-2 font-semibold text-white">{{ user?.name }}</p>
+					<p class="pl-2 font-semibold text-slate-900 dark:text-white">{{ user?.name }}</p>
 
-					<Icon v-if="false" class="min-w-[32px] mr-1 text-white" :name="'tabler:caret-down-filled'" size="18px" />
+					<Icon v-if="false" class="min-w-[32px] mr-1 text-slate-900" :name="'tabler:caret-down-filled'" size="18px" />
 				</MenuButton>
 			</div>
 

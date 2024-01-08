@@ -1,48 +1,38 @@
 <template>
-	<div class="min-w-[100px] sidebar-wrapper-container" :class="sideBarMini ? 'is-mini' : ''">
-		<div class="px-0 py-0 sidebar-wrapper bg-primary-900" :class="sideBarMini ? 'is-mini' : ''">
+	<div class="w-[100px] min-w-[100px]">
+		<div class="px-0 py-0 sidebar-wrapper bg-indigo-600 dark:bg-slate-700" :class="sideBarMini ? 'is-mini' : ''">
 			<nav class="h-full flex flex-col main-nav">
-				<div class="brand-caster mx-auto mb-5 md: mb-[48px] h-[40px] w-full">
+				<div class="brand-caster mx-auto mb-5 md: mb-[48px] h-[64px]">
 					<img v-show="sideBarMini" src="@/assets/images/sidebar-logo.svg" class="block mx-auto" alt="" />
-					<img v-show="!sideBarMini" src="@/assets/images/sidebar-logo-expand.svg" class="block" alt="" />
+					<img v-show="!sideBarMini" src="@/assets/images/sidebar-logo-expand.svg" class="block mx-auto" alt="" />
 				</div>
 
 				<ul
 					class="px-[18px] py-4 flex-column items-center justify-center h-full list-route-wr"
 					:class="sideBarMini ? '' : ''"
 				>
-					<li v-for="item in itemsComputedLast" :key="item.title" class="">
-						<VTooltip v-if="!item.isGroup" class="w-full mb-6">
+					<li v-for="item in itemsComputedLast" :key="item.title" class="rounded-[32px]">
+						<VTooltip v-if="!item.isGroup" class="w-full mb-2">
 							<nuxt-link
 								:to="item.path"
-								class="v-list-item mx-auto px-0 py-1 flex items-center justify-center hover:bg-zinc-100/25"
-								:class="`${
-									item.pathNameMatch.includes(currentPathActive) ? (sideBarMini ? '' : 'bg-primary-100') : ''
-								} ${sideBarMini ? 'h-[40px] w-[40px] rounded-[32px]' : 'w-full rounded-lg'}`"
+								class="v-list-item px-0 flex items-center justify-center rounded-[32px] hover:bg-zinc-100/25"
+								:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-link-active' : ''} ${
+									sideBarMini ? 'h-[64px] w-[64px]' : 'w-full'
+								}`"
 							>
 								<div class="flex gap-[8px] items-center rounded-circle w-full">
 									<div
-										class="h-[40px] w-[40px] min-w-[40px] min-width-[40px] flex items-center justify-center rounded-[100%]"
-										:class="`${
-											item.pathNameMatch.includes(currentPathActive)
-												? sideBarMini
-													? 'bg-white'
-													: 'bg-transparent'
-												: 'bg-transparent'
-										}`"
+										class="h-[64px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
+										:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 									>
 										<Icon
 											v-if="item.icon"
-											:class="`${item.pathNameMatch.includes(currentPathActive) ? 'text-primary-500' : 'text-white'}`"
+											:class="`${item.pathNameMatch.includes(currentPathActive) ? 'text-slate-900' : 'text-white'}`"
 											:name="item.icon"
-											size="24px"
+											size="18px"
 										/>
 									</div>
-									<p
-										v-show="!sideBarMini"
-										class="w-full whitespace-nowrap"
-										:class="`${item.pathNameMatch.includes(currentPathActive) ? 'text-primary-500' : 'text-white'}`"
-									>
+									<p v-show="!sideBarMini" class="w-full text-white whitespace-nowrap">
 										{{ item.title }}
 									</p>
 								</div>
@@ -52,7 +42,7 @@
 
 						<div v-else class="" @click="sidebarMainClick">
 							<div
-								class="parent-route flex items-center text-white h-[40px] cursor-pointer hover:bg-zinc-100/25 rounded-[32px]"
+								class="parent-route flex items-center text-slate-900 h-[64px] cursor-pointer hover:bg-zinc-100/25 rounded-[32px]"
 								:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-link-active' : ''} ${
 									sideBarMini ? 'min-w-fit' : 'gap-[8px]'
 								}`"
@@ -63,20 +53,20 @@
 								"
 							>
 								<div
-									class="h-[40px] w-[40px] min-w-[40px] min-width-[40px] flex items-center justify-center rounded-[100%] mx-auto"
+									class="h-[64px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
 									:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 								>
 									<Icon
 										v-if="item.icon"
-										:class="item.pathNameMatch.includes(currentPathActive) ? 'text-primary' : ''"
+										:class="item.pathNameMatch.includes(currentPathActive) ? 'text-slate-900' : 'text-white'"
 										:name="item.icon"
 										size="18px"
 									/>
 								</div>
-								<p class="w-full" v-show="!sideBarMini">{{ item.title }}</p>
+								<p class="w-full text-white" v-show="!sideBarMini">{{ item.title }}</p>
 								<Icon
 									v-show="!sideBarMini"
-									class="min-w-[32px] mr-1"
+									class="min-w-[32px] mr-1 text-white"
 									:class="item.isOpen ? 'rotate-90' : ''"
 									:name="'tabler:caret-right-filled'"
 									size="24px"
@@ -92,19 +82,19 @@
 								<VTooltip class="w-full my-2">
 									<nuxt-link
 										:to="child.path"
-										class="v-list-item mx-auto px-0 flex items-center justify-center rounded-[32px]"
+										class="v-list-item px-0 flex items-center justify-center rounded-[32px]"
 										:class="`${child.pathNameMatch.includes(currentPathActive) ? 'font-semibold' : 'font-light'} ${
-											sideBarMini ? 'h-[42px] w-[40px]' : 'w-full'
+											sideBarMini ? 'h-[42px] w-[64px]' : 'w-full'
 										}`"
 									>
 										<div class="flex gap-[8px] min-h-[42px] items-center rounded-circle w-full">
 											<div
 												v-if="child.icon"
-												class="h-[42px] w-[40px] min-w-[40px] min-width-[40px] flex items-center justify-center rounded-[100%]"
+												class="h-[42px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
 												:class="`${child.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 											>
 												<Icon
-													:class="`${child.pathNameMatch.includes(currentPathActive) ? 'text-primary' : 'text-white'}`"
+													:class="`${child.pathNameMatch.includes(currentPathActive) ? 'text-white' : 'text-white'}`"
 													:name="child.icon"
 													size="18px"
 												/>
@@ -122,10 +112,10 @@
 				</ul>
 				<div class="px-[18px] logout-btn" @click="triggerLogout(true)">
 					<div
-						class="parent-route flex items-center gap-[8px] text-white h-[40px] cursor-pointer hover:bg-zinc-100/25 rounded-[32px]"
+						class="parent-route flex items-center gap-[8px] text-white h-[64px] cursor-pointer hover:bg-zinc-100/25 rounded-[32px]"
 					>
 						<div
-							class="h-[40px] w-[40px] min-w-[40px] min-width-[40px] mx-auto flex items-center justify-center bg-transparent rounded-[100%]"
+							class="h-[64px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center bg-transparent rounded-[100%]"
 						>
 							<Icon :name="'solar:logout-2-outline'" size="18px" />
 						</div>
@@ -136,7 +126,7 @@
 		</div>
 		<div
 			v-if="!sideBarMini"
-			class="cloak bg-gray-700 fixed top-[0] bottom-[0] right-[0] left-[0]"
+			class="cloak bg-gray-700 dark:bg-slate-900 fixed top-[0] bottom-[0] right-[0] left-[0]"
 			@click="toggleSidebar"
 		></div>
 	</div>
@@ -167,41 +157,40 @@
 			const { sideBarMini } = storeToRefs(appStateStore);
 			const { toggleSidebar, triggerLogout } = appStateStore;
 			const items = reactive<SidebarItem[]>([
-				// {
-				// 	title: 'Đơn hàng',
-				// 	path: '/',
-				// 	pathNameMatch: ['index'],
-				// 	permissionAccess: [],
-				// 	icon: 'solar:book-outline',
-				// 	isGroup: false,
-				// },
 				{
-					title: 'Quản lý đơn hàng',
-					path: '/orders',
-					pathNameMatch: ['orders', 'orders-id', 'orders-id-edit', 'orders-new'],
+					title: 'Trang chủ',
+					path: '/',
+					pathNameMatch: ['index'],
 					permissionAccess: [],
-					icon: 'solar:book-outline',
+					icon: 'solar:home-angle-2-linear',
 					isGroup: false,
-					tooltip: 'Quản lý đơn hàng',
+				},
+				{
+					title: 'Tài liệu',
+					path: '/documentation',
+					pathNameMatch: ['documentation', 'documentation-installation', 'documentation-hooks'],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+				},
+				{
+					title: 'Thực hành',
+					path: '/practice',
+					pathNameMatch: ['practice'],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
 				},
 				// {
-				// 	title: 'Quản lý lái xe',
-				// 	path: '/drivers',
-				// 	pathNameMatch: ['drivers', 'drivers-id', 'drivers-id-edit'],
+				// 	title: 'Quản lý ĐTVC',
+				// 	path: '/forwarders',
+				// 	pathNameMatch: ['forwarders', 'forwarders-id', 'forwarders-id-edit'],
 				// 	permissionAccess: [],
-				// 	icon: 'mingcute:steering-wheel-line',
+				// 	icon: 'mdi:truck-fast-outline',
 				// 	isGroup: false,
-				// 	tooltip: 'Quản lý lái xe',
-				// },
-
-				// {
-				// 	title: 'Danh sách khách hàng',
-				// 	path: '/customers',
-				// 	pathNameMatch: ['customers', 'customers-id', 'customers-id-edit'],
-				// 	permissionAccess: [],
-				// 	icon: 'solar:users-group-two-rounded-outline',
-				// 	isGroup: false,
-				// 	tooltip: 'Danh sách khách hàng',
+				// 	tooltip: 'Quản lý đối tác vận chuyển',
 				// },
 				// {
 				// 	title: 'Quản lý nhân viên',
@@ -233,7 +222,7 @@
 				// 			title: 'Tạo đơn hàng mới',
 				// 			path: '/orders/new',
 				// 			pathNameMatch: ['orders-new'],
-				// 			permissionAccess: ['denied'],
+				// 			permissionAccess: [],
 				// 			// icon: 'guidance:calendar',
 				// 			isGroup: false,
 				// 		},
@@ -246,6 +235,24 @@
 				// 			isGroup: false,
 				// 		},
 				// 	],
+				// },
+				// {
+				// 	title: 'Công nợ ĐTVC',
+				// 	path: '/forwarder-debt',
+				// 	pathNameMatch: ['forwarder-debt', 'forwarder-debt-id', 'forwarder-debt-id-edit'],
+				// 	permissionAccess: [],
+				// 	icon: 'tabler:report-money',
+				// 	isGroup: false,
+				// 	tooltip: 'Công nợ đối tác vận chuyển',
+				// },
+				// {
+				// 	title: 'Công nợ khách hàng',
+				// 	path: '/customer-debt',
+				// 	pathNameMatch: ['customer-debt', 'customer-debt-id', 'customer-debt-id-edit'],
+				// 	permissionAccess: [],
+				// 	icon: 'fluent:person-money-20-regular',
+				// 	isGroup: false,
+				// 	tooltip: 'Công nợ khách hàng',
 				// },
 			]);
 
@@ -333,29 +340,15 @@
 </script>
 
 <style lang="scss" scoped>
-	.sidebar-wrapper-container {
-		width: 315px;
-		max-width: 315px;
-		min-width: 315px;
-		transition: 0.2s ease;
-		transform-origin: left;
-
-		&.is-mini {
-			width: 100px;
-			max-width: 100px;
-			min-width: 100px;
-		}
-	}
 	.sidebar-wrapper {
-		width: 315px;
-		max-width: 315px;
-		min-width: 315px;
+		width: 325px;
+		max-width: 325px;
+		min-width: 325px;
 		height: 100vh;
 		overflow: hidden;
 		position: sticky;
 		top: 0;
 		transition: 0.2s ease;
-		transform-origin: left;
 		z-index: 16;
 		* {
 			transition: 0.2s ease;
@@ -363,7 +356,7 @@
 		.bg-link-active {
 			background-color: rgba(255, 255, 255, 0.21);
 		}
-		position: relative;
+		position: fixed;
 		top: 0;
 		left: 0;
 
@@ -385,7 +378,7 @@
 			max-width: 100px;
 			min-width: 100px;
 			.brand-caster {
-				width: 40px;
+				width: 64px;
 			}
 			.list-child {
 				padding-left: 0;
@@ -423,49 +416,6 @@
 		padding: 32px 0;
 	}
 	.cloak {
-		display: none;
 		z-index: 13;
-	}
-	.sidebar-wrapper {
-		width: 315px;
-		max-width: 315px;
-		min-width: 315px;
-		&.is-mini {
-			width: 100px;
-			max-width: 100px;
-			min-width: 100px;
-		}
-	}
-	.non-group-active {
-		background-color: red;
-		border-radius: 8px !important;
-	}
-	@media only screen and (max-width: 1500px) {
-		.cloak {
-			display: block;
-		}
-		.sidebar-wrapper-container {
-			width: 100px;
-			max-width: 100px;
-			min-width: 100px;
-			transition: 0.2s ease;
-			transform-origin: left;
-
-			&.is-mini {
-				width: 100px;
-				max-width: 100px;
-				min-width: 100px;
-			}
-		}
-		.sidebar-wrapper {
-			position: fixed;
-			width: 280px;
-			max-width: 280px;
-			min-width: 100px;
-		}
-		.non-group-active {
-			background-color: red;
-			border-radius: 32px !important;
-		}
 	}
 </style>

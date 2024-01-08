@@ -1,14 +1,15 @@
 <template>
-	<div class="mx-0 my-0 login-wrapper flex align-center justify-center">
-		<div id="loginForm" class="d-flex align-center justify-center w-100 my-auto">
-			<div class="bg-white pa-12 w-100 flex z-10 relative rounded overflow-hidden">
-				<div class="mx-auto min-width-[500px] flex form-container">
-					<div class="preview-img p-6 bg-primary-100 h-100 flex-col flex bg-primary-100">
+	<div class="mx-0 my-0 login-wrapper grid grid-cols-1 md:grid-cols-3">
+		<div class="col-span-2 ls"></div>
+		<div class="col-span-1 h-full flex align-center justify-center sfx">
+			<div class="pa-12 flex z-10 w-full relative rounded overflow-hidden my-auto">
+				<div class="mx-auto md:min-width-[500px] flex form-container">
+					<!-- <div class="preview-img p-6 bg-primary-100 h-100 flex-col flex bg-primary-100">
 						<div class="flex items-center gap-[16px]">
 							<img class="block" src="@/assets/images/login-logo.svg" alt="" />
 						</div>
 						<img class="block mx-auto my-auto" src="@/assets/images/login-sub-img.svg" alt="" />
-					</div>
+					</div> -->
 					<form @submit.prevent="onSubmit" class="py-6 px-5 md:px-10 form-login my-auto w-[400px]">
 						<p class="mb-2 text-md">Xin chào bạn</p>
 						<p class="text-xl font-bold mb-3 md:mb-8">Đăng nhập để tiếp tục</p>
@@ -187,42 +188,83 @@
 					password: this.password,
 				};
 				this.loading = true;
-				await this.api.user
-					.login(body)
-					.then(
-						(res: apiResponde) => {
-							const rs = res as apiResponde;
-							const user: Record<string, any> = rs.data.user;
-							this.authStore.setUser({ ...user, name: user.name, id: user.id, token: rs.data.token });
-							this.authStore.setToken(rs.data.token);
-							this.authCookie = rs.data.token;
-							this.authStore.getUserInfo();
-							this.loginErrorMsg = '';
-							if (this.rememberMe) {
-								localStorage.setItem('account', this.login);
-								localStorage.setItem('password', this.password);
-							} else {
-								localStorage.removeItem('account');
-								localStorage.removeItem('password');
-							}
-							this.router.push('/orders');
-						},
-						(error: apiResponde) => {
-							this.loginErrorMsg = error.data?.message || 'Đăng nhập thất bại, vui lòng thử lại.';
-							this.notificationStore.setSnack({ text: 'Failed on Login: ' + error.data?.message, type: 'error' });
-							console.log('exception...');
-							console.log(error.status);
-							console.log(error.data);
+				setTimeout(() => {
+					this.loading = false;
+					if (this.login === 'admin' && this.password === 'admin') {
+						const user = {
+							avatar: 'http://xc-id-dev.maychudev.com/assets/images/user.png',
+							code: 'XC-0001',
+							email: 'admin@gmail.com',
+							id: 1,
+							is_active: true,
+							name: 'Admin',
+							position: {
+								department: {
+									children: null,
+									id: 1,
+									level: null,
+									name: 'Phòng Công Nghệ',
+									parent_id: null,
+									short_code: null,
+									system_code: null,
+								},
+								id: 1,
+								level: null,
+								name: 'Nhân viên lập trình',
+							},
+						};
+						this.authStore.setUser({ ...user, name: user.name, id: user.id, token: 'make-up-token' });
+						this.authStore.setToken('make-up-token');
+						this.authCookie = 'make-up-token';
+						if (this.rememberMe) {
+							localStorage.setItem('account', this.login);
+							localStorage.setItem('password', this.password);
+						} else {
+							localStorage.removeItem('account');
+							localStorage.removeItem('password');
 						}
-					)
-					.catch((err: any) => {
-						this.loginErrorMsg = err || 'Đăng nhập thất bại, vui lòng thử lại.';
+						this.router.push('/');
+					} else {
+						this.loginErrorMsg = 'Đăng nhập thất bại, vui lòng thử lại.';
+						this.notificationStore.setSnack({ text: 'Failed on Login: ', type: 'error' });
+					}
+				}, 2000);
+				// await this.api.user
+				// 	.login(body)
+				// 	.then(
+				// 		(res: apiResponde) => {
+				// 			const rs = res as apiResponde;
+				// 			const user: Record<string, any> = rs.data.user;
+				// 			this.authStore.setUser({ ...user, name: user.name, id: user.id, token: rs.data.token });
+				// 			this.authStore.setToken(rs.data.token);
+				// 			this.authCookie = rs.data.token;
+				// 			this.authStore.getUserInfo();
+				// 			this.loginErrorMsg = '';
+				// 			if (this.rememberMe) {
+				// 				localStorage.setItem('account', this.login);
+				// 				localStorage.setItem('password', this.password);
+				// 			} else {
+				// 				localStorage.removeItem('account');
+				// 				localStorage.removeItem('password');
+				// 			}
+				// 			this.router.push('/orders');
+				// 		},
+				// 		(error: apiResponde) => {
+				// 			this.loginErrorMsg = error.data?.message || 'Đăng nhập thất bại, vui lòng thử lại.';
+				// 			this.notificationStore.setSnack({ text: 'Failed on Login: ' + error.data?.message, type: 'error' });
+				// 			console.log('exception...');
+				// 			console.log(error.status);
+				// 			console.log(error.data);
+				// 		}
+				// 	)
+				// 	.catch((err: any) => {
+				// 		this.loginErrorMsg = err || 'Đăng nhập thất bại, vui lòng thử lại.';
 
-						this.error = err;
-					})
-					.finally(() => {
-						this.loading = false;
-					});
+				// 		this.error = err;
+				// 	})
+				// 	.finally(() => {
+				// 		this.loading = false;
+				// 	});
 			},
 			required(v: string) {
 				return !!v || 'Field is required';
@@ -245,12 +287,13 @@
 
 <style lang="scss">
 	.login-wrapper {
-		background-image: url('../assets/images/login-banner.png');
+		background-image: url('../assets/images/documentation/parallax-7.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		position: relative;
-		min-height: 100vh;
-		&::after {
+		height: 100vh;
+		/* overflow: hidden; */
+		/* &::after {
 			content: '';
 			position: absolute;
 			top: 0;
@@ -259,9 +302,17 @@
 			height: 100%;
 			background-color: rgba(66, 65, 65, 0.163);
 			z-index: 2;
-		}
+		} */
+		/* .ls {
+			background-image: url('../assets/images/documentation/parallax-7.jpg');
+			background-size: cover;
+			background-repeat: no-repeat;
+			position: relative;
+			height: 100vh;
+			overflow: hidden;
+		} */
 		.form-container {
-			width: 850px;
+			width: 90%;
 			max-width: 90vw;
 			height: 580px;
 			max-height: 90vh;
@@ -271,6 +322,10 @@
 			.form-login {
 				flex-grow: 2;
 			}
+		}
+		.sfx {
+			background-color: #c8fce6d8;
+			backdrop-filter: blur(6px);
 		}
 	}
 </style>

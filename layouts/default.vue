@@ -1,16 +1,16 @@
 <template>
-	<div id="app">
+	<div id="app" :class="`${currentTheme}`">
 		<appLoader v-if="globalLoading" />
 		<div class="mx-0 my-0" style="display: flex">
 			<Sidebar v-if="isLogged" />
 
 			<div
-				:style="` background-color:#FDFBF7;flex-grow: 1; width: 100%; max-width: ${
+				:style="`background-color:#FDFBF7;flex-grow: 1; width: 100%; max-width: ${
 					isLogged ? 'calc(100vw - 100px)' : '100%'
 				}`"
 			>
 				<Header v-if="isLogged" />
-				<div :class="isLogged ? 'px-6 py-6' : 'px-0'">
+				<div :class="isLogged ? 'px-6 py-6' : 'px-0'" class="dark:bg-slate-500 bg-[#f1f1f1]">
 					<!-- <BreadCrumb v-if="isLogged" /> -->
 					<slot> </slot>
 				</div>
@@ -44,7 +44,7 @@
 			const store = useCounterStore();
 			const count = computed(() => store.$state.count);
 			const { isLogged } = storeToRefs(authStore);
-			const { globalLoading, currentState } = storeToRefs(appStateStore);
+			const { globalLoading, currentState, currentTheme } = storeToRefs(appStateStore);
 			const { listImagePreview } = storeToRefs(internalStore);
 			// const isLogged = computed(() => authStore.isLogged);
 			const setAppState = appStateStore.setAppState;
@@ -53,11 +53,11 @@
 				if (!newVal) {
 					router.push('/login');
 				} else {
-					internalStore.getListUsers();
-					internalStore.getListMerchandiseTypes();
-					internalStore.getListContainerTypes();
-					internalStore.getDeliveryStatuses();
-					internalStore.getListOrderStatuses();
+					// internalStore.getListUsers();
+					// internalStore.getListMerchandiseTypes();
+					// internalStore.getListContainerTypes();
+					// internalStore.getDeliveryStatuses();
+					// internalStore.getListOrderStatuses();
 				}
 			});
 			const safeToView = computed(() => {
@@ -90,6 +90,7 @@
 				setAppState,
 				showFullPage,
 				listImagePreview,
+				currentTheme,
 			};
 		},
 		created() {},
@@ -100,11 +101,7 @@
 	};
 </script>
 
-<style>
-	#app {
-		background-color: #e6f0eb;
-	}
-</style>
+<style></style>
 
 <style lang="scss" scoped>
 	.main-cr-overview {

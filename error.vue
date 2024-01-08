@@ -21,7 +21,7 @@
 			type="submit"
 			:container-class="'block rounded-xl font-semibold text-white'"
 			color="primary"
-			@click="$router.push('/orders')"
+			@click="$router.push('/')"
 		>
 			Quay về trang chủ
 		</SepNormalButton>

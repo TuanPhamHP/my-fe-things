@@ -25,6 +25,10 @@ const base = (API_BASE_URL: String) => {
 						},
 				  });
 		},
+		getUserInfoHardCode(_token?: string | null, payload?: Object): any {
+			return _token;
+		},
 	};
 };
+
 export default base;

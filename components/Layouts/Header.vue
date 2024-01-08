@@ -1,12 +1,16 @@
 <template>
-	<nav id="appVerticalNav" class="bg-primary-500 flex items-center justify-space-between px-6 py-4 h-[80px]">
+	<nav
+		id="appVerticalNav"
+		class="bg-white dark:bg-slate-700 flex items-center justify-space-between px-6 py-4 h-[80px]"
+	>
 		<div class="cursor-pointer flex items-center justify-center w-[40px] h-[40px] rounded-cicle" @click="toggleSidebar">
-			<Icon :name="'simple-line-icons:menu'" class="text-white" size="24px" />
+			<Icon :name="'simple-line-icons:menu'" class="text-slate-900 dark:text-white" size="16px" />
 		</div>
-		<p class="title-md font-semibold ml-4 md:ml-6 text-white">{{ currentViewTitle }}</p>
+		<p class="title-md font-semibold ml-4 md:ml-6 text-slate-900 dark:text-white">{{ currentViewTitle }}</p>
 
 		<!-- <Notification /> -->
 		<UserInfomation />
+		<ToggleThemeButton />
 	</nav>
 </template>
 
@@ -14,6 +18,7 @@
 	import { useAppStateStore } from '@/store/appState';
 	import Notification from './Notification.vue';
 	import UserInfomation from './UserInfomation.vue';
+	import ToggleThemeButton from '../Buttons/ToggleThemeButton.vue';
 	import { storeToRefs } from 'pinia';
 	export default {
 		setup() {
@@ -25,7 +30,7 @@
 				currentViewTitle,
 			};
 		},
-		components: { Notification, UserInfomation },
+		components: { Notification, UserInfomation, ToggleThemeButton },
 		methods: {},
 	};
 </script>

@@ -7,14 +7,15 @@ export default defineNuxtRouteMiddleware(async to => {
 	if (!authStore.isLogged) {
 		if (to.name !== 'login') {
 			if (authCookie.value) {
-				authStore.getUserInfo();
+				// authStore.getUserInfo();
+				authStore.getUserInfoHardCode();
 				return;
 			}
 			return navigateTo('/login');
 		}
 	} else {
 		if (to.name === 'login') {
-			return navigateTo('/orders');
+			return navigateTo('/');
 		}
 	}
 });

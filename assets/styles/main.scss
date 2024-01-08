@@ -81,6 +81,8 @@ body {
 .punch-page-wrapper {
 	height: calc(100vh - 68px - 24px - 24px);
 	overflow-y: scroll;
+	scroll-behavior: smooth;
+	scroll-padding-top: 40px;
 	&::-webkit-scrollbar {
 		width: 12px;
 	}
@@ -174,4 +176,9 @@ body {
 }
 .punch-page-wrapper {
 	border: 1px solid #e5e5e5;
+}
+.dark {
+	.punch-page-wrapper {
+		border: 1px solid #a4adb5;
+	}
 }

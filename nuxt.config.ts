@@ -45,6 +45,10 @@ export default defineNuxtConfig({
 	tailwindcss: {
 		exposeConfig: true,
 		config: {
+			colorMode: {
+				classSuffix: '',
+			},
+			darkMode: 'class',
 			theme: {
 				extend: {
 					colors: {
