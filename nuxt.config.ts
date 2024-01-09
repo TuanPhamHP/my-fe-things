@@ -13,6 +13,15 @@ export default defineNuxtConfig({
 	ssr: false,
 	app: {
 		pageTransition: { name: 'page', mode: 'out-in' },
+		head: {
+			title: 'Zero to Hero', // Tiêu đề mặc định cho toàn bộ trang web
+			// titleTemplate: '%s - Tên Website', // Một template cho việc tạo tiêu đề cho từng trang cụ thể
+			meta: [
+				// Các thiết lập meta khác có thể được thêm vào đây
+				{ charset: 'utf-8' },
+				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			],
+		},
 	},
 
 	vite: {

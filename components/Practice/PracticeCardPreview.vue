@@ -1,17 +1,17 @@
 <template>
 	<div
-		class="relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+		class="relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition h-full flex flex-col"
 	>
-		<a href="#">
+		<div @click="$router.push(detailData.link)" class="cursor-pointer">
 			<img class="rounded-t-lg w-full h-[260px]" :src="getImageUrl()" alt="" />
-		</a>
-		<div class="p-5">
+		</div>
+		<div class="p-5 flex flex-col grow">
 			<StatusBadge :status-id="detailData.status_id" />
-			<a href="#">
+			<div @click="$router.push(detailData.link)" class="cursor-pointer">
 				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 					{{ detailData.vneseName }}
 				</h5>
-			</a>
+			</div>
 			<p class="mb-3 font-normal text-gray-700 dark:text-white">
 				{{ detailData.description }}
 			</p>
@@ -31,7 +31,7 @@
 			</ul> -->
 			<div
 				@click="$router.push(detailData.link)"
-				class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+				class="w-fit mt-auto cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 			>
 				Read more
 				<svg

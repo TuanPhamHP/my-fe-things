@@ -13,6 +13,9 @@ import orders from './orders';
 import internal from './internal';
 import deliveryOrders from './deliveryOrders';
 
+import trainingTask from './trainingTask';
+import documentations from './documentations';
+
 export default defineNuxtPlugin(() => {
 	const config = useRuntimeConfig();
 	const api = {
@@ -30,6 +33,10 @@ export default defineNuxtPlugin(() => {
 		orders: orders(config.public.baseUrl),
 		internal: internal(config.public.baseUrl),
 		deliveryOrders: deliveryOrders(config.public.baseUrl),
+
+		// fake sv
+		trainingTask: trainingTask(),
+		documentations: documentations(),
 	};
 	return {
 		provide: {

@@ -23,7 +23,7 @@
 	import { useAppStateStore } from '~/store/appState';
 	import { useAuthStore } from '~/store/auth';
 	import { storeToRefs } from 'pinia';
-	import DocCardPreview from '~/components/Documentation/DocCardPreview';
+	import DocCardPreview from '../../components/Documentation/DocCardPreview.vue';
 
 	export default {
 		components: { DocCardPreview },
@@ -41,34 +41,72 @@
 
 		data() {
 			return {
-				listData: [
-					{
-						id: 1,
-						vneseName: 'Cài đặt cơ bản',
-						eng: 'Installation',
-						description: 'Hướng dẫn cài đặt cơ bản để khởi tạo web-app của bạn với ReactJS.',
-						link: '/documentation/installation',
-						previewImage: 'parallax-1.jpeg',
-						status_id: 1,
-					},
-					{
-						id: 2,
-						vneseName: 'Hooks',
-						eng: 'Hooks',
-						description: 'Trình bày về một số hooks cơ bản của ReactJS. Eg: useState(), useEffect(), useContext() ...',
-						link: '/documentation/hooks',
-						previewImage: 'parallax-2.jpeg',
-						status_id: 1,
-					},
-				] as DocumentItem[],
+				listData: [] as DocumentItem[],
 				loading: false,
+				search: '',
 				result: 0,
+				firstSync: true,
+				refSyncUrl: 1,
 			};
+		},
+		computed: {
+			normalQuery() {
+				return `${this.search}`;
+			},
+			instantQuery() {
+				return ``;
+			},
+			isSearch() {
+				const obj = { ...this.$route.query };
+				delete obj.size;
+				delete obj.page;
+				return !!Object.keys(obj).length;
+			},
+		},
+		watch: {
+			instantQuery: {
+				deep: true,
+				handler() {
+					// this.pagination = {
+					// 	...this.pagination,
+
+					// 	page: 1,
+					// };
+					this.getListData();
+				},
+			},
+
+			normalQuery() {
+				// if (this.firstSync) {
+				// 	return;
+				// }
+				clearTimeout(this.refSyncUrl);
+				this.refSyncUrl = window.setTimeout(() => {
+					// this.pagination = {
+					// 	...this.pagination,
+					// 	page: 1,
+					// };
+					this.getListData();
+				}, 600);
+			},
 		},
 		mounted() {
 			this.setBreadCrumbWithHomePage();
 			this.setCurrentViewTitle('Trang chủ');
+			this.getListData();
 		},
-		methods: {},
+		methods: {
+			async getListData() {
+				this.loading = true;
+				const body = {
+					search: this.search,
+				};
+				const res = await this.$api.documentations.getListData(body);
+				this.loading = false;
+				if (res.success) {
+					this.listData = res.data as DocumentItem[];
+				}
+			},
+		},
 	};
 </script>

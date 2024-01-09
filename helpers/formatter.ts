@@ -33,7 +33,7 @@ export const toNumber = (_data: any) => {
 	return +_data || 0;
 };
 
-export const removeAscentNormal = (str: string | null | undefined): string => {
+export const removeAscentNormal = (str: string | null | undefined, forceLowercase: boolean = false): string => {
 	if (!str) return `${str}`;
 
 	str = str.replace(/à|À|á|Á|ạ|Ạ|ả|Ả|ã|Ã|â|Â|ầ|Ầ|ấ|Ấ|ậ|Ậ|ẩ|Ẩ|ẫ|Ẫ|ă|Ă|ằ|Ằ|ắ|Ắ|ặ|Ặ|ẳ|Ẳ|ẵ|Ẵ/g, 'a');
@@ -43,7 +43,7 @@ export const removeAscentNormal = (str: string | null | undefined): string => {
 	str = str.replace(/ù|Ù|ú|Ú|ụ|Ụ|ủ|Ủ|ũ|Ũ|ư|Ư|ừ|Ừ|ứ|Ứ|ự|Ự|ử|Ử|ữ|Ữ/g, 'u');
 	str = str.replace(/ỳ|Ỳ|ý|Ý|ỵ|Ỵ|ỷ|Ỷ|ỹ|Ỹ/g, 'y');
 	str = str.replace(/đ|Đ/g, 'd');
-	return str;
+	return forceLowercase ?  str.toLowerCase() :str;
 };
 export const formatDateCustom = (date?: string | number | Date | null, formatString: string = 'dd/MM/yyyy') => {
 	if (!date) {

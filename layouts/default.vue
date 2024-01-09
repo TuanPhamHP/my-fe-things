@@ -95,7 +95,9 @@
 		},
 		created() {},
 		components: { appLoader, Header, Sidebar, LogoutModal, BreadCrumb, FullPageView },
-		mounted() {},
+		mounted() {
+			this.$api.trainingTask.syncData();
+		},
 		watch: {},
 		methods: {},
 	};
