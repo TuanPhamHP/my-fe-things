@@ -47,7 +47,7 @@
 						vneseName: 'Bài 1 - Array Methods',
 						eng: 'array methods',
 						description: 'Bài tập về một số các methods thông dụng của Array trong JS.',
-						link: 'practice/e_1',
+						link: '/practice/e_1',
 						previewImage: 'parallax-3.jpeg',
 						status_id: 1,
 						category: [],
