@@ -12,21 +12,21 @@
 			</div>
 			<div class="grid grid-cols-1 md:grid-cols-4 md:gap-5">
 				<div class="col-span-1" v-for="item in listData" :key="item.id">
-					<DocCardPreview :detail-data="item" />
+					<PracticeCardPreview :detail-data="item" />
 				</div>
 			</div>
 		</div>
 	</div>
 </template>
 <script lang="ts">
-	import { DocumentItem } from '~/models/Documentation';
 	import { useAppStateStore } from '~/store/appState';
 	import { useAuthStore } from '~/store/auth';
 	import { storeToRefs } from 'pinia';
-	import DocCardPreview from '~/components/Documentation/DocCardPreview';
+	import PracticeCardPreview from '~/components/Practice/PracticeCardPreview';
+	import { PracticeItem } from '~/models/Practice';
 
 	export default {
-		components: { DocCardPreview },
+		components: { PracticeCardPreview },
 		setup() {
 			const { setBreadCrumbWithHomePage, setCurrentViewTitle } = useAppStateStore();
 
@@ -43,24 +43,16 @@
 			return {
 				listData: [
 					{
-						id: 1,
-						vneseName: 'Cài đặt cơ bản',
-						eng: 'Installation',
-						description: 'Hướng dẫn cài đặt cơ bản để khởi tạo web-app của bạn với ReactJS.',
-						link: 'documentation/installation',
-						previewImage: 'parallax-1.jpeg',
+						id: 'e_1',
+						vneseName: 'Bài 1 - Array Methods',
+						eng: 'array methods',
+						description: 'Bài tập về một số các methods thông dụng của Array trong JS.',
+						link: 'practice/e_1',
+						previewImage: 'parallax-3.jpeg',
 						status_id: 1,
+						category: [],
 					},
-					{
-						id: 2,
-						vneseName: 'Hooks',
-						eng: 'Hooks',
-						description: 'Trình bày về một số hooks cơ bản của ReactJS. Eg: useState(), useEffect(), useContext() ...',
-						link: 'documentation/hooks',
-						previewImage: 'parallax-2.jpeg',
-						status_id: 1,
-					},
-				] as DocumentItem[],
+				] as PracticeItem[],
 				loading: false,
 				result: 0,
 			};

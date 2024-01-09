@@ -1,7 +1,7 @@
 import { SimpleType } from 'models';
 
 export interface PracticeItem {
-	id: number;
+	id: number | string;
 	vneseName: string;
 	eng: string;
 	description: string;

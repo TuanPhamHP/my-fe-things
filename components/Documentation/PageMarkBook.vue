@@ -1,10 +1,9 @@
 <template>
 	<div
-		className="hidden sticky top-[10px] px-2 h-fit md:block table-of-content w-[300px] min-w-[300px] text-slate-900 dark:text-white
-		border-l border-slate-300 dark:border-white"
+		class="hidden sticky top-[10px] px-2 h-fit md:block table-of-content w-[300px] min-w-[300px] text-slate-900 dark:text-white border-l border-slate-300 dark:border-white"
 	>
 		Đầu mục
-		<div className="flex flex-col gap-2 py-2 px-1">
+		<div class="flex flex-col gap-2 py-2 px-1">
 			<a v-for="item in listMarkBook" :key="item.name" :href="`#${item.link}`"> {{ item.name }} </a>
 		</div>
 	</div>

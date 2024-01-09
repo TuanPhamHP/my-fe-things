@@ -1,9 +1,5 @@
 <template>
-	<div
-		className="px-3 py-2 rounded bg-neutral-100 dark:bg-neutral-200 my-3
-    text-slate-900 relative
-    "
-	>
+	<div class="px-3 py-2 rounded bg-neutral-100 dark:bg-neutral-200 my-3 text-slate-900 relative">
 		<Icon
 			v-if="textCoppy"
 			:name="success ? 'solar:clipboard-check-linear' : 'solar:copy-outline'"
