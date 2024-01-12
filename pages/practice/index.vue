@@ -11,10 +11,7 @@
 						<span class="font-normal">( •̀ ω •́ )✧</span>
 					</h1>
 				</div> -->
-				<div>
-					<!-- <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-						>Search</label
-					> -->
+				<div class="sticky-top top-0 z-10">
 					<div class="relative max-w-xl mx-auto mb-3">
 						<div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 							<Icon v-if="loading" name="line-md:loading-loop" />
@@ -51,7 +48,7 @@
 						</button> -->
 					</div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-4 md:gap-5">
+				<div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
 					<div class="col-span-1" v-for="item in listData" :key="item.id">
 						<PracticeCardPreview :detail-data="item" />
 					</div>

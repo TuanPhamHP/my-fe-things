@@ -166,15 +166,7 @@ export default ExampleComponent;
 						DOC
 					</a>
 				</p>
-				<div class="py-2 mt-5 border-t text-indigo-500 dark:text-white flex w-full items-center justify-between">
-					<div
-						class="text-indigo-500 dark:text-white cursor-pointer flex items-center gap-2 hover:bg-gray-100/25 w-fit px-2 rounded-lg"
-						@click="$router.push('/documentation')"
-					>
-						<Icon name="solar:double-alt-arrow-left-bold" size="32px" />
-						<span>Trở về danh sách Document</span>
-					</div>
-				</div>
+				<DocNextPage :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
 		</div>
@@ -184,8 +176,23 @@ export default ExampleComponent;
 	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
 	import PageHeading from '../../components/Documentation/PageHeading.vue';
 	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
+	import DocNextPage from '../../components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
-		components: { PageMarkBook, PageHeading, FakeTerminalUI, VCodeBlock },
+		components: { PageMarkBook, PageHeading, FakeTerminalUI, VCodeBlock, DocNextPage },
+		data() {
+			return {
+				pagePagination: {
+					next: {
+						title: 'CSS trong React',
+						link: '/documentation/styled-component',
+					},
+					prev: {
+						title: 'Trở về danh sách Doc',
+						link: '/documentation',
+					},
+				},
+			};
+		},
 	};
 </script>

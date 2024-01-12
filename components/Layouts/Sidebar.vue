@@ -1,10 +1,11 @@
 <template>
-	<div class="w-[100px] min-w-[100px]">
-		<div class="px-0 py-0 sidebar-wrapper bg-indigo-600 dark:bg-slate-700" :class="sideBarMini ? 'is-mini' : ''">
+	<div class="sm:w-[100px] sm:min-w-[100px]" :class="sideBarMini ? 'hidden sm:block' : 'block'">
+		<div class="px-0 py-0 sidebar-wrapper bg-indigo-500 dark:bg-slate-700" :class="sideBarMini ? 'is-mini' : ''">
 			<nav class="h-full flex flex-col main-nav">
-				<div class="brand-caster mx-auto mb-5 md: mb-[48px] h-[64px]">
-					<img v-show="sideBarMini" src="@/assets/images/sidebar-logo.svg" class="block mx-auto" alt="" />
-					<img v-show="!sideBarMini" src="@/assets/images/sidebar-logo-expand.svg" class="block mx-auto" alt="" />
+				<div class="brand-caster mx-auto mb-5 md: mb-[48px] h-[64px] cursor-pointer" @click="$router.push('/')">
+					<img src="@/assets/images/sidebar-logo-01.png" class="block mx-auto h-full" alt="" />
+					<!-- <img v-show="sideBarMini" src="@/assets/images/sidebar-logo.svg" class="block mx-auto" alt="" />
+					<img v-show="!sideBarMini" src="@/assets/images/sidebar-logo-expand.svg" class="block mx-auto" alt="" /> -->
 				</div>
 
 				<ul
@@ -168,7 +169,12 @@
 				{
 					title: 'Tài liệu',
 					path: '/documentation',
-					pathNameMatch: ['documentation', 'documentation-installation', 'documentation-hooks'],
+					pathNameMatch: [
+						'documentation',
+						'documentation-installation',
+						'documentation-hooks',
+						'documentation-styled-component',
+					],
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,

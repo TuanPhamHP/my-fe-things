@@ -10,7 +10,7 @@
 					<span class="font-normal">( •̀ ω •́ )✧</span>
 				</h1>
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-4 md:gap-5">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
 				<div class="col-span-1" v-for="item in listData" :key="item.id">
 					<DocCardPreview :detail-data="item" />
 				</div>

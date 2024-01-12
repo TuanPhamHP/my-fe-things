@@ -2,8 +2,8 @@
 	<div
 		class="hidden sticky top-[10px] px-2 h-fit md:block table-of-content w-[300px] min-w-[300px] text-slate-900 dark:text-white border-l border-slate-300 dark:border-white"
 	>
-		Đầu mục
-		<div class="flex flex-col gap-2 py-2 px-1">
+		<p class="text-lg">Đầu mục</p>
+		<div class="flex flex-col gap-2 py-2 px-3">
 			<a v-for="item in listMarkBook" :key="item.name" :href="`#${item.link}`"> {{ item.name }} </a>
 		</div>
 	</div>

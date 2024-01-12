@@ -5,12 +5,13 @@
 			<Sidebar v-if="isLogged" />
 
 			<div
+				class="main-app"
 				:style="`background-color:#FDFBF7;flex-grow: 1; width: 100%; max-width: ${
 					isLogged ? 'calc(100vw - 100px)' : '100%'
 				}`"
 			>
 				<Header v-if="isLogged" />
-				<div :class="isLogged ? 'px-6 py-6' : 'px-0'" class="dark:bg-slate-500 bg-[#f1f1f1]">
+				<div :class="isLogged ? 'px-3 py-6 sm:px-6 sm:py-6' : 'px-0'" class="dark:bg-slate-500 bg-[#f1f1f1]">
 					<!-- <BreadCrumb v-if="isLogged" /> -->
 					<slot> </slot>
 				</div>
@@ -111,5 +112,10 @@
 		height: 100vh;
 		width: 100vw;
 		display: flex;
+	}
+	@media screen and (max-width: 640px) {
+		.main-app {
+			max-width: 100% !important;
+		}
 	}
 </style>

@@ -50,7 +50,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 3,
-		vneseName: 'Styled Component',
+		vneseName: 'CSS Trong React',
 		eng: 'Styled Component',
 		description: 'Cách sử dụng css trong ReactJS, css module.',
 		link: '/documentation/styled-component',

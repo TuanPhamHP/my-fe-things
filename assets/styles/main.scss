@@ -182,3 +182,6 @@ body {
 		border: 1px solid #a4adb5;
 	}
 }
+code {
+	max-width: calc(100vw - 100px);
+}
