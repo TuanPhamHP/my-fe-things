@@ -174,6 +174,7 @@
 						'documentation-installation',
 						'documentation-hooks',
 						'documentation-styled-component',
+						'documentation-state-and-prop',
 					],
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',

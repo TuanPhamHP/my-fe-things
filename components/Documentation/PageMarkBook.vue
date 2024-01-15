@@ -4,7 +4,9 @@
 	>
 		<p class="text-lg">Đầu mục</p>
 		<div class="flex flex-col gap-2 py-2 px-3">
-			<a v-for="item in listMarkBook" :key="item.name" :href="`#${item.link}`"> {{ item.name }} </a>
+			<a v-for="item in listMarkBook" :key="item.name" :href="`#${item.link}`" :class="`block pl-${item.lvl}`">
+				{{ item.name }}
+			</a>
 		</div>
 	</div>
 </template>
@@ -23,11 +25,12 @@
 		},
 		methods: {
 			setMarkBook() {
-				const listHeading = [...document.querySelectorAll('.page-heading-lv1')];
+				const listHeading = [...document.querySelectorAll('.page-heading-lv1, .page-heading-lv2')];
 				this.listMarkBook = listHeading.map((o: Element) => {
 					return {
 						name: o.textContent || '',
 						link: o.getAttribute('id'),
+						lvl: o.getAttribute('dataLvl') || 0,
 					};
 				}) as { name: string; link: string }[];
 			},

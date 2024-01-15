@@ -3,6 +3,7 @@
 		:class="`page-heading-lv${lvl} text-slate-900 dark:text-white font-bold text-3xl md:text-3xl ${addOnClass || ''}`"
 		:markedas="markedAs"
 		:id="markedAs"
+		:dataLvl="lvl"
 	>
 		{{ text }}
 	</h1>

@@ -11,7 +11,7 @@
 						<span class="font-normal">( •̀ ω •́ )✧</span>
 					</h1>
 				</div> -->
-				<div class="sticky-top top-0 z-10">
+				<div class="sticky-top top-0 z-10 pb-3">
 					<div class="relative max-w-xl mx-auto mb-3">
 						<div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
 							<Icon v-if="loading" name="line-md:loading-loop" />
@@ -139,7 +139,7 @@
 		},
 		mounted() {
 			this.setBreadCrumbWithHomePage();
-			this.setCurrentViewTitle('Trang chủ');
+			this.setCurrentViewTitle('Danh sách bài tập');
 			this.getListData();
 		},
 		methods: {
