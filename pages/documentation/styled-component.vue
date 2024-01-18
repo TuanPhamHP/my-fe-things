@@ -1,13 +1,13 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="w-full flex gap-2">
-			<div class="grow">
+			<div class="grow page-data">
 				<PageHeading text="CSS trong ReactJS" addOnClass="text-left" markedAs="styled-component" :lvl="0" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong phần này chúng ta sẽ làm quen với một vài cách thường được sử dụng để css trong ứng dụng ReactJs.
 				</p>
 				<PageHeading text="Inline Style" addOnClass="text-left" markedAs="inline-style" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Cũng giống như <b>`Inline style`</b> trong HTML 5, ta có thể viết css trực tiếp vào trong các thẻ ở phần view
 					của component thông qua attribute style.
 				</p>
@@ -51,7 +51,7 @@ export default ExampleComponent;`"
 					Eg: {fontSize:'40px', color:'#ffffff'}
 				</p>
 				<PageHeading text="External Stylesheets" addOnClass="text-left" markedAs="external-stylesheets" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Ta có thể viết css vào các file <b>`.css `</b> riêng biệt sau đó import vào trong component.
 					<br />
 					<br />
@@ -122,14 +122,14 @@ export default MyComponent;
 				</TabGroup>
 				<div class="mb-5"></div>
 				<PageHeading text="Styled Components" addOnClass="text-left" markedAs="css-module" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Gần như tương tự với <b>`Inline Style`</b> Ta có thể viết css vào một biến ngay tại component. Cách này cần
 					bạn sự dụng lib <b>`styled-components`</b>
 				</p>
 				<VCodeBlock :code="styledComponentCode" highlightjs lang="javascript" theme="tomorrow-night-bright" />
 				<div class="mb-5"></div>
 				<PageHeading text="CSS Module (Recommend)" addOnClass="text-left" markedAs="css-module" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Gần như tương tự với <b>`External Stylesheets`</b> Ta có thể viết css vào các file riêng biệt, những file này
 					sẽ có đuôi là <b>.module.css</b>. Bằng cách viết này, mỗi file sẽ export cho ta một object và ta sẽ sử dụng
 					object này để style cho component. Cách viết này sẽ giúp ta tách biệt css thành các module cụ thể, đây là cách
@@ -249,8 +249,8 @@ export default MyComponent;
 			return {
 				pagePagination: {
 					next: {
-						title: 'Comming soon...',
-						link: '/documentation/styled-component',
+						title: 'State và Props',
+						link: '/documentation/state-and-prop',
 					},
 					prev: {
 						title: 'Hooks',

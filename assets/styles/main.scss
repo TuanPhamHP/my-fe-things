@@ -182,6 +182,26 @@ body {
 		border: 1px solid #a4adb5;
 	}
 }
+.page-data {
+	max-width: calc(100% - 320px);
+}
 code {
-	max-width: calc(100vw - 100px);
+	max-width: 100%;
+}
+@media only screen and (max-width: 992px) {
+	.page-data {
+		max-width: 100%;
+	}
+}
+@media only screen and (max-width: 640px) {
+	.punch-page-wrapper {
+		height: calc(100vh - 68px - 24px);
+		&::-webkit-scrollbar {
+			width: 4px;
+		}
+	}
+	.text-content {
+		font-size: 14px !important;
+		line-height: 20px !important;
+	}
 }

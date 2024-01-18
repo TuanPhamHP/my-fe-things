@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="dark:text-white py-5 max-w-7xl mx-auto">
 			<div class="min-h-[250px] flex items-center justify-center w-full">
 				<h1 class="text-center font-bold md:text-2xl text-slate-900 dark:text-white leading-10">
@@ -10,7 +10,7 @@
 					<span class="font-normal">( •̀ ω •́ )✧</span>
 				</h1>
 			</div>
-			<div class="grid grid-cols-1 md:grid-cols-2 md:gap-5">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-5">
 				<div
 					class="colspan-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
 				>

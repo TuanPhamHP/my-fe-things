@@ -1,22 +1,22 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="w-full flex gap-2">
-			<div class="grow">
+			<div class="grow page-data">
 				<PageHeading text="State và Prop trong React" addOnClass="text-left" markedAs="topTitle" :lvl="0" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong phần này chúng ta sẽ làm quen với khái niệm <b>`State`</b> và <b>`Props`</b> trong ứng dụng ReactJs.
 				</p>
 				<PageHeading text="State" addOnClass="text-left" markedAs="react-state" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong ReactJS, <b>`state`</b> là một trong những khái niệm quan trọng nhất và được sử dụng để theo dõi trạng
 					thái của một thành phần (component). Khi trạng thái thay đổi, React sẽ tự động render lại giao diện người dùng
 					để hiển thị trạng thái mới.
 				</p>
 				<PageHeading text="I. Create & Update State" addOnClass="text-left" markedAs="create-state" :lvl="2" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong RFC, <b>`state`</b> được khởi tạo thông qua hooks <b>`useState()`</b>
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<em
 						>Đọc kỹ hơn về hook
 						<b class="cursor-pointer underline" @click="$router.push('/documentation/hooks#use-state')"
@@ -109,7 +109,7 @@ export default ExampleComponent;`"
 					</TabPanels>
 				</TabGroup>
 
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Cần lưu ý là <b>`State`</b> chỉ thay đổi ở lần render tiếp theo.
 					<br />
 					Như vậy ở lần render đầu tiên, <b>`number`</b> có giá trị là 0, giá trị của <b>`number`</b> chỉ được update ở
@@ -120,25 +120,27 @@ export default ExampleComponent;`"
 					<br />
 					<br />
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">Khi hàm <b>`increaseTriple`</b> run:</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
+					Khi hàm <b>`increaseTriple`</b> run:
+				</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					1. <b>`setNumber(number + 1)`</b>: <b>`number`</b> bằng 0 => setNumber(0 + 1): ở lần render tiếp theo
 					<b>`number`</b> sẽ được update lên 1
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					2. <b>`setNumber(number + 1)`</b>: <b>`number`</b> bằng 0 => setNumber(0 + 1): ở lần render tiếp theo
 					<b>`number`</b> sẽ được update lên 1
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					3. <b>`setNumber(number + 1)`</b>: <b>`number`</b> bằng 0 => setNumber(0 + 1): ở lần render tiếp theo
 					<b>`number`</b> sẽ được update lên 1
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Như vậy mặc dù <b>`setNumber(number + 1)`</b> được call tới 3 lần nhưng sau khi update thì <b>`number`</b> chỉ
 					tăng lên 1 thay vì 3
 				</p>
 				<PageHeading text="II. State as a Snapshot" addOnClass="text-left" markedAs="state-snapshot" :lvl="2" />
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Thực tế, trong React thì các state sẽ luôn sử dụng <b>`snapshot`</b> của chúng khi người dùng tác động tới UI.
 					<br />
 					<br />
@@ -213,12 +215,12 @@ export default ExampleComponent;`"
 						</TabPanel>
 					</TabPanels>
 				</TabGroup>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Như các bạn thấy, ở hàm <b>`increaseNumber`</b> tôi thêm phương thức <b>`alert(number)`</b> để in ra giá trị
 					của <b>`number`</b> cho người dùng sau khi <b>`setNumber`</b>, nhưng giá trị được in ra vẫn là
 					<b>`number`</b> trước khi update.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Điều này xảy ra do React sẽ không bao giờ thay đổi giá trị của một state khi chúng được render, với mỗi lần
 					render thì react sẽ:
 					<br />
@@ -231,30 +233,30 @@ export default ExampleComponent;`"
 					<br />
 					3. Run các function nằm trong component với <b>`snapshot`</b> được tạo ở bước 1
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					=> Với mỗi lần render, giá trị của <b>`state` là fixed</b>
 				</p>
 				<PageHeading text="III. Batching State" addOnClass="text-left" markedAs="state-queuing" :lvl="2" />
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Sẽ có những trường hợp bạn muốn update state nhiều lần liên tục trong 1 lần render duy nhất - Tương tự như ví
 					dụ trên function <b>`increaseTriple()`</b> tại phần 1. <br />
 					Để thực hiện việc này ta sẽ tìm hiểu về <b>`batching`</b> trpng React.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					<b>`Batching`</b> là một khái niệm trong ReactJS mà React sử dụng để cải thiện hiệu suất khi thực hiện các cập
 					nhật trạng thái và render các thành phần.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Khi bạn thực hiện update state trong React, React không thực hiện việc cập nhật và render lại component mỗi
 					lần bạn gọi hàm setState ngay lập tức . Thay vào đó, React thường sử dụng batching để gom nhóm nhiều cập nhật
 					lại và thực hiện chúng một lần sau cùng để tối ưu hiệu suất.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					<b>Ví dụ:</b> Giống như khi bạn vào nhà hàng và gọi 3 món, người phục vụ thay vì đi vào báo với nhà bếp mỗi
 					khi bạn nói một món thì họ sẽ đợi bạn nói hết một lượt, xác định là bạn đã gọi đủ rồi mới báo lại với nhà bếp
 					để ra món.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					<b>Note: </b>
 
 					<b>Batching Không Áp Dụng Cho Các Asynchronous Operations</b>
@@ -262,7 +264,7 @@ export default ExampleComponent;`"
 				<p class="text-slate-900 dark:text-white my-5 leading-9 text-xl">
 					<em>Vậy làm sao để tôi có thể update state nhiều lần ở cùng 1 render?</em>
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Ở phần trước các bạn đã hiểu về <b>`setState()`</b> là một hàm nhận vào giá trị mới của <b>`state`</b> để
 					update. <br />
 					Ngoài ra nó còn có thể nhận vào một callback return ra giá trị mới. Bằng cách này React sẽ hiểu rằng nó cần
@@ -339,11 +341,11 @@ export default ExampleComponent;`"
 						</TabPanel>
 					</TabPanels>
 				</TabGroup>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Như các bạn thấy, ở hàm <b>`increase`</b> tôi đã gọi đến <b>`setNumber`</b> 3 lần, truyền vào 1 callback dùng
 					để tính toán và trả ra một giá trị mới
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Điều này xảy ra do React sẽ không bao giờ thay đổi giá trị của một state khi chúng được render, với mỗi lần
 					render thì react sẽ:
 					<br />
@@ -357,7 +359,7 @@ export default ExampleComponent;`"
 					<br />
 					3. <b>`setNumber(number => number + 1)`</b>: Tương tự ở trên.
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Sau khi Batching thì hàng chờ (queued) sẽ được mô tả như bảng sau:
 				</p>
 				<div class="relative overflow-x-auto">
@@ -394,7 +396,7 @@ export default ExampleComponent;`"
 						</tbody>
 					</table>
 				</div>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Kết thúc queue, ta có giá trị cuối được return là <b>3</b>
 					<br />
 					<br />
@@ -402,7 +404,7 @@ export default ExampleComponent;`"
 				</p>
 				<div class="py-5"></div>
 				<PageHeading text="Props" addOnClass="text-left" markedAs="react-props" />
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Trong ReactJS, <b>`props`</b> là một từ viết tắt của <b>`properties` - (thuộc tính)</b> và được sử dụng để
 					truyền dữ liệu từ một component cha xuống một component con trong cây component. Props là một cách để truyền
 					thông tin giữa các component và giúp tạo ra sự tương tác linh hoạt giữa chúng.
@@ -411,7 +413,7 @@ export default ExampleComponent;`"
 				</p>
 				<PageHeading text="I. Truyền & Nhận Props" addOnClass="text-left" markedAs="passing-props" :lvl="2" />
 
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Khi render một Component trong React, ta có thể truyền data vào trong component thông qua <b>`Props`</b>
 				</p>
 				<TabGroup>
@@ -478,7 +480,7 @@ export default ExampleComponent;`"
 					</TabPanels>
 				</TabGroup>
 
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					RFC được khởi tạo là một hàm, như vậy <b>`props`</b> được truyền vào như một tham số của hàm.
 					<br />
 					<br />
@@ -495,7 +497,7 @@ export default ExampleComponent;`"
 					<br />
 					Trong thực tế, người ta thường dùng syntax destructuring để rút gọn việc lấy props ở component con:
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Destructuring là một cú pháp trong JavaScript cho phép bạn rút gọn cách truy cập thông tin từ các cấu trúc dữ
 					liệu như mảng hoặc đối tượng. Cú pháp này giúp làm mã nguồn trở nên ngắn gọn hơn và dễ đọc hơn khi bạn cần
 					trích xuất giá trị từ các cấu trúc phức tạp.
@@ -513,7 +515,7 @@ console.log(c); // expected output: 3
 					lang="javascript"
 					theme="tomorrow-night-bright"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">Áp dụng:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">Áp dụng:</p>
 				<VCodeBlock
 					:code="`import React, { useState } from 'react';
 
@@ -535,7 +537,7 @@ const ChildComponent = ({parrentMessage})=>{
 					markedAs="default-value-props"
 					:lvl="2"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					Giống như tham số của một hàm, các props cũng có thể được khởi tạo với giá trị mặc định.
 					<br />
 					Trong trường hợp Component cha không truyền vào giá trị thì prop đó sẽ lấy giá trị khởi tạo.
@@ -614,7 +616,7 @@ export default ExampleComponent;
 				<div class="mb-5"></div>
 				<PageHeading text="III. `Children` Props" addOnClass="text-left" markedAs="children-props" :lvl="2" />
 
-				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
 					<b>`children`</b> là một prop đặc biệt trong React, nó cho phép bạn truyền một component, view khác làm prop.
 				</p>
 				<TabGroup>
@@ -730,8 +732,8 @@ export default ExampleComponent;
 			return {
 				pagePagination: {
 					next: {
-						title: 'Comming soon...',
-						link: '/documentation/styled-component',
+						title: 'Render List Data',
+						link: '/documentation/render-list-data',
 					},
 					prev: {
 						title: 'Hooks',

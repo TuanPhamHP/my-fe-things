@@ -1,7 +1,7 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="w-full flex gap-2">
-			<div class="grow">
+			<div class="grow page-data">
 				<PageHeading text="Environment" addOnClass="text-left" markedAs="env" />
 				<p class="text-slate-900 dark:text-white mt-5">Hướng dẫn tạo ứng dụng React</p>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">

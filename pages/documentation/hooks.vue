@@ -1,21 +1,21 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="w-full flex gap-2">
-			<div class="grow">
+			<div class="grow page-data">
 				<PageHeading text="Hooks" addOnClass="text-left" markedAs="hooks" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong ReactJS, "Hooks" là các hàm đặc biệt giúp bạn sử dụng các tính năng của React trong các Functional
 					Components. Hooks giúp bạn sử dụng state và các tính năng của lifecycle trong các functional components, giúp
 					chúng trở nên mạnh mẽ và linh hoạt hơn. Các hooks trở thành một cách tiếp cận chính cho việc quản lý state và
 					các khía cạnh khác của component. Dưới đây là một số state thường được dùng trong ReactJS
 				</p>
 				<PageHeading text="useState" addOnClass="text-left" markedAs="use-state" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`useState()`</b> là một hook được cung cấp sẵn trong React, chúng được sử dụng để giúp user định nghĩa và
 					quản lý state trong RFC. <br />
 					Để sử dụng được useEffect, các bạn có thể làm theo các thao tác sau:
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">B1: Import Hook:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B1: Import Hook:</p>
 				<VCodeBlock
 					:code="`// import hook từ thư viện 'react'
 import React, { useState } from 'react';`"
@@ -23,7 +23,9 @@ import React, { useState } from 'react';`"
 					lang="javascript"
 					theme="tomorrow-night-bright"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">B2: Sử dụng hook trong Component:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
+					B2: Sử dụng hook trong Component:
+				</p>
 				<VCodeBlock
 					:code="`// Khởi tạo state mới có tên là 'count'
 const [count, setCount] = useState(0);`"
@@ -31,14 +33,14 @@ const [count, setCount] = useState(0);`"
 					lang="javascript"
 					theme="tomorrow-night-bright"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong đó:
 					<br />
 					<b class="pl-5 inline-block">`count`</b>: Biến chứa giá trị state hiện. <br />
 					<b class="pl-5 inline-block">`setCount`</b>: Hàm sử dụng để cập nhật giá trị <b>`count`.</b> <br />
 					<b class="pl-5 inline-block">`1`</b>: Giá trị khởi tạo cho state<b>`count`.</b>
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">Ví dụ thực tế:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">Ví dụ thực tế:</p>
 				<VCodeBlock
 					:code="`import React, { useState } from 'react';
 function Example() {
@@ -59,13 +61,13 @@ function Example() {
 				/>
 				<div class="my-10"></div>
 				<PageHeading text="useEffect" addOnClass="text-left" markedAs="use-effect" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`useEffect()`</b> là một hook trong React được sử dụng để thực hiện các tác vụ không đồng bộ sau khi render
 					một component. Nó giúp quản lý các side effects trong component functional, giống như lifecycle methods trong
 					component class. Hoặc được sử dụng để chạy các block code theo một danh sách điều kiện - dependencies. <br />
 					Để sử dụng được useEffect, các bạn có thể làm theo các thao tác sau:
 				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">B1: Import Hook:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B1: Import Hook:</p>
 				<VCodeBlock
 					:code="`// import hook từ thư viện 'react'
 import React, { useEffect } from 'react';`"
@@ -73,7 +75,9 @@ import React, { useEffect } from 'react';`"
 					lang="javascript"
 					theme="tomorrow-night-bright"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">B2: Sử dụng hook trong Component:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
+					B2: Sử dụng hook trong Component:
+				</p>
 				<VCodeBlock
 					:code="`useEffect(() => {
 	// Block 01
@@ -91,7 +95,7 @@ import React, { useEffect } from 'react';`"
 					lang="javascript"
 					theme="tomorrow-night-bright"
 				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg">
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong đó:
 					<br />
 					<b class="pl-5 inline-block">`Block 01`</b>: Là blockcode sẽ được thực thi tùy theo điều kiện của{' '}
@@ -113,7 +117,7 @@ import React, { useEffect } from 'react';`"
 					<b>bất kì khi nào Component Update</b>
 				</p>
 
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg font-bold">Ví dụ thực tế:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">Ví dụ thực tế:</p>
 				<VCodeBlock
 					:code="`import React, { useState, useEffect } from 'react';
 

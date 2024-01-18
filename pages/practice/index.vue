@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="dark:text-white py-5 mx-auto flex gap-4">
 			<div class="grow">
 				<!-- <div class="min-h-[250px] flex items-center justify-center w-full">
