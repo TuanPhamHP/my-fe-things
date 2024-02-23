@@ -300,45 +300,205 @@
 								</div>
 							</TabPanel>
 							<TabPanel>
-								<VCodeBlock :code="`// Nội dung tạm ẩn`" highlightjs lang="javascript" theme="tomorrow-night-bright" />
-								<!-- <VCodeBlock
+								<VCodeBlock
 									:code="`// Import hook useState() từ thư viện 'react'
 import React, { useState } from 'react';
 
-// tạo functional component
-function Example() {
-	// khởi tạo state với syntax của useState();
-	const [count, setCount] = useState(0);
-	// trong đó:
-	// - 'count': Biến chứa giá trị state hiện tại.
-	// - 'setCount': Hàm sử dụng để cập nhật giá trị của 'count'.
-	// - '0': Giá trị khởi tạo cho state 'count'.
+// Lưu ý, bài giải chi giải thích về logic, về phần styling các bạn cần tự chủ động.
 
-	// tạo hàm để tăng giá trị của 'count'
-	const increase = ()=>{
-		setCount(count + 1)
-	}
+function Example() {
+	// khởi tạo state 'todo' để ghi lại nội dung người dùng nhập dưới dạng string
+	const [todo, setTodo] = useState('');
+	// Giá trị khởi tạo sẽ là chuỗi rỗng
+
+	// khởi tạo state listTask để lưu lại danh sách task
+	const [listTask, setListTask] = useState([]);
+	// Giá trị khởi tạo sẽ là mảng rỗng
+
+	// tạo hàm để ghi lại giá trị người dùng nhập vào state 'todo'
+	const handleOnChange = e => {
+		// ở đây ta gán hàm 'handleOnChange' với sự kiện 'change' của 'input'. Như vậy mỗi lần giá trị của ô 'input' thay đổi thì hàm này sẽ được call lại
+		// Tham số 'e' sẽ đại diện cho 'event' của sự kiện 'change'.
+
+		// target là element vừa tạo ra sự kiện 'change' => target ở đây là thẻ 'input'
+		const target = e.target;
+
+		// lấy giá trị của ô 'input' bằng thuộc tính value và update lại state
+		setTodo(target.value);
+	};
+
+	// tạo hàm để kiểm tra và lưu lại bản ghi todo khi người dùng nhấn 'Lưu'
+	const submitTodo = () => {
+		// kiểm tra 'todo' có thỏa mãn điều kiện không
+
+		if (!todo.trim()) {
+			// nếu giá trị todo sau khi trim là rỗng thì dừng ở đây và cảnh báo
+			alert('Vui lòng nhập kế hoạch của bạn');
+			return;
+		}
+		// tạo một object tương ứng với model đã cho ở để bài b1 để lưu lại bản ghi
+		const obj = {
+			id: new Date().getTime(),
+			content: todo,
+			status_id: 1,
+			created_at: new Date().getTime(),
+		};
+		// reset
+		setTodo('');
+		// lưu trữ lại obj vào state
+		setListTask([...listTask, obj]);
+	};
+
+	// Dựa vào listTask ta tiến hành chia nhỏ data làm 3 phần theo status_id
+	// status_id = 1 : Mới
+	// status_id = 2 : Hoàn thành
+	// status_id = 3 : Đã hủy
+
+	const listTaskNew = listTask.filter(task => task.status_id === 1);
+	const listTaskFinished = listTask.filter(task => task.status_id === 2);
+	const listTaskCanceled = listTask.filter(task => task.status_id === 3);
+
+	// Ta tạo ra 3 hàm để thay đổi trạng thái của task
+	const setTaskFinished = task => {
+		// clone lại state 'listTask' để thao tác
+		const cloneListTask = [...listTask];
+		// tìm ra phần tử ứng với task được truyền vào.
+		// đọc thêm về method findIndex() để hiểu kĩ hơn.
+		const idx = cloneListTask.findIndex(item => item.id === task.id);
+		if (idx === -1) {
+			// trường hợp không tìm được phần tử thỏa mãn
+			return;
+		}
+		// copy lại task và thay đổi status của bản ghi sang trạng thái mới
+		const obj = { ...cloneListTask[idx], status_id: 2 };
+		// thay thế task hiện tại trong 'cloneListTask' bằng 'obj' vừa làm ở trên;
+		cloneListTask.splice(idx, 1, obj);
+		// update lại state 'listTask' thành 'cloneListTask'
+		setListTask(cloneListTask);
+	};
+
+	const setTaskCanceled = task => {
+		const cloneListTask = [...listTask];
+		const idx = cloneListTask.findIndex(item => item.id === task.id);
+		if (idx === -1) {
+			return;
+		}
+		const obj = { ...cloneListTask[idx], status_id: 3 };
+		cloneListTask.splice(idx, 1, obj);
+		setListTask(cloneListTask);
+	};
+
+	const setTaskNew = task => {
+		const cloneListTask = [...listTask];
+		const idx = cloneListTask.findIndex(item => item.id === task.id);
+		if (idx === -1) {
+			return;
+		}
+		const obj = { ...cloneListTask[idx], status_id: 1 };
+		cloneListTask.splice(idx, 1, obj);
+		setListTask(cloneListTask);
+	};
 
 	// phần view
 	return (
 		<div>
-			<p>Giá trị hiện tại của ${'`'}counter ${'`'} là: {count}</p>
-			{/* gán hàm 'increase' vào sự kiện onClick */}
-			<button onClick={increase}>
-				Tăng
-			</button>
-			{/* Cách 2 - viết trực tiếp */}
-			<button onClick={() => setCount(count - 1)}>
-				Giảm
-			</button>
+			{/* Khối nhập liệu */}
+			<div>
+				<input type='text' value={todo} placeholder='Bạn có kế hoạch gì ....' onChange={handleOnChange} />
+				<button onClick={submitTodo}>Lưu</button>
+			</div>
+
+			{/* Khối kết quả */}
+			<div className='row'>
+				<div className='col-4'>
+					<h3>Mới</h3>
+					{listTaskNew.map(task => (
+						<NewTask key={task.id} task={task} setTaskFinished={setTaskFinished} setTaskCanceled={setTaskCanceled} />
+					))}
+				</div>
+				<div className='col-4'>
+					<h3>Đã hoàn thành</h3>
+					{listTaskFinished.map(task => (
+						<FinishedTask key={task.id} task={task} setTaskCanceled={setTaskCanceled} />
+					))}
+				</div>
+				<div className='col-4'>
+					<h3>Đã hủy</h3>
+					{listTaskCanceled.map(task => (
+						<CanceledTask key={task.id} task={task} setTaskNew={setTaskNew} />
+					))}
+				</div>
+			</div>
 		</div>
 	);
 }
+
+// Tạo ra 3 component ứng với 3 trạng thái task
+// props của component này là 'task'
+function NewTask({ task, setTaskFinished, setTaskNew }) {
+	return (
+		<div>
+			<p>{task.created_at}</p>
+			<p>{task.content}</p>
+			<div>
+				<button
+					onClick={() => {
+						setTaskFinished(task);
+					}}
+				>
+					Hoàn thành
+				</button>
+				<button
+					onClick={() => {
+						setTaskNew(task);
+					}}
+				>
+					Hủy
+				</button>
+			</div>
+		</div>
+	);
+}
+function FinishedTask({ task, setTaskCanceled }) {
+	return (
+		<div>
+			<p>{task.created_at}</p>
+			<p>{task.content}</p>
+			<div>
+				<button
+					onClick={() => {
+						setTaskCanceled(task);
+					}}
+				>
+					Hủy
+				</button>
+			</div>
+		</div>
+	);
+}
+function CanceledTask({ task, setTaskNew }) {
+	return (
+		<div>
+			<p>{task.created_at}</p>
+			<p>{task.content}</p>
+			<div>
+				<button
+					onClick={() => {
+						setTaskNew(task);
+					}}
+				>
+					Khôi phục
+				</button>
+			</div>
+		</div>
+	);
+}
+
 export default Example;`"
 									highlightjs
 									lang="javascript"
 									theme="tomorrow-night-bright"
-							/> -->
+								/>
 							</TabPanel>
 						</TabPanels>
 					</TabGroup>
