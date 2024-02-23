@@ -50,6 +50,16 @@ let baseListData: PracticeItem[] = [
 		status_id: 1,
 		category: [],
 	},
+	{
+		id: 'e_3',
+		vneseName: 'Bài 3 - Todo List',
+		eng: 'react todo list',
+		description: 'Bài tập về CRUD state trong ReactJs',
+		link: '/practice/e_3',
+		previewImage: 'parallax-7.jpg',
+		status_id: 1,
+		category: [],
+	},
 ];
 const getbaseListFromLocalStorage = (): PracticeItem[] | null => {
 	const listData = localStorage.getItem('listPracticeItem');

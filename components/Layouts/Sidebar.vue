@@ -184,7 +184,7 @@
 				{
 					title: 'Thực hành',
 					path: '/practice',
-					pathNameMatch: ['practice', 'practice-e_1'],
+					pathNameMatch: ['practice', 'practice-e_1', 'practice-e_2', 'practice-e_3'],
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
