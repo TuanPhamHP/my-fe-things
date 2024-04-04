@@ -395,10 +395,10 @@ export default FormExample;`"
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	import {
 		Disclosure,
@@ -471,11 +471,11 @@ export default FormExample;`"
 				pagePagination: {
 					next: {
 						title: 'Comming soon...',
-						link: '/practice/e_2',
+						link: '/reactjs-basic/practice/e_2',
 					},
 					prev: {
 						title: 'Bài 1 - Array Methods',
-						link: '/practice/e_1',
+						link: '/reactjs-basic/practice/e_1',
 					},
 				},
 			};

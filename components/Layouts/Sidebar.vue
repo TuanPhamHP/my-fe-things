@@ -138,6 +138,7 @@
 	import { useRoute } from 'vue-router';
 	import { useAppStateStore } from '@/store/appState';
 	import { storeToRefs } from 'pinia';
+	import { AppName } from '@/models/index';
 	interface SidebarItem {
 		title: string;
 		path: string;
@@ -149,6 +150,7 @@
 		permissionAccess: string[];
 		listChild?: SidebarItem[];
 		isOpen?: boolean;
+		showByApp: AppName[];
 	}
 	export default {
 		setup() {
@@ -165,31 +167,76 @@
 					permissionAccess: [],
 					icon: 'solar:home-angle-2-linear',
 					isGroup: false,
+					showByApp: [],
 				},
 				{
 					title: 'Tài liệu',
-					path: '/documentation',
+					path: '/reactjs-basic/documentation',
 					pathNameMatch: [
-						'documentation',
-						'documentation-installation',
-						'documentation-hooks',
-						'documentation-styled-component',
-						'documentation-state-and-prop',
+						'reactjs-basic-documentation',
+						'reactjs-basic-documentation-installation',
+						'reactjs-basic-documentation-hooks',
+						'reactjs-basic-documentation-styled-component',
+						'reactjs-basic-documentation-state-and-prop',
 					],
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
 					tooltip: 'Tài liệu',
+					showByApp: ['reactjs-basic'],
 				},
 				{
 					title: 'Thực hành',
-					path: '/practice',
-					pathNameMatch: ['practice', 'practice-e_1', 'practice-e_2', 'practice-e_3'],
+					path: '/reactjs-basic/practice',
+					pathNameMatch: [
+						'reactjs-basic-practice',
+						'reactjs-basic-practice-e_1',
+						'reactjs-basic-practice-e_2',
+						'reactjs-basic-practice-e_3',
+					],
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
 					tooltip: 'Thực hành',
+					showByApp: ['reactjs-basic'],
 				},
+
+				// html-css-js-basic
+
+				{
+					title: 'Tài liệu',
+					path: '/html-css-js-basic/documentation',
+					pathNameMatch: [
+						'html-css-js-basic',
+						'html-css-js-basic-documentation',
+						'html-css-js-basic-documentation-ep-1',
+						'html-css-js-basic-documentation-ep-2',
+						'html-css-js-basic-documentation-ep-3',
+						'html-css-js-basic-documentation-ep-4',
+						'html-css-js-basic-documentation-ep-16',
+						'html-css-js-basic-documentation-ep-17',
+					],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['html-basic'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/html-css-js-basic/practice',
+					pathNameMatch: [
+						'html-css-js-basic',
+						'html-css-js-basic-practice',
+						'html-css-js-basic-practice-practice-header-01',
+					],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['html-basic'],
+				},
+
 				// {
 				// 	title: 'Quản lý ĐTVC',
 				// 	path: '/forwarders',
@@ -333,7 +380,13 @@
 		computed: {
 			itemsComputedLast() {
 				// TODO: Check permission
-				return this.sideBarMini ? this.itemsComputedV3 : this.itemsComputed;
+
+				const sideBar = this.sideBarMini ? this.itemsComputedV3 : this.itemsComputed;
+				return sideBar.filter((item: SidebarItem) => {
+					const currentPath = this.$globalHelpers.mapPathToApp(this.$route.path);
+					console.log(currentPath);
+					return item.showByApp.length ? item.showByApp.includes(currentPath) : true;
+				});
 			},
 		},
 		methods: {

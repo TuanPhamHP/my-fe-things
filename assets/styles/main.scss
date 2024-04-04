@@ -78,6 +78,10 @@ body {
 		// background-color: #fff4ce;
 	}
 }
+img {
+	pointer-events: none !important;
+	user-select: none !important;
+}
 .punch-page-wrapper {
 	height: calc(100vh - 68px - 24px - 24px);
 	overflow-y: scroll;
@@ -184,6 +188,9 @@ body {
 }
 .page-data {
 	max-width: calc(100% - 320px);
+	&.max-w-full {
+		max-width: 100% !important;
+	}
 }
 code {
 	max-width: 100%;
@@ -206,3 +213,13 @@ code {
 		line-height: 20px !important;
 	}
 }
+br {
+	margin-top: 1px;
+	margin-bottom: 1px;
+	display: block;
+}
+// chọn các thẻ có tag-name là p
+// .mini-title[name="first-title"] {
+// 	color: chocolate;
+// 	font-size: 12px;
+// }

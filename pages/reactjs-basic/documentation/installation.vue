@@ -171,7 +171,7 @@
 					</div>
 					<div
 						class="text-indigo-500 dark:text-white cursor-pointer flex items-center gap-2 hover:bg-gray-100/25 w-fit px-2 rounded-lg"
-						@click="$router.push('/documentation/hooks')"
+						@click="$router.push('reactjs-basic/documentation/hooks')"
 					>
 						<span>Bài tiếp theo</span>
 						<Icon name="solar:double-alt-arrow-right-bold" size="32px" />
@@ -183,9 +183,9 @@
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	export default {
 		components: { PageMarkBook, PageHeading, FakeTerminalUI },
 	};

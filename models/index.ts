@@ -2,11 +2,15 @@ import { toNumber } from '../helpers/formatter';
 export const initPage = 1;
 export const initSize = 10;
 export type StringOrNull = string | null;
+
+const appNames = ['html-basic', 'reactjs-basic', null] as const;
+
 const sameSite = [true, 'lax', 'strict', 'none', undefined] as const;
 type sameSiteType = (typeof sameSite)[number];
 
 const buttonTypes = ['button', 'submit', 'reset', undefined] as const;
 export type buttonType = (typeof buttonTypes)[number];
+export type AppName = (typeof appNames)[number];
 
 const snackStatus = ['error', 'info', 'success', 'warning'] as const;
 type snackType = (typeof snackStatus)[number];

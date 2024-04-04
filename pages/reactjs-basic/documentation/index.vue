@@ -68,7 +68,7 @@
 	import { useAppStateStore } from '~/store/appState';
 	import { useAuthStore } from '~/store/auth';
 	import { storeToRefs } from 'pinia';
-	import DocCardPreview from '../../components/Documentation/DocCardPreview.vue';
+	import DocCardPreview from '@/components/Documentation/DocCardPreview.vue';
 
 	export default {
 		components: { DocCardPreview },
@@ -145,6 +145,8 @@
 				this.loading = true;
 				const body = {
 					search: this.search,
+
+					appIds: 'reactjs-basic',
 				};
 				const res = await this.$api.documentations.getListData(body);
 				this.loading = false;

@@ -217,10 +217,10 @@ console.log(result3);`"
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	import {
 		Disclosure,
@@ -290,11 +290,11 @@ console.log(result3);`"
 				pagePagination: {
 					next: {
 						title: 'Comming Soon ...',
-						link: '/practice/e_1',
+						link: '/reactjs-basic/practice/e_1',
 					},
 					prev: {
 						title: 'Danh sách bài tập',
-						link: '/practice',
+						link: '/reactjs-basic/practice',
 					},
 				},
 			};

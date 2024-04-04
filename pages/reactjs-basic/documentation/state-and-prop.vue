@@ -19,7 +19,7 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<em
 						>Đọc kỹ hơn về hook
-						<b class="cursor-pointer underline" @click="$router.push('/documentation/hooks#use-state')"
+						<b class="cursor-pointer underline" @click="$router.push('reactjs-basic/documentation/hooks#use-state')"
 							>useState()</b
 						></em
 					>
@@ -696,10 +696,10 @@ export default ExampleComponent;
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 
 	import {
@@ -733,11 +733,11 @@ export default ExampleComponent;
 				pagePagination: {
 					next: {
 						title: 'Render List Data',
-						link: '/documentation/render-list-data',
+						link: 'reactjs-basic/documentation/render-list-data',
 					},
 					prev: {
 						title: 'Hooks',
-						link: '/documentation/hooks',
+						link: 'reactjs-basic/documentation/hooks',
 					},
 				},
 				number: 0,

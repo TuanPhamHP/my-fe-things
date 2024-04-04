@@ -213,10 +213,10 @@ export default MyComponent;
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 
 	import {
@@ -250,11 +250,11 @@ export default MyComponent;
 				pagePagination: {
 					next: {
 						title: 'State và Props',
-						link: '/documentation/state-and-prop',
+						link: 'reactjs-basic/documentation/state-and-prop',
 					},
 					prev: {
 						title: 'Hooks',
-						link: '/documentation/hooks',
+						link: 'reactjs-basic/documentation/hooks',
 					},
 				},
 				styledComponentCode:

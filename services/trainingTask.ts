@@ -1,5 +1,5 @@
 import { PracticeItem } from '~/models/Practice';
-import { apiResponde } from '~~/models';
+import { AppName, apiResponde } from '~~/models';
 import { removeAscentNormal } from '~/helpers/formatter';
 const isSync = false;
 const practiceCategories = [
@@ -35,32 +35,86 @@ let baseListData: PracticeItem[] = [
 		vneseName: 'Bài 1 - Array Methods',
 		eng: 'array methods',
 		description: 'Bài tập về một số các methods thông dụng của Array trong JS.',
-		link: '/practice/e_1',
+		link: '/reactjs-basic/practice/e_1',
 		previewImage: 'parallax-3.jpeg',
 		status_id: 1,
 		category: [],
+		apps: ['reactjs-basic'],
 	},
 	{
 		id: 'e_2',
 		vneseName: 'Bài 2 - React Functional Component',
 		eng: 'react functional component',
 		description: 'Bài tập về React Functional Component trong ReactJs',
-		link: '/practice/e_2',
+		link: '/reactjs-basic/practice/e_2',
 		previewImage: 'parallax-4.jpg',
 		status_id: 1,
 		category: [],
+		apps: ['reactjs-basic'],
 	},
 	{
 		id: 'e_3',
 		vneseName: 'Bài 3 - Todo List',
 		eng: 'react todo list',
 		description: 'Bài tập về CRUD state trong ReactJs',
-		link: '/practice/e_3',
+		link: '/reactjs-basic/practice/e_3',
 		previewImage: 'parallax-7.jpg',
 		status_id: 1,
 		category: [],
+		apps: ['reactjs-basic'],
+	},
+	{
+		id: 'htmle_01',
+		vneseName: 'Series tạo Header (P1)',
+		eng: 'html header, header example',
+		description: 'Series thực hành HTML,CSS,JS. Làm Header P1',
+		link: '/html-css-js-basic/practice/practice-header-01',
+		previewImage: 'parallax-4.jpg',
+		status_id: 1,
+		category: [],
+		apps: ['html-basic'],
 	},
 ];
+
+class PaginationDefault {
+	constructor(
+		prev: { link: string; vneseName: string } | PracticeItem | null,
+		next: { link: string; vneseName: string } | PracticeItem | null
+	) {
+		this.next = next
+			? {
+					title: next.vneseName || '',
+					link: next.link,
+			  }
+			: {
+					title: '',
+					link: '/',
+			  };
+		this.prev = prev
+			? {
+					title: prev.vneseName || '',
+					link: prev.link,
+			  }
+			: {
+					title: 'Trở về danh sách Bài tập',
+					link: '/html-css-js-basic/practice',
+			  };
+	}
+	next: {
+		title: string;
+		link: string;
+	} = {
+		title: '',
+		link: '/',
+	};
+	prev: {
+		title: string;
+		link: string;
+	} = {
+		title: 'Trở về danh sách Doc',
+		link: '/html-css-js-basic/documentation',
+	};
+}
 const getbaseListFromLocalStorage = (): PracticeItem[] | null => {
 	const listData = localStorage.getItem('listPracticeItem');
 	return listData ? JSON.parse(listData) : listData;
@@ -93,12 +147,13 @@ const base = () => {
 	return {
 		syncData() {
 			const localStorageData = getbaseListFromLocalStorage();
-			if (!localStorageData) {
-				saveCurrentList();
-				return;
-			}
+			// if (!localStorageData) {
+			// 	saveCurrentList();
+			// 	return;
+			// }
+			saveCurrentList();
 			const rslt = baseListData.map(o => {
-				const l = localStorageData.find(t => t.id === o.id);
+				const l = localStorageData?.find(t => t.id === o.id);
 				return l || o;
 			});
 			baseListData = [...rslt];
@@ -111,7 +166,12 @@ const base = () => {
 							const isMatchSearch = payload?.search
 								? removeAscentNormal(`${o.vneseName} ${o.eng}`, true).includes(removeAscentNormal(payload.search, true))
 								: true;
-							return isMatchSearch;
+							let isMatchApp = true;
+							if (payload?.appIds as string) {
+								const appIds = payload?.appIds.split(',') as AppName[];
+								isMatchApp = appIds.some(appId => o.apps.includes(appId));
+							}
+							return isMatchSearch && isMatchApp;
 						});
 						res(initSuccessResponse(nData));
 					}, 200);
@@ -128,6 +188,37 @@ const base = () => {
 						const rslt = baseListData.find(o => o.id === id);
 						return rslt ? res(initSuccessResponse(rslt)) : rej(initFailResponse(`Not found`));
 					}, 200);
+				} catch (error) {
+					const rs = initFailResponse(JSON.stringify(error));
+					rej(rs);
+				}
+			});
+		},
+
+		getPagination(payload?: Record<string, any>): Promise<apiResponde> {
+			return new Promise((res, rej) => {
+				try {
+					setTimeout(() => {
+						const currentDoc = payload?.currentDocId as number;
+						const nData = baseListData.filter(o => {
+							let isMatchApp = true;
+							if (payload?.appIds as string) {
+								const appIds = payload?.appIds.split(',') as AppName[];
+								isMatchApp = appIds.some(appId => o.apps.includes(appId));
+							}
+							return isMatchApp;
+						});
+						const idx = nData.findIndex(o => o.id === currentDoc);
+						if (idx === -1) {
+							res(initSuccessResponse({ pagination: new PaginationDefault(null, null) }));
+						} else {
+							res(
+								initSuccessResponse({
+									pagination: new PaginationDefault(nData[idx - 1] || null, nData[idx + 1]),
+								})
+							);
+						}
+					}, 10);
 				} catch (error) {
 					const rs = initFailResponse(JSON.stringify(error));
 					rej(rs);

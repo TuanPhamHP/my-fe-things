@@ -1,6 +1,8 @@
 <template>
 	<h1
-		:class="`page-heading-lv${lvl} text-slate-900 dark:text-white font-bold text-3xl md:text-3xl ${addOnClass || ''}`"
+		:class="`page-heading-lv${lvl} text-slate-900 dark:text-white font-bold text-${4 - lvl}xl md:text-${4 - lvl}xl ${
+			addOnClass || ''
+		}`"
 		:markedas="markedAs"
 		:id="markedAs"
 		:dataLvl="lvl"

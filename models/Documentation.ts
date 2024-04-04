@@ -1,3 +1,5 @@
+import { AppName } from 'models';
+
 export interface DocumentItem {
 	id: number;
 	vneseName: string;
@@ -6,4 +8,5 @@ export interface DocumentItem {
 	link: string;
 	previewImage: string;
 	status_id: number;
+	apps: AppName[];
 }

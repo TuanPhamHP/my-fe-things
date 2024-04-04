@@ -240,10 +240,10 @@
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 
 	import {
@@ -277,11 +277,11 @@
 				pagePagination: {
 					next: {
 						title: 'Comming soon...',
-						link: '/documentation/styled-component',
+						link: 'reactjs-basic/documentation/styled-component',
 					},
 					prev: {
 						title: 'State và Props',
-						link: '/documentation/state-and-prop',
+						link: 'reactjs-basic/documentation/state-and-prop',
 					},
 				},
 				number: 0,

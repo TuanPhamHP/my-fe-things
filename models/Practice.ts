@@ -1,4 +1,4 @@
-import { SimpleType } from 'models';
+import { AppName, SimpleType } from 'models';
 
 export interface PracticeItem {
 	id: number | string;
@@ -9,4 +9,5 @@ export interface PracticeItem {
 	previewImage: string;
 	status_id: number;
 	category: SimpleType[];
+	apps: AppName[];
 }

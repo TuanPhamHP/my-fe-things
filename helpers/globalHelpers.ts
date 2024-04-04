@@ -1,6 +1,6 @@
 import { getCurrency, currencyValidNumb, currencyToNumber, getDataErrors } from './formatter';
 import { setSnack } from './notification';
-import { AddressComputed, AddressFull } from '../models/index';
+import { AddressComputed, AddressFull, AppName } from '../models/index';
 
 const dirtyWait = (ms: number = 100) => {
 	return new Promise(resolve => {
@@ -44,6 +44,18 @@ const getFullAddressTruncate = (address: AddressComputed, maxLength: number = 70
 	const s = n.getFullAddress();
 	return s.length > maxLength ? `${truncateString(s, maxLength, 'end')}, ${n.province.full_name}` : s;
 };
+
+const mapPathToApp = (st: string): AppName => {
+	const currentPathName = window.location.pathname as string;
+	if (currentPathName.includes('html-css-js-basic')) {
+		return 'html-basic';
+	}
+	if (currentPathName.includes('reactjs-basic')) {
+		return 'reactjs-basic';
+	}
+	return null;
+};
+
 export default defineNuxtPlugin(() => {
 	const globalHelpers = {
 		dirtyWait,
@@ -57,6 +69,7 @@ export default defineNuxtPlugin(() => {
 		truncateString,
 		formatBytes,
 		getShortFileName,
+		mapPathToApp,
 	};
 	return {
 		provide: {

@@ -177,10 +177,10 @@ export default ExampleComponent;
 	</div>
 </template>
 <script lang="ts">
-	import PageMarkBook from '../../components/Documentation/PageMarkBook.vue';
-	import PageHeading from '../../components/Documentation/PageHeading.vue';
-	import FakeTerminalUI from '../../components/FakeTerminalUI.vue';
-	import DocNextPage from '../../components/DocNextPage.vue';
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
 		components: { PageMarkBook, PageHeading, FakeTerminalUI, VCodeBlock, DocNextPage },
@@ -189,7 +189,7 @@ export default ExampleComponent;
 				pagePagination: {
 					next: {
 						title: 'CSS trong React',
-						link: '/documentation/styled-component',
+						link: 'reactjs-basic/documentation/styled-component',
 					},
 					prev: {
 						title: 'Trở về danh sách Doc',

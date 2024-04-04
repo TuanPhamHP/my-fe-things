@@ -9,7 +9,7 @@
 			<span>{{ pagination.prev.title }}</span>
 		</div>
 		<div
-			v-if="pagination.next"
+			v-if="pagination.next && pagination.next.title"
 			class="text-indigo-500 dark:text-white cursor-pointer flex items-center gap-2 hover:bg-gray-100/25 w-fit px-2 rounded-lg"
 			@click="$router.push(pagination.next.link)"
 		>
