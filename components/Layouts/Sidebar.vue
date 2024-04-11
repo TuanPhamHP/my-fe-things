@@ -215,6 +215,7 @@
 						'html-css-js-basic-documentation-ep-4',
 						'html-css-js-basic-documentation-ep-16',
 						'html-css-js-basic-documentation-ep-17',
+						'html-css-js-basic-documentation-ep-18',
 					],
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',

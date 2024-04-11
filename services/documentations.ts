@@ -161,6 +161,36 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['html-basic'],
 	},
+	{
+		id: 18,
+		vneseName: 'JS - Array map(), forEach(), filter()',
+		eng: 'javascript array, map, foreach, filter',
+		description: 'Giới thiệu về các method map(), forEach(), filter() của Array trong javascript',
+		link: '/html-css-js-basic/documentation/ep-18',
+		previewImage: 'parallax-5.jpg',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
+		id: 19,
+		vneseName: 'JS - DOM (P1)',
+		eng: 'javascript dom, document object model queryselector getelementby',
+		description: 'Cơ bản về JS DOM. P1 - Tìm kiếm phần tử',
+		link: '/html-css-js-basic/documentation/ep-19',
+		previewImage: 'parallax-1.jpeg',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	// {
+	// 	id: 20,
+	// 	vneseName: 'JS - DOM (P2)',
+	// 	eng: 'javascript dom, document object model class attributes',
+	// 	description: 'Cơ bản về JS DOM. P2 - Thao tác với class, attributes ...',
+	// 	link: '/html-css-js-basic/documentation/ep-20',
+	// 	previewImage: 'parallax-3.jpeg',
+	// 	status_id: 1,
+	// 	apps: ['html-basic'],
+	// },
 ];
 class PaginationDefault {
 	constructor(
