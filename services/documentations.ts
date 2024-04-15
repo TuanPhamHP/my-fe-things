@@ -142,6 +142,16 @@ let baseListData: DocumentItem[] = [
 	// 	apps: ['html-basic'],
 	// },
 	{
+		id: 15,
+		vneseName: 'JS - Object',
+		eng: 'javascript object, fnc, fn, methods, ms',
+		description: 'Khái niệm cơ bản về Object, CRUD các trường trong object',
+		link: '/html-css-js-basic/documentation/ep-15',
+		previewImage: 'parallax-8.webp',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
 		id: 16,
 		vneseName: 'JS - Function vs Methods ???',
 		eng: 'javascript function, fnc, fn, methods, ms',
