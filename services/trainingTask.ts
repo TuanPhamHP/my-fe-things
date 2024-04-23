@@ -32,7 +32,7 @@ const practiceCategories = [
 let baseListData: PracticeItem[] = [
 	{
 		id: 'e_1',
-		vneseName: 'Bài 1 - Array Methods',
+		vneseName: 'Array Methods',
 		eng: 'array methods',
 		description: 'Bài tập về một số các methods thông dụng của Array trong JS.',
 		link: '/html-css-js-basic/practice/e_1',
@@ -43,7 +43,7 @@ let baseListData: PracticeItem[] = [
 	},
 	{
 		id: 'e_2',
-		vneseName: 'Bài 2 - React Functional Component',
+		vneseName: 'React Functional Component',
 		eng: 'react functional component',
 		description: 'Bài tập về React Functional Component trong ReactJs',
 		link: '/reactjs-basic/practice/e_2',
@@ -54,7 +54,7 @@ let baseListData: PracticeItem[] = [
 	},
 	{
 		id: 'e_3',
-		vneseName: 'Bài 3 - Todo List',
+		vneseName: 'Todo List',
 		eng: 'react todo list',
 		description: 'Bài tập về CRUD state trong ReactJs',
 		link: '/reactjs-basic/practice/e_3',
@@ -63,6 +63,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['reactjs-basic'],
 	},
+	// {
+	// 	id: 'e_4',
+	// 	vneseName: 'Array Methods',
+	// 	eng: 'array methods',
+	// 	description: 'Bài tập về một số các methods thông dụng của Array trong JS.',
+	// 	link: '/html-css-js-basic/practice/e_1',
+	// 	previewImage: 'parallax-3.jpeg',
+	// 	status_id: 1,
+	// 	category: [],
+	// 	apps: ['html-basic'],
+	// },
 	{
 		id: 'htmle_01',
 		vneseName: 'Series tạo Header (P1)',
