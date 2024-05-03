@@ -2,460 +2,352 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="CSS Introduction" addOnClass="text-left" markedAs="intro" />
+				<PageHeading text="HTML Table" addOnClass="text-left" markedAs="intro" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					CSS - Cascading Style Sheets, ta có thể coi đây là một ngôn ngữ tạo kiểu. CSS được dùng để kiểm soát, thay đổi
-					giao diện của các thẻ HTML,
-					ví dụ như: thay đổi màu sắc chữ, màu nền, ảnh nền, font, kiểu hiển thị v.v..
-					<br />
-					Về cơ bản, css quản lý các thuộc tính của nó thông qua các cặp giá trị dạng: <b>key: value;</b>
-					<br />
-					<br />
+					<b>Table</b> là một nhóm thẻ giúp ta hiển thị dữ liệu theo dạng <b>row-hàng</b> và <b>column-cột.</b>
 
+					<br />
+					Về cơ bản, mọi data trong bảng sẽ được quản lý thông qua 2 khái niệm là row và col.
+					<br />
+					<br />
 				</p>
 				<PageHeading text="Syntax" addOnClass="text-left mb-3" markedAs="syntax-css" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					Về cơ bản CSS sẽ luôn được cấu tạo từ 3 thành phần là <b>`selector`</b>, <b>`scope`</b>, <b>`các cặp key:
-						value;`</b>
+					Dưới đây là cú pháp cơ bản để tạo một bảng trong HTML5
 				</p>
-
-				<div class="flex items-center gap-2">
-					<div class=" bg-neutral-100 rounded-lg px-3 py-3">
-						<img src="@/assets/images/html5-basic/css-syntax-01.svg" alt="just vibing" class="d-block h-[150px] mt-3">
-					</div>
-					<div class=" bg-neutral-100 rounded-lg px-3 py-3">
-						<img src="@/assets/images/html5-basic/css-syntax-02.svg" alt="just vibing" class="d-block h-[150px] mt-3">
-					</div>
-				</div>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Trong đó:</p>
-
+				<VCodeBlock
+					:code="`<table>
+<thead>
+		<tr> <!-- Dòng (row) đầu tiên của bảng -->
+        <th>Heading 1</th> <!-- Cột (column) đầu tiên -->
+        <th>Heading 2</th> <!-- Cột thứ hai -->
+        <th>Heading 3</th> <!-- Cột thứ ba -->
+    </tr>	
+</thead>
+<tbody>
+		<tr> <!-- Dòng thứ hai của bảng -->
+        <td>Data 1</td> <!-- Dữ liệu ở cột đầu tiên -->
+        <td>Data 2</td> <!-- Dữ liệu ở cột thứ hai -->
+        <td>Data 3</td> <!-- Dữ liệu ở cột thứ ba -->
+  	</tr>
+</tbody>
+  <!-- Thêm các dòng và cột khác nếu cần -->
+<tfoot>
+		<tr>
+			<td>Data 4</td> <!-- Dữ liệu ở cột đầu tiên -->
+			<td>Data 5</td> <!-- Dữ liệu ở cột thứ hai -->
+			<td>Data 6</td> <!-- Dữ liệu ở cột thứ ba -->
+		</tr>
+</tfoot>
+</table>
+`"
+					highlightjs
+					lang="HTML"
+					theme="vs2015"
+				/>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Như vậy, khi tạo một bảng ta cần tạo thẻ <b>`table`</b> trước để định nghĩa vùng hoạt động cho các thẻ con.
+					<br />
+					Sau đó ta có thể thêm các thẻ chia khối như: <b>`thead`, `tbody`, `tfoot` ...</b> <br />
+					Hay các thẻ tạo dòng, cột như: <b>`tr`, `th`, `td` ...</b>
+					<br />
+					<br />
+					<b>`thead`, `tbody`, `tfoot`:</b> Được sử dụng để giúp chúng ta phân chia các khối trong table, từ đó khiển
+					code 'sạch' hơn, dễ để collect data.
+					<br />
+					Lưu ý: Do các thẻ này chỉ dùng để phân chia, làm sạch code chứ không thay đổi UI nên về cơ bản chúng ta có thể
+					không cần dùng tới chúng để tạo bảng.
+				</p>
+				<PageHeading text="Row và Col" addOnClass="text-left" markedAs="table-row-and-col" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Tiếp theo, chúng ta sẽ tìm hiểu cách để tạo ra row-hàng và col-cột trong table.
+				</p>
 				<ul class="pl-5">
-					<li>
-						<PageHeading text="Selector" addOnClass="text-left h-0 opacity-0" markedAs="selector" :lvl="2" />
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b class="w-20">`tr`</b>
+						<span>
+							Viết tắt của table-row, có tác dụng định nghĩa một hàng trong bảng, mỗi một thẻ tr được hiển thị như 1
+							hàng và trong nó sẽ chứa các cột.
+						</span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-
-						<b>`selector`:</b> 
-						<div class="grow">
-							Được biết đến là bộ chọn, chúng được sử dụng để xác định chính xác các phần tử HTML sẽ được áp dụng các
-							style.
-							<br />
-							Có rất nhiều kiểu Selector trong CSS nhưng ta có thể kể đến các loại cơ bản hay dùng như:
-							<br />
-							<br />
-							<Disclosure v-slot="{ open }" as="div" class="border-2 border-dashed border-indigo-300 dark:border-teal-500 w-full px-2 rounded-lg py-2">
-								<DisclosureButton class="w-full flex items-center justify-between"><b>- By Tag Name</b>	<Icon name="solar:list-arrow-down-minimalistic-bold" :class="open && 'rotate-180 transform '" size="24"></Icon>
-								</DisclosureButton>
-
-								<!-- Use the built-in `transition` component to add transitions. -->
-								<transition enter-active-class="transition duration-100 ease-out"
-									enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
-									leave-active-class="transition duration-75 ease-out"
-									leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-									<DisclosurePanel as="div" class=" border-t-2 pt-2 border-solid border-indigo-300 dark:border-white w-full mt-2">
-										Chọn phần tử thông qua tên của thẻ. <br />VD: p, h1, a, div ...
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* chọn các thẻ có tag-name là p */
-p {
-	color: red;
-	font-size: 24px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`<!--  thẻ này được chọn do tag-name là p -->
-<p>Thẻ này sẽ được chọn</p> 
-
-<!--  thẻ này không được chọn do tag-name không phải p -->
-<span>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-									</DisclosurePanel>
-								</transition>
-							</Disclosure>
-							<br />
-							<!-- NS -->
-							<Disclosure v-slot="{ open }" as="div" class="border-2 border-dashed border-indigo-300 dark:border-teal-500 w-full px-2 rounded-lg py-2">
-								<DisclosureButton class="w-full flex items-center justify-between"><b>- By Id</b>	<Icon name="solar:list-arrow-down-minimalistic-bold" :class="open && 'rotate-180 transform '" size="24"></Icon>
-								</DisclosureButton>
-
-								<!-- Use the built-in `transition` component to add transitions. -->
-								<transition enter-active-class="transition duration-100 ease-out"
-									enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
-									leave-active-class="transition duration-75 ease-out"
-									leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-									<DisclosurePanel as="div" class=" border-t-2 pt-2 border-solid border-indigo-300 dark:border-white w-full mt-2">
-										Chọn các phần tử mà attribute <b>id</b> của chúng có id được chọn.
-										<br />VD: <b>#title</b> sẽ chọn đến các phần tử mà <b>id</b> có chứa <b>title</b>.
-
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* chọn các thẻ mà id có chứa title */
-#title {
-	color: cadetblue;
-	font-size: 42px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`<!--  thẻ này được chọn do id có chứa: title -->
-<h1 id='title' >Thẻ này sẽ được chọn</h1> 
-
-<!--  thẻ này không được chọn do id không chứa: title -->
-<h1 >Thẻ này không được chọn</h1>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-
-										Selector bằng id (id-name) sẽ buộc phải sử dụng một dấu <b># - thăng</b> đằng trước tên id. VD:
-										<b>#title</b>
-									</DisclosurePanel>
-								</transition>
-							</Disclosure>
-							<br />
-							<!-- NS -->
-							<Disclosure v-slot="{ open }" as="div" class="border-2 border-dashed border-indigo-300 dark:border-teal-500 w-full px-2 rounded-lg py-2">
-								<DisclosureButton class="w-full flex items-center justify-between"><b>- By Class Name</b>	<Icon name="solar:list-arrow-down-minimalistic-bold" :class="open && 'rotate-180 transform '" size="24"></Icon>
-								</DisclosureButton>
-
-								<!-- Use the built-in `transition` component to add transitions. -->
-								<transition enter-active-class="transition duration-100 ease-out"
-									enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
-									leave-active-class="transition duration-75 ease-out"
-									leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-									<DisclosurePanel as="div" class=" border-t-2 pt-2 border-solid border-indigo-300 dark:border-white w-full mt-2">
-										Chọn các phần tử mà attribute <b>class</b> của chúng có chứa lớp được chọn.
-										<br />VD: <b>.text-blue</b> sẽ chọn đến các phần tử mà <b>class</b> có chứa <b>text-blue</b>.
-
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* chọn các thẻ mà class có chứa text-blue */
-.text-blue {
-	color: blue;
-	font-size: 40px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`<!--  thẻ này được chọn do class có chứa: text-blue -->
-<span class='text-blue title'>Thẻ này sẽ được chọn</span> 
-
-<!--  thẻ này không được chọn do class không chứa: text-blue -->
-<span class='text blue title'>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-										Selector bằng tên lớp (class-name) sẽ buộc phải sử dụng một dấu <b>. - chấm</b> đằng trước tên lớp.
-										VD:
-										<b>.text-blue</b>
-									</DisclosurePanel>
-								</transition>
-							</Disclosure>
-							<br />
-							<!-- NS -->
-							<Disclosure v-slot="{ open }" as="div" class="border-2 border-dashed border-indigo-300 dark:border-teal-500 w-full px-2 rounded-lg py-2">
-								<DisclosureButton class="w-full flex items-center justify-between">
-									<b>- By Attribute</b>	<Icon name="solar:list-arrow-down-minimalistic-bold" :class="open && 'rotate-180 transform '" size="24"></Icon>
-								</DisclosureButton>
-
-								<!-- Use the built-in `transition` component to add transitions. -->
-								<transition enter-active-class="transition duration-100 ease-out"
-									enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
-									leave-active-class="transition duration-75 ease-out"
-									leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-									<DisclosurePanel as="div" class=" border-t-2 pt-2 border-solid border-indigo-300 dark:border-white w-full mt-2">
-										Chọn các phần tử mà <b>attribute</b> của chúng thoả mãn điều kiện đặt ra.
-										<br />VD: <b>.mini-title[name="first-title"]</b> sẽ chọn đến các phần tử mà <b>class</b> có chứa <b>mini-title</b> Và attribute <b>name</b> có giá trị bằng 'first-title'.
-
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* chọn các thẻ mà class có chứa mini-title
- và có attribute name = first-title */
-.mini-title[name='first-title'] {
-	color: chocolate;
-	font-size: 12px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`<!--  thẻ này được chọn do class có chứa: mini-title
-và attribute name có giá trị  = 'first-title' -->
-<h3 class='mini-title title' name='first-title'>Thẻ này sẽ được chọn</h3> 
-
-<!--  thẻ này không được chọn do attribute name không bằng 'first-title' -->
-<h3 class='mini-title title'>Thẻ này không được chọn</h3>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-										Selector bằng tên lớp (class-name) sẽ buộc phải sử dụng một dấu <b>. - chấm</b> đằng trước tên lớp.
-										VD:
-										<b>.text-blue</b>
-									</DisclosurePanel>
-								</transition>
-							</Disclosure>
-							<br />
-							<!-- NS -->
-							<Disclosure v-slot="{ open }" as="div" class="border-2 border-dashed border-indigo-300 dark:border-teal-500 w-full px-2 rounded-lg py-2">
-								<DisclosureButton class="w-full flex items-center justify-between">
-									<b>- Combine Selector</b>
-									<Icon name="solar:list-arrow-down-minimalistic-bold" :class="open && 'rotate-180 transform '" size="24"></Icon>
-									
-								</DisclosureButton>
-
-								<!-- Use the built-in `transition` component to add transitions. -->
-								<transition enter-active-class="transition duration-100 ease-out"
-									enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
-									leave-active-class="transition duration-75 ease-out"
-									leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
-									<DisclosurePanel as="div" class=" border-t-2 pt-2 border-solid border-indigo-300 dark:border-white w-full mt-2">
-										Đây là selector được tạo ra từ việc kết hợp nhiều selector với nhau kèm theo
-										mối quan hệ giữa chúng.
-										<br />VD: <b>div .big-title</b>: là một selector được kết hợp bởi
-										<b>Selector Tag-Name: `div`</b> và <b>Selector Class-Name: `.big-title`</b>, chúng được nối với nhau
-										bằng
-										space-(dấu cách),
-										thể hiện răng về bên phải sẽ là phần tử con của vế bên trái.
-										<br />=> sẽ chọn đến các phần tử mà <b>class</b> có chứa <b>big-title</b> VÀ là con của thẻ
-										<b>div</b>.
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* chọn các thẻ mà class có chứa big-title VÀ là con của thẻ div */
-div .big-title {
-	color: purple;
-	font-size: 32px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`<!--  thẻ này được chọn do vừa là con của div vừa có class big-title -->
-<div>
-	<h1 class='big-title marked' >Thẻ này sẽ được chọn</h1> 
-</div>
-
-<!--  thẻ này không được chọn do không phải con của thẻ div -->
-<h1 class='big-title' >Thẻ này không được chọn</h1> `" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-										Như vậy <b>Combine Selector</b> đơn giản là việc chúng ta kết hợp, ràng buộc các selector với nhau để tạo lên mối quan hệ giữa chúng.
-										<br>
-										Tuỳ thuộc vào các dấu nối (operator) khác nhau sẽ cho ra các mỗi quan hệ khác nhau.
-										<br /> <b> - space:</b> vế phải sẽ là con (bất kể cấp bậc) của vế trái. 
-										<br /><br />	Ví dụ:
-										<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-											<div class="col-span-1">
-												<p><b>div p</b> => p là con của div</p>
-												<VCodeBlock :code="`<div>
-	<p>Thẻ này sẽ được chọn</p> 
-</div>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<p><b>div p span</b> => span là con của p và đồng thời là con của div</p>
-												<VCodeBlock :code="`<div>
-	<span>Thẻ này không được chọn</span>
-	<p>
-		<span>Thẻ này sẽ được chọn</span>
-	</p> 
-</div>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-										</div>
-									</DisclosurePanel>
-								</transition>
-							</Disclosure>
-						</div>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content  flex items-start gap-1">
-					<span>Trên đây là một số selector thường được dùng. Ngoài ra còn rất nhiều loại selectors khác, các bạn có thể research thêm.</span>
-					</li>
-					<li>
-						<PageHeading text="Properties" addOnClass="text-left h-0 opacity-0" markedAs="properties" :lvl="2" />
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content  flex items-start gap-1">
-						<b>`properties`:</b> 
-						<div>
-							Là các cặp giá trị dạng <b>key: value</b>, được dùng để xác định <b>thuộc tính</b> nào được tác động và <b>giá trị</b> mới của nó.
-						<br />
-							Mỗi cặp giá trị <b>key: value</b> được ngăn cách nhau bởi dấu <b>";" - chấm phẩy</b>/
-							<br>
-							VD:
-							<VCodeBlock :code="`.page-title {
-	color: red;
-	font-size: 24px;
-}`" highlightjs lang="CSS" theme="vs2015" />
-						<br>
-							Trong cùng một thẻ thì <b>key</b> là duy nhất. Có nghĩa là nếu ta định nghĩa các key trùng nhau thì chỉ một trong số chúng sẽ được áp dụng.
-							<br>
-							<br>
-							VD: 
-							<VCodeBlock :code="`.text-success {
-	color: red;
-	color: green;
-	/* bị trùng key 'color'. */
-}`" highlightjs lang="CSS" theme="vs2015" />
-Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này một trong hai giá trị <b>red</b> hoặc <b>green</b> sẽ được áp dụng. Dựa theo quy tắc ưu tiên của css (css priority) thì giá trị
-<b>green</b> sẽ ghi đè lên <b>red</b> và được áp dụng.
-						</div>
-					</li>
-					<li>
-						<PageHeading text="Scope" addOnClass="text-left h-0 opacity-0" markedAs="scope" :lvl="2" />
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content  flex items-start gap-1">
-						<b>`scope`:</b> 
-						<div>
-							Là vùng quy định các <b>properties</b> được viết ra sẽ áp dụng cho <b>selector</b> nào
-						<br />
-							Scope thường được định nghĩa bằng cặp ngoặc nhọn <b>{}</b>
-						</div>
+						<b class="w-20">`th,td`</b> Viết tắt của table-heading và table-data, có tác dụng định nghĩa một ô trong
+						hàng, <br />
+						Điểm khác biệt của th và td là nội dung của thẻ th sẽ luôn được viết in đậm.
 					</li>
 				</ul>
-				
-				<PageHeading text="Insert CSS" addOnClass="text-left mb-3" markedAs="insert-css" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					Giờ chúng ta sẽ tìm cách để nhúng code CSS vào trong HTML.
-					<br>
-					CSS thường được nhúng theo 3 kiểu chính như sau:
+					Như vậy, khi tạo một table trong html chúng ta luôn tạo một row trước, sau đó sẽ định nghĩa số lượng col trong
+					row và tiếp tục điền dữ liệu.
 				</p>
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1 font-bold">
-						1) Inline CSS
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1 font-bold">
-						2) Internal CSS
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1 font-bold">
-						3) External CSS
-					</li>
-				</ul>
-				<PageHeading text="Inline" addOnClass="text-left mb-3" markedAs="inline-css" :lvl="2" />
-		
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					Inline css - cách viết css này giống như tên của nó, css sẽ được viết trực tiếp vào trong thẻ HTML thông qua
-					attribute <b>`style`.</b>
-					<br>
-					Bởi vì CSS được code trực tiếp vào thẻ HTML nên ta đã xác định được các thành phần là <b>`selector`</b>, <b>`scope`.</b>
-					<br> 
-					Như vậy, với cách viết Inline này chúng ta không cần phải khai báo<b>`selector`</b> và <b>`scope`.</b> => chỉ còn lại <b>`properties`</b>
-				</p>
-				
-				<VCodeBlock :code="`<a href='https://www.google.com/' target='_blank' style='color:red; font-size:40px;'>
-	Click me to view Google
-</a>`" highlightjs
-					lang="HTML" theme="vs2015" />
-				
-				
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-
-					<br>Như vậy ta đã viết được CSS trong HTML rồi. 				<b>	(❁´◡`❁)</b> 
-					<br>
-					<br>Nhưng giả sử trong trang HTML của chúng mình có khoảng 100 cái link như trên và đều cần css giống nhau.
-					Chúng ta sẽ phải copy cái đoạn css <b>`color:red; font-size:40px;`</b> 100 lần mặc dù nó không khác gì nhau cả.
-					<br> <b>(＃°Д°)	</b>
-					<br>
-					<br> Chưa kể đến việc nếu ta cần update lại css, ví dụ như đổi từ màu đỏ sang màu xanh. Thì ta sẽ phải update 100 lần.
-					<br> <b>(┬┬﹏┬┬)</b>
-					<br> Không sao, để giải quyết những điểm yếu đó và tiếp tục được "lười", chúng ta sẽ đến với kiểu CSS thứ 2 - Internal CSS.
-				</p>
-					<PageHeading text="Internal" addOnClass="text-left mb-3" markedAs="internal-css" :lvl="2" />
-		
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						Internal css - Ở đây ta sẽ gom toàn bộ code CSS vào cùng một vùng và giải quyết luôn cái "điểm yếu" của thằng Inline CSS.
-					 	<br>	CSS sẽ được viết lại trong thẻ <b>{{ `<style></style>` }}</b> của file HTML. Thường ta nên đặt thẻ <b>{{ `<style></style>` }}</b> 
-						ở phần <b>{{ `<head>` }}</b> của file HTML để nó áp dụng cho toàn bộ <b>{{ `<body>` }}</b>
-						<br>
-						Ngược lại với Inline CSS, chúng ta cần xác định rõ cả	<b>`selector`</b>, <b>`scope`.</b>
-					</p>
-					
-					<VCodeBlock :code="`<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Document</title>
-  <style>
-    /* CSS viết ở đây nha */
-    .my-special-link {
-      color: red;
-      font-size: 40px;
-    }
-  </style>
-</head>
-
-<body>
-  <a href='https://www.google.com/' target='_blank' class='my-special-link'>
-    Click me to view Google
-  </a>
-</body>
-
-</html>`" highlightjs
-					lang="HTML" theme="vs2015" />
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					<br>Ngon lành, như vậy dù ta có thêm 100 cái link nữa thì cũng chỉ cần khai báo class <b>`my-special-link`</b> cho chúng là xong. 				<b>	(❁´◡`❁)</b> 
-					<br>
-					<br>NHƯNG giả sử Website của chúng mình không chỉ có 1 trang như trên, mà là 20 trang. Mỗi trang đều có thẻ <b>{{ `<a>` }}</b>
-						và cần css cũng y như thế. 
-					<br>
-					Chúng ta sẽ phải copy cái cục <b>`{{ '<style> ... </style>' }}`</b> 20 lần mặc dù nó không khác gì nhau cả.
-					<br> <b>(＃°Д°)	</b>
-					<br>
-					<br> Và nỗi khổ đó cũng kéo dài khi ta cần update lại css cho class <b>`my-special-link`</b>
-					<br> <b>\(＞︿＜)/</b>
-					<br> Không saooooo, để giải quyết những điểm yếu đó và tiếp tục được "lười" tập 3, chúng ta sẽ đến với kiểu CSS thứ 3 - External CSS.
-				</p>	
-					<PageHeading text="External" addOnClass="text-left mb-3" markedAs="external-css" :lvl="2" />
-		
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						External Css - Về mặt ý tưởng, ta sẽ tìm cách gom toàn bộ đoạn code trong <b>`{{ '<style>...</style>' }}`</b> lại thành 1 file - mình tạm gọi tên là <b>`style.css`</b>,
-						sau đó ta sẽ nhúng <b>`style.css`</b> vào các trang HTML mà chúng ta muốn. Khi đó, bất cứ thay đổi nào ở file <b>`style.css`</b>
-						thì các trang HTML đã nhúng nó sẽ được update theo.
-					</p>
-
-					<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
-						<div class="col-span-1">
-												<VCodeBlock :code="`<!-- File: ~/index.html -->
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <meta charset='UTF-8'>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Document</title>
-  <!-- Sử dụng đường dẫn tương đối để link đến file style.css qua thẻ link -->
-  <link rel='stylesheet' href='./style.css'>
-</head>
-
-<body>
-  <a href='https://www.google.com/' target='_blank' class='my-special-link'>
-    Click me to view Google
-  </a>
-</body>
-
-</html>`" highlightjs lang="HTML" theme="vs2015" />
-											</div>
-											<div class="col-span-1">
-												<VCodeBlock :code="`/* File: ~/style.css */
-.my-special-link {
-	color: red;
-	font-size: 40px;
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`<table>
+	<tr> <!-- Dòng (row) đầu tiên của bảng -->
+			<th>Heading 1</th> <!-- Tiêu đề cột đầu tiên -->
+			<th>Heading 2</th> <!-- Cột thứ hai -->
+			<th>Heading 3</th> <!-- Cột thứ ba -->
+	</tr>	
+	<tr> <!-- Dòng thứ hai của bảng -->
+			<td>Data 1</td> <!-- Dữ liệu ở cột đầu tiên -->
+			<td>Data 2</td> <!-- Dữ liệu ở cột thứ hai -->
+			<td>Data 3</td> <!-- Dữ liệu ở cột thứ ba -->
+	</tr>
+</table>
+`"
+							highlightjs
+							lang="HTML"
+							theme="vs2015"
+						/>
+					</div>
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`  /* CSS kẻ border cho các thành phần trong table */
+th,td {
+border: 1px solid;
 }
-`" highlightjs lang="CSS" theme="vs2015" />
+`"
+							highlightjs
+							lang="CSS"
+							theme="vs2015"
+						/>
+						<img src="@/assets/images/html5-basic/table-preview-01.png" alt="" class="rounded-lg mt-3 block" />
+					</div>
+				</div>
+				<PageHeading text="Merge Col, Row" addOnClass="text-left mb-3" markedAs="table-merge-row-col" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Trong thực tế ta sẽ gặp nhiều table mà một số dòng, cột của chúng được gộp lại với nhau:
+					<br />
+					<br />
+					VD:
+				</p>
+				<img src="@/assets/images/html5-basic/table-preview-02.svg" alt="" class="rounded-lg w-full my-3 block" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Để có thể thực hiện việc gộp các cột, dòng trong bảng với nhau thì ta sẽ sử dụng các attributes:
+					<b>`colspan` và `rowspan`</b> của td,th
+				</p>
+				<PageHeading text="Merge Col" addOnClass="text-left mb-3" markedAs="table-merge-col" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Syntax</p>
 
+				<ul class="pl-5 w-full">
+					<li class="text-slate-900 w-full dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b class="">`colspan="x"`</b>
+						<div>
+							Được dùng để khai báo số lượng cột mà ô dữ liệu này chiếm bằng với <b>`x`</b>
+							<div class="grid grid-cols-2 md:gap-10 items-center mt-4">
+								<div class="col-span-1">
+									<VCodeBlock
+										:code="`<table>
+	<tr> <!-- Dòng (row) đầu tiên của bảng -->
+		<th colspan='2'>Tui chiếm 2 cột</th> <!-- Ô này chiếm 2 cột -->
+		<th>Tui chiếm 1 cột</th> <!-- Cột thứ hai -->
+		<th>Tui chiếm 1 cột</th> <!-- Cột thứ ba -->
+	</tr>	
+	<tr> <!-- Dòng thứ hai của bảng -->
+			<td>Data 1</td> <!-- Dữ liệu ở cột đầu tiên -->
+			<td>Data 2</td> <!-- Dữ liệu ở cột thứ hai -->
+			<td>Data 3</td> <!-- Dữ liệu ở cột thứ ba -->
+			<td>Data 4</td> <!-- Dữ liệu ở cột thứ tư -->
+	</tr>
+</table>`"
+										highlightjs
+										lang="HTML"
+										theme="vs2015"
+									/>
+								</div>
+								<div class="col-span-1">
+									<table>
+										<tr>
+											<!-- Dòng (row) đầu tiên của bảng -->
+											<th colspan="2">Tui chiếm 2 cột</th>
+											<!-- Ô này chiếm 2 cột -->
+											<th>Tui chiếm 1 cột</th>
+											<!-- Cột thứ hai -->
+											<th>Tui chiếm 1 cột</th>
+											<!-- Cột thứ ba -->
+										</tr>
+										<tr>
+											<!-- Dòng thứ hai của bảng -->
+											<td>Data 1</td>
+											<!-- Dữ liệu ở cột đầu tiên -->
+											<td>Data 2</td>
+											<!-- Dữ liệu ở cột thứ hai -->
+											<td>Data 3</td>
+											<!-- Dữ liệu ở cột thứ ba -->
+											<td>Data 4</td>
+											<!-- Dữ liệu ở cột thứ tư -->
+										</tr>
+									</table>
+									<!-- <img src="@/assets/images/html5-basic/table-preview-02.png" alt="" class="rounded-lg  w-full my-3 block" > -->
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Ở ví dụ trên, thẻ <b>`th`</b> đầu tiên chúng ta đã khai báo <b>colspan="2",</b> do đó thẻ này sẽ chiếm lấy 2
+					cột cùng hàng cho bản thân nó. Như vậy, dữ liệu sẽ được bắt đầu từ cột thứ 3.
+				</p>
+				<PageHeading text="Merge Row" addOnClass="text-left mb-3" markedAs="table-merge-row" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Syntax</p>
 
-<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-	Cây thư mục trông sẽ như thế này.
-</p>
-<img src="@/assets/images/html5-basic/css-link.svg" alt="" class="rounded-lg mt-3 block" >
-											</div>
-										</div>
+				<ul class="pl-5 w-full">
+					<li class="text-slate-900 w-full dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b class="">`rowspan="y"`</b>
+						<div>
+							Được dùng để khai báo số lượng hàng mà ô dữ liệu này chiếm bằng với <b>`y`</b>
+							<div class="grid grid-cols-2 md:gap-10 items-center mt-4">
+								<div class="col-span-1">
+									<VCodeBlock
+										:code="`<table>
+	<tr> <!-- Dòng (row) đầu tiên của bảng -->
+		<th rowspan=2>Tui chiếm 2 hàng</th> <!-- Cột đầu tiên -->
+		<th >Tui chiếm 1 hàng</th> <!-- Cột thứ hai -->
+		<th>Tui chiếm 1 hàng</th> <!-- Cột thứ ba -->
+	</tr>	
+	<tr> <!-- Dòng thứ hai của bảng -->
+			<td>Data 1</td> <!-- Dữ liệu ở cột thứ hai -->
+			<td>Data 2</td> <!-- Dữ liệu ở cột thứ ba -->
+	</tr>
+</table>`"
+										highlightjs
+										lang="HTML"
+										theme="vs2015"
+									/>
+								</div>
+								<div class="col-span-1">
+									<table>
+										<tr>
+											<!-- Dòng (row) đầu tiên của bảng -->
+											<th rowspan="2">Tui chiếm 2 hàng</th>
+											<!-- Cột đầu tiên -->
+											<th>Tui chiếm 1 hàng</th>
+											<!-- Cột thứ hai -->
+											<th>Tui chiếm 1 hàng</th>
+											<!-- Cột thứ ba -->
+										</tr>
+										<tr>
+											<!-- Dòng thứ hai của bảng -->
+											<td>Data 1</td>
+											<!-- Dữ liệu ở cột thứ hai -->
+											<td>Data 2</td>
+											<!-- Dữ liệu ở cột thứ ba -->
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Ở ví dụ trên, thẻ <b>`th`</b> đầu tiên chúng ta đã khai báo <b>rowspan="2",</b> do đó thẻ này sẽ chiếm lấy cột
+					đầu tiên của 2 hàng liên tiếp. Như vậy, ở hàng tiếp theo thì dữ liệu sẽ được bắt đầu từ cột thứ 2.
+				</p>
 
+				<PageHeading text="Border trong Table" addOnClass="text-left mb-3" markedAs="table-border" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Tới đây chúng ta đã có thể tạo bảng, điều chỉnh hay hợp nhất các cột dữ liệu theo mong muốn nhưng lại có một
+					vấn đề về border trong table. Như các bạn thấy, các cell-th,td hiện đã có border nhưng lại có một khoảng trống
+					giữa chúng:
+				</p>
+				<img src="@/assets/images/html5-basic/table-preview-03.svg" alt="" class="rounded-lg my-3 block" />
 
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						Ở trên mình đã dùng đường dẫn tương đối (Relative path) để trỏ đến địa chỉ file CSS,
-						trong trường hợp bạn chưa rõ về đường dẫn tương đối, tuyệt đối thì vui lòng re-search trên google nhé. Yên tâm, nó rất dễ để hiểu.
-						<br>
-						Ngoài ra, ở bài này chúng ta thấy xuất hiện một thẻ mới là thẻ <b>`{{ '<link />' }}`</b>, cũng tự tìm hiểu luôn nhớ. 
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Việc này khiến cho UI của chúng ta trông khá tệ, để bỏ đi khoảng trống này chúng ta sẽ sử dụng css
+					<b>border-spacing</b> để tác động vào thẻ table
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 items-center">
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`/* CSS */
+table {
+	border-spacing: 0; /* Dùng để set khoảng trống của các border về 0 */
+}`"
+							highlightjs
+							lang="CSS"
+							theme="vs2015"
+						/>
+					</div>
+					<div class="col-span-1">
+						<table style="border-spacing: 0px">
+							<tr>
+								<!-- Dòng (row) đầu tiên của bảng -->
+								<th rowspan="2">Tui chiếm 2 hàng</th>
+								<!-- Cột đầu tiên -->
+								<th>Tui chiếm 1 hàng</th>
+								<!-- Cột thứ hai -->
+								<th>Tui chiếm 1 hàng</th>
+								<!-- Cột thứ ba -->
+							</tr>
+							<tr>
+								<!-- Dòng thứ hai của bảng -->
+								<td>Data 1</td>
+								<!-- Dữ liệu ở cột thứ hai -->
+								<td>Data 2</td>
+								<!-- Dữ liệu ở cột thứ ba -->
+							</tr>
+						</table>
+					</div>
+				</div>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					(❁´◡`❁) Chúng ta đã thành công xoá đi khoảng trống giữa các cell rồi.
+					<br />
+					<br />
 
-					</p>
-				<!-- END -->
-				<p class="text-slate-900 italic dark:text-white my-5 leading-8 text-lg">
-					Note: Trong các thẻ còn rất nhiều thuộc tính riêng khác nhưng tôi tạm thời chỉ viết tới đây. Các bạn
-					có thể đọc thêm về các thẻ khác tại
-					<a href="https://www.w3schools.com/css/default.asp" target="_blank" rel="noreferrer"
-						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500">
-						W3 School
-					</a>
+					Nhưng lại có THÊM một vấn đề về border nữa, đó là các border của cell liền kề đang dày gấp đôi so với phía
+					ngoài (ಥ_ಥ) .
+					<img src="@/assets/images/html5-basic/table-preview-04.svg" alt="" class="rounded-lg my-3 block" />
+					<br />
+					<br />
+					Để giải quyết vấn đề này ta sẽ sử dụng css <b>border-collapse</b> để tác động vào thẻ table
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 items-center">
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`/* CSS */
+table {
+	border-spacing: 0;
+	border-collapse: collapse; /* Dùng để xếp chồng các border nằm cạnh lên nhau */
+}`"
+							highlightjs
+							lang="CSS"
+							theme="vs2015"
+						/>
+					</div>
+					<div class="col-span-1">
+						<table style="border-spacing: 0px; border-collapse: collapse">
+							<tr>
+								<!-- Dòng (row) đầu tiên của bảng -->
+								<th rowspan="2">Tui chiếm 2 hàng</th>
+								<!-- Cột đầu tiên -->
+								<th>Tui chiếm 1 hàng</th>
+								<!-- Cột thứ hai -->
+								<th>Tui chiếm 1 hàng</th>
+								<!-- Cột thứ ba -->
+							</tr>
+							<tr>
+								<!-- Dòng thứ hai của bảng -->
+								<td>Data 1</td>
+								<!-- Dữ liệu ở cột thứ hai -->
+								<td>Data 2</td>
+								<!-- Dữ liệu ở cột thứ ba -->
+							</tr>
+						</table>
+					</div>
+				</div>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					(～￣▽￣)～ Done, đến đây là đã kết thúc phần cơ bản của table.
+				</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Luyện tập: thực hiện bài tập sau
+					<a
+						href="https://tuanphamhp.github.io/bai-tap/bai-tap-b3-table.html"
+						target="_blank"
+						noopener
+						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"
+						>Bài 1</a
+					>
 				</p>
 				<DocNextPage :pagination="pagePagination" />
 			</div>
@@ -464,48 +356,58 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
 	</div>
 </template>
 <script lang="ts">
-import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
-import PageHeading from '@/components/Documentation/PageHeading.vue';
-import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
-import DocNextPage from '@/components/DocNextPage.vue';
-import VCodeBlock from '@wdns/vue-code-block';
-import { apiResponde } from 'models';
-import {
-	Disclosure,
-	DisclosureButton,
-	DisclosurePanel,
-} from '@headlessui/vue'
-export default {
-	components: {
-		PageMarkBook, PageHeading, FakeTerminalUI, VCodeBlock, DocNextPage, Disclosure,
-		DisclosureButton,
-		DisclosurePanel,
-	},
-	data() {
-		return {
-			imageTag: `<img src="https://img.freepik.com/free-vector/simple-vibing-cat-square-meme_742173-4493.jpg" alt="just vibing memes">`,
-			pagePagination: {
-				next: {
-					title: 'HTML Styles',
-					link: '/html-css-js-basic/documentation/ep-2',
+	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
+	import PageHeading from '@/components/Documentation/PageHeading.vue';
+	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
+	import DocNextPage from '@/components/DocNextPage.vue';
+	import VCodeBlock from '@wdns/vue-code-block';
+	import { apiResponde } from 'models';
+	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+	export default {
+		components: {
+			PageMarkBook,
+			PageHeading,
+			FakeTerminalUI,
+			VCodeBlock,
+			DocNextPage,
+			Disclosure,
+			DisclosureButton,
+			DisclosurePanel,
+		},
+		data() {
+			return {
+				imageTag: `<img src="https://img.freepik.com/free-vector/simple-vibing-cat-square-meme_742173-4493.jpg" alt="just vibing memes">`,
+				pagePagination: {
+					next: {
+						title: 'HTML Styles',
+						link: '/html-css-js-basic/documentation/ep-2',
+					},
+					prev: {
+						title: 'Trở về danh sách Doc',
+						link: '/html-css-js-basic/documentation',
+					},
 				},
-				prev: {
-					title: 'Trở về danh sách Doc',
-					link: '/html-css-js-basic/documentation',
-				},
+			};
+		},
+		mounted() {
+			this.getPagination();
+		},
+		methods: {
+			getPagination() {
+				this.$api.documentations.getPagination({ appIds: 'html-basic', currentDocId: 8 }).then((res: apiResponde) => {
+					this.pagePagination = res?.data?.pagination || [];
+				});
 			},
-		};
-	},
-	mounted() {
-		this.getPagination();
-	},
-	methods: {
-		getPagination() {
-			this.$api.documentations.getPagination({ appIds: 'html-basic', currentDocId: 8 })
-				.then((res: apiResponde) => {
-					this.pagePagination = res?.data?.pagination || []
-				})
-		}
-	}
-};
+		},
+	};
 </script>
+<style lang="scss" scoped>
+	th,
+	td {
+		border: 1px solid;
+	}
+	table {
+		border-spacing: 2px;
+		border-collapse: separate;
+	}
+</style>

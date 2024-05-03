@@ -111,16 +111,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 
-	// {
-	// 	id: 9,
-	// 	vneseName: 'HTML - Table',
-	// 	eng: 'html table tag, table tag',
-	// 	description: 'Thẻ table trong HTML, cấu trúc và cách dùng',
-	// 	link: '/html-css-js-basic/documentation/ep-4',
-	// 	previewImage: 'parallax-13.jpg',
-	// 	status_id: 1,
-	// 	apps: ['html-basic'],
-	// },
+	{
+		id: 9,
+		vneseName: 'HTML - Table',
+		eng: 'html table tag, table tag',
+		description: 'Thẻ table trong HTML, cấu trúc và cách dùng',
+		link: '/html-css-js-basic/documentation/ep-4',
+		previewImage: 'parallax-13.jpg',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
 	// {
 	// 	id: 10,
 	// 	vneseName: 'HTML - Form',
