@@ -81,6 +81,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
+		id: 'r-6',
+		vneseName: 'Conditional Rendering',
+		eng: 'render list data',
+		description: 'Cách sử dụng conditional rendering trong reactjs',
+		link: '/reactjs-basic/documentation/conditional-rendering',
+		previewImage: 'parallax-7.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
 		id: 6,
 		vneseName: 'HTML - Thẻ và cấu trúc file',
 		eng: 'html tag and structure',
