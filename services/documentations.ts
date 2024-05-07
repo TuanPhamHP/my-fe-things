@@ -120,6 +120,16 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['html-basic'],
 	},
+	{
+		id: 'r8-1',
+		vneseName: 'CSS - Element spacing',
+		eng: 'css3 introduction, syntax',
+		description: 'Padding, Margin, Box-sizing ... Các CSS liên quan đến spacing của element',
+		link: '/html-css-js-basic/documentation/ep-r8-1',
+		previewImage: 'parallax-11.jpg',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
 
 	{
 		id: 9,
@@ -349,7 +359,7 @@ const base = () => {
 							}
 							return isMatchApp;
 						});
-						const idx = nData.findIndex(o => o.id === +currentDoc);
+						const idx = nData.findIndex(o => o.id === currentDoc);
 						if (idx === -1) {
 							res(initSuccessResponse({ pagination: new PaginationDefault(null, null) }));
 						} else {
