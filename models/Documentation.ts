@@ -1,7 +1,7 @@
 import { AppName } from 'models';
 
 export interface DocumentItem {
-	id: number;
+	id: number | string;
 	vneseName: string;
 	eng: string;
 	description: string;

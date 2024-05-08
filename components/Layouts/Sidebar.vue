@@ -385,7 +385,7 @@
 				const sideBar = this.sideBarMini ? this.itemsComputedV3 : this.itemsComputed;
 				return sideBar.filter((item: SidebarItem) => {
 					const currentPath = this.$globalHelpers.mapPathToApp(this.$route.path);
-					console.log(currentPath);
+
 					return item.showByApp.length ? item.showByApp.includes(currentPath) : true;
 				});
 			},

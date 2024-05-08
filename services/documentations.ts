@@ -51,6 +51,17 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
+		id: 'r-2-1',
+		vneseName: 'Effects & Life Cycle',
+		eng: 'Effects & Life Cycle',
+		description: 'Hook useEffect, life cycle của RFC.',
+		link: '/reactjs-basic/documentation/effects-and-life-cycle',
+		previewImage: 'parallax-11.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+
+	{
 		id: 3,
 		vneseName: 'CSS Trong React',
 		eng: 'Styled Component',
@@ -60,6 +71,7 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
+
 	{
 		id: 4,
 		vneseName: 'State & Props',
@@ -87,6 +99,16 @@ let baseListData: DocumentItem[] = [
 		description: 'Cách sử dụng conditional rendering trong reactjs',
 		link: '/reactjs-basic/documentation/conditional-rendering',
 		previewImage: 'parallax-7.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
+		id: 'r-7',
+		vneseName: 'Routers',
+		eng: 'routers',
+		description: 'Setup và sử dụng routers trong ứng dụng react',
+		link: '/reactjs-basic/documentation/routers',
+		previewImage: 'parallax-14.jpg',
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
