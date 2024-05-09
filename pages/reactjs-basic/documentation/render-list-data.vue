@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Render list data trong ReactJs" addOnClass="text-left" markedAs="topTitle" :lvl="0" />
@@ -105,7 +105,7 @@
 					<TabPanels>
 						<TabPanel>
 							<div class="w-full rounded-lg bg-black px-4 py-3">
-								<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+								<div class="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-4 gap-4">
 									<div
 										class="relative col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition flex flex-col"
 									>
@@ -171,7 +171,7 @@
 					<TabPanels>
 						<TabPanel>
 							<div class="w-full rounded-lg bg-black px-4 py-3">
-								<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+								<div class="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-4 gap-4">
 									<div
 										v-for="item in listData"
 										:key="item.id"

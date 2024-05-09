@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Introduction" addOnClass="text-left" markedAs="topTitle" :lvl="1" />
@@ -25,7 +25,7 @@
 					<br />
 					<br />
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`// dir: ~/src/components/TodoList.jsx

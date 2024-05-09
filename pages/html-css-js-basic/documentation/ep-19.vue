@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Introduction" addOnClass="text-left" markedAs="title" />
@@ -34,7 +34,7 @@
 					<br />
 					Ví dụ: model hoá thẻ <b>p</b> từ HTML Tag thành Object trong JavaScript
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 items-center">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`
@@ -140,7 +140,7 @@ const p = {
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content"></p>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Ví dụ:</p>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 items-center">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`<!-- Thẻ p ở HTML -->
@@ -266,7 +266,7 @@ if(firstPTag){
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content"></p>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Ví dụ:</p>
 
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 items-center">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`<!-- Thẻ p ở HTML -->

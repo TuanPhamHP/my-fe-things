@@ -1,9 +1,9 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="dark:text-white py-5 mx-auto flex gap-4">
 			<div class="grow">
 				<!-- <div class="min-h-[250px] flex items-center justify-center w-full">
-					<h1 class="text-center font-bold md:text-2xl text-slate-900 dark:text-white leading-10">
+					<h1 class="text-center font-bold xl:text-2xl text-slate-900 dark:text-white leading-10">
 						Hello anh em, page này làm ra để tạo ra các bài tập để hỗ trợ các bạn thực hành nha.
 						<br />
 						Nội dung chính của trang đều về phần basic.
@@ -48,13 +48,13 @@
 						</button> -->
 					</div>
 				</div>
-				<div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5">
+				<div class="grid grid-cols-1 xl:grid-cols-4 gap-4 xl:gap-5">
 					<div class="col-span-1" v-for="item in listData" :key="item.id">
 						<PracticeCardPreview :detail-data="item" />
 					</div>
 				</div>
 				<div v-if="!listData.length" class="max-w-[450px] mx-auto py-10">
-					<h1 class="text-center font-bold md:text-2xl text-slate-900 dark:text-white leading-10">
+					<h1 class="text-center font-bold xl:text-2xl text-slate-900 dark:text-white leading-10">
 						Chúng tôi không tìm thấy bài tập nào, vui lòng thử lại
 						<br />
 						<br />

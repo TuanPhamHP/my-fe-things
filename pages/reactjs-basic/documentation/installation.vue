@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Environment" addOnClass="text-left" markedAs="env" />
@@ -92,7 +92,7 @@
 					khi bạn có một dự án nhỏ hoặc sử dụng để học thêm về core của React
 				</p>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8"><b>Note:</b> Required Node &gt;= 14 on local</p>
-				<p class="text-slate-900 dark:text-white mt-5 md:text-2xl underline leading-8">
+				<p class="text-slate-900 dark:text-white mt-5 xl:text-2xl underline leading-8">
 					<b>B1: Init</b>
 				</p>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
@@ -144,7 +144,7 @@
 				<FakeTerminalUI :textCoppy="'cd my-app'">
 					<p>cd my-app</p>
 				</FakeTerminalUI>
-				<p class="text-slate-900 dark:text-white mt-5 md:text-2xl underline leading-8">
+				<p class="text-slate-900 dark:text-white mt-5 xl:text-2xl underline leading-8">
 					<b>B2: Run</b>
 				</p>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8 text-lg">

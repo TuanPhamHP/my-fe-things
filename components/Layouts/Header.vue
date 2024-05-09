@@ -6,7 +6,7 @@
 		<div class="cursor-pointer flex items-center justify-center w-[40px] h-[40px] rounded-cicle" @click="toggleSidebar">
 			<Icon :name="'simple-line-icons:menu'" class="text-slate-900 dark:text-white" size="16px" />
 		</div>
-		<p class="title-md font-semibold ml-4 md:ml-6 text-slate-900 dark:text-white">{{ currentViewTitle }}</p>
+		<p class="title-md font-semibold ml-4 xl:ml-6 text-slate-900 dark:text-white">{{ currentViewTitle }}</p>
 
 		<!-- <Notification /> -->
 		<UserInfomation />

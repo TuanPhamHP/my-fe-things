@@ -85,7 +85,7 @@
 				</Menu>
 			</div>
 		</div>
-		<div class="grid md:grid-cols-2 grid-cols-1 gap-5 divide-x">
+		<div class="grid xl:grid-cols-2 grid-cols-1 gap-5 divide-x">
 			<div class="col-span-1">
 				<p class="flex items-start mb-2 w-full">
 					<span class="text-md text-gray-400">Loại xe:</span>
@@ -213,7 +213,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-span-1 pl-0 md:pl-4">
+			<div class="col-span-1 pl-0 xl:pl-4">
 				<div v-for="(item, idx) in listDeliveryOrderStatusesComputed" :key="item.id">
 					<div class="flex items-start gap-3 overflow-hidden relative" style="min-height: 50px">
 						<p

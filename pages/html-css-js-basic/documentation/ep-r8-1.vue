@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="CSS Introduction" addOnClass="text-left" markedAs="intro" />
@@ -106,7 +106,7 @@
 								<br />
 								Giá trị <b>`attribute`</b> để xác định thuộc tính nào của border mà ta muốn tác động đến bao gồm:
 								<b>color, width, style</b>
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+								<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 									<div class="col-span-1">
 										<VCodeBlock
 											:code="`<!-- HTML -->
@@ -227,7 +227,7 @@
 							<span>
 								Giá trị <b>`suffix`</b> chính là giá trị chỉ hướng của padding bao gồm: <b>top, left, bottom, right.</b>
 
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+								<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 									<div class="col-span-1">
 										<VCodeBlock
 											:code="`<!-- HTML -->
@@ -333,7 +333,7 @@
 							<span>
 								Giá trị <b>`suffix`</b> chính là giá trị chỉ hướng của margin bao gồm: <b>top, left, bottom, right.</b>
 
-								<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+								<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 									<div class="col-span-1">
 										<VCodeBlock
 											:code="`<!-- HTML -->
@@ -438,7 +438,7 @@
 					báo là margin (chỉ có tác dụng với main axis). Như vậy, để căn 1 phần tử ra giữa phần tử cha của nó ta có thể
 					set auto cho cả 2 phía left và right
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`.parent-block {
@@ -593,7 +593,7 @@
 				</ul>
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">VD:</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`<!-- HTML -->

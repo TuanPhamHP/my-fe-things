@@ -1,5 +1,5 @@
 <template>
-	<div class="text-right mx-3 rounded-half md:ml-auto hidden sm:block">
+	<div class="text-right mx-3 rounded-half xl:ml-auto hidden sm:block">
 		<Menu as="div" class="relative block text-left">
 			<div>
 				<MenuButton

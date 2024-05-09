@@ -1,7 +1,7 @@
 <template>
 	<div class="flex flex-col items-center pt-10">
 		<img src="./assets/images/404-page.png" class="block mx-auto" alt="" />
-		<div class="text-primary font-bold xl:text-5xl lg:text-4xl md:text-3xl text-3xl mt-10">
+		<div class="text-primary font-bold xl:text-5xl lg:text-4xl xl:text-3xl text-3xl mt-10">
 			Error: {{ customError?.statusCode }}
 		</div>
 
@@ -13,7 +13,7 @@
 			}}
 		</div>
 
-		<!-- <div v-if="customError?.statusCode === 404" class="text-gray-400 font-medium text-sm md:text-xl lg:text-2xl mt-8">
+		<!-- <div v-if="customError?.statusCode === 404" class="text-gray-400 font-medium text-sm xl:text-xl lg:text-2xl mt-8">
 			The page you are looking for could not be found.
 		</div> -->
 		<SepNormalButton

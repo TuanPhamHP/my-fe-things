@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="CSS Introduction" addOnClass="text-left" markedAs="intro" />
@@ -459,6 +459,7 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
 				</p>
 				<DocNextPage :pagination="pagePagination" />
 			</div>
+			<textarea name="" id="" cols="30" rows="10"></textarea>
 			<PageMarkBook />
 		</div>
 	</div>

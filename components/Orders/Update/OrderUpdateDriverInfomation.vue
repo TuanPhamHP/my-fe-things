@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<h1 class="title-sm font-semibold text-accent-900">Thông tin lái xe</h1>
-		<div class="pt-4 pb-4 grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-3">
+		<div class="pt-4 pb-4 grid grid-cols-1 xl:grid-cols-3 gap-x-4 gap-y-3">
 			<div class="col-span-1">
 				<BlockInput
 					v-model="driver_name"

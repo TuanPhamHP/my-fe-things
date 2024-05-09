@@ -1,7 +1,7 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full">
-			<h1 :class="`text-slate-900 dark:text-white font-bold text-3xl md:text-3xl `">Meme generator</h1>
+			<h1 :class="`text-slate-900 dark:text-white font-bold text-3xl xl:text-3xl `">Meme generator</h1>
 
 			<div class="flex gap-2 py-10">
 				<div>

@@ -1,18 +1,18 @@
 <template>
-	<div class="mx-0 my-0 login-wrapper grid grid-cols-1 md:grid-cols-3">
+	<div class="mx-0 my-0 login-wrapper grid grid-cols-1 xl:grid-cols-3">
 		<div class="col-span-2 ls"></div>
 		<div class="col-span-1 h-full flex align-center justify-center sfx">
 			<div class="pa-12 flex z-10 w-full relative rounded overflow-hidden my-auto">
-				<div class="mx-auto md:min-width-[500px] flex form-container">
+				<div class="mx-auto xl:min-width-[500px] flex form-container">
 					<!-- <div class="preview-img p-6 bg-primary-100 h-100 flex-col flex bg-primary-100">
 						<div class="flex items-center gap-[16px]">
 							<img class="block" src="@/assets/images/login-logo.svg" alt="" />
 						</div>
 						<img class="block mx-auto my-auto" src="@/assets/images/login-sub-img.svg" alt="" />
 					</div> -->
-					<form @submit.prevent="onSubmit" class="py-6 px-5 md:px-10 form-login my-auto w-[400px]">
+					<form @submit.prevent="onSubmit" class="py-6 px-5 xl:px-10 form-login my-auto w-[400px]">
 						<p class="mb-2 text-md">Xin chào bạn</p>
-						<p class="text-xl font-bold mb-3 md:mb-8">Đăng nhập để tiếp tục</p>
+						<p class="text-xl font-bold mb-3 xl:mb-8">Đăng nhập để tiếp tục</p>
 						<BlockInputVue
 							v-model="login"
 							title="Tên đăng nhập"
@@ -29,7 +29,7 @@
 							placeholder="Mật khẩu"
 							rounded="lg"
 							type="password"
-							container-class="mb-4 md:mb-6"
+							container-class="mb-4 xl:mb-6"
 							size="xxl"
 							:isError="Boolean(dataErrors.password) && flagSubmit"
 							:errorMsg="dataErrors.password"

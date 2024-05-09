@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 md:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="HTML Table" addOnClass="text-left" markedAs="intro" />
@@ -80,7 +80,7 @@
 					Như vậy, khi tạo một table trong html chúng ta luôn tạo một row trước, sau đó sẽ định nghĩa số lượng col trong
 					row và tiếp tục điền dữ liệu.
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-3">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`<table>
@@ -135,7 +135,7 @@ border: 1px solid;
 						<b class="">`colspan="x"`</b>
 						<div>
 							Được dùng để khai báo số lượng cột mà ô dữ liệu này chiếm bằng với <b>`x`</b>
-							<div class="grid grid-cols-2 md:gap-10 items-center mt-4">
+							<div class="grid grid-cols-2 xl:gap-10 items-center mt-4">
 								<div class="col-span-1">
 									<VCodeBlock
 										:code="`<table>
@@ -157,7 +157,7 @@ border: 1px solid;
 									/>
 								</div>
 								<div class="col-span-1">
-									<table>
+									<table class="text-slate-900 dark:text-white my-5 leading-8">
 										<tr>
 											<!-- Dòng (row) đầu tiên của bảng -->
 											<th colspan="2">Tui chiếm 2 cột</th>
@@ -197,7 +197,7 @@ border: 1px solid;
 						<b class="">`rowspan="y"`</b>
 						<div>
 							Được dùng để khai báo số lượng hàng mà ô dữ liệu này chiếm bằng với <b>`y`</b>
-							<div class="grid grid-cols-2 md:gap-10 items-center mt-4">
+							<div class="grid grid-cols-2 xl:gap-10 items-center mt-4">
 								<div class="col-span-1">
 									<VCodeBlock
 										:code="`<table>
@@ -217,7 +217,7 @@ border: 1px solid;
 									/>
 								</div>
 								<div class="col-span-1">
-									<table>
+									<table class="text-slate-900 dark:text-white my-5 leading-8">
 										<tr>
 											<!-- Dòng (row) đầu tiên của bảng -->
 											<th rowspan="2">Tui chiếm 2 hàng</th>
@@ -257,7 +257,7 @@ border: 1px solid;
 					Việc này khiến cho UI của chúng ta trông khá tệ, để bỏ đi khoảng trống này chúng ta sẽ sử dụng css
 					<b>border-spacing</b> để tác động vào thẻ table
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 items-center">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-10 items-center">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`/* CSS */
@@ -270,7 +270,7 @@ table {
 						/>
 					</div>
 					<div class="col-span-1">
-						<table style="border-spacing: 0px">
+						<table style="border-spacing: 0px" class="text-slate-900 dark:text-white my-5 leading-8">
 							<tr>
 								<!-- Dòng (row) đầu tiên của bảng -->
 								<th rowspan="2">Tui chiếm 2 hàng</th>
@@ -302,7 +302,7 @@ table {
 					<br />
 					Để giải quyết vấn đề này ta sẽ sử dụng css <b>border-collapse</b> để tác động vào thẻ table
 				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 items-center">
+				<div class="grid grid-cols-1 xl:grid-cols-2 gap-4 xl:gap-10 items-center">
 					<div class="col-span-1">
 						<VCodeBlock
 							:code="`/* CSS */
@@ -315,11 +315,11 @@ table {
 							theme="vs2015"
 						/>
 					</div>
-					<div class="col-span-1">
+					<div class="col-span-1 text-slate-900 dark:text-white my-5 leading-8">
 						<table style="border-spacing: 0px; border-collapse: collapse">
 							<tr>
 								<!-- Dòng (row) đầu tiên của bảng -->
-								<th rowspan="2">Tui chiếm 2 hàng</th>
+								<th rowspan="2" class="text-slate-900 dark:text-white my-5 leading-8">Tui chiếm 2 hàng</th>
 								<!-- Cột đầu tiên -->
 								<th>Tui chiếm 1 hàng</th>
 								<!-- Cột thứ hai -->
@@ -394,7 +394,7 @@ table {
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'html-basic', currentDocId: 8 }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'html-basic', currentDocId: 9 }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},

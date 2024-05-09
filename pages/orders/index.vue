@@ -16,7 +16,7 @@
 				title=""
 				placeholder="Tìm kiếm theo mã đơn/BKS/số cont"
 				input-class="rounded-xl"
-				container-class="mb-0 min-w-[300px] md:ml-auto"
+				container-class="mb-0 min-w-[300px] xl:ml-auto"
 				size="xxl"
 			/>
 
