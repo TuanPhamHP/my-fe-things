@@ -14,6 +14,7 @@
 				<VCodeBlock
 					:code="`<form action='https://www.google.com/search' method='GET'>
 	<!-- các thành phần của form sẽ được khai báo trong content của thẻ form -->
+	<p>Tìm kiếm:</p>
 	<input type='text' name='q' />
 	<button>Gửi</button>
 </form>
@@ -22,7 +23,6 @@
 					lang="HTML"
 					theme="vs2015"
 				/>
-
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Như vậy, khi tạo một form ta cần tạo thẻ <b>`form`</b> trước để định nghĩa vùng hoạt động cho các thẻ con.
 					<br />
@@ -39,6 +39,9 @@
 							<span>
 								Đây là thuộc tính được sử dụng để xác định URL mà dữ liệu từ form sẽ được gửi đến khi form được submit.
 								 Khi người dùng nhấn nút "submit" trong form, trình duyệt sẽ gửi dữ liệu được nhập trong form đó đến địa chỉ được chỉ định trong thuộc tính "action".
+								 <br>
+								 <br>
+								 => ta có thể sử dụng attribute <b>`target`</b> như thẻ <b>`a`</b> để điều hướng việc submit này
 							</span>
 							
 						</div>
@@ -50,7 +53,7 @@
 								Là thuộc tính được dùng để xác định phương thức gửi dữ liệu từ form đến máy chủ khi form được submit. Có hai giá trị phổ biến cho thuộc tính "method": "GET" và "POST".
 							</span>
 							<p class="my-2">
-								<b>- "GET":</b> Khi sử dụng phương thức "GET", dữ liệu từ form sẽ được gửi dưới dạng query string được đính kèm vào URL.
+								<b>- "GET":</b> Khi sử dụng phương thức "GET", dữ liệu từ form sẽ được gửi dưới dạng query string được đính kèm vào URL. 
 							</p>
 							<p class="my-2">
 								<b>- "POST":</b>Khi sử dụng phương thức "POST", dữ liệu từ form sẽ được gửi dưới dạng một yêu cầu HTTP độc lập với thông tin về dữ liệu được đính kèm ẩn. 
