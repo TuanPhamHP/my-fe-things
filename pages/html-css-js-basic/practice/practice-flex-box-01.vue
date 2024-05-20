@@ -6,7 +6,6 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Chào mừng anh em đến với series thực hành HTML basic.
 					<br />
-					Ở phần này chúng ta bắt đầu với việc thực hành tạo một khối <b>Sidebar</b> cho trang web.
 				</p>
 
 				<div class="px-3 py-3 bg-neutral-200 rounded-xl">
@@ -272,7 +271,7 @@
 								</div>
 								<div class="col-span-1">
 									<div
-										class="product-card max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+										class="product-card h-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 									>
 										<a href="#">
 											<img
@@ -296,11 +295,11 @@
 											<p class="mb-3 text-sm text-gray-700 dark:text-gray-400"><b>Nặng:</b> 1,6kg</p>
 											<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
 												Mô hình Vegeta bán thân Resin cực nét, đầy đủ phụ kiện, box. Hàng nét đến từng sợi tóc nhé anh
-												em.
+												em. Hàng order trước từ 7 -15 ngày nha.
 											</p>
 											<a
 												href="#"
-												class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+												class="inline-flex mt-auto items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
 											>
 												Thêm vào giỏ
 												<Icon name="solar:cart-large-2-bold" size="18" class="ml-1" />
