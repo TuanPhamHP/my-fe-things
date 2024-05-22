@@ -113,6 +113,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
+		id: 'r-9',
+		vneseName: 'useContext trong react',
+		eng: 'routers',
+		description: 'Setup và sử dụng useContext trong ứng dụng react',
+		link: '/reactjs-basic/documentation/context',
+		previewImage: 'parallax-15.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
 		id: 6,
 		vneseName: 'HTML - Thẻ và cấu trúc file',
 		eng: 'html tag and structure',
