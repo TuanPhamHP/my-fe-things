@@ -214,6 +214,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 	{
+		id: 'js-r1',
+		vneseName: 'JS - Data type (P1)',
+		eng: 'javascript object, fnc, fn, methods, ms',
+		description: 'Khái niệm cơ bản về các kiểu dữ liệu trong Javascript, một số bài toán thường gặp.',
+		link: '/html-css-js-basic/documentation/js-basic-p1',
+		previewImage: 'parallax-11.jpg',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
 		id: 15,
 		vneseName: 'JS - Object',
 		eng: 'javascript object, fnc, fn, methods, ms',
