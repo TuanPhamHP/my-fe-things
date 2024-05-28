@@ -303,6 +303,28 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['html-basic'],
 	},
+
+	// NEXTJS
+	{
+		id: 'nextjs-1',
+		vneseName: 'Cài đặt cơ bản',
+		eng: 'Installation',
+		description: 'Hướng dẫn cài đặt cơ bản để khởi tạo web-app của bạn với NextJs.',
+		link: '/nextjs-basic/documentation/installation',
+		previewImage: 'parallax-1.jpeg',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
+	{
+		id: 'nextjs-2',
+		vneseName: 'Routing',
+		eng: 'Routing',
+		description: 'Routing trong project NextJs.',
+		link: '/nextjs-basic/documentation/routers',
+		previewImage: 'parallax-2.jpeg',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
 ];
 class PaginationDefault {
 	constructor(
@@ -325,7 +347,7 @@ class PaginationDefault {
 			  }
 			: {
 					title: 'Trở về danh sách Doc',
-					link: '/html-css-js-basic/documentation',
+					link: '/',
 			  };
 	}
 	next: {
@@ -422,6 +444,7 @@ const base = () => {
 							return isMatchApp;
 						});
 						const idx = nData.findIndex(o => o.id === currentDoc);
+
 						if (idx === -1) {
 							res(initSuccessResponse({ pagination: new PaginationDefault(null, null) }));
 						} else {

@@ -53,6 +53,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('reactjs-basic')) {
 		return 'reactjs-basic';
 	}
+	if (currentPathName.includes('nextjs-basic')) {
+		return 'nextjs-basic';
+	}
 	return null;
 };
 

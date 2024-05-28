@@ -1,0 +1,36 @@
+<template>
+	<span class="inline-block px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">
+		<slot></slot>
+	</span>
+</template>
+<script lang="ts">
+	export default {
+		props: {
+			textCoppy: {
+				type: String,
+				default: '',
+			},
+		},
+		data() {
+			return {
+				success: false,
+			};
+		},
+		watch: {
+			success() {
+				if (this.success) {
+					setTimeout(() => {
+						this.success = false;
+					}, 2000);
+				}
+			},
+		},
+		methods: {
+			handleCopy(_url: string) {
+				// Copy the text inside the text field
+				navigator.clipboard.writeText(_url);
+				this.success = true;
+			},
+		},
+	};
+</script>

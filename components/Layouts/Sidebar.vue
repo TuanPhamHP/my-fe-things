@@ -237,7 +237,33 @@
 					tooltip: 'Thực hành',
 					showByApp: ['html-basic'],
 				},
+				// nextjs-basic
 
+				{
+					title: 'Tài liệu',
+					path: '/nextjs-basic/documentation',
+					pathNameMatch: [
+						'nextjs-basic',
+						'nextjs-basic-documentation',
+						'nextjs-basic-documentation-installation',
+						'nextjs-basic-documentation-routers',
+					],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['nextjs-basic'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/nextjs-basic/practice',
+					pathNameMatch: ['nextjs-basic', 'nextjs-basic-practice'],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['nextjs-basic'],
+				},
 				// {
 				// 	title: 'Quản lý ĐTVC',
 				// 	path: '/forwarders',
