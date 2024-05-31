@@ -98,10 +98,89 @@
 						</div>
 					</li>
 				</ul>
-
-				<div class="py-3"></div>
-				<VCodeBlock :code="b4" highlightjs lang="tsx" theme="tomorrow-night-bright" />
-
+				<div class="grid grid-cols-2 gap-3">
+					<div class="col-span-1">
+						<img
+							src="https://nextjs.org/_next/image?url=%2Fdocs%2Flight%2Ferror-special-file.png&w=1920&q=75"
+							alt=""
+							class="w-full rounded-lg"
+						/>
+						<img
+							src="https://nextjs.org/_next/image?url=%2Fdocs%2Flight%2Ferror-overview.png&w=1920&q=75"
+							alt=""
+							class="w-full rounded-lg mt-3"
+						/>
+					</div>
+					<div class="col-span-1"><VCodeBlock :code="b4" highlightjs lang="tsx" theme="tomorrow-night-bright" /></div>
+				</div>
+				<p class="text-slate-900 dark:text-white mt-5">Vậy <FilePath>Error</FilePath> Hoạt động như thế nào ?</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<div>
+							<span
+								>- <FilePath>error.tsx</FilePath> Sẽ tự động tạo React Error Boundary tạm gọi là
+								<FilePath>ErrorBoundary</FilePath> để lồng vào
+								<FilePath>page.tsx</FilePath>
+							</span>
+						</div>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<div>
+							<span
+								>- Lúc này, Component <FilePath>Error</FilePath> được return từ <FilePath>error.tsx</FilePath> sẽ được
+								sử dụng như fallback component và truyền vào <FilePath>ErrorBoundary</FilePath>
+							</span>
+						</div>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<div>
+							<span
+								>- Trong quá trình sử dụng, nếu có lỗi trong <FilePath>Page</FilePath> thì lỗi đó sẽ được lưu lại và
+								truyền vào fallback <FilePath>Error</FilePath>, sau đó NextJs sẽ render ra <FilePath>Error</FilePath>.
+							</span>
+						</div>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<div>
+							<span
+								>- Sau khi <FilePath>Error</FilePath> render thì các layouts nằm ngoài
+								<FilePath>ErrorBoundary</FilePath> (như <FilePath>Header</FilePath>, <FilePath>SideNav</FilePath>) sẽ
+								vẫn giữ nguyên các trạng thái (state) riêng của chúng mà không bị ảnh hưởng. Lúc này
+								<FilePath>Error</FilePath> có thể tiến hành xử lý lỗi tuỳ theo logic được code.
+							</span>
+						</div>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white mt-5">Một số component đặc biệt như:</p>
+				<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+					<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+						<tr>
+							<th scope="col" class="px-6 py-3">Error</th>
+							<th scope="col" class="px-6 py-3">File name</th>
+							<th scope="col" class="px-2 py-3">Desc</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+								<FilePath>404</FilePath>
+							</th>
+							<td class="px-6 py-4"><FilePath>not-found.jsx</FilePath></td>
+							<td class="px-2 py-4">
+								Được sử dụng để hiển thị trang lỗi 404 khi người dùng truy cập vào một đường dẫn không tồn tại.
+							</td>
+						</tr>
+						<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+							<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+								<FilePath>500 | runtime</FilePath>
+							</th>
+							<td class="px-6 py-4"><FilePath>error.jsx</FilePath></td>
+							<td class="px-2 py-4">
+								Được sử dụng để hiển thị trang lỗi 500 hoặc các lỗi máy chủ khác, hoặc lỗi runtime
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				<!-- END -->
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -130,17 +209,34 @@ export default function Loading() {
  
   return <LoadingSkeleton />
 }`,
-				b4: `'use client'
+				b4: `'use client' // Error components must be Client Components
  
-import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
  
-export default function Page() {
-  const router = useRouter()
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string }
+  reset: () => void
+}) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error(error)
+  }, [error])
  
   return (
-    <button type="button" onClick={() => router.push('/dashboard')}>
-      Dashboard
-    </button>
+    <div>
+      <h2>Something went wrong!</h2>
+      <button
+        onClick={
+          // Attempt to recover by trying to re-render the segment
+          () => reset()
+        }
+      >
+        Try again
+      </button>
+    </div>
   )
 }`,
 				b5: `import { redirect } from 'next/navigation'
