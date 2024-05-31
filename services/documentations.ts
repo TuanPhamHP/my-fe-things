@@ -345,6 +345,16 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
+	{
+		id: 'nextjs-5',
+		vneseName: 'Routing (P4) - Components',
+		eng: 'Routing',
+		description: 'Loading, Error handler page với nextjs router.',
+		link: '/nextjs-basic/documentation/router-components',
+		previewImage: 'parallax-4.jpg',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
 ];
 class PaginationDefault {
 	constructor(
