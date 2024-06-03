@@ -20,6 +20,10 @@ export default defineNuxtConfig({
 				// Các thiết lập meta khác có thể được thêm vào đây
 				{ charset: 'utf-8' },
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+				{
+					name: 'google-adsense-account',
+					content: 'ca-pub-3078524686122624',
+				},
 			],
 			link: [
 				{
@@ -39,6 +43,11 @@ export default defineNuxtConfig({
 			script: [
 				{
 					src: 'https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js',
+				},
+				{
+					async: true,
+					src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3078524686122624',
+					crossorigin: 'anonymous',
 				},
 			],
 		},
