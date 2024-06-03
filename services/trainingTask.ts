@@ -97,6 +97,28 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['html-basic'],
 	},
+	{
+		id: 'htmle_03',
+		vneseName: 'DOM - Review ảnh',
+		eng: 'html header, header example',
+		description: 'Bài tập về DOM để thao tác với attributes',
+		link: '/html-css-js-basic/practice/e_2',
+		previewImage: 'parallax-6.jpg',
+		status_id: 1,
+		category: [],
+		apps: ['html-basic'],
+	},
+	{
+		id: 'htmle_04',
+		vneseName: 'DOM - Render list Data',
+		eng: 'html header, header example',
+		description: 'Bài tập về DOM để thao tác với attributes',
+		link: '/html-css-js-basic/practice/e_2',
+		previewImage: 'parallax-7.jpg',
+		status_id: 1,
+		category: [],
+		apps: ['html-basic'],
+	},
 ];
 
 class PaginationDefault {

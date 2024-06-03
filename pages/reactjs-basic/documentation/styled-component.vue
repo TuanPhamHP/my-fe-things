@@ -229,6 +229,7 @@ export default MyComponent;
 		TabPanels,
 		TabPanel,
 	} from '@headlessui/vue';
+	import { apiResponde } from 'models';
 	export default {
 		components: {
 			PageMarkBook,
@@ -260,6 +261,18 @@ export default MyComponent;
 				styledComponentCode:
 					"import styled from 'styled-components'; \n\nconst StyledDiv = styled.div` color: blue;\n font-size: 16px; `; \n\nconst MyComponent = () => { \n  return <StyledDiv\>Hello, World!</StyledDiv\>; \n}; \n export default MyComponent ;",
 			};
+		},
+		mounted() {
+			this.getPagination();
+		},
+		methods: {
+			getPagination() {
+				this.$api.documentations
+					.getPagination({ appIds: 'reactjs-basic', currentDocId: 3 })
+					.then((res: apiResponde) => {
+						this.pagePagination = res?.data?.pagination || [];
+					});
+			},
 		},
 	};
 </script>

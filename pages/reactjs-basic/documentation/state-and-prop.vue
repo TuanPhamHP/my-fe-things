@@ -19,7 +19,7 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<em
 						>Đọc kỹ hơn về hook
-						<b class="cursor-pointer underline" @click="$router.push('reactjs-basic/documentation/hooks#use-state')"
+						<b class="cursor-pointer underline" @click="$router.push('/reactjs-basic/documentation/hooks#use-state')"
 							>useState()</b
 						></em
 					>
@@ -712,6 +712,7 @@ export default ExampleComponent;
 		TabPanels,
 		TabPanel,
 	} from '@headlessui/vue';
+	import { apiResponde } from 'models';
 	export default {
 		components: {
 			PageMarkBook,
@@ -743,7 +744,17 @@ export default ExampleComponent;
 				number: 0,
 			};
 		},
+		mounted() {
+			this.getPagination();
+		},
 		methods: {
+			getPagination() {
+				this.$api.documentations
+					.getPagination({ appIds: 'reactjs-basic', currentDocId: 4 })
+					.then((res: apiResponde) => {
+						this.pagePagination = res?.data?.pagination || [];
+					});
+			},
 			demoFnc1() {
 				this.number++;
 				alert(this.number - 1);

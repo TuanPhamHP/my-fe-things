@@ -3,8 +3,8 @@ import { AuthUser, apiResponde } from '~/models/index';
 import { CookieOptions } from '~/models';
 export const useAuthStore = defineStore('auth', {
 	state: () => ({
-		user: null as AuthUser | null,
-		token: '' as String,
+		user: { name: 'Admin', token: '123456' } as AuthUser | null,
+		token: '123456' as String,
 	}),
 	getters: {
 		isLogged: state => !!state.user && !!state.token,
