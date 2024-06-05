@@ -162,6 +162,16 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
+	// {
+	// 	id: 'r-i-1',
+	// 	vneseName: '[INTERMEDIATE] useReducer trong react',
+	// 	eng: 'routers',
+	// 	description: 'Setup và sử dụng useReducer trong ứng dụng react',
+	// 	link: '/reactjs-basic/documentation/context',
+	// 	previewImage: 'parallax-15.jpg',
+	// 	status_id: 1,
+	// 	apps: ['reactjs-basic'],
+	// },
 	{
 		id: 6,
 		vneseName: 'HTML - Thẻ và cấu trúc file',

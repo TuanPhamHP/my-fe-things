@@ -402,6 +402,73 @@ export default ExampleComponent;`"
 					<br />
 					=> React update <b>`number`</b> thành <b>3</b>
 				</p>
+				<PageHeading text="IV. Refs State" addOnClass="text-left" markedAs="state-refs" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
+					Khi làm việc với State thì điều quan trọng là ta phải biết được khi nào thì state được coi là update, vì chỉ
+					khi state được nhận định là đã update thì ReactJs mới re-render lại với giá trị state mới.
+					<br />
+					<br />
+					Bạn cần lưu ý điều này khi state bạn tạo không phải là value dạng primitive (Number, String, Boolean ...) mà
+					là dạng References (Object, Array ...). Với value dạng References (sẽ gọi tắt là Refs), React sẽ không quan
+					tâm đến value của chúng, React chỉ ghi nhớ chúng thông qua giá trị ref được cấp phát. Từ đó React sẽ so sánh
+					reference của giá trị mới với reference của giá trị cũ để xác định xem có cần render lại component hay không.
+					<br />
+					<br />
+					Dưới đây là một ví dụ về việc sử dụng useState với object và array trong React:
+				</p>
+				<VCodeBlock
+					:code="`import React, { useState } from 'react';
+
+function App() {
+  const [userInfo, setUserInfo] = useState({ name: 'John', age: 27 });
+  const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+
+  const handleUserInfoChange = () => {
+		//✅ đã cấp phát một ref mới => react sẽ nhận định state này đã update
+		setUserInfo({ ...userInfo, age: 28 }); 
+
+		//❌ không cấp phát một ref mới => react không nhận định state này đã update nên UI không đổi
+		// userInfo.age=28
+		// setUserInfo(userInfo); 
+  };
+
+  const handleNumbersChange = () => {
+		//✅ đã cấp phát một ref mới => react sẽ nhận định state này đã update
+		const newNumbers = [...numbers];
+		newNumbers.push(6);
+		setNumbers(newNumbers);
+
+		//❌ không cấp phát một ref mới => react không nhận định state này đã update nên UI không đổi
+		// numbers.push(6)
+		// setNumbers(numbers);
+  };
+
+  return (
+    <div>
+      <div>
+        <p>Name: {userInfo.name}</p>
+        <p>Age: {userInfo.age}</p>
+        <button onClick={handleUserInfoChange}>Increase Age</button>
+      </div>
+      <div>
+        <p>Numbers: {numbers.join(', ')}</p>
+        <button onClick={handleNumbersChange}>Add Number</button>
+      </div>
+    </div>
+  );
+}
+
+export default App;`"
+					highlightjs
+					lang="javascript"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
+					Ở ví dụ trên tôi đã cho các bạn thấy được cách chúng ta làm việc với data dạng refs.
+					<br />
+					Về cơ bản, chúng ta cần phải cung cấp một refs mới cho state đó thì ReactJs mới 'thừa nhận' sự thay đổi và
+					re-render UI. Thằng này tương tự với lý thuyết về việc cấp phát địa chỉ ô nhớ. 👌👌
+				</p>
 				<div class="py-5"></div>
 				<PageHeading text="Props" addOnClass="text-left" markedAs="react-props" />
 				<p class="text-slate-900 dark:text-white my-5 leading-9 text-lg text-content">
