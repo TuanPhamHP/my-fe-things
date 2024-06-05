@@ -256,6 +256,7 @@
 		TabPanels,
 		TabPanel,
 	} from '@headlessui/vue';
+	import { apiResponde } from 'models';
 	export default {
 		components: {
 			PageMarkBook,
@@ -379,10 +380,20 @@ export default const ProductCard = ({productData})=>{
 				],
 			};
 		},
+		mounted() {
+			this.getPagination();
+		},
 		methods: {
 			demoFnc1() {
 				this.number++;
 				alert(this.number - 1);
+			},
+			getPagination() {
+				this.$api.documentations
+					.getPagination({ appIds: 'reactjs-basic', currentDocId: 'r-2-2' })
+					.then((res: apiResponde) => {
+						this.pagePagination = res?.data?.pagination || [];
+					});
 			},
 		},
 	};

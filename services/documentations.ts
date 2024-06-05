@@ -53,8 +53,8 @@ let baseListData: DocumentItem[] = [
 	{
 		id: 5,
 		vneseName: 'JSX (P1)',
-		eng: 'Installation',
-		description: 'Khái niệm về JSX, cách Viết JSX.',
+		eng: 'JSX',
+		description: 'Khái niệm về JSX, cách Viết JSX. JSX Rules.',
 		link: '/reactjs-basic/documentation/jsx-in-react-p1',
 		previewImage: 'parallax-10.jpg',
 		status_id: 1,
@@ -63,10 +63,20 @@ let baseListData: DocumentItem[] = [
 	{
 		id: 'r-6',
 		vneseName: 'JSX (P2)',
-		eng: 'Installation',
-		description: 'Khái niệm về JSX, cách Viết JSX.',
+		eng: 'JSX',
+		description: 'Khái niệm về JSX, cách Viết JSX. JSX View.',
 		link: '/reactjs-basic/documentation/jsx-in-react-p2',
-		previewImage: 'parallax-11.jpg',
+		previewImage: 'parallax-9.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
+		id: 'r-6-1',
+		vneseName: 'JSX (P3)',
+		eng: 'JSX',
+		description: 'Xử lý events với JSX.',
+		link: '/reactjs-basic/documentation/jsx-in-react-p3',
+		previewImage: 'parallax-12.jpg',
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
@@ -113,7 +123,7 @@ let baseListData: DocumentItem[] = [
 	},
 
 	{
-		id: 5,
+		id: 'r-2-2',
 		vneseName: 'Render list data',
 		eng: 'render list data',
 		description: 'Cách render một danh sách data ra view',
@@ -123,7 +133,7 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
-		id: 'r-6',
+		id: 'r-7',
 		vneseName: 'Conditional Rendering',
 		eng: 'render list data',
 		description: 'Cách sử dụng conditional rendering trong reactjs',
@@ -133,7 +143,7 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
-		id: 'r-7',
+		id: 'r-8',
 		vneseName: 'Routers',
 		eng: 'routers',
 		description: 'Setup và sử dụng routers trong ứng dụng react',
