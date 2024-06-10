@@ -213,6 +213,7 @@ export default UserProfile;
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
+	import { apiResponde } from 'models';
 	export default {
 		components: { PageMarkBook, PageHeading, FakeTerminalUI, VCodeBlock, DocNextPage },
 		data() {
@@ -224,6 +225,18 @@ export default UserProfile;
 					},
 				},
 			};
+		},
+		mounted() {
+			this.getPagination();
+		},
+		methods: {
+			getPagination() {
+				this.$api.documentations
+					.getPagination({ appIds: 'reactjs-basic', currentDocId: 'r-9' })
+					.then((res: apiResponde) => {
+						this.pagePagination = res?.data?.pagination || [];
+					});
+			},
 		},
 	};
 </script>
