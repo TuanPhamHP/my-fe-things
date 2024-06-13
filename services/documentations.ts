@@ -435,16 +435,16 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
-	// {
-	// 	id: 'nextjs-8',
-	// 	vneseName: 'Client Component vs Server Component',
-	// 	eng: 'Client Component vs Server Component',
-	// 	description: 'Client Component vs Server Component trong NextJs. Khi nào thì dùng loại nào?',
-	// 	link: '/nextjs-basic/documentation/client-vs-server-component',
-	// 	previewImage: 'parallax-8.webp',
-	// 	status_id: 1,
-	// 	apps: ['nextjs-basic'],
-	// },
+	{
+		id: 'nextjs-8',
+		vneseName: 'Fetching data',
+		eng: 'Fetching data',
+		description: 'Fetching data trong NextJs.',
+		link: '/nextjs-basic/documentation/fetching-data',
+		previewImage: 'parallax-8.webp',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
 ];
 class PaginationDefault {
 	constructor(

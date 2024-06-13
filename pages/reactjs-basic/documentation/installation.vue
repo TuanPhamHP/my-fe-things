@@ -98,10 +98,10 @@
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Cài đặt package <b>`create-vite`</b> một cách global vào trong máy:</b>
 				</p>
-				<FakeTerminalUI :textCoppy="'npm install create-react-app my-app -g'">
+				<FakeTerminalUI :textCoppy="'npm install vite -g'">
 					<p>npm install vite -g</p>
 				</FakeTerminalUI>
-				<FakeTerminalUI :textCoppy="'npm install create-react-app my-app -g'">
+				<FakeTerminalUI :textCoppy="'npm install create-vite -g'">
 					<p>npm install create-vite -g</p>
 				</FakeTerminalUI>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
@@ -166,7 +166,7 @@
 										All done ! <br />
 										Project của bạn đã được khởi tạo thành công. Để chạy project tại local, bạn run command:
 									</p>
-									<FakeTerminalUI :textCoppy="'npm start'">
+									<FakeTerminalUI :textCoppy="'npm run dev'">
 										<p>npm run dev</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 leading-8 text-lg">
@@ -205,7 +205,7 @@
 									<p class="text-slate-900 dark:text-white mt-5 text-lg leading-8">
 										<b>YARN:</b>
 									</p>
-									<FakeTerminalUI :textCoppy="'yarn create react-app my-app'">
+									<FakeTerminalUI :textCoppy="'yarn create-vite hello-react --template react'">
 										<p>yarn create-vite hello-react --template react</p>
 									</FakeTerminalUI>
 									<span class="text-slate-900 dark:text-white">
@@ -216,13 +216,13 @@
 										Sau đó bạn chỉ cần ngồi đợi project được init. <br />
 										Khi trình khởi tạo hoàn tất, bạn có thể mở project vừa tạo bằng cách gõ:
 									</p>
-									<FakeTerminalUI :textCoppy="'cd my-app'">
+									<FakeTerminalUI :textCoppy="'cd hello-react'">
 										<p>cd hello-react</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 xl:text-2xl underline leading-8">
 										<b>B2: Cài các modules</b>
 									</p>
-									<FakeTerminalUI :textCoppy="'cd my-app'">
+									<FakeTerminalUI :textCoppy="'yarn'">
 										<p>yarn</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 leading-8 text-lg">
@@ -235,7 +235,7 @@
 										All done ! <br />
 										Project của bạn đã được khởi tạo thành công. Để chạy project tại local, bạn run command:
 									</p>
-									<FakeTerminalUI :textCoppy="'npm start'">
+									<FakeTerminalUI :textCoppy="'yarn dev'">
 										<p>yarn dev</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 leading-8 text-lg">
