@@ -43,7 +43,7 @@ export const removeAscentNormal = (str: string | null | undefined, forceLowercas
 	str = str.replace(/ù|Ù|ú|Ú|ụ|Ụ|ủ|Ủ|ũ|Ũ|ư|Ư|ừ|Ừ|ứ|Ứ|ự|Ự|ử|Ử|ữ|Ữ/g, 'u');
 	str = str.replace(/ỳ|Ỳ|ý|Ý|ỵ|Ỵ|ỷ|Ỷ|ỹ|Ỹ/g, 'y');
 	str = str.replace(/đ|Đ/g, 'd');
-	return forceLowercase ?  str.toLowerCase() :str;
+	return forceLowercase ? str.toLowerCase() : str;
 };
 export const formatDateCustom = (date?: string | number | Date | null, formatString: string = 'dd/MM/yyyy') => {
 	if (!date) {
@@ -170,12 +170,28 @@ export const getDataErrors = (dataRules: Record<string, string[]>, dataObj: Reco
 						}
 					}
 				}
+				if (dataRules[key].includes('email')) {
+					// @ts-ignore
+					const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+					if (key && !regex.test(String(dataObj[key]))) {
+						obj[key] = 'Email không hợp lệ.';
+					}
+				}
 				const maxLengthRule = dataRules[key].find(o => o.includes('max:'));
 				if (maxLengthRule) {
 					const maxLength = +(maxLengthRule.split(':').pop() || 0);
 					// @ts-ignore
 					if (key && dataObj[key].length > maxLength) {
 						obj[key] = `Tối đa ${maxLength} kí tự.`;
+					}
+				}
+				const minLengthRule = dataRules[key].find(o => o.includes('min:'));
+				if (minLengthRule) {
+					const minLength = +(minLengthRule.split(':').pop() || 0);
+					// @ts-ignore
+					if (key && dataObj[key].length < minLength) {
+						obj[key] = `Tối thiểu ${minLength} kí tự.`;
 					}
 				}
 			}

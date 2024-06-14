@@ -74,7 +74,17 @@ let baseListData: PracticeItem[] = [
 	// 	category: [],
 	// 	apps: ['html-basic'],
 	// },
-
+	{
+		id: 'e_5',
+		vneseName: 'Login/Register form',
+		eng: 'react todo list',
+		description: 'Bài tập về CRUD state trong ReactJs',
+		link: '/reactjs-basic/practice/e_4',
+		previewImage: 'parallax-11.jpg',
+		status_id: 1,
+		category: [],
+		apps: ['reactjs-basic'],
+	},
 	{
 		id: 'htmle_02',
 		vneseName: 'Simple Sidebar',
