@@ -3,7 +3,7 @@ export const initPage = 1;
 export const initSize = 10;
 export type StringOrNull = string | null;
 
-const appNames = ['html-basic', 'reactjs-basic', 'nextjs-basic', null] as const;
+const appNames = ['html-basic', 'reactjs-basic', 'nextjs-basic', 'php', null] as const;
 
 const sameSite = [true, 'lax', 'strict', 'none', undefined] as const;
 type sameSiteType = (typeof sameSite)[number];

@@ -232,7 +232,9 @@ br {
 	margin-bottom: 1px;
 	display: block;
 }
-
+.text-pretty {
+	text-wrap: pretty !important;
+}
 // chọn các thẻ có tag-name là p
 // .mini-title[name="first-title"] {
 // 	color: chocolate;

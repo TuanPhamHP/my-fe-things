@@ -81,6 +81,26 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 	{
+		id: 'r-7',
+		vneseName: 'Conditional Rendering',
+		eng: 'render list data',
+		description: 'Cách sử dụng conditional rendering trong reactjs',
+		link: '/reactjs-basic/documentation/conditional-rendering',
+		previewImage: 'parallax-7.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
+		id: 'r-2-2',
+		vneseName: 'Render list data',
+		eng: 'render list data',
+		description: 'Cách render một danh sách data ra view',
+		link: '/reactjs-basic/documentation/render-list-data',
+		previewImage: 'parallax-6.jpg',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
+	{
 		id: 3,
 		vneseName: 'CSS Trong React',
 		eng: 'Styled Component',
@@ -122,26 +142,6 @@ let baseListData: DocumentItem[] = [
 		apps: ['reactjs-basic'],
 	},
 
-	{
-		id: 'r-2-2',
-		vneseName: 'Render list data',
-		eng: 'render list data',
-		description: 'Cách render một danh sách data ra view',
-		link: '/reactjs-basic/documentation/render-list-data',
-		previewImage: 'parallax-6.jpg',
-		status_id: 1,
-		apps: ['reactjs-basic'],
-	},
-	{
-		id: 'r-7',
-		vneseName: 'Conditional Rendering',
-		eng: 'render list data',
-		description: 'Cách sử dụng conditional rendering trong reactjs',
-		link: '/reactjs-basic/documentation/conditional-rendering',
-		previewImage: 'parallax-7.jpg',
-		status_id: 1,
-		apps: ['reactjs-basic'],
-	},
 	{
 		id: 'r-8',
 		vneseName: 'Routers',
@@ -444,6 +444,17 @@ let baseListData: DocumentItem[] = [
 		previewImage: 'parallax-8.webp',
 		status_id: 1,
 		apps: ['nextjs-basic'],
+	},
+	// PHP
+	{
+		id: 'php-1',
+		vneseName: 'Cài đặt cơ bản',
+		eng: 'Installation',
+		description: 'Hướng dẫn cài đặt cơ bản để tạo và chạy file PHP của bạn.',
+		link: '/php/documentation/installation',
+		previewImage: 'parallax-1.jpeg',
+		status_id: 1,
+		apps: ['php'],
 	},
 ];
 class PaginationDefault {

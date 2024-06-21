@@ -118,7 +118,12 @@
 							as="div"
 							class="cursor-pointer flex items-center justify-between py-2 bg-neutral-100 px-2 rounded-lg"
 						>
-							<PageHeading text="NPX" addOnClass="text-left" markedAs="vite-react-app-npx" :lvl="2" />
+							<PageHeading
+								text="NPX"
+								addOnClass="text-left dark:text-neutral-900"
+								markedAs="vite-react-app-npx"
+								:lvl="2"
+							/>
 							<Icon name="solar:round-double-alt-arrow-down-linear" size="20" />
 						</DisclosureButton>
 
@@ -187,7 +192,12 @@
 							as="div"
 							class="cursor-pointer flex items-center justify-between py-2 bg-neutral-100 px-2 rounded-lg"
 						>
-							<PageHeading text="YARN" addOnClass="text-left" markedAs="vite-react-app-yarn" :lvl="2" />
+							<PageHeading
+								text="YARN"
+								addOnClass="text-left dark:text-neutral-900"
+								markedAs="vite-react-app-yarn"
+								:lvl="2"
+							/>
 
 							<Icon name="solar:round-double-alt-arrow-down-linear" size="20" />
 						</DisclosureButton>

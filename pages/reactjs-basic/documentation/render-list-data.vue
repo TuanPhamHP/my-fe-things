@@ -11,49 +11,30 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Cho mảng dữ liệu sau:</p>
 				<VCodeBlock
 					:code="`const listData = [
-		{
-			id:1,
-			name: 'Giày Trainer Dropset 2.0 Eartch',
-			price: 3500000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/b65a2dcc5e4140d09e3cbbaf9b886473_9366/gi%C3%A0y-trainer-dropset-2.0-earth.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		},
-		{
-			id:2,
-			name: 'Giày Trainer Dropset 2',
-			price: 3500000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/f574a527a4b74c20ba62ffada1df754a_9366/gi%C3%A0y-trainer-dropset-2.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		},
-		{
-			id:3,
-			name: 'Giày Alphabounce+',
-			price: 2400000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/304999ba3dd4461a8da35694b05f2be2_9366/gi%C3%A0y-alphabounce_-sustainable-bounce.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		},
-		{
-			id:4,
-			name: 'Giày Galaxy 6',
-			price: 1500000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/a5bc39ff24324facbd765c68a0a3c3e6_9366/gi%C3%A0y-galaxy-6.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		},
-		{
-			id:5,
-			name: 'Giày GAZELLE',
-			price: 2500000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/8d3948863a41405eb408674f0eb2b247_9366/gazelle.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		},
-		{
-			id:6,
-			name: 'Giày Ultraboost 1.0',
-			price: 4500000,	
-			image:'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/462311ac22f9422cbf0e9fa443fabfa2_9366/gi%C3%A0y-ultraboost-1.0.jpg',
-			description: 'Đây là dataplaceholder của sản phẩm'
-		}
-];`"
+					{
+						id: 1,
+						name: 'Bàn ăn Bali gỗ MDF chất lượng cao',
+						price: 3500000,
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvwn5gpb3ysb41',
+						description: '✅ Sử dụng công nghệ sơn gốc nước thân thiện với môi trường và vô hại nhập khẩu để sơn mặt bàn. Nó có thể khô tới 10 năm và bề mặt trở nên mịn màng hơn khi chạm vào bằng tay.',
+					},
+					{
+						id: 2,
+						name: 'Bàn trang điểm Bali kiểu dáng Bắc Âu',
+						price: 3500000,
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvppy59x7ywp8d',
+						description:
+							'✅ Chất liệu: Ván sợi mật độ trung bình (MDF) \n✅ Kích thước thùng carton: 108x46x15cm \n✅ Quy cách đóng gói: 14kg',
+					},
+					{
+						id: 3,
+						name: ' Bàn Chữ L Bàn Làm Việc Mặt Gỗ Mdf Chống Xước Khung Thép Chịu Lực',
+						price: 780000,
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvwknmcpydp5b3',
+						description:
+							'✅Bàn làm việc chữ L phù hợp với mọi không gian.\n✅Mặt bàn được làm từ chất liệu Melamine hoặc Laminate chống xước, chống cháy kết hợp công nghệ forming tiên tiến nên được bo tròn tạo nên những đường nét mềm mại.\n✅Chân bàn được làm bằng sắt phun sơn tĩnh điện hạn chế tối đa việc gỉ sét như các loại sắt sơn gia công thông thường, đảm bảo tính thẩm mỹ và cực kỳ bền bỉ',
+					},
+				];`"
 					highlightjs
 					length
 					lang="javascript"
@@ -110,14 +91,14 @@
 										class="relative col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition flex flex-col"
 									>
 										<img
-											src="https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/8d3948863a41405eb408674f0eb2b247_9366/gazelle.jpg"
+											:src="listData[0].image"
 											class="rounded-t-lg w-full h-[260px] object-cover"
 											alt="{productData.name}"
 										/>
 										<div class="card-body text-gray-900 dark:text-white px-3 py-2">
-											<h5 class="card-title mb-2 text-2xl font-bold tracking-tight">Giày Trainer Dropset 2</h5>
-											<p class="card-text">3500000 đ</p>
-											<p class="card-text my-3">Đây là dataplaceholder của sản phẩm</p>
+											<h5 class="card-title mb-2 text-2xl font-bold tracking-tight">{{ listData[0].name }}</h5>
+											<p class="card-text">{{ listData[0].price }} đ</p>
+											<p class="card-text my-3">{{ listData[0].description }}</p>
 											<a href="#" class="btn btn-primary block bg-green-500 w-fit px-2 py-1 rounded text-white"
 												>Buy now</a
 											>
@@ -185,7 +166,7 @@
 										<div class="card-body text-gray-900 dark:text-white px-3 py-2">
 											<h5 class="card-title mb-2 text-2xl font-bold tracking-tight">{{ item.name }}</h5>
 											<p class="card-text">{{ item.price }} đ</p>
-											<p class="card-text my-3">{{ item.description }}</p>
+											<pre class="card-text my-3 w-full text-pretty">{{ item.description }}</pre>
 											<a href="#" class="btn btn-primary block bg-green-500 w-fit px-2 py-1 rounded text-white"
 												>Buy now</a
 											>
@@ -287,95 +268,71 @@
 				},
 				number: 0,
 				productCardCode: ` // dir: ~/src/components/ProductCard.jsx
-import React from 'react';
-export default const ProductCard = ({productData})=>{
-	// sử dụng Boootstrap 5 để dựng UI.
-	return (
-		<div className="card col-12 col-md-4 col-lg-3" >
-			<img src={productData.image} className="card-img-top" alt={productData.name}>
-			<div className="card-body">
-				<h5 className="card-title">
-					{productData.name}
-				</h5>
-				<p className="card-text">
-					{productData.price}	đ
-				</p>
-				<p className="card-text">
-					{productData.description}	
-				</p>
-				<a href="#" className="btn btn-primary">Buy now</a>
+	import React from 'react';
+	export default const ProductCard = ({productData})=>{
+		// sử dụng Boootstrap 5 để dựng UI.
+		return (
+			<div className="card col-12 col-md-4 col-lg-3" >
+				<img src={productData.image} className="card-img-top" alt={productData.name}>
+				<div className="card-body">
+					<h5 className="card-title">
+						{productData.name}
+					</h5>
+					<p className="card-text">
+						{productData.price}	đ
+					</p>
+					<p className="card-text">
+						{productData.description}
+					</p>
+					<a href="#" className="btn btn-primary">Buy now</a>
+				</div>
 			</div>
-		</div>
-	)
-}`,
+		)
+	}`,
 				mappingProductCardCode: `import React,{ useState } from 'react';
-import ProductCard from './components/ProductCard'; // import component 'ProductCard' ở phần trước
-export default const ProductCard = ({productData})=>{
-	// sử dụng Boootstrap 5 để dựng UI.
-	const [listData, setListData] = useState([
-		// ... list data đã cho từ đầu.
-	])
+	import ProductCard from './components/ProductCard'; // import component 'ProductCard' ở phần trước
+	export default const ProductCard = ({productData})=>{
+		// sử dụng Boootstrap 5 để dựng UI.
+		const [listData, setListData] = useState([
+			// ... list data đã cho từ đầu.
+		])
 
-	return (
-		<div className="container" >
-			<div className="row" >
-					{
-						listData.map((product)=>{
-							return <ProductCard key={product.id} productData={product} />
-						})
-					}
+		return (
+			<div className="container" >
+				<div className="row" >
+						{
+							listData.map((product)=>{
+								return <ProductCard key={product.id} productData={product} />
+							})
+						}
+				</div>
 			</div>
-		</div>
-	)
-}`,
+		)
+	}`,
 				listData: [
 					{
 						id: 1,
-						name: 'Giày Trainer Dropset 2.0 Eartch',
+						name: 'Bàn ăn Bali gỗ MDF chất lượng cao',
 						price: 3500000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/b65a2dcc5e4140d09e3cbbaf9b886473_9366/gi%C3%A0y-trainer-dropset-2.0-earth.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvwn5gpb3ysb41',
+						description:
+							'✅ Sử dụng công nghệ sơn gốc nước thân thiện với môi trường và vô hại nhập khẩu để sơn mặt bàn. Nó có thể khô tới 10 năm và bề mặt trở nên mịn màng hơn khi chạm vào bằng tay.',
 					},
 					{
 						id: 2,
-						name: 'Giày Trainer Dropset 2',
+						name: 'Bàn trang điểm Bali kiểu dáng Bắc Âu',
 						price: 3500000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/f574a527a4b74c20ba62ffada1df754a_9366/gi%C3%A0y-trainer-dropset-2.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvppy59x7ywp8d',
+						description:
+							'✅ Chất liệu: Ván sợi mật độ trung bình (MDF) \n✅ Kích thước thùng carton: 108x46x15cm \n✅ Quy cách đóng gói: 14kg',
 					},
 					{
 						id: 3,
-						name: 'Giày Alphabounce+',
-						price: 2400000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/304999ba3dd4461a8da35694b05f2be2_9366/gi%C3%A0y-alphabounce_-sustainable-bounce.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
-					},
-					{
-						id: 4,
-						name: 'Giày Galaxy 6',
-						price: 1500000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/a5bc39ff24324facbd765c68a0a3c3e6_9366/gi%C3%A0y-galaxy-6.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
-					},
-					{
-						id: 5,
-						name: 'Giày GAZELLE',
-						price: 2500000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/8d3948863a41405eb408674f0eb2b247_9366/gazelle.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
-					},
-					{
-						id: 6,
-						name: 'Giày Ultraboost 1.0',
-						price: 4500000,
-						image:
-							'https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/462311ac22f9422cbf0e9fa443fabfa2_9366/gi%C3%A0y-ultraboost-1.0.jpg',
-						description: 'Đây là dataplaceholder của sản phẩm',
+						name: ' Bàn Chữ L Bàn Làm Việc Mặt Gỗ Mdf Chống Xước Khung Thép Chịu Lực',
+						price: 780000,
+						image: 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lvwknmcpydp5b3',
+						description:
+							'✅Bàn làm việc chữ L phù hợp với mọi không gian.\n✅Mặt bàn được làm từ chất liệu Melamine hoặc Laminate chống xước, chống cháy kết hợp công nghệ forming tiên tiến nên được bo tròn tạo nên những đường nét mềm mại.\n✅Chân bàn được làm bằng sắt phun sơn tĩnh điện hạn chế tối đa việc gỉ sét như các loại sắt sơn gia công thông thường, đảm bảo tính thẩm mỹ và cực kỳ bền bỉ',
 					},
 				],
 			};

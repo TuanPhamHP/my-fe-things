@@ -101,7 +101,15 @@ export default function Avatar() {
 						thì nó sẽ có tác dụng.
 					</li>
 				</ul>
-
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Thực hành nào:
+					<button
+						class="btn px-2 py-1 bg-green-400 rounded dark:bg-green-500"
+						@click="$router.push('/reactjs-basic/practice/ee_2')"
+					>
+						Click me
+					</button>
+				</p>
 				<!-- END -->
 				<DocNextPage :pagination="pagePagination" />
 			</div>

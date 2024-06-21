@@ -149,7 +149,11 @@ export default MyWords;
 					<br />
 					Ngoài ra còn có 1 số attributes đặc biệt phải nhớ (giống vụ động từ bất quy tắc trong tiếng Anh á) như:
 					<b>class -> className</b>, <b>for -> htmlFor</b>
+					<br />
+					<br />
+					Thực hành nào: <button class="btn px-2 py-1 bg-green-400 rounded dark:bg-green-500" @click="$router.push('/reactjs-basic/practice/ee_1')">Click me</button>
 				</p>
+				
 
 				<!-- END -->
 				<DocNextPage :pagination="pagePagination" />

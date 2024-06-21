@@ -43,11 +43,12 @@
 							pháp truyền thống trước khi React Hooks được giới thiệu trong phiên bản React 16.8.
 							<div class="py-1"></div>
 							<VCodeBlock
-								:code="`class Greeting extends React.Component {
+								:code="`class MyWords extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Hello, Anh em. Tui tên là MyWords - Một Class Component</h1>;
   }
 }
+export default MyWords;
 `"
 								highlightjs
 								lang="javascript"
@@ -65,11 +66,11 @@
 							<VCodeBlock
 								:code="`import React from 'react';
 
-function Greeting(props) {
-  return <h1>Hello, {props.name}</h1>;
+function MyWords() {
+  return <h1>Hello, Anh em. Tui tên là MyWords - Một Functional Component</h1>;
 }
 
-export default Greeting;
+export default MyWords;
 
 `"
 								highlightjs
@@ -105,7 +106,7 @@ export default Greeting;
 					:code="` // ~/src/components/MyWords.jsx
 import React from 'react';
 
-function MyWords(props) {
+function MyWords() {
 	// logic
 	console.log('Tui được tạo ra rồi nè!');
 	// view
@@ -156,7 +157,7 @@ export default MyWords;
 					:code="` // ~/src/components/MyWords.jsx
 import React from 'react';
 
-function MyWords(props) {
+function MyWords() {
 	// logic
 	console.log('Tui được tạo ra rồi nè!');
 	// view
@@ -165,7 +166,7 @@ function MyWords(props) {
 export default MyWords;
 
 // Component thứ 2
-export function AnotherWords(props) {
+export function AnotherWords() {
 	// logic
 
 	// view
@@ -188,7 +189,7 @@ export function AnotherWords(props) {
 import React from 'react';
 import MyWords from './components/MyWords.jsx';
 
-function MyWords(props) {
+function MyWords() {
 	
   return (
 		<>
@@ -237,7 +238,7 @@ export default MyWords;
 					:code="` // ~/src/components/MyWords.jsx
 import React from 'react';
 
-function MyWords(props) {
+function MyWords() {
 	
 // ❌ Lỗi do ở level cao nhất có nhiều hơn 1 phần tử
   return <div>div 1 nè</div>
@@ -255,7 +256,7 @@ export default MyWords;
 					:code="` //  ~/src/components/MyWords.jsx
 import React from 'react';
 
-function MyWords(props) {
+function MyWords() {
 // ✅ succes do ở level cao nhất chỉ có 1 phần tử
   return (<div>
 		<div>div 1 nè</div>
