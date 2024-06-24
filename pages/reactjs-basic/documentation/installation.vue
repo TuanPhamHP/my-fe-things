@@ -140,7 +140,7 @@
 									<p class="text-slate-900 dark:text-white mt-5 text-lg leading-8">
 										<b>NPX (Recommend):</b>
 									</p>
-									<FakeTerminalUI :textCoppy="'npx create-react-app my-app'">
+									<FakeTerminalUI :textCoppy="'npx create-vite hello-react --template react'">
 										<p>npx create-vite hello-react --template react</p>
 									</FakeTerminalUI>
 									<span class="text-slate-900 dark:text-white">
@@ -152,13 +152,13 @@
 										Sau đó bạn chỉ cần ngồi đợi project được init. <br />
 										Khi trình khởi tạo hoàn tất, bạn có thể mở project vừa tạo bằng cách gõ:
 									</p>
-									<FakeTerminalUI :textCoppy="'cd my-app'">
+									<FakeTerminalUI :textCoppy="'cd hello-react'">
 										<p>cd hello-react</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 xl:text-2xl underline leading-8">
 										<b>B2: Cài các modules</b>
 									</p>
-									<FakeTerminalUI :textCoppy="'cd my-app'">
+									<FakeTerminalUI :textCoppy="'npm i'">
 										<p>npm i</p>
 									</FakeTerminalUI>
 									<p class="text-slate-900 dark:text-white mt-5 leading-8 text-lg">

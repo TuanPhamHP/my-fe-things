@@ -99,7 +99,7 @@ img {
 .punch-page-wrapper {
 	height: calc(100vh - 68px - 24px - 24px);
 	overflow-y: scroll;
-	scroll-behavior: smooth;
+	scroll-behavior: smooth !important;
 	scroll-padding-top: 40px;
 	&::-webkit-scrollbar {
 		width: 12px;

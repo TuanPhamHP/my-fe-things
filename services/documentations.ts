@@ -456,6 +456,26 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['php'],
 	},
+	{
+		id: 'php-2',
+		vneseName: 'PHP overview',
+		eng: 'Installation',
+		description: 'Tổng quát về PHP, một vài điểm khác biệt giữa version 7.x và 8.x.',
+		link: '/php/documentation/php-overview',
+		previewImage: 'parallax-2.jpeg',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
+		id: 'php-3',
+		vneseName: 'PHP Basics & Syntax',
+		eng: 'Installation',
+		description: 'Tổng quát về PHP, một vài điểm khác biệt giữa version 7.x và 8.x.',
+		link: '/php/documentation/php-basic-and-syntax',
+		previewImage: 'parallax-3.jpeg',
+		status_id: 1,
+		apps: ['php'],
+	},
 ];
 class PaginationDefault {
 	constructor(

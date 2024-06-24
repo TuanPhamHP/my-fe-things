@@ -21,11 +21,23 @@
 		mounted() {
 			setTimeout(() => {
 				this.setMarkBook();
+				this.scrollToTarget();
 			}, 500);
 		},
 		methods: {
+			scrollToTarget() {
+				const { hash } = this.$route;
+				if (hash) {
+					try {
+						const a = document.createElement('a');
+						a.href = hash;
+						a.click();
+						a.remove();
+					} catch (error) {}
+				}
+			},
 			setMarkBook() {
-				const listHeading = [...document.querySelectorAll('.page-heading-lv1, .page-heading-lv2')];
+				const listHeading = Array.from(document.querySelectorAll('.page-heading-lv1, .page-heading-lv2'));
 				this.listMarkBook = listHeading.map((o: Element) => {
 					return {
 						name: o.textContent || '',
