@@ -151,6 +151,19 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['html-basic'],
 	},
+
+	// PHP
+	{
+		id: 'php-1',
+		vneseName: 'PHP array',
+		eng: 'html header, header example',
+		description: 'Bài tập về array trong PHP',
+		link: '/php/practice/e_1',
+		previewImage: 'parallax-1.jpeg',
+		status_id: 1,
+		category: [],
+		apps: ['php'],
+	},
 ];
 
 class PaginationDefault {

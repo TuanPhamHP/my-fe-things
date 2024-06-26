@@ -1,6 +1,6 @@
 <template>
 	<span
-		:class="`inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900 ${containeClass}`"
+		:class="`inline-block whitespace-nowrap px-1 mt-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900 ${containeClass}`"
 	>
 		<slot></slot>
 	</span>
