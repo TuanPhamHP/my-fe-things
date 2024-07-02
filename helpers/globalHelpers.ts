@@ -56,6 +56,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('nextjs-basic')) {
 		return 'nextjs-basic';
 	}
+	if (currentPathName.includes('php')) {
+		return 'php';
+	}
 	return null;
 };
 

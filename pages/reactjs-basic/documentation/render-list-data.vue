@@ -198,7 +198,7 @@
 					<b>`key={product.id}`</b>, do đây là một danh sách components được render ra từ 1 mảng, React sẽ không thể
 					phân biệt các component với nhau, do đó sẽ ảnh hưởng đến việc re-render. React cung cấp cho ta một thuộc tính
 					đặc biệt là <b>`key`</b> được dùng như một biến để định danh component, từ đó giúp React có thể phân biệt
-					chúng với nhau trên Virtual DOM và xử lí các tác vụ một cách chính xác.
+					chúng với nhau trên Virtual DOM và xử lý các tác vụ một cách chính xác.
 					<br />
 					<br />
 					<b

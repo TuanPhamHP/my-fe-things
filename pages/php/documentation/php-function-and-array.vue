@@ -192,7 +192,7 @@ foreach ($contacts as $contact) {
 					</table>
 				</div>
 				<p class="text-slate-900 dark:text-white leading-8">
-					Lí thuyết đủ rồi, làm
+					Lý thuyết đủ rồi, làm
 					<a
 						href="/php/practice/e_1"
 						target="_blank"

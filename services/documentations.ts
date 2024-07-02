@@ -546,16 +546,26 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['php'],
 	},
-	// {
-	// 	id: 'php-11',
-	// 	vneseName: 'PHP Class - Object',
-	// 	eng: 'Installation',
-	// 	description: 'Class - Object trong PHP.',
-	// 	link: '/php/documentation/php-statements-loop-n-jump',
-	// 	previewImage: 'parallax-9.jpg',
-	// 	status_id: 1,
-	// 	apps: ['php'],
-	// },
+	{
+		id: 'php-11',
+		vneseName: 'PHP Class - Object',
+		eng: 'Installation',
+		description: 'Class - Object trong PHP.',
+		link: '/php/documentation/php-object-n-class',
+		previewImage: 'parallax-11.jpg',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
+		id: 'php-12',
+		vneseName: 'PHP Form handling',
+		eng: 'Installation',
+		description: 'Xử lý form data trong PHP.',
+		link: '/php/documentation/php-form-handling',
+		previewImage: 'parallax-12.jpg',
+		status_id: 1,
+		apps: ['php'],
+	},
 ];
 class PaginationDefault {
 	constructor(

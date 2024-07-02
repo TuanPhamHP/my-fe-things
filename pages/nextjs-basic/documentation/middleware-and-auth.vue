@@ -31,8 +31,8 @@
 					<br />
 					<br />
 					Mặc dù được ứng dụng rất rộng rãi nhưng chúng ta cần phải hiểu rõ ràng rằng middleware chỉ là một đoạn logic
-					nhỏ, chúng không nên xử lí các công việc nặng như data-fetching hoặc data-manipulation (Nên để Route-handlers
-					hoặc ssr xử lý), hay những công việc mang tính chuyên biệt cao.
+					nhỏ, chúng không nên xử lý các công việc nặng như data-fetching hoặc data-manipulation (Nên để Route-handlers
+					hoặc ssr xử lý ), hay những công việc mang tính chuyên biệt cao.
 				</p>
 				<PageHeading text="Khởi tạo middleware" addOnClass="text-left mt-5" markedAs="init-middleware" />
 				<p class="text-slate-900 dark:text-white mt-5">

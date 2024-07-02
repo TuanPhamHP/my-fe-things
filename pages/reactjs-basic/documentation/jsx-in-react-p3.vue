@@ -22,7 +22,7 @@
 import React from 'react';
 
 export default function Avatar() {
-	// b1: định nghĩa hàm xử lý
+	// b1: định nghĩa hàm xử lý 
 	const clickHandler = ()=>{
 		alert('Yay, you just clicked the Avatar component')
 	}
@@ -56,7 +56,7 @@ export default function Avatar() {
 						Thường được định nghĩa trực tiếp tại component.
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						Tên bắt đầu bằng từ <b>handle</b> vào tiếp sau là tên của event mà ta muốn xử lý. VD: handleClick,
+						Tên bắt đầu bằng từ <b>handle</b> vào tiếp sau là tên của event mà ta muốn xử lý . VD: handleClick,
 						handleSubmit ...
 					</li>
 				</ul>
@@ -91,7 +91,7 @@ export default function Avatar() {
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>Lưu ý:</b> khi truyền event-handler vào JSX, các bạn cần phải đảm bảo việc các bạn truyền vào một define,
-					không phải excuted-function. Lí do: JSX sẽ luôn thực thi các đoạn code JS nằm trong <b>`{{ `{ }` }}`</b>
+					không phải excuted-function. Lý do: JSX sẽ luôn thực thi các đoạn code JS nằm trong <b>`{{ `{ }` }}`</b>
 					trước khi render.
 					<br />
 					<br />

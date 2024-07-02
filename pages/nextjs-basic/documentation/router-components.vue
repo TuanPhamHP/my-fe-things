@@ -63,7 +63,7 @@
 					file-system based router .
 					<br />
 					<br />
-					Components này thường được sử dụng để xử lí các lỗi liên quan đến Route như: HTTP status, unexpected runtime .
+					Components này thường được sử dụng để xử lý các lỗi liên quan đến Route như: HTTP status, unexpected runtime .
 					Dưới đây là một số ưu điểm chính của nó:
 				</p>
 				<ul class="pl-5">
@@ -85,7 +85,7 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
 						<div>
 							<span
-								>- Tách biệt việc xử lí lỗi của segment trong khi không ảnh hưởng đến các components khác trong app =>
+								>- Tách biệt việc xử lý lỗi của segment trong khi không ảnh hưởng đến các components khác trong app =>
 								tránh crash
 							</span>
 						</div>

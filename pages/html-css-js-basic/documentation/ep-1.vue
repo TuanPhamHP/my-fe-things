@@ -127,7 +127,7 @@
 				</div>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Mặc dù cùng để hiển thị text, nhưng thẻ <b>`p`</b> và <b>`span`</b> có 2 kiểu hiển thị khác nhau. <br>
-					Lí do bởi vì thẻ <b>`p`</b> được coi là dạng thẻ <b>block</b> <br>
+					Lý do bởi vì thẻ <b>`p`</b> được coi là dạng thẻ <b>block</b> <br>
 					còn thẻ <b>`span`</b> là dạng thẻ <b>inline</b>
 				</p>
 				
@@ -204,7 +204,7 @@
 				</div>
 </div>
 				<p class="text-slate-900 italic dark:text-white my-5 leading-8 text-lg">
-					Note: Còn rất nhiều thẻ khác nhưng tôi tạm thời chỉ viết tới đây, lí do thì đương nhiên là lười rồi. Các bạn
+					Note: Còn rất nhiều thẻ khác nhưng tôi tạm thời chỉ viết tới đây, lý do thì đương nhiên là lười rồi. Các bạn
 					có thể đọc thêm về các thẻ khác tại
 					<a
 						href="https://www.w3schools.com/html/html_paragraphs.asp"

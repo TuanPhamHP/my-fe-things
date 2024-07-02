@@ -61,7 +61,7 @@
 										href="#"
 										class="flex items-center p-2 rounded-0 text-slate-900 hover:bg-gray-100 hover:border-b border-solid group"
 									>
-										<span>Trợ giúp về quản lý</span>
+										<span>Trợ giúp về quản lý </span>
 									</a>
 									<a
 										href="#"

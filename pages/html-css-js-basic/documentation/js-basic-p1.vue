@@ -78,7 +78,7 @@
 				</div>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Ngoài ra còn các bài toán như: <b>Chuyển đổi, Trích xuất, Tìm kiếm, Thay thế và Phân chia ...</b> Hầu hết các
-					bài toán này đều có thể xử lí đơn giản bằng các <b>method</b> được cung cấp sẵn bởi js. Nhưng ở những buổi đầu
+					bài toán này đều có thể xử lý đơn giản bằng các <b>method</b> được cung cấp sẵn bởi js. Nhưng ở những buổi đầu
 					chúng ta sẽ không học tới chúng, tôi sẽ để dành đến sau khi các bạn hiểu rõ <b>function, methods ...</b> trong
 					js thì ta sẽ quay lại sau.
 				</p>

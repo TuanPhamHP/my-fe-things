@@ -30,7 +30,7 @@
 				</p>
 				<VCodeBlock :code="b4" highlightjs lang="tsx" theme="tomorrow-night-bright" />
 				<p class="text-slate-900 dark:text-white my-5">
-					Lưu ý: <FilePath>withAuth.tsx</FilePath> sử dụng <b>`useEffect()`</b> để check logic auth và xử lý, do đó khi
+					Lưu ý: <FilePath>withAuth.tsx</FilePath> sử dụng <b>`useEffect()`</b> để check logic auth và xử lý , do đó khi
 					ta muốn sử dụng <FilePath>withAuth.tsx</FilePath> để kiểm tra một component thì phải chuyển component đó thành
 					'client-side'.
 				</p>

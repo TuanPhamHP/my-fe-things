@@ -58,8 +58,8 @@ export default ExampleComponent;`"
 					<em
 						>Note: Nên ưu tiên tạo file <b>`styles.css `</b> tại thư mục
 						<label for="" class="px-2 py-0.5 rounded bg-gray-200 dark:bg-gray-500">assets/styles</label> hoặc cùng cấp
-						với component để dễ quản lý</em
-					>
+						với component để dễ quản lý
+					</em>
 				</p>
 
 				<TabGroup>
@@ -139,8 +139,8 @@ export default MyComponent;
 					<em
 						>Note: Nên ưu tiên tạo file <b>`styles.module.css `</b> tại thư mục
 						<label for="" class="px-2 py-0.5 rounded bg-gray-200 dark:bg-gray-500">assets/styles</label> hoặc cùng cấp
-						với component để dễ quản lý</em
-					>
+						với component để dễ quản lý
+					</em>
 				</p>
 
 				<TabGroup>

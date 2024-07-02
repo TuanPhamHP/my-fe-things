@@ -116,7 +116,7 @@
 						cột ...). Tôi sẽ giải thích rõ hơn ở phần <b>cols</b> tiếp theo
 						<br />
 						<br />
-						Ở ví dụ vừa rồi thì <b>phần tử thứ 03</b> sẽ tạo thành dòng mới, lí do bởi vì tôi sẽ chia
+						Ở ví dụ vừa rồi thì <b>phần tử thứ 03</b> sẽ tạo thành dòng mới, lý do bởi vì tôi sẽ chia
 						<br />
 						<b>một hàng thành 12 cột,</b>
 						<br />

@@ -264,6 +264,28 @@
 					tooltip: 'Thực hành',
 					showByApp: ['nextjs-basic'],
 				},
+				// PHP
+				{
+					title: 'Tài liệu',
+					path: '/php/documentation',
+					pathNameMatch: ['php', 'php-documentation', 'php-documentation-installation', 'php-documentation-routers'],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['php'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/php/practice',
+					pathNameMatch: ['php', 'php-practice'],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['php'],
+				},
+
 				// {
 				// 	title: 'Quản lý ĐTVC',
 				// 	path: '/forwarders',

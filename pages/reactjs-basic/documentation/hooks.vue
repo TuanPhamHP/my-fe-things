@@ -159,7 +159,7 @@ export default ExampleComponent;
 					theme="tomorrow-night-bright"
 				/>
 				<p class="text-slate-900 italic dark:text-white my-5 leading-8 text-lg">
-					Note: Còn rất nhiều hooks khác nhưng tôi tạm thời chỉ viết tới đây, lí do thì đương nhiên là lười rồi. Các bạn
+					Note: Còn rất nhiều hooks khác nhưng tôi tạm thời chỉ viết tới đây, lý do thì đương nhiên là lười rồi. Các bạn
 					có thể đọc thêm về hooks tại
 					<a
 						href="https://react.dev/reference/react/hooks"

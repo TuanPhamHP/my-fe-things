@@ -18,7 +18,7 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
 						<b>`logic`:</b>
 						<span>
-							Là thành phần được dùng để xử lí các thao tác liên quan đến dữ liệu, định nghĩa các actions hay tạo ra các
+							Là thành phần được dùng để xử lý các thao tác liên quan đến dữ liệu, định nghĩa các actions hay tạo ra các
 							condition để sử dụng tại view
 						</span>
 					</li>

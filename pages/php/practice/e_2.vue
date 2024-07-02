@@ -1,36 +1,36 @@
 <template>
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
-			<PageHeading text="Bài tập PHP" addOnClass="text-left" markedAs="env" />
+			<PageHeading text="Bài tập PHP - Class & Object" addOnClass="text-left" markedAs="env" />
 		</div>
 		<div class="py-2 mb-5">
 			<div class="h-[1px] dark:bg-white bg-slate-900"></div>
 		</div>
 		<PageHeading text="Đề bài" addOnClass="text-left" markedAs="env" />
-		<p className="text-slate-900 dark:text-white mt-5">Cho danh sách học sinh sau:</p>
+		<p className="text-slate-900 dark:text-white mt-5">
+			Tạo 2 Lớp: Tạo hai lớp <b>`Person`</b> và <b>`Employee`</b>. Lớp <b>`Employee`</b> kế thừa từ lớp <b>`Person`</b>.
+		</p>
 		<div class="py-2"></div>
-
-		<div class="rounded-xl overflow-hidden">
-			<VCodeBlock :code="b1" highlightjs lang="php" theme="tomorrow-night-bright" />
+		<p className="text-slate-900 dark:text-white mt-5">Yêu cầu:</p>
+		<p className="text-slate-900 dark:text-white mt-2 pl-5">
+			1 - Lớp <b>`Person`</b> có các properties để lưu trữ thông tin về tên, tuổi, giới tính.
+		</p>
+		<p className="text-slate-900 dark:text-white mt-2 pl-5">2 - Lớp <b>`Employee`</b> có thêm property tiền lương.</p>
+		<div className="text-slate-900 dark:text-white mt-2 pl-5">
+			3 - Tạo các methods trong lớp Employee để:
+			<br />
+			<p class="px-5 pt-3">
+				a) Hiển thị thông tin nhân viên bao gồm cả thông tin cá nhân và mức lương.
+				<br />EG: $exampleEmployee->getInfo(); <br />
+				=> `- Họ tên: Nguyễn Văn A - Giới tính: Nam - Tuổi: 25 - Lương: 1000000 VNĐ`
+			</p>
+			<p class="px-5 pt-3">
+				b) Update tên nhân viên.
+				<br />EG: $exampleEmployee->updateName('Trần Văn C'); <br />
+				=> `- Họ tên: Trần Văn C - Giới tính: Nam - Tuổi: 25 - Lương: 1000000 VNĐ`
+			</p>
 		</div>
-		<div class="py-2"></div>
-		<p className="text-slate-900 dark:text-white mt-5">Từ mảng trên, sử dụng các methods về array đã học để:</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			1 - Tính điểm trung bình của các bạn và lưu vào biến <b>`$avgScore`</b>
-		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			2 - Lọc ra danh sách các học sinh có điểm cao hơn <b>`$avgScore`</b> và lưu vào mảng
-			<b>`$topHigherScores`</b>
-		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			3 - Viết hàm <b>`$isHigher( $student )`</b> với $student là tham số đầu vào, khi gọi đến hàm này và truyền một bản
-			ghi học sinh bất kì thì sẽ in ra màn hình <br />
-			'$student_name có điểm cao hơn trung bình' hoặc '$student_name có điểm thấp hơn trung bình'.
-		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			4 - In ra danh sách các học sinh trên thành các thẻ HTML, mỗi học sinh là một thẻ <b>div</b>
-			trong đó có chứa thông tin: Tên, Tuổi, Giới tính, Số điểm.
-		</p>
+		<p className="text-slate-900 dark:text-white mt-2 pl-5">Note: Các bạn tự đặt tên của các methods, properties.</p>
 		<DocNextPage :pagination="pagePagination" />
 	</div>
 </template>
@@ -71,12 +71,12 @@
 				counter: 0,
 				pagePagination: {
 					next: {
-						title: 'Bài 2',
-						link: '/php/practice/e_2',
+						title: 'Bài 3',
+						link: '/php/practice/e_3',
 					},
 					prev: {
-						title: 'Danh sách',
-						link: '/php/practice',
+						title: 'Bài 1',
+						link: '/php/practice/e_1',
 					},
 				},
 				b1: `$models = [

@@ -95,7 +95,7 @@ async function getData() {
     throw new Error('Failed to fetch data')
   }
  
-  // Xử lí khi nhận được data từ api
+  // Xử lý khi nhận được data từ api
   return res.json()
 }
  

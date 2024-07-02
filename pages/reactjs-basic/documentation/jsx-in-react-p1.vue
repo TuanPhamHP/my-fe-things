@@ -20,7 +20,7 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Khi viết JSX, bạn chỉ được phép return một và duy nhất một <b>root element</b> - tức element có cấp cao nhất.
 					Vậy chuyện gì xảy ra nếu bạn return ra nhiều hơn 1 <b>root element</b>? Lỗi chứ gì nữa mà nghĩ. Vậy làm sao để
-					xử lí cái tình huống này? <br />
+					xử lý cái tình huống này? <br />
 					<b>=> Tạo ra 1 thằng root mới, bao lấy 2 thằng kia.</b>
 					<br />
 					<br />
@@ -144,7 +144,7 @@ export default MyWords;
 				<PageHeading text="3. camelCase most of things!!!" addOnClass="text-left mt-5" markedAs="jsx-rules-02" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Do JSX turn to JS và các attributes được viết trong JSX cũng sẽ được object hoá vào JS nên hầu hết các
-					attributes của JSX sẽ được viết dưới dạng camelCase thay vì dashed. Lí do? Vì JS không biết đọc dashed á =]]]
+					attributes của JSX sẽ được viết dưới dạng camelCase thay vì dashed. Lý do? Vì JS không biết đọc dashed á =]]]
 					<br />
 					<br />
 					Ngoài ra còn có 1 số attributes đặc biệt phải nhớ (giống vụ động từ bất quy tắc trong tiếng Anh á) như:

@@ -499,7 +499,7 @@
 				
 				<PageHeading text="Additional " addOnClass="text-left" markedAs="form-additional" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Sử dụng thẻ <b>label</b> để viết title cho một ô nhập liệu,
-					Chúng ta nên ưu tiên việc sử dụng thẻ <b>`{{ `<label></label>` }}`</b> để viết title cho một thẻ, lí do bởi vì
+					Chúng ta nên ưu tiên việc sử dụng thẻ <b>`{{ `<label></label>` }}`</b> để viết title cho một thẻ, lý do bởi vì
 					với thẻ <b>`{{ `<label></label>` }}`</b> ta có thẻ sử dụng attribute <b>`for="#inputId"`</b> để liên kết một <b>`label`</b>
 					với một thẻ input khác. Từ đó ta có thể focus/check một input thông qua việc click vào <b>`label`</b> được liên kết.
 				</p>

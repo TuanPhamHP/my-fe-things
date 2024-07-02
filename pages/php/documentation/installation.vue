@@ -111,9 +111,9 @@
 							thao tác này.
 						</div>
 						<div class="text-slate-900 dark:text-white mt-0 leading-8">
-							<b>Cấu hình và quản lý</b>: <FilePath>Web server</FilePath> cung cấp các tính năng như cấu hình linh hoạt,
-							bảo mật, quản lý các phiên và các vấn đề liên quan đến việc chạy một máy chủ web trong môi trường sản phẩm
-							hoặc phát triển.
+							<b>Cấu hình và quản lý </b>: <FilePath>Web server</FilePath> cung cấp các tính năng như cấu hình linh
+							hoạt, bảo mật, quản lý các phiên và các vấn đề liên quan đến việc chạy một máy chủ web trong môi trường
+							sản phẩm hoặc phát triển.
 						</div>
 						<div class="text-slate-900 dark:text-white mt-0 leading-8">
 							<b>Environments</b>: <FilePath>Web server</FilePath> sẽ giả lập các môi trường giống như trên product, từ
