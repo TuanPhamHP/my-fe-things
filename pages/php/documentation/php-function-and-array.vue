@@ -43,7 +43,7 @@
 }
 
 sayHello(); // Output: Hello, World!
-}`"
+`"
 					highlightjs
 					lang="php"
 					theme="tomorrow-night-bright"

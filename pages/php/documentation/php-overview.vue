@@ -90,7 +90,7 @@ greet('Alice', 'How are you?'); // Output: Hello, Alice! How are you?
 						<VCodeBlock
 							:code="` // version 8.0 trở đi
 // Gọi hàm greet mà không cần theo thứ tự tham số, chỉ cần truyền đúng named params
-echo 'Hello,'.$name.'! '.$message; // Output: Hello, Alice! How are you?
+greet(message:'How are you?',name:'Alice'); // Output: Hello, Alice! How are you?
 `"
 							highlightjs
 							lang="php"
