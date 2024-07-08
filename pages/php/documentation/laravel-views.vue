@@ -230,6 +230,66 @@
 					Bây giờ, chúng ta có thể sử dụng Blade Component x-button trong bất kỳ view nào trong view như sau.
 				</p>
 				<VCodeBlock :code="b7" highlightjs lang="php" theme="vs2015" />
+				<p class="text-slate-900 dark:text-white my-5">
+					Ở trên là một ví dụ về cách tạo component cực kì đơn giản, chúng ta cần lưu ý rằng trong thực tế thì có nhiều
+					cách khác để tạo một component với blade, và tuỳ theo bài toán cần xử lí mà chúng ta sẽ có những cách tạo
+					component phù hợp riêng.
+				</p>
+				<PageHeading text="Layouts" addOnClass="text-left mt-3" markedAs="laravel-layout" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-2 mb-5">
+					Layout sẽ giúp chúng ta tăng tính tái sử dụng của các components, đồng thời nó cũng giúp tăng tính quản lí và
+					đơn giản hoá việc bảo trì dự án.
+					<br />
+					Để tạo một layout cho Blade view, bạn có thể tạo một file layout chung và sử dụng nó cho các view khác như
+					sau:
+					<br />
+					<br />
+					<b>Bước 1: Tạo layout</b>
+					<br />
+					Tạo thư mục <b>`resources/views/layouts`</b> và file <b>`app.blade.php`</b> trong đó:
+				</p>
+				<VCodeBlock :code="b8" highlightjs lang="html" theme="vs2015" />
+				<p class="text-slate-900 dark:text-white mt-2 mb-5">
+					Lưu ý rằng, ở phần bài tập này chúng ta sử dụng Bootstrap 5 để dựng giao diện. Như vậy, chúng ta đã tạo được
+					một layout, với layout vừa tạo ta sẽ tái sử dụng được phần <b>navbar, footer</b> đồng thời toàn bộ content sẽ
+					được inject vào <b>`@yield('content')`</b>.
+					<br />
+					<br />
+					<b>Bước 2: Sử dụng layout trong Blade view</b>
+				</p>
+				<VCodeBlock :code="b9" highlightjs lang="html" theme="vs2015" />
+				<p class="text-slate-900 dark:text-white mt-2 mb-5">
+					<b>Bước 3: Khai báo route & action</b>
+					<br />
+					<br />
+					Tiếp theo, chúng ta cần định nghĩa route và gán cho view ta vừa tạo. Ở đây mình dùng route
+					<b>`/app/todo`</b>
+				</p>
+				<VCodeBlock
+					:code="`Route::get('/app/todo', function (){
+    return view('todo-app');
+});`"
+					highlightjs
+					lang="php"
+					theme="vs2015"
+				/>
+				<p class="text-slate-900 dark:text-white mt-2 mb-5">
+					Done!!! Đúng ra chúng ta sẽ phải làm đầy đủ các bước là: Tạo Controller, tạo method xử lý và ở phần Route sẽ
+					gán các route & action tương ứng, nhưng do bài viết đã khá dài và action của chúng ta cũng khá ngắn nên tôi
+					tạm dừng ở phần này.
+				</p>
+				<p class="text-slate-900 dark:text-white leading-8">
+					Lý thuyết đủ rồi, làm
+					<a
+						href="/php/practice/e_4"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"
+					>
+						bài tập
+					</a>
+					nào.
+				</p>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -335,6 +395,88 @@ Route::get('/homepage', [HomepageController::class, 'index']);
 <x-button type="danger" :disabled="true">
     Delete Item
 </x-button>
+`,
+				b8: `<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Todo App')</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <div class="collapse navbar-collapse container">
+    <a class="navbar-brand" href="#">Todo App</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/app/todo">Todo</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    @yield('content')
+</div>
+
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+        <span class="text-muted">&copy; 2024 Todo App by Phạm Anh Tuấn</span>
+    </div>
+</footer>
+</body>
+`,
+				b9: `@extends('layouts.app')
+
+@section('title', 'Todo List')
+
+@section('content')
+    <div class="container">
+        <h1 class="my-4">Todo List</h1>
+
+        <!-- Danh sách to-do -->
+        <table class="table mt-4">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Completed</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @if(!empty($todos))
+            @foreach($todos as $todo)
+                <tr>
+                    <td>{{ $todo->title }}</td>
+                    <td>{{ $todo->description }}</td>
+                    <td>{{ $todo->completed ? 'Yes' : 'No' }}</td>
+                    <td>
+                        <!-- Form sửa to-do -->
+                        <form action="{{ route('todos.update', $todo->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <input type="text" name="title" value="{{ $todo->title }}" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="description" class="form-control">{{ $todo->description }}</textarea>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" name="completed" class="form-check-input" {{ $todo->completed ? 'checked' : '' }}>
+                                <label class="form-check-label">Completed</label>
+                            </div>
+                            <button type="submit" class="btn btn-warning">Update</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+                @endif
+            </tbody>
+        </table>
+    </div>
+@endsection
 `,
 				controllerReturns: [
 					{

@@ -186,6 +186,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['php'],
 	},
+	{
+		id: 'php-4',
+		vneseName: 'PHP Blade View - P1',
+		eng: 'html header, header example',
+		description: 'Bài tập về xử lý view trong PHP',
+		link: '/php/practice/e_4',
+		previewImage: 'parallax-4.jpg',
+		status_id: 1,
+		category: [],
+		apps: ['php'],
+	},
 ];
 
 class PaginationDefault {
