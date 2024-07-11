@@ -18,91 +18,15 @@
 					:code="` // ~src/index.js
 // ...
 import App from './App.js'
-import { createBrowserRouter, createRoutesFromElements, Route, Routes, RouterProvider } from 'react-router-dom';
-
-const listRoutes = createBrowserRouter([
-	{
-		path: '/',
-		element: <App />,
-	},
-]
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-	<React.StrictMode>
-		<RouterProvider router={listRoutes} />
-	</React.StrictMode>
-);
-`"
-					highlightjs
-					lang="javascript"
-					theme="tomorrow-night-bright"
-				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					Trước hết, chúng ta sẽ tạo một biến <b>listRoutes</b> là mảng mà mỗi item trong này 
-					là một object đại diện cho một route cơ bản gồm ít nhất 2 phần là <b>`path`</b> và <b>`Component`.</b>
-					<br>
-					Tiếp theo chúng ta sử dụng Built-in component <b>`{{ `<RouterProvider>` }}`</b> và truyền vào props <b>router</b> với giá trị chính là 
-					mảng <b>listRoutes</b> ta vừa tạo. Component này sẽ tiến hành map các <b>path</b> và <b>Component</b> tương ứng trong từng item của <b>listRoutes</b>.
-					<br>
-					<br>
-					Về cơ bản, chúng ta đã hoàn thành việc tạo và map các path. Để tạo thêm các route 
-					thì bạn chỉ việc update thêm item vào mảng <b>listRoutes</b> với cấu trúc
-					tương tự là được.
-					<br>
-					<br>
-					Nhưng ngoài ra ta có thể tách riêng việc khai báo <b>listRoutes</b> thành một file riêng biệt để 
-					tăng tính tổ chức cho project và cũng làm file <b>`index.js`</b> của chúng ta "sạch" hơn
-				</p>
-
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
-					B2.2: Tách riêng phần khai báo `listRoutes`
-				</p>
-				<VCodeBlock
-					:code="` // ~src/routes.js
-import { createBrowserRouter, createRoutesFromElements, Route, Routes, RouterProvider } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AboutUs from './pages/AboutUs';
-
-const listRoutes = createBrowserRouter([
-	{
-		path: '/',
-		element: <HomePage />,
-	},
-	{
-		path: '/about-us',
-		element: <AboutUs />,
-		children: [
-			{
-				path: 'ppg/:id',
-				element: <HomePage />,
-			},
-		],
-	},
-]);
-
-export default listRoutes;
-`"
-					highlightjs
-					lang="javascript"
-					theme="tomorrow-night-bright"
-				/>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					Như vậy, chúng ta vừa khai báo cho <b>`listRoutes`</b> và export mảng này để tái sử dụng.
-				</p>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
-					B2.3: Import `listRoutes` và truyền vào cho `{{ `<RouterProvider>` }}`
-				</p>
-				<VCodeBlock
-					:code="` // ~src/index.js
-// ...
-import App from './App.js'
-import { createBrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import listRoutes from './listRoutes'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<RouterProvider router={listRoutes} />
+		<BrowserRouter>
+			<App />	
+		</BrowserRouter>
 	</React.StrictMode>
 );
 `"
@@ -111,7 +35,77 @@ root.render(
 					theme="tomorrow-night-bright"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-				Trông 'sạch' hơn hẳn rồi nhỉ, ở bài này chúng ta đã hoàn thành việc setup router cho app của chúng ta.
+					Chúng ta dùng  <b>`BrowserRouter `</b> của <b>`react-router-dom`</b> để quản lý điều hướng trong project của chúng ta.
+					<br>
+				 <b>`{{ `<BrowserRouter >` }}`</b> cung cấp một container cho các child component của nó, trong trường hợp này thì chính là 
+				 <b>{{ `<App />` }}</b>.
+
+				</p>
+			
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
+					B2: Tạo ra các Path và Page Component tương ứng
+				</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+				Ở bước này, chúng ta sẽ tiến hành tạo ra các <b>`path`</b> và gán nó với <b>`component`</b> tương ứng 
+				để đảm bảo UI được render chính xác.
+				</p>
+				<VCodeBlock
+					:code="` // ~src/app.jsx
+import {Link, Route, Routes} from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutUs from './pages/AboutUs';
+
+function App() {
+  return (
+	<div>
+		<nav>
+			<ul>
+				<li> <Link to='/'>Home</Link> </li>
+				<li> <Link to='/about-us'>About Us</Link> </li>
+			</ul>
+		</nav>
+		<Routes>
+			<Route path='/' element={<HomePage />}></Route>	
+			<Route path='/about-us' element={<AboutUs />}></Route>
+		</Routes>
+	</div>
+	)
+}
+
+export default App;
+`"
+					highlightjs
+					lang="javascript"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+				Ở đây chúng ta dùng <b>`Routes, Route`</b> là các component được cung cấp bởi <b>`react-router-dom`</b>
+				để tạo ra các path và liên kết chúng với các component tương ứng:
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b>`Routes`:</b>
+						<span>
+							là một container component dùng để bao bọc một tập hợp các Route. Nó sẽ tìm và render thành phần Route đầu tiên mà khớp với đường dẫn hiện tại.
+						</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b>`Route`:</b>
+						<span>
+							định nghĩa mối quan hệ giữa một đường dẫn (URL path) và một component cần render khi đường dẫn đó được truy cập.
+							<b>Path</b> được khai báo qua props <b>path</b>, component được khai báo qua props <b>element</b>
+						</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b>`Link`:</b>
+						<span>
+							giúp điều hướng url mà không cần reload lại trang như thẻ <b>{{ `<a></a>` }}</b>
+						</span>
+					</li>
+				</ul>
+				
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+				Ngoài ra, chúng ta có thể xử lý các lỗi tìm kiếm trang như 404, 403, 405 ... thông qua middleware.
 				<br>
 				<br>
 				Tới bài sau, chúng ta sẽ tìm hiểu về <b>Auth, fallback ...</b> cho route.

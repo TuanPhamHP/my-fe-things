@@ -14,6 +14,7 @@
 					Component được khởi tạo như những khối độc lập, có thể tái sử dụng. Trong React, mỗi component được tạo lên từ
 					2 thành phần là <b>logic</b> và <b>view</b>. Trong đó:
 				</p>
+
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
 						<b>`logic`:</b>
