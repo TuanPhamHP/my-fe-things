@@ -8,6 +8,7 @@ import {
 	SimpleType,
 	NormalUser,
 	CustomFileRespone,
+	YoutubeLink,
 } from '../models/index';
 import { VeihicleData } from '../models/Order';
 import { Customer } from 'models/Customer';
@@ -104,6 +105,29 @@ export const useInternalStore = defineStore('internal', {
 		listWard: [] as Ward[],
 		listImagePreview: [] as CustomFileRespone[],
 		selectedImgIndex: 0 as number,
+		listYouTubeLink: [
+			{
+				url: 'https://youtu.be/XHQ15MuYWFY',
+				name: 'forEach()',
+				parrentNode: 'array',
+				programLang: 'js',
+				lang: 'vi',
+			},
+			{
+				url: 'https://youtu.be/noMBZLEBt0I',
+				name: 'map()',
+				parrentNode: 'array',
+				programLang: 'js',
+				lang: 'vi',
+			},
+			{
+				url: 'https://youtu.be/DbXZq8-w4ts',
+				name: 'filter()',
+				parrentNode: 'array',
+				programLang: 'js',
+				lang: 'vi',
+			},
+		] as YoutubeLink[],
 	}),
 
 	actions: {

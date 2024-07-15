@@ -207,3 +207,11 @@ export interface FileByGroup {
 	group_name: string;
 	items: CustomFileRespone[];
 }
+
+export interface YoutubeLink {
+	url: string;
+	name: string;
+	parrentNode: string;
+	lang: string;
+	programLang: string;
+}

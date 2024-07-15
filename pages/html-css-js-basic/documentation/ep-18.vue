@@ -13,6 +13,10 @@
 					<b>forEach()</b> là một method nhận vào một <b>callback</b>, sau đó duyệt lần lượt qua từng phần tử trong mảng
 					đồng thời thực thi <b>callback</b> vừa nhận vào.
 				</p>
+				<div class="flex items-center text-slate-900 dark:text-white text-lg text-content mb-3">
+					Video giải thích về <b>`forEach`: </b>
+					<LinkWithYoutube :name="'forEach()'" />
+				</div>
 				<VCodeBlock
 					:code="`const exampleArray = ['a', 'b', 'c']
 array.forEach( function(currentValue, index, array) {
@@ -72,6 +76,10 @@ array.forEach( function(currentValue, index, array) {
 					Như vậy, <b>map()</b> sẽ trả ra một mảng mới có số lượng phần tử bằng với mảng ban đầu, nhưng giá trị của từng
 					phần tử ở mảng mới sẽ tuỳ thuộc vào giá trị được return ra ở <b>callback.</b>
 				</p>
+				<div class="flex items-center text-slate-900 dark:text-white text-lg text-content mb-3">
+					Video giải thích về <b>`map`: </b>
+					<LinkWithYoutube :name="'map()'" />
+				</div>
 				<VCodeBlock
 					:code="`const exampleMapArray = ['a', 'b', 'c']
 // do method map() sẽ trả ra một mảng mới, ta sẽ tạo ra một biến để lưu trữ mảng mới này.
@@ -117,6 +125,10 @@ console.log(anotherArray);
 					Như vậy, <b>filter()</b> sẽ trả ra một mảng mới có số lượng phần tử có thể khác với mảng ban đầu, nhưng giá
 					trị của từng phần tử ở mảng mới sẽ bằng với giá trị ở mảng ban đầu
 				</p>
+				<div class="flex items-center text-slate-900 dark:text-white text-lg text-content mb-3">
+					Video giải thích về <b>`filter`: </b>
+					<LinkWithYoutube :name="'filter()'" />
+				</div>
 				<VCodeBlock
 					:code="`const exampleMapArray = ['a', 'b', 'c']
 // do method map() sẽ trả ra một mảng mới, ta sẽ tạo ra một biến để lưu trữ mảng mới này.
@@ -166,6 +178,21 @@ console.log(anotherArray);
 						<p class="text-slate-900 text-center italic dark:text-white my-5 leading-8 text-lg">
 							<b>filter()</b>
 						</p>
+					</div>
+				</div>
+				<PageHeading text="List video trong bài" addOnClass="text-left" markedAs="array-method-youtube" />
+				<div class="rounded px-2 py-2 border mt-3">
+					<div class="flex items-center gap-2 mb-2">
+						<p class="w-[80px] text-slate-900 dark:text-white mb-0 leading-8 text-lg font-bold">forEach():</p>
+						<LinkWithYoutube :name="'forEach()'" />
+					</div>
+					<div class="flex items-center gap-2 mb-2">
+						<p class="w-[80px] text-slate-900 dark:text-white mb-0 leading-8 text-lg font-bold">map():</p>
+						<LinkWithYoutube :name="'map()'" />
+					</div>
+					<div class="flex items-center gap-2 mb-2">
+						<p class="w-[80px] text-slate-900 dark:text-white mb-0 leading-8 text-lg font-bold">filter():</p>
+						<LinkWithYoutube :name="'filter()'" />
 					</div>
 				</div>
 				<DocNextPage :pagination="pagePagination" />

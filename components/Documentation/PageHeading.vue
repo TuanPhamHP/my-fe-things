@@ -8,6 +8,7 @@
 		:dataLvl="lvl"
 	>
 		{{ text }}
+		<slot></slot>
 	</h1>
 </template>
 <script lang="ts">
