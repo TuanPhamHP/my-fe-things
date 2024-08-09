@@ -4,7 +4,7 @@
 			<div class="grow page-data">
 				<PageHeading text="Introduction" addOnClass="text-left" markedAs="intro" />
 				<p class="text-slate-900 dark:text-white my-5">
-					Ở bài này, chúng ta sẽ cùng tìm hiểu về <b>Model</b> và <b>Database</b> trong Laravel.
+					Ở bài này, chúng ta sẽ cùng tìm hiểu về <b>Database</b> và cách làm việc cơ bản với nó trong Laravel.
 				</p>
 
 				<PageHeading text="Database" addOnClass="text-left" markedAs="laravel-database" :lvl="1" />
@@ -130,40 +130,10 @@
 				<FakeTerminalUI :textCoppy="'php artisan migrate'">
 					<p>php artisan migrate</p>
 				</FakeTerminalUI>
-
-				<PageHeading text="Model" addOnClass="text-left" markedAs="database-create-model" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Đã hoàn thành việc tạo bảng, tiếp theo chúng ta cùng tạo <b>Model</b> để làm việc với data.
+					Done !!! Ở trên là các thao tác cơ bản với database trong Laravel. Ở bài tiếp theo chúng ta sẽ cùng tìm hiểu
+					sâu hơn về ORM và Query Database 🤓.
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan make:model Todo'">
-					<p>php artisan make:model Todo</p>
-				</FakeTerminalUI>
-				<p class="text-slate-900 dark:text-white my-3">
-					<b>Todo</b> sẽ được tạo tại <b>app/Models/Todo.php</b>. Thông thường chúng ta sẽ định nghĩa các properties và
-					methods của Model tại file này.
-				</p>
-				<VCodeBlock :code="b5" highlightjs lang="php" theme="vs2015" />
-				<p class="text-slate-900 dark:text-white my-3">Tại model <b>Todo</b> ta định nghĩa các loại properties như:</p>
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-						<b class="min-w-[150px]">`$fillable`:</b>
-						<span
-							>Xác định danh sách các cột có thể được gán giá trị thông qua các phương thức như create() hoặc
-							fill().</span
-						>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-						<b class="min-w-[150px]">`$casts`:</b>
-						<span
-							>Xác định các thuộc tính cần được chuyển đổi sang các kiểu dữ liệu cụ thể khi truy xuất hoặc lưu trữ trong
-							cơ sở dữ liệu.</span
-						>
-					</li>
-				</ul>
-				<p class="text-slate-900 dark:text-white my-3">
-					Ngoài ra, chúng ta nên pre-assign kiểu dữ liệu của các properties để làm việc đơn giản hơn.
-				</p>
-				<PageHeading text="Relation - ORM" addOnClass="text-left" markedAs="database-orm" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -220,9 +190,8 @@ DB_PASSWORD=
 {
     Schema::create('todos', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
-        $table->decimal('price', 10, 2);
-        $table->text('description')->nullable();
+        $table->string('content');
+        $table->integer('status_id');
         $table->timestamps();
     });
 }
@@ -237,14 +206,14 @@ public function up(): void
 }
 // ...down
 `,
-				b5: `namespace App\Models;
+				b5: `namespace App/Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate/Database/Eloquent/Factories/HasFactory;
+use Illuminate/Database/Eloquent/Model;
 
 /**
  * Class Todo
- * @package App\Models
+ * @package App/Models
  *
  * @property string $title
  * @property string $content
@@ -287,7 +256,7 @@ class Todo extends Model
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-15' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-17' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},

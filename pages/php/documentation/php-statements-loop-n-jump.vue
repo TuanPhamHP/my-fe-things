@@ -192,6 +192,29 @@ $result = add(3, 4); // $result = 7;
 					lang="php"
 					theme="tomorrow-night-bright"
 				/>
+
+				<p class="text-slate-900 dark:text-white mt-5 leading-8">Thực hiện các bài sau:</p>
+				<div class="grid grid-cols-3 gap-4">
+					<div class="bg-neutral-300 rounded px-2 py-2 col-span-1 border border-neutral-800 dark:border-neutral-100">
+						<p class="text-center mb-2 font-semibold">Bài 1</p>
+						<p>cho mảng gồm các số VD: $numbers = [3, 5, 7, 2, 8]. Tìm phần tử lớn nhất trong mảng</p>
+						<div class="border-t border-slate-700 my-1"></div>
+						<div class="pl-2 pt-2">
+							<p>$numbers = [3, 5, 7, 2, 8];</p>
+							<p>=> Output: $max = 8;</p>
+						</div>
+					</div>
+					<div class="bg-neutral-300 rounded px-2 py-2 col-span-1 border border-neutral-800 dark:border-neutral-100">
+						<p class="text-center mb-2 font-semibold">Bài 2</p>
+						<p>cho mảng gồm các số VD: $numbers = [3, 5, 7, 2, 8]. Tính tổng các phần tử trong mảng</p>
+						<div class="border-t border-slate-700 my-1"></div>
+						<div class="pl-2 pt-2">
+							<p>$numbers = [3, 5, 7, 2, 8];</p>
+							<p>=> Output: $total = 25;</p>
+						</div>
+					</div>
+				</div>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 

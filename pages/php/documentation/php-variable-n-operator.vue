@@ -103,19 +103,21 @@
 						</tbody>
 					</table>
 				</div>
-				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline">Biến cục bộ:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline title-lg">Biến cục bộ:</p>
 				<p class="text-slate-900 dark:text-white leading-8">
 					Dưới đây là ví dụ cho biến cục bộ <b>`$x`</b>, do được khởi tạo trong <b>`showX`</b> nên đây chính là scope
 					của nó, khi ra ngoài scope thì ta không thể gọi được tới <b>`$x`</b> nên dẫn đến lỗi.
 				</p>
 				<VCodeBlock :code="b1" highlightjs lang="php" theme="tomorrow-night-bright" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline">Biến toàn cục:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline title-lg">Biến toàn cục:</p>
 				<p class="text-slate-900 dark:text-white leading-8">
 					Dưới đây là ví dụ cho biến toàn cục <b>`$x`</b>, do được khởi tạo ngoài cùng nên đây chính là scope của nó.
 					Như vậy, trong file php chúng ta có quyền gọi đến nó bất cứ khi nào cần vì vẫn nằm trong scope của nó.
 				</p>
 				<VCodeBlock :code="b2" highlightjs lang="php" theme="tomorrow-night-bright" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline">Biến siêu toàn cục:</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 font-bold text-underline title-lg">
+					Biến siêu toàn cục:
+				</p>
 				<p class="text-slate-900 dark:text-white leading-8">
 					Dưới đây là ví dụ cho biến siêu toàn cục <b>`$_SERVER`</b>, được khởi tạo bởi PHP, chúng ta có thể trỏ tới nó
 					bất cứ khi nào ta cần.
@@ -199,7 +201,6 @@ echo Counter::getCount();
 						</tbody>
 					</table>
 				</div>
-
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 
