@@ -517,6 +517,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-10',
+		vneseName: 'PHP Function & Array',
+		eng: 'Installation',
+		description: 'Function & Array trong PHP.',
+		link: '/php/documentation/php-function-and-array',
+		previewImage: 'parallax-10.jpg',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-8',
 		vneseName: 'PHP Statements - Conditional',
 		eng: 'Installation',
@@ -536,16 +546,7 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['php'],
 	},
-	{
-		id: 'php-10',
-		vneseName: 'PHP Function & Array',
-		eng: 'Installation',
-		description: 'Function & Array trong PHP.',
-		link: '/php/documentation/php-function-and-array',
-		previewImage: 'parallax-10.jpg',
-		status_id: 1,
-		apps: ['php'],
-	},
+
 	{
 		id: 'php-11',
 		vneseName: 'PHP Class - Object',
