@@ -3,11 +3,11 @@
 		class="relative bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition h-full flex flex-col"
 	>
 		<div @click="$router.push(detailData.link)" class="cursor-pointer">
-			<img class="rounded-t-lg w-full h-[260px]" :src="getImageUrl()" alt="" />
+			<img class="rounded-t-lg w-full h-[260px] object-contain" :src="getImageUrl()" alt="" />
 		</div>
 		<div class="p-5 flex flex-col grow">
 			<StatusBadge :status-id="detailData.status_id" />
-			<div @click="$router.push(detailData.link)" class="cursor-pointer">
+			<div @click="$router.push(detailData.link)" class="cursor-pointer border-t pt-2">
 				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 					{{ detailData.vneseName }}
 				</h5>

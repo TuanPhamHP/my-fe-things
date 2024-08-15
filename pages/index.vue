@@ -27,6 +27,7 @@
 						leave-to-class="transform scale-95 opacity-0"
 					>
 						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_hcj.png" class="h-[150px] block mx-auto" alt="" />
 							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
 								<div
 									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
@@ -172,6 +173,7 @@
 						leave-to-class="transform scale-95 opacity-0"
 					>
 						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_reactjs.png" class="h-[150px] block mx-auto" alt="" />
 							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
 								<div
 									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
@@ -440,6 +442,7 @@
 						leave-to-class="transform scale-95 opacity-0"
 					>
 						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_php.png" class="h-[150px] block mx-auto" alt="" />
 							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
 								<div
 									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"

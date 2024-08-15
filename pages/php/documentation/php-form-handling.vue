@@ -103,7 +103,7 @@
 				},
 				b1: `// ~/form.php
 <h2>PHP Form Example</h2>
-<form method="post" action="handle_form.php">
+<form method="POST" action="handle_form.php">
 	Name: <input type="text" name="name"><br><br>
 	Email: <input type="text" name="email"><br><br>
 	<input type="submit">
