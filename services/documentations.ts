@@ -588,6 +588,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-13-1',
+		vneseName: 'MVC Architecture',
+		eng: 'MVC',
+		description: 'Giới thiệu về MVC Architecture.',
+		link: '/php/documentation/php-mvc',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-13-2',
 		vneseName: 'PHP Database - (P1)',
 		eng: 'Database',
