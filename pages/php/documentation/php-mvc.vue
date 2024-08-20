@@ -25,8 +25,8 @@
 				</p>
 				<div class="col-span-1 bg-neutral-100 px-5 py-1 rounded">
 					<img
+						src="@/assets/images/php-laravel/mvc-02.png"
 						style="height: 500px"
-						src="https://developer.mozilla.org/en-US/docs/Glossary/MVC/model-view-controller-light-blue.png"
 						alt=""
 						class="rounded-lg mt-3 block"
 					/>

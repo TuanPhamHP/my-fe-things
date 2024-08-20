@@ -44,7 +44,7 @@
 				<div class="col-span-1 bg-neutral-100 px-5 py-1 rounded">
 					<img
 						style="height: 500px"
-						src="https://developer.mozilla.org/en-US/docs/Glossary/MVC/model-view-controller-light-blue.png"
+						src="https://selftaughtcoders.com/wp-content/uploads/2015/07/mvc_diagram_with_routes.png"
 						alt=""
 						class="rounded-lg mt-3 block"
 					/>
