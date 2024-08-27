@@ -638,6 +638,16 @@ let baseListData: DocumentItem[] = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-13-6',
+		vneseName: 'PHP Database - (P5)',
+		eng: 'Database',
+		description: 'Tạo ORM',
+		link: '/php/documentation/php-and-database-p5',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-14',
 		vneseName: 'Larvel - Setup',
 		eng: 'AJAX',

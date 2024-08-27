@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-13-4' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-13-5' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},
