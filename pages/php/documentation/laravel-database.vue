@@ -130,6 +130,11 @@
 				<FakeTerminalUI :textCoppy="'php artisan migrate'">
 					<p>php artisan migrate</p>
 				</FakeTerminalUI>
+
+				<p class="text-slate-900 dark:text-white my-3">
+					Ở đây chúng ta còn cần tạo một bảng <b>`todo_statuses`</b> để chưa các trạng thái của Todo. Đây sẽ là bài tập
+					cho các bạn.
+				</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					Done !!! Ở trên là các thao tác cơ bản với database trong Laravel. Ở bài tiếp theo chúng ta sẽ cùng tìm hiểu
 					sâu hơn về ORM và Query Database 🤓.

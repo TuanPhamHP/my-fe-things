@@ -40,9 +40,43 @@
 							cơ sở dữ liệu.</span
 						>
 					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b class="min-w-[150px]">`HasFactory`:</b>
+						<span
+							>Là một trait được sử dụng để hỗ trợ việc tạo các factory cho mô hình (model). Ví dụ, bạn có thể sử dụng
+							factory để tạo một bản ghi Todo như sau: <FilePath>$todo = Todo::factory()->create();</FilePath>
+						</span>
+					</li>
 				</ul>
+				<PageHeading text="Methods" addOnClass="text-left" markedAs="model-methods" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Ngoài ra, chúng ta nên pre-assign kiểu dữ liệu của các properties để làm việc đơn giản hơn.
+					Tiếp theo, chúng ta sẽ cùng tạo các methods trong Model, ở bài học này chúng ta sẽ học 3 loại chính của
+					methods trong model là: <FilePath>Relation</FilePath> <FilePath>Accessor</FilePath> và
+					<FilePath>Mutator</FilePath>
+				</p>
+				<PageHeading text="- Relation method" addOnClass="text-left" markedAs="relation-methods" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Relationship method - (phương thức quan hệ) trong Laravel là loại method được sử dụng để định nghĩa mối quan
+					hệ giữa các model, giúp ta truy xuất dữ liệu từ bảng khác dựa trên các khoá ngoại. Ví dụ:
+				</p>
+				<VCodeBlock :code="b6" highlightjs lang="php" theme="vs2015" />
+				<div class="pb-3"></div>
+				<PageHeading text="- Accessor method" addOnClass="text-left" markedAs="accessor-methods" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Accessor method - (phương thức định dạng) là phương thức được sử dụng để định nghĩa cách lấy giá trị (format)
+					cho một thuộc tính cụ thể. Ví dụ:
+				</p>
+				<VCodeBlock :code="b7" highlightjs lang="php" theme="vs2015" />
+				<div class="pb-3"></div>
+				<PageHeading text="- Mutator method" addOnClass="text-left" markedAs="mutator-methods" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Mutator method - (phương thức định dạng) là phương thức được sử dụng để xử lý giá trị trước khi lưu vào cơ sở
+					dữ liệu. Ví dụ:
+				</p>
+				<VCodeBlock :code="b8" highlightjs lang="php" theme="vs2015" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Done !!! Như vậy chúng ta đã hoàn thành Model cho bảng todos của chúng ta. Tiếp theo, chúng ta sẽ cùng khởi
+					tạo Controller.
 				</p>
 
 				<doc-next-page :pagination="pagePagination" />
@@ -73,50 +107,6 @@
 		},
 		data() {
 			return {
-				b1: `DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=hello_laravel
-DB_USERNAME=root
-DB_PASSWORD=
-`,
-				b2: `'default' => env('DB_CONNECTION', 'mysql'),
-...
-'connections' => [
-	'mysql' => [
-					'driver' => 'mysql',
-					'url' => env('DATABASE_URL'),
-					'host' => env('DB_HOST', '127.0.0.1'),
-					'port' => env('DB_PORT', '3306'),
-					'database' => env('DB_DATABASE', 'forge'),
-					'username' => env('DB_USERNAME', 'forge'),
-					'password' => env('DB_PASSWORD', ''),
-					...
-					],
-					...
-	],
-	...
-`,
-				b3: `public function up()
-{
-    Schema::create('todos', function (Blueprint $table) {
-        $table->id();
-        $table->string('content');
-        $table->integer('status_id');
-        $table->timestamps();
-    });
-}
-`,
-				b4: `// file:  time*update_title_to_todos_table.php
-public function up(): void
-{
-		Schema::table('todos', function (Blueprint $table) {
-				//
-				$table->string('title');
-		});
-}
-// ...down
-`,
 				b5: `namespace App/Models;
 
 use Illuminate/Database/Eloquent/Factories/HasFactory;
@@ -126,7 +116,6 @@ use Illuminate/Database/Eloquent/Model;
  * Class Todo
  * @package App/Models
  *
- * @property string $title
  * @property string $content
  * @property int $status_id
  *
@@ -142,12 +131,30 @@ class Todo extends Model
 
 		protected $table;
 
-		protected $fillable = ['title', 'content', 'status_id'];
+		protected $fillable = ['content', 'status_id'];
 
 		protected $casts = [
 			'updated_at' => 'datetime',
 			'created_at'=>'datetime'
     ];
+}
+`,
+				b6: `// method trong model Todo
+public function status()
+{
+    return $this->belongsTo(TodoStatus::class, 'status_id'); // định nghĩa được mối quan hệ của Todo và TodoStatus
+}
+`,
+				b7: `// method trong model Todo
+public function getContentAttribute($value)
+{
+    return ucfirst($value); // Chữ cái đầu tiên viết hoa
+}
+`,
+				b8: `// method trong model Todo
+public function setContentAttribute($value)
+{
+    $this->attributes['content'] = strtolower($value);
 }
 `,
 				pagePagination: {

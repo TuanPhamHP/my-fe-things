@@ -286,7 +286,6 @@ Route::get('/homepage', [HomepageController::class, 'index']);
         <table class="table mt-4">
             <thead>
             <tr>
-                <th>Title</th>
                 <th>Description</th>
                 <th>Completed</th>
                 <th>Actions</th>
@@ -295,27 +294,12 @@ Route::get('/homepage', [HomepageController::class, 'index']);
             <tbody>
             @if(!empty($todos))
             @foreach($todos as $todo)
-                <tr>
-                    <td>{{ $todo->title }}</td>
-                    <td>{{ $todo->description }}</td>
-                    <td>{{ $todo->completed ? 'Yes' : 'No' }}</td>
+						<tr>
+                    <td>{{ $todo->content }}</td>
+                    <td>{{ $todo->status_id === 2 ? 'Yes' : 'No' }}</td>
                     <td>
-                        <!-- Form sửa to-do -->
-                        <form action="{{ route('todos.update', $todo->id) }}" method="POST" style="display: inline-block;">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-                                <input type="text" name="title" value="{{ $todo->title }}" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                <textarea name="description" class="form-control">{{ $todo->description }}</textarea>
-                            </div>
-                            <div class="form-group form-check">
-                                <input type="checkbox" name="completed" class="form-check-input" {{ $todo->completed ? 'checked' : '' }}>
-                                <label class="form-check-label">Completed</label>
-                            </div>
-                            <button type="submit" class="btn btn-warning">Update</button>
-                        </form>
+                        <button type="submit" class="btn btn-info">Hoàn thành</button>
+                        <button type="submit" class="btn btn-warning">Update</button>
                     </td>
                 </tr>
             @endforeach
