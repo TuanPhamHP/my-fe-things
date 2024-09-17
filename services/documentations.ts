@@ -728,6 +728,16 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['php'],
 	},
+	{
+		id: 'php-20',
+		vneseName: 'Larvel - Images & Files',
+		eng: 'images',
+		description: 'Xử lý ảnh local và upload files với laravel',
+		link: '/php/documentation/laravel-images-and-files',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
 ];
 class PaginationDefault {
 	constructor(
