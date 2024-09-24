@@ -28,6 +28,11 @@ const practiceCategories = [
 		name: 'VueJS',
 		en: 'VueJS',
 	},
+	{
+		id: 6,
+		name: 'NodeJS',
+		en: 'NodeJS',
+	},
 ];
 let baseListData: DocumentItem[] = [
 	{
@@ -737,6 +742,59 @@ let baseListData: DocumentItem[] = [
 		previewImage: 'course_php.png',
 		status_id: 1,
 		apps: ['php'],
+	},
+
+	// NodeJS
+	{
+		id: 'node-1',
+		vneseName: 'Cài đặt cơ bản',
+		eng: 'Installation',
+		description: 'Hướng dẫn cài đặt cơ bản để tạo và chạy file NodeJS của bạn.',
+		link: '/nodejs/documentation/installation',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-2',
+		vneseName: 'Tổng quan về NodeJs',
+		eng: 'About nodejs',
+		description: 'Giới thiệu tổng quan về Nodejs',
+		link: '/nodejs/documentation/about-nodejs',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-3',
+		vneseName: 'Runtime và Environment trong NodeJS',
+		eng: 'About nodejs',
+		description:
+			'Hiểu cách Node.js thực thi mã JavaScript. Nắm rõ môi trường của Node.js, sự khác biệt với môi trường trình duyệt.',
+		link: '/nodejs/documentation/runtime-and-env',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-4',
+		vneseName: 'Các tính năng nổi bật trong Node.js ',
+		eng: 'About nodejs',
+		description: 'Các tính năng nổi bật trong Node.js như require, module, và cách tổ chức mã',
+		link: '/nodejs/documentation/pros-in-node',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-5',
+		vneseName: 'Request, Response ',
+		eng: 'Request, Respone nodejs',
+		description: 'Chi tiết về Request, Response trong NodeJs',
+		link: '/nodejs/documentation/request-and-response',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
 	},
 ];
 class PaginationDefault {

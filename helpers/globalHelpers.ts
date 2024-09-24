@@ -59,6 +59,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('php')) {
 		return 'php';
 	}
+	if (currentPathName.includes('nodejs')) {
+		return 'nodejs';
+	}
 	return null;
 };
 

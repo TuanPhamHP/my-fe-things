@@ -285,7 +285,32 @@
 					tooltip: 'Thực hành',
 					showByApp: ['php'],
 				},
-
+				// NodeJS
+				{
+					title: 'Tài liệu',
+					path: '/nodejs/documentation',
+					pathNameMatch: [
+						'nodejs',
+						'nodejs-documentation',
+						'nodejs-documentation-installation',
+						'nodejs-documentation-routers',
+					],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['nodejs'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/nodejs/practice',
+					pathNameMatch: ['nodejs', 'nodejs-practice'],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['nodejs'],
+				},
 				// {
 				// 	title: 'Quản lý ĐTVC',
 				// 	path: '/forwarders',
