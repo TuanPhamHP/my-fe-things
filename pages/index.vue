@@ -319,7 +319,7 @@
 												Documentation
 											</h5>
 										</a>
-										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về React như:</p>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về NodeJs như:</p>
 										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
 											<li class="flex items-center gap-3 py-1">
 												<Icon
@@ -375,7 +375,7 @@
 												Example & Train
 											</h5>
 										</a>
-										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về React:</p>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về NodeJs:</p>
 										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
 											<li class="flex items-center gap-3 py-1">
 												<Icon

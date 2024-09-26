@@ -220,6 +220,40 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['php'],
 	},
+	// NODEJS
+	{
+		id: 'node-1',
+		vneseName: 'Mapping Routes',
+		eng: 'html header, header example',
+		description: 'Bài tập về mapping routes trong Nodejs',
+		link: '/nodejs/practice/e_1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-2',
+		vneseName: 'Create View Template',
+		eng: 'html header, header example',
+		description: 'Bài tập về tạo view trong Nodejs',
+		link: '/nodejs/practice/e_2',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-3',
+		vneseName: 'Đăng ký tài khoản & đăng nhập',
+		eng: 'html header, header example',
+		description: 'Bài tập Nodejs',
+		link: '/nodejs/practice/e_3',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
 ];
 
 class PaginationDefault {

@@ -796,6 +796,36 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-6',
+		vneseName: 'Node Package, Express (P1) - Init Structure',
+		eng: 'Request, Respone nodejs',
+		description: 'Tìm hiểu và sử dụng Express trong NodeJs phần 1: init và xử lý response',
+		link: '/nodejs/documentation/expressjs-p1',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-7',
+		vneseName: 'Node Package, Express (P2) - EJS',
+		eng: 'EJS template nodejs',
+		description: 'Tìm hiểu và sử dụng Express trong NodeJs phần 2: ejs template',
+		link: '/nodejs/documentation/expressjs-p2',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-8',
+		vneseName: 'Node Package, Express (P3) - Express',
+		eng: 'Request, Respone nodejs',
+		description: 'Tìm hiểu và sử dụng Express trong NodeJs phần 3: mvc & express',
+		link: '/nodejs/documentation/expressjs-p3',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ];
 class PaginationDefault {
 	constructor(
