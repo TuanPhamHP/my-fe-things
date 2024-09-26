@@ -31,6 +31,42 @@
 					</li>
 				</ul>
 
+				<div class="relative overflow-x-auto mt-5 border rounded-lg">
+					<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+						<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+							<tr>
+								<th scope="col" class="px-5 py-3">Phương thức</th>
+								<th scope="col" class="px-5 py-3">Ý nghĩa</th>
+								<th scope="col" class="px-5 py-3">VD:</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr
+								v-for="item in commonMethods3"
+								:key="item.id"
+								class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+							>
+								<th
+									v-if="item.label"
+									colspan="3"
+									scope="row"
+									class="px-5 py-4 text-center font-semibold text-gray-900 whitespace-nowrap bg-neutral-200"
+								>
+									{{ item.label }}
+								</th>
+								<th
+									v-if="!item.label"
+									scope="row"
+									class="px-5 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white"
+								>
+									{{ item.name }}
+								</th>
+								<td v-if="!item.label" class="px-5 py-4">{{ item.desc }}</td>
+								<td v-if="!item.label" class="px-5 py-4" v-html="item.syntax"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 				<PageHeading text="Xử lý API RESTful" addOnClass="text-left mt-5" markedAs="about-express-features" />
 				<p class="text-slate-900 dark:text-white mt-0 mb-3 leading-8">
 					Express cung cấp cho chúng ta các method tương ứng với tên của các method trong API RESTful, lần lượt là
@@ -339,6 +375,104 @@ app.post('/users/:id', (req, res) => {
 						name: 'res.render()',
 						desc: 'Render một view (dùng khi bạn làm việc với template engine như EJS, Pug)',
 						syntax: "res.render('index', { title: 'Home' })",
+					},
+				],
+				commonMethods3: [
+					{
+						id: 1,
+						name: 'app.use()',
+						desc: 'Thêm middleware vào toàn bộ ứng dụng.',
+						syntax: 'app.use([path], middleware)',
+					},
+					{
+						id: 2,
+						name: 'app.get()',
+						desc: 'Xử lý yêu cầu HTTP GET cho một route cụ thể.',
+						syntax: 'app.get(path, callback)',
+					},
+					{
+						id: 3,
+						name: 'app.post()',
+						desc: 'Xử lý yêu cầu HTTP POST cho một route cụ thể.',
+						syntax: 'app.post(path, callback)',
+					},
+					{
+						id: 4,
+						name: 'app.put()',
+						desc: 'Xử lý yêu cầu HTTP PUT để cập nhật tài nguyên.',
+						syntax: 'app.put(path, callback)',
+					},
+					{
+						id: 5,
+						name: 'app.delete()',
+						desc: 'Xử lý yêu cầu HTTP DELETE để xóa tài nguyên.',
+						syntax: 'app.delete(path, callback)',
+					},
+					{
+						id: 6,
+						name: 'app.all()',
+						desc: 'Xử lý tất cả các phương thức HTTP cho một route cụ thể.',
+						syntax: 'app.all(path, callback)',
+					},
+					{
+						id: 7,
+						name: 'app.listen()',
+						desc: 'Bắt đầu một server và lắng nghe các yêu cầu trên một cổng cụ thể.',
+						syntax: 'app.listen(port, callback)',
+					},
+					{
+						id: 8,
+						name: 'app.route()',
+						desc: 'Tạo một route với nhiều phương thức HTTP cho cùng một đường dẫn.',
+						syntax: 'app.route(path).get(callback).post(callback)',
+					},
+					{
+						id: 9,
+						name: 'app.param()',
+						desc: 'Xử lý các tham số động trong route.',
+						syntax: 'app.param(param, callback)',
+					},
+					{
+						id: 10,
+						name: 'app.set()',
+						desc: 'Đặt một giá trị cho một thiết lập cụ thể.',
+						syntax: 'app.set(setting, value)',
+					},
+					{
+						id: 11,
+						name: 'express.static()',
+						desc: 'Phục vụ các file tĩnh như HTML, CSS, và hình ảnh.',
+						syntax: 'app.use(express.static(root, [options]))',
+					},
+					{
+						id: 12,
+						name: 'app.engine()',
+						desc: 'Sử dụng để đăng ký template engine.',
+						syntax: 'app.engine(ext, callback)',
+					},
+					{
+						id: 13,
+						name: 'app.locals',
+						desc: 'Được sử dụng để lưu trữ các biến global cho toàn bộ ứng dụng.',
+						syntax: 'app.locals.property = value',
+					},
+					{
+						id: 14,
+						name: 'app.render()',
+						desc: 'Render một view và trả về kết quả HTML.',
+						syntax: 'app.render(view, [locals], callback)',
+					},
+					{
+						id: 15,
+						name: 'app.use(express.json())',
+						desc: 'Middleware để phân tích cú pháp JSON từ body của các request.',
+						syntax: 'app.use(express.json())',
+					},
+					{
+						id: 16,
+						name: 'app.use(express.urlencoded())',
+						desc: 'Middleware để phân tích cú pháp các request có body dạng URL-encoded.',
+						syntax: 'app.use(express.urlencoded({ extended: true }))',
 					},
 				],
 			};
