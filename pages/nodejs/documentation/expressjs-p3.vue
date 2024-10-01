@@ -2,14 +2,12 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Express" addOnClass="text-left" markedAs="about-express" />
+				<PageHeading text="Mô hình MVC" addOnClass="text-left" markedAs="about-mvc" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Express.js là một framework web nhanh và tối giản, được xây dựng trên nền tảng Node.js, giúp xây dựng các ứng
-					dụng web và API dễ dàng hơn. Express cung cấp một số tính năng hữu ích, như xử lý các yêu cầu HTTP, routing,
-					middleware, và tích hợp với các cơ sở dữ liệu.
-					<br />
-					<b>Tính năng nổi bật của Express.js:</b>
+					Ở bài trước, chúng ta đã cùng tìm hiểu về mô hình MVC và cấu trúc cơ bản của một project khi tổ chức theo kiến
+					trúc MVC. Ở bài này chúng ta sẽ tiến hành sử dụng một package là <FilePath>express</FilePath> để cùng tạo lên
+					một app nodejs. Về cơ bản, chúng ta có thể hình dung cấu trúc thư mục của app như sau:
 				</p>
 				<ul class="pl-10">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
@@ -213,6 +211,73 @@
 					<VCodeBlock :code="b2" highlightjs lang="javascript" theme="tomorrow-night-bright" />
 				</div>
 
+				<PageHeading text="Static File" addOnClass="text-left mt-5" markedAs="static-file" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Express cung cấp middleware tích hợp sẵn <b>`express.static()`</b> để phục vụ các file tĩnh như hình ảnh, CSS,
+					JavaScript mà không cần route cụ thể.
+				</p>
+				<div class="grid grid-col-1 gap-3 lg:grid-cols-2">
+					<div class="col-span-1">
+						<p class="text-slate-900 dark:text-white mt-1 leading-8 font-bold">Cấu trúc thư mục:</p>
+						<VCodeBlock :code="b3" highlightjs lang="javascript" theme="tomorrow-night-bright" />
+					</div>
+					<div class="col-span-1">
+						<p class="text-slate-900 dark:text-white mt-1 leading-8 font-bold">Ví dụ sử dụng:</p>
+						<VCodeBlock :code="b4" highlightjs lang="javascript" theme="tomorrow-night-bright" />
+					</div>
+				</div>
+
+				<PageHeading text="Middleware" addOnClass="text-left mt-5" markedAs="middleware" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>`Middleware`</b> trong Express.js là các hàm được thực thi trong chuỗi xử lý yêu cầu (request) và phản hồi
+					(response) của ứng dụng. Các hàm middleware có quyền truy cập vào đối tượng request (req), đối tượng response
+					(res), và có thể dừng hoặc chuyển tiếp yêu cầu tới các middleware tiếp theo.
+					<br />
+					<b>Các loại Middleware chính:</b>
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <b>`Application-level Middleware:`</b> Middleware hoạt động ở cấp độ ứng dụng.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span><b>`Router-level Middleware:`</b> Middleware dành riêng cho router.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <b>`Error-handling Middleware:`</b> Middleware để xử lý lỗi.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <b>`Built-in Middleware:`</b> Middleware tích hợp sẵn trong Express.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<b>`Third-party Middleware:`</b> Các middleware do bên thứ ba phát triển (ví dụ: body-parser,
+							morgan).</span
+						>
+					</li>
+				</ul>
+
+				<div>
+					<img
+						src="https://statics.cdn.200lab.io/2022/06/middleware-request-response-200lab.png"
+						alt=""
+						class="rounded-lg mt-3 block max-w-[600px] mx-auto"
+					/>
+				</div>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <FilePath>app.use()</FilePath> được sử dụng để định nghĩa một middleware.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<FilePath>next()</FilePath> trong middleware giúp chuyển tiếp request đến middleware tiếp theo hoặc đến
+							hàm xử lý trong chuỗi.</span
+						>
+					</li>
+				</ul>
+				<div class="col-span-1">
+					<p class="text-slate-900 dark:text-white mt-1 leading-8 font-bold">Ví dụ sử dụng:</p>
+					<VCodeBlock :code="b5" highlightjs lang="javascript" theme="tomorrow-night-bright" />
+				</div>
 				<p class="text-slate-900 dark:text-white leading-8">
 					Lý thuyết đủ rồi, làm
 					<a
@@ -286,6 +351,24 @@ app.post('/users/:id', (req, res) => {
   const userId = req.params.id;
   const updatedData = req.body;
   res.status(200).send('User ID: '+ userId + ' updated with data '+ JSON.stringify(updatedData)});
+});
+`,
+				b3: `myapp/
+│....
+├── public/
+│   └── images/
+│   └── css/
+│....
+`,
+				b4: `//  config để serve public
+// Sử dụng express.static để phục vụ file tĩnh từ thư mục "public"
+app.use(express.static('public'));
+`,
+				b5: `//  app.js
+// Middleware cơ bản
+app.use((req, res, next) => {
+  console.log('Middleware được kích hoạt');
+  next(); // Chuyển tiếp yêu cầu tới middleware hoặc route handler tiếp theo
 });
 `,
 
@@ -483,7 +566,7 @@ app.post('/users/:id', (req, res) => {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nodejs', currentDocId: 'node-7' })
+					.getPagination({ appIds: 'nodejs', currentDocId: 'node-8' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

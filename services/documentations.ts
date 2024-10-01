@@ -826,6 +826,17 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+
+	{
+		id: 'node-9',
+		vneseName: 'NodeJs & SQL (P1) - Tạo kết nối',
+		eng: 'Request, Respone nodejs',
+		description: 'sử dụng mysql2 để kết nối với SQL trong nodejs',
+		link: '/nodejs/documentation/connect-to-sql',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ];
 class PaginationDefault {
 	constructor(
