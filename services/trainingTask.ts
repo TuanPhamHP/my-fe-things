@@ -254,6 +254,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-4',
+		vneseName: 'RESTful API',
+		eng: 'html header, header example',
+		description: 'Bài tập Nodejs về RESTful API',
+		link: '/nodejs/practice/e_4',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
 ];
 
 class PaginationDefault {

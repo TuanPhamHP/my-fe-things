@@ -11,7 +11,7 @@ Cài đặt Node.js: Hướng dẫn cài đặt trên các hệ điều hành.
 Chương trình đầu tiên: Viết và chạy chương trình “Hello World” trên Node.js.
 Thực hành:
 Cài đặt Node.js và npm.
-Viết và chạy chương trình "Hello World" bằng Node.js.
+Viết và chạy chương trình 'Hello World' bằng Node.js.
 
 Bài 2: Module và Require trong Node.js
 Mục tiêu:
