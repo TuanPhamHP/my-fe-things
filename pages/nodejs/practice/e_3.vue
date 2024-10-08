@@ -283,12 +283,12 @@
 				listAccount: [] as Record<string, any>,
 				pagePagination: {
 					next: {
-						title: 'Comming soon...',
-						link: '/reactjs-basic/practice/e_2',
+						title: 'Bài 4',
+						link: '/nodejs/practice/e_4',
 					},
 					prev: {
-						title: 'Bài 1 - Array Methods',
-						link: '/reactjs-basic/practice/e_1',
+						title: 'Bài 2',
+						link: '/nodejs/practice/e_2',
 					},
 				},
 			};
