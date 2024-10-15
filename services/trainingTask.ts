@@ -220,6 +220,18 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['php'],
 	},
+	// NEXTJS
+	{
+		id: 'nextjs-1',
+		vneseName: 'Xây dựng Trang Quản lý Đơn Hàng Gà Rán',
+		eng: 'html header, header example',
+		description: 'Xây dựng Trang Quản lý Đơn Hàng Gà Rán',
+		link: '/nextjs-basic/practice/e_1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nextjs-basic'],
+	},
 	// NODEJS
 	{
 		id: 'node-1',

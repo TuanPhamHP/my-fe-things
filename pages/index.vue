@@ -427,7 +427,7 @@
 				</Disclosure>
 			</div>
 			<!-- NEXTJS -->
-			<!-- <div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
 				<Disclosure>
 					<DisclosureButton as="div" class="cursor-pointer">
 						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">NextJs</h5>
@@ -558,7 +558,7 @@
 						</DisclosurePanel>
 					</transition>
 				</Disclosure>
-			</div> -->
+			</div>
 			<!-- PHP -->
 			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
 				<Disclosure>
