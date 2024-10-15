@@ -237,25 +237,22 @@ const SECRET_KEY = 'some-key';
 };
 `,
 				b32: `// Đăng nhập và cấp JWT
-const login = (req, res) => {
-  const { username, password } = req.body;
+const login = async (req, res) => {
+	const { username, password } = req.body;
+	const results = await userModel.findUserByUsername(username);
+	if (results.length === 0) return res.status(404).json({ message: 'Người dùng không tồn tại' });
+	const user = results.results[0];
 
-	userModel.findUserByUsername(username, (error, results) => {
-    if (error) return res.status(500).json({ message: 'Lỗi truy vấn' });
-    if (results.length === 0) return res.status(404).json({ message: 'Người dùng không tồn tại' });
+	// So sánh mật khẩu
+	bcrypt.compare(password, user.password, (err, validPassword) => {
+		if (err || !validPassword) return res.status(401).json({ message: 'Mật khẩu không đúng' });
 
-    const user = results[0];
-
-    // So sánh mật khẩu
-    bcrypt.compare(password, user.password, (err, validPassword) => {
-      if (err || !validPassword) return res.status(401).json({ message: 'Mật khẩu không đúng' });
-
-      // Tạo JWT
-      const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
-      res.json({ token });
-    });
-  });
+		// Tạo JWT
+		const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
+		res.json({ token });
+	});
 };
+
 `,
 				b4: `const express = require('express');
 const app = express();
