@@ -236,7 +236,7 @@ export function middleware(request: NextRequest) {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-6' })
+					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-7' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

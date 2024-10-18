@@ -372,91 +372,112 @@ let baseListData: DocumentItem[] = [
 	// NEXTJS
 	{
 		id: 'nextjs-1',
-		vneseName: 'Cài đặt cơ bản',
+		vneseName: 'B1-1: Cài đặt cơ bản',
 		eng: 'Installation',
 		description: 'Hướng dẫn cài đặt cơ bản để khởi tạo web-app của bạn với NextJs.',
 		link: '/nextjs-basic/documentation/installation',
-		previewImage: 'parallax-1.jpeg',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-2',
-		vneseName: 'Routing (P1) - Path & UI',
+		vneseName: 'B1-2: Routing (P1) - Path & UI',
 		eng: 'Routing',
 		description: 'Routing trong project NextJs.',
 		link: '/nextjs-basic/documentation/routers',
-		previewImage: 'parallax-2.jpeg',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-3',
-		vneseName: 'Routing (P2) - Nested Route & Dynamic Route',
+		vneseName: 'B1-3: Routing (P2) - Nested Route & Dynamic Route',
 		eng: 'Routing',
 		description: 'Nested Route & Dynamic Route trong NextJs',
 		link: '/nextjs-basic/documentation/route-nested-dynamic',
-		previewImage: 'parallax-3.jpeg',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-4',
-		vneseName: 'Routing (P3) - Link and Navigation',
+		vneseName: 'B1-4: Routing (P3) - Link and Navigation',
 		eng: 'Routing',
 		description: 'Component Link, useRouter() hooks và redirect trong NextJs',
 		link: '/nextjs-basic/documentation/linking-and-navigation',
-		previewImage: 'parallax-4.jpg',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-5',
-		vneseName: 'Routing (P4) - Components',
+		vneseName: 'B1-5: Routing (P4) - Components',
 		eng: 'Routing',
 		description: 'Loading, Error handler page với nextjs router.',
 		link: '/nextjs-basic/documentation/router-components',
-		previewImage: 'parallax-5.jpg',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-6',
-		vneseName: 'Middleware And Authenticate (P1)',
-		eng: 'Middleware And Authenticate',
-		description: 'Middleware trong NextJs, ứng dụng middleware và HOC để tạo tính năng ProtectedRoutes cho NextJs ',
-		link: '/nextjs-basic/documentation/middleware-and-auth',
-		previewImage: 'parallax-6.jpg',
-		status_id: 1,
-		apps: ['nextjs-basic'],
-	},
-	{
-		id: 'nextjs-7',
-		vneseName: 'Middleware And Authenticate (P2)',
-		eng: 'Middleware And Authenticate',
-		description: 'Middleware trong NextJs, ứng dụng middleware và HOC để tạo tính năng ProtectedRoutes cho NextJs ',
-		link: '/nextjs-basic/documentation/middleware-and-auth-p2',
-		previewImage: 'parallax-7.jpg',
-		status_id: 1,
-		apps: ['nextjs-basic'],
-	},
-	{
-		id: 'nextjs-8',
-		vneseName: 'Rendering trong Next.js (SSR, SSG, CSR)',
+		vneseName: 'B2-1: Rendering trong Next.js (SSR, SSG, CSR)',
 		eng: 'Rendering in Next.js (SSR, SSG, CSR)',
 		description: 'Hiểu sự khác biệt giữa SSR, SSG, CSR. Thực hành gọi API và xử lý dữ liệu trong Next.js.',
-		link: '/nextjs-basic/documentation/fetching-data',
-		previewImage: 'parallax-8.webp',
+		link: '/nextjs-basic/documentation/rendering',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
 	{
 		id: 'nextjs-9',
-		vneseName: 'Fetching data',
+		vneseName: 'B2-2: Fetching data',
 		eng: 'Fetching data',
 		description: 'Fetching data trong NextJs.',
 		link: '/nextjs-basic/documentation/fetching-data',
-		previewImage: 'parallax-8.webp',
+		previewImage: 'course_nextjs.png',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
+	{
+		id: 'nextjs-7',
+		vneseName: 'B2-3: Middleware And Authenticate (P1)',
+		eng: 'Middleware And Authenticate',
+		description: 'Middleware trong NextJs, ứng dụng middleware và HOC để tạo tính năng ProtectedRoutes cho NextJs ',
+		link: '/nextjs-basic/documentation/middleware-and-auth',
+		previewImage: 'course_nextjs.png',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
+	{
+		id: 'nextjs-8',
+		vneseName: 'B2-4: Middleware And Authenticate (P2)',
+		eng: 'Middleware And Authenticate',
+		description: 'Middleware trong NextJs, ứng dụng middleware và HOC để tạo tính năng ProtectedRoutes cho NextJs ',
+		link: '/nextjs-basic/documentation/middleware-and-auth-p2',
+		previewImage: 'course_nextjs.png',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
+
+	{
+		id: 'nextjs-10',
+		vneseName: 'B3-1: API đơn giản với NextJS (P1)',
+		eng: 'Middleware And Authenticate',
+		description: 'Cùng tạo các RESTful API đơn giản với NextJS ',
+		link: '/nextjs-basic/documentation',
+		previewImage: 'course_nextjs.png',
+		status_id: 1,
+		apps: ['nextjs-basic'],
+	},
+	{
+		id: 'nextjs-10',
+		vneseName: 'B3-2: API đơn giản với NextJS (P2)',
+		eng: 'Middleware And Authenticate',
+		description: 'Cùng tạo các RESTful API đơn giản với NextJS ',
+		link: '/nextjs-basic/documentation',
+		previewImage: 'course_nextjs.png',
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
@@ -1009,3 +1030,33 @@ const base = () => {
 	};
 };
 export default base;
+
+// Buổi 3 (2 tiếng): SSR, SSG và API Routes
+// Mục tiêu: Phân biệt SSR, SSG, ISR và làm quen với API routes trong Next.js.
+
+// SSR và SSG:
+
+// getServerSideProps vs. getStaticProps
+// ISR (Incremental Static Regeneration)
+// Tạo API routes:
+
+// Tạo API trong thư mục pages/api
+// Xử lý GET và POST request
+// Thực hành:
+
+// Tạo trang hiển thị danh sách sản phẩm từ API (SSG)
+// Tạo API để thêm sản phẩm mới
+
+// Buổi 4 (2 tiếng): Quản lý State và Tích hợp API
+// Mục tiêu: Kết hợp Hooks và các API call trong Next.js.
+
+// Sử dụng useState và useEffect cho dữ liệu động
+
+// Gọi API trong useEffect
+// Tích hợp với các API bên ngoài:
+
+// Fetch dữ liệu từ một REST API hoặc GraphQL
+// Thực hành:
+
+// Tạo form thêm sản phẩm và lưu vào API đã tạo
+// Render lại danh sách sản phẩm sau khi thêm

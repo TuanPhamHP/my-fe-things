@@ -10,59 +10,41 @@
 				</p>
 
 				<PageHeading text="Server Component" addOnClass="text-left mt-5" markedAs="server-component" />
-				<PageHeading text="- fetch()" addOnClass="text-left mt-5" markedAs="server-fetch" :lvl="2" />
+
 				<p class="text-slate-900 dark:text-white mt-5">
-					NextJs request extends từ <FilePath>fetch API native</FilePath>, từ đó bạn có thể config phần
-					<b>`caching, revalidating`</b> cho mỗi request. Do extends từ <FilePath>fetch API native</FilePath>, nên mặc
-					định sẽ memoize các requests khi render Serverside Components.
-					<br />
-					<br />
-					Ngoài ra bạn cũng có thể sử dụng kèm với <FilePath>async/await</FilePath>. Ví dụ:
+					Server Components được render trực tiếp trên server, thích hợp cho các tác vụ cần SSR như lấy dữ liệu thời
+					gian thực. Tuỳ thuộc vào dạng render mà chúng ta sẽ có config khác nhau để lấy data với Server Component. Ví
+					dụ:
 				</p>
-				<div class="py-2"></div>
+
+				<PageHeading text="SSG" addOnClass="text-left mt-5" markedAs="ssg" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3">
+					SSG trong App Router thực hiện fetch dữ liệu khi build và không thay đổi cho đến lần build tiếp theo.
+				</p>
 				<VCodeBlock :code="b3" highlightjs lang="tsx" theme="tomorrow-night-bright" />
 
-				<PageHeading text="- 3rd Lib" addOnClass="text-left mt-5" markedAs="server-fetch-lib" :lvl="2" />
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>{ cache: 'force-cache' }</FilePath>: Dữ liệu được cache và chỉ thay đổi sau lần build mới.
+					</li>
+				</ul>
+
+				<PageHeading text="ISR" addOnClass="text-left mt-5" markedAs="isr" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-5">
-					Ngoài ra, nếu các bạn không quen với việc dùng <FilePath>fetch API native</FilePath> thì NextJs cũng cho phép
-					chúng ta sử dụng các lib ngoài để hỗ trợ việc fetching data (như database, CMS client ...), cần phải lưu ý
-					rằng ở đây chúng ta đang làm việc với Server side components do đó chúng ta nên config caching để tăng perform
-					của components.
-					<br />
-					Ví dụ các bạn sử dụng instance <b>`db`</b> của một 3rd-party lib:
+					ISR cho phép trang được tái tạo sau khoảng thời gian nhất định mà không cần rebuild toàn bộ.
 				</p>
 				<div class="py-2"></div>
 				<VCodeBlock :code="b4" highlightjs lang="tsx" theme="tomorrow-night-bright" />
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>{ next: { revalidate: 30 } }</FilePath>: Trang sẽ được tái tạo mỗi 30 giây nếu có request mới.
+					</li>
+				</ul>
+
 				<PageHeading text="Client Component" addOnClass="text-left mt-5" markedAs="client-component" />
-				<PageHeading text="- Route Handlers" addOnClass="text-left mt-5" markedAs="client-fetch" :lvl="2" />
+				<PageHeading text="CSR" addOnClass="text-left mt-5" markedAs="csr" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-5">
-					Tiếp theo ta sẽ tìm hiểu cách fetch data ở Client Components. NextJs có cung cấp cho chúng ta một thứ là
-					<FilePath> Route Handler </FilePath>, nó sẽ giúp ta fetching data ở phía client.
-
-					<FilePath> Route Handler </FilePath>
-					được excute ở phía server nhưng sẽ không block việc render của NextJs và sẽ trả lại data cho phía client sau
-					khi thành công.
-					<br />
-					<br />
-
-					Do được excute phía Server nên
-					<FilePath> Route Handler </FilePath>
-					giúp chúng ta tránh được việc rò rỉ thông tin nhạy cảm (như token, api_key ...).
-				</p>
-				<PageHeading text="- 3rd Lib" addOnClass="text-left mt-5" markedAs="client-fetch-lib" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-5">
-					Ngoài ra, nếu các bạn không quen với việc dùng <FilePath>Route Handlers</FilePath> thì NextJs cũng cho phép
-					chúng ta sử dụng các lib ngoài để hỗ trợ việc fetching data (như axios, swr ...).
-					<br />
-					Ví dụ các bạn sử dụng lib
-					<a
-						href="https://swr.vercel.app/docs/getting-started"
-						target="_blank"
-						rel="noreferrer"
-						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"
-						><b>`swr`</b>
-					</a>
-					:
+					Client Components được render trên client và fetch dữ liệu sau khi trang đã load.
 				</p>
 
 				<VCodeBlock :code="b5" highlightjs lang="tsx" theme="tomorrow-night-bright" />
@@ -86,74 +68,96 @@
 		components: { PageMarkBook, PageHeading, FakeTerminalUI, DocNextPage, FilePath, VCodeBlock },
 		data() {
 			return {
-				b3: ` // ~/app/my-todo/page.tsx
-async function getData() {
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
- 
-  if (!res.ok) {
-    // throw error sẽ redirect về ErrorBoundary gần nhất
-    throw new Error('Failed to fetch data')
-  }
- 
-  // Xử lý khi nhận được data từ api
-  return res.json()
-}
- 
-export default async function Page() {
-  const data = await getData()
- 
-  return <div>
-	{data.title}
-	</div>
+				b3: `// app/products/page.tsx
+type Product = {
+  id: number;
+  title: string;
+};
+
+const fetchProducts = async (): Promise<Product[]> => {
+  const res = await fetch('https://fakestoreapi.com/products', { cache: 'force-cache' });
+  return res.json();
+};
+
+export default async function ProductsPage() {
+  const products = await fetchProducts();
+
+  return (
+    <div>
+      <h1>SSG Products</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>{product.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 `,
-				b4: ` // ~/app/utils.ts
-import { cache } from 'react'
- 
-export const getItem = cache(async (id: string) => {
-  const item = await db.item.findUnique({ id })
-  return item
-})
+				b4: `// app/products/page.tsx
+type Product = {
+  id: number;
+  title: string;
+};
 
-// ~/app/item/[id]/page.tsx
-import { getItem } from '@/utils/get-item'
- 
-export const revalidate = 3600 // revalidate the data at most every hour
- 
-export default async function Page({
-  params: { id },
-}: {
-  params: { id: string }
-}) {
-  const item = await getItem(id)
-  // ...
+const fetchProducts = async (): Promise<Product[]> => {
+  const res = await fetch('https://fakestoreapi.com/products', {
+    next: { revalidate: 30 }, // Revalidate sau 30 giây
+  });
+  return res.json();
+};
+
+export default async function ProductsPage() {
+  const products = await fetchProducts();
+
+  return (
+    <div>
+      <h1>ISR Products</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>{product.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 `,
-				b5:
-					` // ~/services/todo.tsx
-import useSWR from 'swr'
-function getDetailData (id) {
-  const { data, error, isLoading } = useSWR(` +
-					'`https://jsonplaceholder.typicode.com/todos/${id}`' +
-					`, fetcher)
- 
-  return {
-    todo: data,
-    isLoading,
-    isError: error
-  }
-}
+				b5: `'use client';
 
-// components/TodoList.tsx
-function TodoList ({ id }) {
-  const { data, isLoading, isError } = getDetailData(id)
- 
-  if (isLoading) return <p>Loading ...</p>
-  if (isError) return <p>Lỗi lấy dữ liệu</p>
-  return <div>
-		<p>Title: {data.title}</p>
-		<p>id: {data.id}</p>
-	</div>
+import { useEffect, useState } from 'react';
+
+type Product = {
+  id: number;
+  title: string;
+};
+
+export default function ProductsPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch('https://fakestoreapi.com/products');
+      const data = await res.json();
+      setProducts(data);
+      setLoading(false);
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <h1>CSR Products</h1>
+      <ul>
+        {products.map((product) => (
+          <li key={product.id}>{product.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 `,
 				pagePagination: {
@@ -174,7 +178,7 @@ function TodoList ({ id }) {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-8' })
+					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-9' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

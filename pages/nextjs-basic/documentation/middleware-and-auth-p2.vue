@@ -213,7 +213,7 @@ export default function RootLayout({
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-7' })
+					.getPagination({ appIds: 'nextjs-basic', currentDocId: 'nextjs-8' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});
