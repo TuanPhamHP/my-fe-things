@@ -34,7 +34,7 @@ const practiceCategories = [
 		en: 'NodeJS',
 	},
 ];
-let baseListData: DocumentItem[] = [
+const REACTBasicDocs = [
 	{
 		id: 1,
 		vneseName: 'Cài đặt cơ bản',
@@ -187,9 +187,12 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
+] as DocumentItem[];
+
+const HTMLBasicDocs = [
 	{
 		id: 6,
-		vneseName: 'HTML - Thẻ và cấu trúc file',
+		vneseName: '[B1-1] HTML - Thẻ và cấu trúc file',
 		eng: 'html tag and structure',
 		description: 'Thẻ trong HTML và cấu trúc cơ bản của một file HTML.',
 		link: '/html-css-js-basic/documentation/ep-1',
@@ -199,7 +202,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 7,
-		vneseName: 'HTML - Links, Image',
+		vneseName: '[B1-2]: HTML - List, Links, Image',
 		eng: 'links, images, anchor, img, <a>, <img>',
 		description: 'Giới thiệu về thẻ đường dẫn, ảnh và video...',
 		link: '/html-css-js-basic/documentation/ep-2',
@@ -209,7 +212,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 8,
-		vneseName: 'CSS - Intro & Syntax',
+		vneseName: '[B1-3]: CSS - Intro & Syntax',
 		eng: 'css3 introduction, syntax',
 		description: 'Giới thiệu về CSS3, cách viết và cách sử dụng chúng',
 		link: '/html-css-js-basic/documentation/ep-3',
@@ -218,19 +221,8 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 	{
-		id: 'r8-1',
-		vneseName: 'CSS - Element spacing',
-		eng: 'css3 introduction, syntax',
-		description: 'Padding, Margin, Box-sizing ... Các CSS liên quan đến spacing của element',
-		link: '/html-css-js-basic/documentation/ep-r8-1',
-		previewImage: 'course_hcj.png',
-		status_id: 1,
-		apps: ['html-basic'],
-	},
-
-	{
 		id: 9,
-		vneseName: 'HTML - Table',
+		vneseName: '[B1-4]: HTML - Table',
 		eng: 'html table tag, table tag',
 		description: 'Thẻ table trong HTML, cấu trúc và cách dùng',
 		link: '/html-css-js-basic/documentation/ep-4',
@@ -238,9 +230,10 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['html-basic'],
 	},
+
 	{
 		id: 10,
-		vneseName: 'HTML - Form',
+		vneseName: '[B2-1]: HTML - Form',
 		eng: 'html style tag, styling tag',
 		description: 'Form trong HTML, các thẻ và cách dùng',
 		link: '/html-css-js-basic/documentation/ep-5',
@@ -249,8 +242,49 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 	{
+		id: 'r1',
+		vneseName: '[B2-2]: HTML - Semantic tag & SEO',
+		eng: 'html style tag, styling tag',
+		description: 'các loại thẻ dạng semantic trong HTML, tối ưu SEO ?',
+		link: '/html-css-js-basic/documentation/semantic-n-seo',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+
+	{
+		id: 'r8-1',
+		vneseName: '[B3-1] CSS - Element spacing',
+		eng: 'css3 introduction, syntax',
+		description: 'Padding, Margin, Box-sizing ... Các CSS liên quan đến spacing của element',
+		link: '/html-css-js-basic/documentation/ep-r8-1',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
+		id: 'r8-2',
+		vneseName: '[B3-2] CSS - Position - W',
+		eng: 'css3 introduction, syntax',
+		description: 'Đang update nè',
+		link: '/html-css-js-basic/documentation',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
+		id: 'r8-2',
+		vneseName: '[B3-3] CSS - Display - W',
+		eng: 'css3 introduction, syntax',
+		description: 'Đang update nè',
+		link: '/html-css-js-basic/documentation',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
 		id: 11,
-		vneseName: 'CSS - Pseudo',
+		vneseName: '[B3-3] CSS - Pseudo',
 		eng: 'pseudo class, pseudo element',
 		description: 'Pseudo Classes và Pseudo Elements trong CSS. Một số loại Pseudo thường dùng',
 		link: '/html-css-js-basic/documentation/ep-11',
@@ -260,7 +294,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 13,
-		vneseName: 'Flexbox (P1)',
+		vneseName: '[B4-1] Flexbox (P1)',
 		eng: 'Flex box',
 		description: 'Flex box trong Web UI',
 		link: '/html-css-js-basic/documentation/ep-13',
@@ -270,7 +304,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 14,
-		vneseName: 'Flexbox (P2)',
+		vneseName: '[B4-2] Flexbox (P2)',
 		eng: 'Flex box',
 		description: 'Flex box trong Web UI',
 		link: '/html-css-js-basic/documentation/ep-14',
@@ -280,7 +314,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 'js-r1',
-		vneseName: 'JS - Data type (P1)',
+		vneseName: '[B7-1] JS - Data type (P1)',
 		eng: 'javascript object, fnc, fn, methods, ms',
 		description: 'Khái niệm cơ bản về các kiểu dữ liệu trong Javascript, một số bài toán thường gặp.',
 		link: '/html-css-js-basic/documentation/js-basic-p1',
@@ -290,7 +324,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 15,
-		vneseName: 'JS - Object',
+		vneseName: '[B7-2] JS - Object',
 		eng: 'javascript object, fnc, fn, methods, ms',
 		description: 'Khái niệm cơ bản về Object, CRUD các trường trong object',
 		link: '/html-css-js-basic/documentation/ep-15',
@@ -299,18 +333,8 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 	{
-		id: 16,
-		vneseName: 'JS - Function vs Methods ???',
-		eng: 'javascript function, fnc, fn, methods, ms',
-		description: 'Phân biệt Function, Methods trong javascript.',
-		link: '/html-css-js-basic/documentation/ep-16',
-		previewImage: 'course_hcj.png',
-		status_id: 1,
-		apps: ['html-basic'],
-	},
-	{
 		id: 17,
-		vneseName: 'JS - Array',
+		vneseName: '[B7-3] JS - Array',
 		eng: 'javascript array',
 		description: 'Giới thiệu về Array trong javascript, các bài toán Array cơ bản',
 		link: '/html-css-js-basic/documentation/ep-17',
@@ -319,8 +343,29 @@ let baseListData: DocumentItem[] = [
 		apps: ['html-basic'],
 	},
 	{
+		id: 17,
+		vneseName: '[B8-1] JS - condition & statement  - W',
+		eng: 'javascript array',
+		description: 'Đang update nè',
+		link: '/html-css-js-basic/documentation',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
+		id: 16,
+		vneseName: '[B8-2] JS - Function vs Methods ???',
+		eng: 'javascript function, fnc, fn, methods, ms',
+		description: 'Phân biệt Function, Methods trong javascript.',
+		link: '/html-css-js-basic/documentation/ep-16',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+
+	{
 		id: 18,
-		vneseName: 'JS - Array map(), forEach(), filter()',
+		vneseName: '[B8-3] JS - Array map(), forEach(), filter()',
 		eng: 'javascript array, map, foreach, filter',
 		description: 'Giới thiệu về các method map(), forEach(), filter() của Array trong javascript',
 		link: '/html-css-js-basic/documentation/ep-18',
@@ -330,7 +375,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 19,
-		vneseName: 'JS - DOM (P1): Query',
+		vneseName: '[B10-1] JS - DOM (P1): Query',
 		eng: 'javascript dom, document object model queryselector getelementby',
 		description: 'Cơ bản về JS DOM. P1 - Tìm kiếm phần tử',
 		link: '/html-css-js-basic/documentation/ep-19',
@@ -340,7 +385,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 20,
-		vneseName: 'JS - DOM (P2): ClassList',
+		vneseName: '[B10-2] JS - DOM (P2): ClassList',
 		eng: 'javascript dom, document object model class attributes',
 		description: 'Cơ bản về JS DOM. P2 - Thao tác với classList, các methods của classList',
 		link: '/html-css-js-basic/documentation/ep-20',
@@ -350,7 +395,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 21,
-		vneseName: 'JS - DOM (P3): Attributes',
+		vneseName: '[B11-1] JS - DOM (P3): Attributes',
 		eng: 'javascript dom, document object model class attributes',
 		description: 'Cơ bản về JS DOM. P3 - Thao tác với Attributes, các methods của thường dùng',
 		link: '/html-css-js-basic/documentation/ep-21',
@@ -360,7 +405,7 @@ let baseListData: DocumentItem[] = [
 	},
 	{
 		id: 22,
-		vneseName: 'JS - DOM (P4): Events, addEventListner',
+		vneseName: '[B11-2] JS - DOM (P4): Events, addEventListner',
 		eng: 'javascript dom, document object model class addEventListner events',
 		description: 'Cơ bản về JS DOM. P4 - Binding Function vào các sự kiện của một element',
 		link: '/html-css-js-basic/documentation/ep-22',
@@ -368,8 +413,29 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['html-basic'],
 	},
+	{
+		id: 22,
+		vneseName: '[B12-1] Storage API và JSON - W',
+		eng: 'javascript dom, document object model class addEventListner events',
+		description: 'Đang update nè',
+		link: '/html-css-js-basic/documentation',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+	{
+		id: 22,
+		vneseName: '[B12-2] Xử lý sự kiện nâng cao và thao tác bất đồng bộ  - W',
+		eng: 'Đang update nè',
+		description: 'Cơ bản về Storage API và JSON trong JS',
+		link: '/html-css-js-basic/documentation',
+		previewImage: 'course_hcj.png',
+		status_id: 1,
+		apps: ['html-basic'],
+	},
+] as DocumentItem[];
 
-	// NEXTJS
+const NEXTJSBasicDocs = [
 	{
 		id: 'nextjs-1',
 		vneseName: 'B1-1: Cài đặt cơ bản',
@@ -481,7 +547,9 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nextjs-basic'],
 	},
-	// PHP
+] as DocumentItem[];
+
+const PHPAndLaravelBasicDocs = [
 	{
 		id: 'php-1',
 		vneseName: 'Cài đặt cơ bản',
@@ -774,8 +842,8 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['php'],
 	},
-
-	// NodeJS
+] as DocumentItem[];
+const NodeJSBasicDocs = [
 	{
 		id: 'node-1',
 		vneseName: 'Cài đặt cơ bản',
@@ -878,6 +946,14 @@ let baseListData: DocumentItem[] = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+] as DocumentItem[];
+
+let baseListData: DocumentItem[] = [
+	...HTMLBasicDocs,
+	...REACTBasicDocs,
+	...NEXTJSBasicDocs,
+	...PHPAndLaravelBasicDocs,
+	...NodeJSBasicDocs,
 ];
 class PaginationDefault {
 	constructor(
@@ -1060,3 +1136,18 @@ export default base;
 
 // Tạo form thêm sản phẩm và lưu vào API đã tạo
 // Render lại danh sách sản phẩm sau khi thêm
+
+// Buổi 5 (2 tiếng): Tối ưu và Triển khai
+// Mục tiêu: Tìm hiểu về tối ưu hiệu năng và cách deploy lên Vercel.
+
+// Tối ưu hiệu năng:
+
+// Tải chậm (Lazy loading) với next/image
+// Prefetch dữ liệu với Link và các mẹo khác
+// Triển khai dự án:
+
+// Đăng ký tài khoản trên Vercel
+// Triển khai tự động với GitHub
+// Thực hành:
+
+// Deploy ứng dụng và kiểm tra trên Vercel

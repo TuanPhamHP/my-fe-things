@@ -644,7 +644,7 @@
 									@click="boxSizing = item"
 								>
 									<Icon :name="`${boxSizing === item ? 'ph:radio-button-fill' : 'ph:circle-light'}`" />
-									{{ getBoxSizingClassName(boxSizing) }}
+									{{ getBoxSizingClassName(item) }}
 								</div>
 							</div>
 							<div
