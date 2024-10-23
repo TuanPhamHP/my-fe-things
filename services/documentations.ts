@@ -264,10 +264,10 @@ const HTMLBasicDocs = [
 	},
 	{
 		id: 'r8-2',
-		vneseName: '[B3-2] CSS - Position - W',
+		vneseName: '[B3-2] CSS - Position',
 		eng: 'css3 introduction, syntax',
 		description: 'Đang update nè',
-		link: '/html-css-js-basic/documentation',
+		link: '/html-css-js-basic/documentation/ep-r8-2',
 		previewImage: 'course_hcj.png',
 		status_id: 1,
 		apps: ['html-basic'],

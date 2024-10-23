@@ -97,14 +97,14 @@
 				</p>
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-						<b class="min-w-[250px]">`border-direction-attribute*`:</b>
+						<b class="min-w-[250px]">`border-direction*-attribute*`:</b>
 						<div class="w-full">
 							<span>
-								Giá trị <b>`direction`</b> chính là giá trị chỉ hướng của padding bao gồm:
+								Giá trị <b>`direction*`</b> chính là giá trị chỉ hướng của padding bao gồm:
 								<b>top, left, bottom, right.</b>
 								<br />
 								<br />
-								Giá trị <b>`attribute`</b> để xác định thuộc tính nào của border mà ta muốn tác động đến bao gồm:
+								Giá trị <b>`attribute*`</b> để xác định thuộc tính nào của border mà ta muốn tác động đến bao gồm:
 								<b>color, width, style</b>
 								<div class="grid grid-cols-1 xl:grid-cols-2 gap-3 mt-3">
 									<div class="col-span-1">
