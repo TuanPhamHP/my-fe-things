@@ -280,24 +280,24 @@
 			removeItem(item: Item) {
 				this.selectedData = this.selectedData.filter(o => o !== item.id) as string[] | number[];
 			},
-			onScroll(e: Event) {
-				if (this.refType) {
-					clearTimeout(this.refType);
-				}
-				this.refType = window.setTimeout(() => {
-					if (this.currentLength >= this.listItemsComputed.length || !e.target) {
-						return;
-					}
-					const target = e.target as HTMLElement;
-					const scrH = target.scrollHeight;
-					const scrT = target.scrollTop;
-					const eH = target.clientHeight;
-					const gap = scrH - scrT - eH;
-					if (gap < 300) {
-						this.currentLength += this.step;
-					}
-				}, 240);
-			},
+			// onScroll(e: Event) {
+			// 	if (this.refType) {
+			// 		clearTimeout(this.refType);
+			// 	}
+			// 	this.refType = window.setTimeout(() => {
+			// 		if (this.currentLength >= this.listItemsComputed.length || !e.target) {
+			// 			return;
+			// 		}
+			// 		const target = e.target as HTMLElement;
+			// 		const scrH = target.scrollHeight;
+			// 		const scrT = target.scrollTop;
+			// 		const eH = target.clientHeight;
+			// 		const gap = scrH - scrT - eH;
+			// 		if (gap < 300) {
+			// 			this.currentLength += this.step;
+			// 		}
+			// 	}, 240);
+			// },
 		},
 	};
 </script>

@@ -53,7 +53,7 @@ export const useAuthStore = defineStore('auth', {
 					authFreshCookie.value = '';
 					this.user = null;
 					this.token = '';
-					window.location.href = '/login';
+					// window.location.href = '/login';
 				});
 		},
 		getUserInfoHardCode() {

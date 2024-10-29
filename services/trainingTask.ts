@@ -152,6 +152,17 @@ let baseListData: PracticeItem[] = [
 		apps: ['html-basic'],
 	},
 	{
+		id: 'c_e_3',
+		vneseName: 'JS - Condition & Loop',
+		eng: 'array methods',
+		description: 'Bài tập về câu điều kiện và vòng lặp trong JS.',
+		link: '/html-css-js-basic/practice/c_e_3',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['html-basic'],
+	},
+	{
 		id: 'e_1',
 		vneseName: 'Array Methods',
 		eng: 'array methods',
