@@ -51,7 +51,10 @@
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Cuối cùng, các bạn có thể test các API này với các phần mềm hỗ trợ như POSTMAN ...
+					<br />
+					Hoặc các bạn có thể tự tạo view trong chính Next App của các bạn:
 				</p>
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -183,6 +186,43 @@ export async function POST(request: NextRequest) {
 		return NextResponse.json({ error: 'Failed to add product' }, { status: 500 });
 	}
 }
+`,
+				b3: `// ~/app/products/page.tsx
+'use client';
+import { useEffect, useState } from 'react';
+import withAuth from '@/hoc/withAuth';
+
+type Product = {
+	id: number;
+	name: string;
+};
+
+function Page() {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [loading, setLoading] = useState(true);
+	useEffect(() => {
+		const fetchProducts = async () => {
+			const res = await fetch('/api/products');
+			const data = await res.json();
+			setProducts(data);
+			setLoading(false);
+		};
+		fetchProducts();
+	}, []);
+
+	return (
+		<div>
+			<h1>CSR Products</h1>
+			<ul>
+				{products.map(product => (
+					<li key={product.id}>{product.name}</li>
+				))}
+			</ul>
+		</div>
+	);
+}
+
+export default Page;
 `,
 			};
 		},
