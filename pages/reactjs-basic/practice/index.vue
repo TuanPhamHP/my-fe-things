@@ -128,6 +128,9 @@
 				// 	return;
 				// }
 				clearTimeout(this.refSyncUrl);
+				if (process.server) {
+					return;
+				}
 				this.refSyncUrl = window.setTimeout(() => {
 					// this.pagination = {
 					// 	...this.pagination,
