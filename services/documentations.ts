@@ -415,10 +415,10 @@ const HTMLBasicDocs = [
 	},
 	{
 		id: 22,
-		vneseName: '[B12-1] Storage API và JSON - W',
+		vneseName: '[B12-1] Storage API và JSON',
 		eng: 'javascript dom, document object model class addEventListner events',
 		description: 'Đang update nè',
-		link: '/html-css-js-basic/documentation',
+		link: '/html-css-js-basic/documentation/storage-api-and-json',
 		previewImage: 'course_hcj.png',
 		status_id: 1,
 		apps: ['html-basic'],

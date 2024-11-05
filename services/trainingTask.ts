@@ -162,6 +162,7 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['html-basic'],
 	},
+
 	{
 		id: 'e_1',
 		vneseName: 'Array Methods',
@@ -195,7 +196,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['html-basic'],
 	},
-
+	// {
+	// 	id: 'c_e_4',
+	// 	vneseName: 'JS - Storage & JSON',
+	// 	eng: 'array methods',
+	// 	description: 'Bài tập về Storage & JSON trong JS.',
+	// 	link: '/html-css-js-basic/practice/c_e_3',
+	// 	previewImage: 'course_practice-1.png',
+	// 	status_id: 1,
+	// 	category: [],
+	// 	apps: ['html-basic'],
+	// },
 	// PHP
 	{
 		id: 'php-1',
