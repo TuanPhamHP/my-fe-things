@@ -2,15 +2,32 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
+				<PageHeading text="Introduction" addOnClass="text-left" markedAs="intro" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					React là thư viện tạo giao diện người dùng (UI) đơn trang (Single Page Application - SPA).
+					<br>
+					<br>	
+					<b>Vấn đề đặt ra</b>: <br>	
+					<span class="pl-3 leading-8">Làm sao để xây dựng ứng dụng có nhiều trang (Home, About, Contact...) mà không cần tải lại toàn bộ trang web?</span>
+					<br>	
+					<br>	
+					<b>Điểm khó khăn</b>:
+					<br>	
+					<span class="pl-3 leading-8">Cần quản lý URL (đường dẫn).</span>
+					<br>	
+					<span class="pl-3 leading-8">	Chuyển đổi giao diện theo URL mà vẫn giữ được trạng thái ứng dụng.</span>
+				
+				</p>	
 				<PageHeading text="Router" addOnClass="text-left" markedAs="react-router" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-					React Router là một thư viện JavaScript được sử dụng để quản lý các định tuyến (routing) trong ứng dụng React.
+					<FilePath>react-router-dom</FilePath> là một thư viện JavaScript được sử dụng để quản lý các định tuyến (routing) trong ứng dụng React.
 					Nó cho phép bạn xây dựng các ứng dụng web đơn trang (Single Page Applications - SPAs) và phân trang cho chúng.
 				</p>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B1: Install package:</p>
 				<FakeTerminalUI :textCoppy="'node --version'">
 					<p>npm install react-router-dom</p>
 				</FakeTerminalUI>
+			
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
 					B2: Setup Routers cho App:
 				</p>
@@ -43,37 +60,61 @@ root.render(
 				</p>
 			
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">
-					B2: Tạo ra các Path và Page Component tương ứng
+					B3: Tạo ra các Path và Page Component tương ứng
 				</p>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 				Ở bước này, chúng ta sẽ tiến hành tạo ra các <b>`path`</b> và gán nó với <b>`component`</b> tương ứng 
 				để đảm bảo UI được render chính xác.
 				</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Trước hết, chúng ta sẽ xây dựng cấu trúc thư mục như sau:
+				</p>
 				<VCodeBlock
-					:code="` // ~src/app.jsx
-import {Link, Route, Routes} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import AboutUs from './pages/AboutUs';
+					:code="b1"
+					highlightjs
+					lang="html"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Trong đó:
+				</p>
 
-function App() {
-  return (
-	<div>
-		<nav>
-			<ul>
-				<li> <Link to='/'>Home</Link> </li>
-				<li> <Link to='/about-us'>About Us</Link> </li>
-			</ul>
-		</nav>
-		<Routes>
-			<Route path='/' element={<HomePage />}></Route>	
-			<Route path='/about-us' element={<AboutUs />}></Route>
-		</Routes>
-	</div>
-	)
-}
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b><FilePath>/pages</FilePath>:</b> <span>
+							Là thư mục dùng để viết các <FilePath>Page-Component</FilePath>
+						</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b><FilePath>/pages/Home.js</FilePath> ...:</b> <span>
+							Là các <FilePath>Page-Component</FilePath>, mỗi một file này đại diện cho một path của chúng ta
+						</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<b><FilePath>/pages/index.js</FilePath>:</b> <span>
+							Là nơi chúng ta tổng hợp lại các <FilePath>Page-Component</FilePath> và gán nó vào path tương ứng.
+						</span>
+					</li>
+				</ul>
 
-export default App;
-`"
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Như vậy, <FilePath>/pages/index.js</FilePath> của chúng ta sẽ được trình bày như sau:
+				</p>
+				<VCodeBlock
+					:code="b2"
+					highlightjs
+					lang="javascript"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					Mục đích là để gom các <FilePath>Page-Component</FilePath> và <b>path</b> thành từng cặp và lưu lại vào biến <b>routes</b>, cuối cùng ta sẽ export 
+					<b>routes</b> để dùng.
+					<br>
+					<br>
+					Tiếp theo, chúng ta sẽ render các pages trên tại component <b>App.js</b> bằng mảng <b>routes</b> vừa được export:
+				</p>
+				<VCodeBlock
+					:code="b3"
 					highlightjs
 					lang="javascript"
 					theme="tomorrow-night-bright"
@@ -96,12 +137,7 @@ export default App;
 							<b>Path</b> được khai báo qua props <b>path</b>, component được khai báo qua props <b>element</b>
 						</span>
 					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-						<b>`Link`:</b>
-						<span>
-							giúp điều hướng url mà không cần reload lại trang như thẻ <b>{{ `<a></a>` }}</b>
-						</span>
-					</li>
+				
 				</ul>
 				
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -139,6 +175,46 @@ export default App;
 						link: '/reactjs-basic/documentation/context',
 					},
 				},
+				b1:`src/
+├── components/
+│   ├── App.js
+├── pages/
+│   ├── Home.js
+│   ├── About.js 	<-- File đại diện cho 1 route
+│   ├── index.js  <-- File chứa danh sách routes
+├── index.js      <-- File chính để render ứng dụng
+`,
+b2:`import Home from './Home';
+import About from './About';
+
+const routes = [
+  { path: '/', element: <Home /> },
+  { path: '/about', element: <About /> },
+];
+
+export default routes;
+`,
+b3:`// ~src/app.jsx
+import {Route, Routes} from 'react-router-dom';
+import Header from './components/layouts/Header';
+import routes from './pages/index';
+
+function App() {
+	return (
+		<div>
+			<Header/>
+			<Routes>
+				{	
+					routes.map((route, index) => (
+					<Route key={index} path={route.path} element={route.element} />
+					))
+				}
+			</Routes>
+		</div>
+	)
+}
+
+export default App;`
 			};
 		},
 	};

@@ -37,7 +37,7 @@ const practiceCategories = [
 const REACTBasicDocs = [
 	{
 		id: 1,
-		vneseName: 'Cài đặt cơ bản',
+		vneseName: 'B1-1: Cài đặt cơ bản',
 		eng: 'Installation',
 		description: 'Hướng dẫn cài đặt cơ bản để khởi tạo web-app của bạn với ReactJS.',
 		link: '/reactjs-basic/documentation/installation',
@@ -47,7 +47,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 2,
-		vneseName: 'Components',
+		vneseName: 'B1-2: Components',
 		eng: 'Installation',
 		description: 'Khái niệm về components, cách khởi tạo và sử dụng components.',
 		link: '/reactjs-basic/documentation/components',
@@ -57,7 +57,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 5,
-		vneseName: 'JSX (P1)',
+		vneseName: 'B1-3: JSX (P1)',
 		eng: 'JSX',
 		description: 'Khái niệm về JSX, cách Viết JSX. JSX Rules.',
 		link: '/reactjs-basic/documentation/jsx-in-react-p1',
@@ -67,7 +67,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 'r-6',
-		vneseName: 'JSX (P2)',
+		vneseName: 'B1-4: JSX (P2)',
 		eng: 'JSX',
 		description: 'Khái niệm về JSX, cách Viết JSX. JSX View.',
 		link: '/reactjs-basic/documentation/jsx-in-react-p2',
@@ -77,7 +77,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 'r-6-1',
-		vneseName: 'JSX (P3)',
+		vneseName: 'B1-5: JSX (P3)',
 		eng: 'JSX',
 		description: 'Xử lý events với JSX.',
 		link: '/reactjs-basic/documentation/jsx-in-react-p3',
@@ -85,9 +85,20 @@ const REACTBasicDocs = [
 		status_id: 1,
 		apps: ['reactjs-basic'],
 	},
+
+	{
+		id: 3,
+		vneseName: 'B2-1: CSS Trong React',
+		eng: 'Styled Component',
+		description: 'Cách sử dụng css trong ReactJS, css module.',
+		link: '/reactjs-basic/documentation/styled-component',
+		previewImage: 'course_reactjs.png',
+		status_id: 1,
+		apps: ['reactjs-basic'],
+	},
 	{
 		id: 'r-7',
-		vneseName: 'Conditional Rendering',
+		vneseName: 'B2-2: Conditional Rendering',
 		eng: 'render list data',
 		description: 'Cách sử dụng conditional rendering trong reactjs',
 		link: '/reactjs-basic/documentation/conditional-rendering',
@@ -97,7 +108,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 'r-2-2',
-		vneseName: 'Render list data',
+		vneseName: 'B2-3: Render list data',
 		eng: 'render list data',
 		description: 'Cách render một danh sách data ra view',
 		link: '/reactjs-basic/documentation/render-list-data',
@@ -106,18 +117,8 @@ const REACTBasicDocs = [
 		apps: ['reactjs-basic'],
 	},
 	{
-		id: 3,
-		vneseName: 'CSS Trong React',
-		eng: 'Styled Component',
-		description: 'Cách sử dụng css trong ReactJS, css module.',
-		link: '/reactjs-basic/documentation/styled-component',
-		previewImage: 'course_reactjs.png',
-		status_id: 1,
-		apps: ['reactjs-basic'],
-	},
-	{
 		id: 4,
-		vneseName: 'State & Props',
+		vneseName: 'B2-4: State & Props',
 		eng: 'State and Props',
 		description: 'Quản lý State và props trong ReactJS',
 		link: '/reactjs-basic/documentation/state-and-prop',
@@ -138,7 +139,7 @@ const REACTBasicDocs = [
 	// },
 	{
 		id: 'r-2-1',
-		vneseName: 'Effects & Life Cycle',
+		vneseName: 'B3-1: Effects & Life Cycle',
 		eng: 'Effects & Life Cycle',
 		description: 'Hook useEffect, life cycle của RFC.',
 		link: '/reactjs-basic/documentation/effects-and-life-cycle',
@@ -149,7 +150,7 @@ const REACTBasicDocs = [
 
 	{
 		id: 'r-8',
-		vneseName: 'Routers',
+		vneseName: 'B4-1: Routers',
 		eng: 'routers',
 		description: 'Setup và sử dụng routers trong ứng dụng react',
 		link: '/reactjs-basic/documentation/routers',
@@ -159,7 +160,7 @@ const REACTBasicDocs = [
 	},
 	{
 		id: 'r-9',
-		vneseName: 'useContext trong react',
+		vneseName: 'B5-1: useContext trong react',
 		eng: 'routers',
 		description: 'Setup và sử dụng useContext trong ứng dụng react',
 		link: '/reactjs-basic/documentation/context',

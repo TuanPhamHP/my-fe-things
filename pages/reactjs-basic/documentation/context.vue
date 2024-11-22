@@ -11,48 +11,20 @@
 					Giả sử bạn đang ở <b>component A (lv1)</b> và ở <b>component C (lv3)</b> cần phải sử dụng một state của
 					<b>A</b>, như vậy ta có thể truyền state đó qua props. Vấn đề nảy sinh ở đây là để truyền một props từ
 					<b>A (lv1)</b> sang <b>C (lv3)</b> thì ta cần phải truyền qua một component <b>B (lv2)</b> trước, trong khi đó
-					<b>B (lv2)</b> không có nhu cầu sử dụng tới props nói trên.
+					<b>B (lv2)</b> không có nhu cầu sử dụng tới props nói trên, việc này được gọi là <b>prop drilling</b>.
 					<br />
 					<br />
 					Lúc này chúng ta sẽ nghĩ đến việc tạo ra một nơi để chứa các <b>globalState</b> và share ra toàn app, khi đó
-					các components đều có quyền truy cập và sử dụng theo nhu cầu.
+					các components đều có quyền truy cập và sử dụng theo nhu cầu thay vì phải pass qua các level không cần thiết.
 					<br />
 					<br />
 					<b>`useContext`</b> là một hook được sử dụng để tạo ra context trong React App, chúng cho phép truy cập dữ
 					liệu từ một context trong cây component mà không cần phải truyền props qua nhiều cấp
 				</p>
+				<PageHeading text="Tạo context" addOnClass="text-left" markedAs="intro-sub" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B1: Setup Context:</p>
-				<VCodeBlock
-					:code="` // ~src/context/AuthContext.js
-import React, { createContext, useState } from 'react';
-
-// Tạo context
-const AuthContext = createContext();
-
-// Tạo provider
-const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Giá trị khởi tạo của user là null
-
-  const login = (userData) => {
-    setUser(userData); // Cập nhật thông tin người dùng khi đăng nhập
-  };
-
-  const logout = () => {
-    setUser(null); // Xóa thông tin người dùng khi đăng xuất
-  };
-
-  return (
-    <AuthContext.Provider value={{ user, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  );
-};
-`"
-					highlightjs
-					lang="javascript"
-					theme="tomorrow-night-bright"
-				/>
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="tomorrow-night-bright" />
 				<PageHeading text="Khởi tạo Context" addOnClass="mt-3" markedAs="context-init" :lvl="2" />
 				<div class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trước hết, chúng ta sẽ tạo một file có tên <b>AuthContext</b> dùng để khởi tạo context của chúng ta.
@@ -224,6 +196,31 @@ export default UserProfile;
 						link: '/reactjs-basic/documentation/routers',
 					},
 				},
+				b1: ` // ~src/context/AuthContext.js
+import React, { createContext, useState } from 'react';
+
+// Tạo context
+const AuthContext = createContext();
+
+// Tạo provider
+const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null); // Giá trị khởi tạo của user là null
+
+  const login = (userData) => {
+    setUser(userData); // Cập nhật thông tin người dùng khi đăng nhập
+  };
+
+  const logout = () => {
+    setUser(null); // Xóa thông tin người dùng khi đăng xuất
+  };
+
+  return (
+    <AuthContext.Provider value={{ user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+`,
 			};
 		},
 		mounted() {
