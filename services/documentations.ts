@@ -844,6 +844,7 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 ] as DocumentItem[];
+
 const NodeJSBasicDocs = [
 	{
 		id: 'node-1',
@@ -949,12 +950,36 @@ const NodeJSBasicDocs = [
 	},
 ] as DocumentItem[];
 
+const SQLBasicDocs = [
+	{
+		id: 'sql-1',
+		vneseName: 'D1 - Tổng quan về RDBMS và SQL',
+		eng: 'RDBMS and SQL',
+		description: 'Giới thiệu về RDBMS (Relational Database Management System) & SQL',
+		link: '/sql/documentation/about-rdbms-sql',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
+	{
+		id: 'sql-2',
+		vneseName: 'D1 - Database Models',
+		eng: 'RDBMS and SQL',
+		description: 'Giới thiệu về một số mô hình phổ biến như Hierarchical, Relationship, Network ...  ',
+		link: '/sql/documentation/database-models',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
+] as DocumentItem[];
+
 let baseListData: DocumentItem[] = [
 	...HTMLBasicDocs,
 	...REACTBasicDocs,
 	...NEXTJSBasicDocs,
 	...PHPAndLaravelBasicDocs,
 	...NodeJSBasicDocs,
+	...SQLBasicDocs,
 ];
 class PaginationDefault {
 	constructor(
@@ -997,7 +1022,7 @@ class PaginationDefault {
 }
 const getbaseListFromLocalStorage = (): DocumentItem[] | null => {
 	const listData = localStorage.getItem('listDocumentItem');
-	return listData ? JSON.parse(listData) : listData;
+	return listData ? JSON.parse(listData) : null;
 };
 const saveCurrentList = (): void => {
 	localStorage.setItem('listDocumentItem', JSON.stringify(baseListData));

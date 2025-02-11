@@ -57,12 +57,14 @@ export const useAppStateStore = defineStore('appState', {
 			this.onLogout = b;
 		},
 		syncCurrentTheme() {
-			this.currentTheme = localStorage.getItem('theme') || 'dark';
+			this.currentTheme = process.client ? localStorage.getItem('theme') || 'light' : 'light';
 		},
 		toggleTheme() {
 			const nextTheme = this.currentTheme === 'light' ? 'dark' : 'light';
 			this.currentTheme = nextTheme;
-			localStorage.setItem('theme', nextTheme);
+			if (process.client) {
+				localStorage.setItem('theme', nextTheme);
+			}
 		},
 	},
 });

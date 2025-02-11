@@ -126,13 +126,11 @@
 				// 	return;
 				// }
 				clearTimeout(this.refSyncUrl);
-				this.refSyncUrl = window.setTimeout(() => {
-					// this.pagination = {
-					// 	...this.pagination,
-					// 	page: 1,
-					// };
-					this.getListData();
-				}, 600);
+				if (process.client) {
+					this.refSyncUrl = window.setTimeout(() => {
+						this.getListData();
+					}, 600);
+				}
 			},
 		},
 		mounted() {

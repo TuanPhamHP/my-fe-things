@@ -272,19 +272,21 @@
 				if (this.refType) {
 					clearTimeout(this.refType);
 				}
-				this.refType = window.setTimeout(() => {
-					if (this.currentLength >= this.listItemsComputed.length || !e.target) {
-						return;
-					}
-					const target = e.target as HTMLElement;
-					const scrH = target.scrollHeight;
-					const scrT = target.scrollTop;
-					const eH = target.clientHeight;
-					const gap = scrH - scrT - eH;
-					if (gap < 300) {
-						this.currentLength += this.step;
-					}
-				}, 240);
+				if (process.client) {
+					this.refType = window.setTimeout(() => {
+						if (this.currentLength >= this.listItemsComputed.length || !e.target) {
+							return;
+						}
+						const target = e.target as HTMLElement;
+						const scrH = target.scrollHeight;
+						const scrT = target.scrollTop;
+						const eH = target.clientHeight;
+						const gap = scrH - scrT - eH;
+						if (gap < 300) {
+							this.currentLength += this.step;
+						}
+					}, 240);
+				}
 			},
 		},
 	};

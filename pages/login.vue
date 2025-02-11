@@ -166,7 +166,7 @@
 			setTimeout(() => {
 				this.showForm = true;
 			}, 300);
-			if (this.rememberMe) {
+			if (process.client && this.rememberMe) {
 				this.login = localStorage.getItem('account') || '';
 				this.password = localStorage.getItem('password') || '';
 			}
@@ -216,6 +216,9 @@
 						this.authStore.setUser({ ...user, name: user.name, id: user.id, token: 'make-up-token' });
 						this.authStore.setToken('make-up-token');
 						this.authCookie = 'make-up-token';
+						if (!process.client) {
+							this.router.push('/');
+						}
 						if (this.rememberMe) {
 							localStorage.setItem('account', this.login);
 							localStorage.setItem('password', this.password);

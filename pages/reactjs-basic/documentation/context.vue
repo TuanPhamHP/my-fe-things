@@ -105,7 +105,7 @@ const AuthProvider = ({ children }) => {
 					</p>
 				</div>
 				<PageHeading text="Sử dụng Context" addOnClass="mb-3" markedAs="context-apply" :lvl="2" />
-				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B2: Sử dụng Context</p>
+					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B2: Sử dụng Context</p>
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Để áp dụng <b>AuthContext</b> cho toàn bộ app, chúng ta bao bọc app bằng AuthProvider là được.

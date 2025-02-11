@@ -1,15 +1,6 @@
 <template>
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
 		<div class="dark:text-white py-5 mx-auto">
-			<!-- <div class="min-h-[250px] flex items-center justify-center w-full">
-				<h1 class="text-center font-bold xl:text-2xl text-slate-900 dark:text-white leading-10">
-					Hello anh em, page này làm ra để ghi lại vài thứ hay ho về ReactJS cho newbie.
-					<br />
-					Nội dung chính của trang đều về phần basic.
-					<br />
-					<span class="font-normal">( •̀ ω •́ )✧</span>
-				</h1>
-			</div> -->
 			<div class="sticky-top top-0 z-10 pb-3">
 				<div class="relative max-w-xl mx-auto mb-3">
 					<div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -143,7 +134,7 @@
 				this.loading = true;
 				const body = {
 					search: this.search,
-					appIds: 'html-basic',
+					appIds: 'sql',
 				};
 				const res = await this.$api.documentations.getListData(body);
 				this.loading = false;

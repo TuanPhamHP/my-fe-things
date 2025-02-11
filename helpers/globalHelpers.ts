@@ -46,6 +46,7 @@ const getFullAddressTruncate = (address: AddressComputed, maxLength: number = 70
 };
 
 const mapPathToApp = (st: string): AppName => {
+	if (!process.client) return null;
 	const currentPathName = window.location.pathname as string;
 	if (currentPathName.includes('html-css-js-basic')) {
 		return 'html-basic';

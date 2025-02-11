@@ -55,7 +55,7 @@
 				</div>
 				<div v-if="!listData.length" class="max-w-[450px] mx-auto py-10">
 					<h1 class="text-center font-bold xl:text-2xl text-slate-900 dark:text-white leading-10">
-						Chúng tôi không tìm thấy bài tập nào, vui lòng thử lại sau
+						Chúng tôi không tìm thấy bài tập nào, vui lòng thử lại
 						<br />
 						<br />
 						<span class="font-normal">¯\_(ツ)_/¯</span>
@@ -145,7 +145,7 @@
 				this.loading = true;
 				const body = {
 					search: this.search,
-					appIds: 'html-basic',
+					appIds: 'sql',
 				};
 				const res = await this.$api.trainingTask.getListData(body);
 				this.loading = false;

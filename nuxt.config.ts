@@ -10,20 +10,40 @@ export default defineNuxtConfig({
 			PORT: process.env.NUXT_PORT,
 		},
 	},
-	ssr: false,
+	ssr: true,
 	app: {
 		// pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
 			title: 'Zero to Hero', // Tiêu đề mặc định cho toàn bộ trang web
-			// titleTemplate: '%s - Tên Website', // Một template cho việc tạo tiêu đề cho từng trang cụ thể
+			titleTemplate: '%s | Học Lập Trình Cho Người Mới Bắt Đầu',
 			meta: [
-				// Các thiết lập meta khác có thể được thêm vào đây
 				{ charset: 'utf-8' },
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 				{
-					name: 'google-adsense-account',
-					content: 'ca-pub-3078524686122624',
+					name: 'description',
+					content:
+						'Zero to Hero - Trang web học lập trình từ cơ bản đến nâng cao. Hướng dẫn chi tiết, thực hành thực tế, giúp bạn trở thành lập trình viên chuyên nghiệp.',
 				},
+				{
+					name: 'keywords',
+					content: 'học lập trình, lập trình web, JavaScript, Python, HTML, CSS, React, Vue, Nuxt.js',
+				},
+				{ name: 'author', content: 'Zero to Hero Team' },
+				{ property: 'og:title', content: 'Zero to Hero - Học Lập Trình Cơ Bản' },
+				{
+					property: 'og:description',
+					content: 'Học lập trình từ con số 0 với các khóa học dễ hiểu, bài tập thực tế và hướng dẫn chuyên sâu.',
+				},
+				{ property: 'og:type', content: 'website' },
+				{ property: 'og:url', content: 'https://everyhelloworld.netlify.app/' },
+
+				{ name: 'twitter:title', content: 'Zero to Hero - Học Lập Trình Cơ Bản' },
+				{
+					name: 'twitter:description',
+					content: 'Học lập trình từ con số 0 với các khóa học dễ hiểu, bài tập thực tế và hướng dẫn chuyên sâu.',
+				},
+
+				{ name: 'google-adsense-account', content: 'ca-pub-3078524686122624' },
 			],
 			link: [
 				{
