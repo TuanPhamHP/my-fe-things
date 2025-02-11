@@ -1,6 +1,6 @@
 <template>
 	<div class="punch-page-wrapper bg-white rounded-[24px] p-6">
-		<NuxtLink to="/orders" class="w-10 h-10 flex items-center justify-center rounded-half hover:bg-gray-400/30">
+		<NuxtLink to="/" class="w-10 h-10 flex items-center justify-center rounded-half hover:bg-gray-400/30">
 			<Icon name="solar:arrow-left-linear" size="32px" />
 		</NuxtLink>
 		<div v-if="detailData" class="tabs pt-8">
@@ -8,11 +8,11 @@
 				<h1 class="display-xs font-semibold">Thông tin chung</h1>
 				<div class="py-8 flex gap-6 items-center">
 					<div class="flex">
-						<UserAvatarPreview :user="user" :size="100" background="bg-primary-300" />
+						<UserAvatarPreview :user="null" :size="100" background="bg-primary-300" />
 					</div>
 					<div>
 						<p class="display-xs font-bold mb-3 flex items-center gap-2">
-							{{ user.name }}
+							{{ user?.name }}
 							<Icon
 								:name="'solar:pen-2-bold'"
 								size="24px"
@@ -26,37 +26,37 @@
 				<div class="grid grid-cols-2 gap-4">
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Email</p>
-						<p class="text-md font-semibold text-gray-900 py-3">{{ detailData.email || '---' }}</p>
+						<p class="text-md font-semibold text-gray-900 py-3">{{ '---' }}</p>
 					</div>
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Tỉnh / Thành phố</p>
 						<p class="text-md font-semibold text-gray-900 py-3">
-							{{ detailData.address?.province?.full_name || '---' }}
+							{{ '---' }}
 						</p>
 					</div>
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">CODE</p>
-						<p class="text-md font-semibold text-gray-900 py-3">{{ detailData.code || '---' }}</p>
+						<p class="text-md font-semibold text-gray-900 py-3">{{ '---' }}</p>
 					</div>
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Quận / Huyện</p>
 						<p class="text-md font-semibold text-gray-900 py-3">
-							{{ detailData.address?.district?.full_name || '---' }}
+							{{ '---' }}
 						</p>
 					</div>
 
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Số điện thoại</p>
-						<p class="text-md font-semibold text-gray-900 py-3">{{ detailData.phone || '---' }}</p>
+						<p class="text-md font-semibold text-gray-900 py-3">{{ '---' }}</p>
 					</div>
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Phường / Xã</p>
-						<p class="text-md font-semibold text-gray-900 py-3">{{ detailData.address?.ward?.full_name || '---' }}</p>
+						<p class="text-md font-semibold text-gray-900 py-3">{{ '---' }}</p>
 					</div>
 
 					<div class="col-span-1">
 						<p class="text-md text-gray-900 mb-2">Địa chỉ</p>
-						<p class="text-md font-semibold text-gray-900 py-3">{{ detailData.address?.address_line || '---' }}</p>
+						<p class="text-md font-semibold text-gray-900 py-3">{{ '---' }}</p>
 					</div>
 				</div>
 			</div>

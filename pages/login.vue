@@ -117,7 +117,7 @@
 							authStore.setToken(_token);
 							authCookie.value = _token;
 						}
-						router.push('orders/');
+						router.push('/');
 					})
 					.catch((err: any) => {
 						console.log(err);
@@ -232,42 +232,6 @@
 						this.notificationStore.setSnack({ text: 'Failed on Login: ', type: 'error' });
 					}
 				}, 2000);
-				// await this.api.user
-				// 	.login(body)
-				// 	.then(
-				// 		(res: apiResponde) => {
-				// 			const rs = res as apiResponde;
-				// 			const user: Record<string, any> = rs.data.user;
-				// 			this.authStore.setUser({ ...user, name: user.name, id: user.id, token: rs.data.token });
-				// 			this.authStore.setToken(rs.data.token);
-				// 			this.authCookie = rs.data.token;
-				// 			this.authStore.getUserInfo();
-				// 			this.loginErrorMsg = '';
-				// 			if (this.rememberMe) {
-				// 				localStorage.setItem('account', this.login);
-				// 				localStorage.setItem('password', this.password);
-				// 			} else {
-				// 				localStorage.removeItem('account');
-				// 				localStorage.removeItem('password');
-				// 			}
-				// 			this.router.push('/orders');
-				// 		},
-				// 		(error: apiResponde) => {
-				// 			this.loginErrorMsg = error.data?.message || 'Đăng nhập thất bại, vui lòng thử lại.';
-				// 			this.notificationStore.setSnack({ text: 'Failed on Login: ' + error.data?.message, type: 'error' });
-				// 			console.log('exception...');
-				// 			console.log(error.status);
-				// 			console.log(error.data);
-				// 		}
-				// 	)
-				// 	.catch((err: any) => {
-				// 		this.loginErrorMsg = err || 'Đăng nhập thất bại, vui lòng thử lại.';
-
-				// 		this.error = err;
-				// 	})
-				// 	.finally(() => {
-				// 		this.loading = false;
-				// 	});
 			},
 			required(v: string) {
 				return !!v || 'Field is required';

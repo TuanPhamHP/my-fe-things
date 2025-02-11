@@ -33,7 +33,7 @@
 		},
 		props: {
 			user: {
-				type: Object as PropType<UserAvatar>,
+				type: [Object, null] as PropType<UserAvatar | null>,
 				default: {
 					name: 'User',
 					avatar: '',
@@ -54,7 +54,7 @@
 			};
 		},
 		mounted() {
-			if (!this.user.avatar) {
+			if (!this.user?.avatar) {
 				this.imgWork = false;
 			}
 		},
@@ -62,7 +62,7 @@
 			user: {
 				deep: true,
 				handler() {
-					if (!this.user.avatar) {
+					if (!this.user?.avatar) {
 						this.imgWork = false;
 					}
 				},
