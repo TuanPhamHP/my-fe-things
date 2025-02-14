@@ -24,7 +24,7 @@
 					Nó cho phép bạn xây dựng các ứng dụng web đơn trang (Single Page Applications - SPAs) và phân trang cho chúng.
 				</p>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B1: Install package:</p>
-				<FakeTerminalUI :textCoppy="'node --version'">
+				<FakeTerminalUI :textCoppy="'npm install react-router-dom'">
 					<p>npm install react-router-dom</p>
 				</FakeTerminalUI>
 			

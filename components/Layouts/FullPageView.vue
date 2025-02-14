@@ -322,34 +322,6 @@
 				a.click();
 				a.remove();
 			},
-			// onDownload(url: string) {
-			// 	fetch(url, {
-			// 		method: 'GET', // *GET, POST, PUT, DELETE, etc.
-			// 		mode: 'no-cors', // no-cors, *cors, same-origin
-			// 		cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-			// 		credentials: 'same-origin', // include, *same-origin, omit
-			// 		headers: {
-			// 			'Access-Control-Allow-Origin': '*',
-			// 			Accept: '*/*',
-			// 			'Sec-Fetch-Mode': 'cors',
-			// 			'Sec-Fetch-Site': 'cross-site',
-			// 		},
-			// 	})
-			// 		.then(response => response.blob())
-			// 		.then(blob => {
-			// 			const url = window.URL.createObjectURL(new Blob([blob], { type: 'image/png' }));
-			// 			const a = document.createElement('a') as HTMLAnchorElement;
-			// 			// var file = new Blob([blob], { type: 'image/jpeg' });
-			// 			console.log(url);
-			// 			a.setAttribute('href', url);
-			// 			a.setAttribute('download', 'download_image' + new Date().getTime());
-
-			// 			a.setAttribute('target', '_blank');
-			// 			document.body.appendChild(a);
-			// 			a.click();
-			// 			a.remove();
-			// 		});
-			// },
 		},
 	};
 </script>

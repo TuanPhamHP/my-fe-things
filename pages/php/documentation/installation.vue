@@ -158,8 +158,9 @@
 					mục tên là <FilePath>hello-php</FilePath>, trong đó sẽ có 1 file là <b>`index.php`</b>
 				</p>
 				<div class="py-1"></div>
-				<VCodeBlock
-					:code="`<!-- hello-php/index.php -->
+				<ClientOnly>
+					<VCodeBlock
+						:code="`<!-- hello-php/index.php -->
 <!DOCTYPE html>
 <html>
 <body>
@@ -168,11 +169,11 @@
 	?>  
 </body>
 </html>`"
-					highlightjs
-					lang="php"
-					theme="tomorrow-night-bright"
-				/>
-
+						highlightjs
+						lang="php"
+						theme="tomorrow-night-bright"
+					/>
+				</ClientOnly>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>`B3 - Truy cập local`</b>: Mở ngay ứng dụng php của bạn tại
 					<FilePath> http://localhost/hello-php/ </FilePath>. Done (❁´◡`❁)

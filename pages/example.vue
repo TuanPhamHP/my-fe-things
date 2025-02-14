@@ -1,10 +1,11 @@
 <template>
 	<div class="punch-page-wrapper bg-white rounded-[24px] p-6">
-		<h1 class="text-xl text-center mt-6">Comming Soon ...</h1>
+		<CodeEditor />
 	</div>
 </template>
 <script lang="ts">
 	import { useAppStateStore } from '~/store/appState';
+	import CodeEditor from '@/components/Coding/CodeEditor.vue';
 
 	export default {
 		setup() {
@@ -19,7 +20,9 @@
 				setCurrentViewTitle,
 			};
 		},
-
+		components: {
+			CodeEditor,
+		},
 		data() {
 			return {
 				listData: null,

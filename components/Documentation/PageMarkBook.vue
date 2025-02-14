@@ -4,7 +4,12 @@
 	>
 		<p class="text-lg font-semibold">Đầu mục</p>
 		<div class="flex flex-col gap-2 py-2 px-3">
-			<a v-for="item in listMarkBook" :key="item.name" :href="`#${item.link}`" :class="`block pl-${item.lvl}`">
+			<a
+				v-for="item in listMarkBook"
+				:key="item.name"
+				:href="`#${item.link}`"
+				:class="`block pl-${item.lvl} hover:bg-neutral-100`"
+			>
 				{{ item.name }}
 			</a>
 		</div>

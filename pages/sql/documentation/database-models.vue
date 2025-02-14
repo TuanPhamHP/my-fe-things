@@ -167,7 +167,7 @@ console.log('File đang được đọc...');
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'sql', currentDocId: 'sql-2' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'sql', currentDocId: 'sql-3' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},
