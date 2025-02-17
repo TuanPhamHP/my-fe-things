@@ -9,7 +9,7 @@
 					tính linh hoạt và tối ưu hóa hiệu suất. Tiếp theo, chúng ta sẽ "ngó" qua các dạng database model phổ biến
 					trong RDBMS:
 				</p>
-				<PageHeading text="Hierarchical Model" addOnClass="text-left mt-5" markedAs="" :lvl="2" />
+				<PageHeading text="Hierarchical Model" addOnClass="text-left mt-5" markedAs="hierarchical-model" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					<b> Mô Hình Thứ Bậc - Hierarchical Model </b> là một trong những mô hình cơ sở dữ liệu lâu đời nhất, trong đó
 					dữ liệu được tổ chức theo <b>cấu trúc cây (Tree Structure)</b>.
@@ -42,7 +42,9 @@
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Ví dụ thực tế: Giả sử công ty có nhiều phòng ban, mỗi phòng ban có nhiều nhân viên.
 				</p>
-				<div class="col-span-1"><VCodeBlock :code="b2" highlightjs lang="sql" theme="atom-one-dark" /></div>
+				<ClientOnly>
+					<div class="col-span-1"><VCodeBlock :code="b2" highlightjs lang="sql" theme="atom-one-dark" /></div>
+				</ClientOnly>
 				<p class="text-slate-900 dark:text-white mt-3 leading-8 text-2xl">Quick Notes:</p>
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -103,6 +105,40 @@
 					</ul>
 				</div>
 
+				<PageHeading text="Relation Data Model" addOnClass="text-left mt-5" markedAs="relation-data-model" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					<b> Mô Hình Quan hệ - Relation Data Model </b> là một mô hình cơ sở dữ liệu được phát triển bởi Edgar F. Codd
+					vào những năm 1970. Đây là mô hình cơ sở dữ liệu phổ biến nhất hiện nay và cơ sở của các hệ quản trị cơ sở dữ
+					liệu quan hệ (RDBMS) như MySQL, PostgreSQL, Oracle, SQL Server, v.v.
+					<br />
+					Đặc điểm của Mô hình Dữ liệu Quan hệ:
+				</p>
+				<div class="bg-neutral-100 px-5 py-1 rounded">
+					<img
+						src="https://raw.githubusercontent.com/gulvaibhav20/assets/master/Scaler/Relational_Model/Table.jpg"
+						alt=""
+						class="rounded-lg mt-3 block"
+					/>
+				</div>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<FilePath>Bảng (Table)</FilePath>
+						<br />
+						<br />
+						<p class="pl-5">
+							Mô hình quan hệ tổ chức dữ liệu trong các bảng (hay gọi là <b>Relation</b> ). Mỗi bảng bao gồm các cột (
+							<b>columns | attributes</b> ) và dòng ( <b>rows | tuples</b> ).
+						</p>
+						<br />
+						<p class="pl-5">
+							Mỗi bảng có một tên riêng biệt và mỗi cột trong bảng có tên và kiểu dữ liệu xác định. VD: Tên relation ở
+							trên là <b>Student</b> và các cột là <b>name: varchar</b> vầ <b>cgpa: float</b>
+						</p>
+					</li>
+				</ul>
+				<ClientOnly>
+					<div class="col-span-1"><VCodeBlock :code="b3" highlightjs lang="sql" theme="atom-one-dark" /></div>
+				</ClientOnly>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -159,6 +195,12 @@ console.log('File đang được đọc...');
 │── IT (Department)
 │   │── Charlie (Employee)
 │   │── David (Employee)
+`,
+				b3: `CREATE TABLE Users (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
 `,
 			};
 		},

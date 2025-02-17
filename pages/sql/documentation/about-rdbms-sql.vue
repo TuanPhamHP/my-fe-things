@@ -49,7 +49,7 @@
 					Tiếp theo, chúng ta sẽ cùng tìm hiểu về các thành phần có trong <b>RDBMS</b> để làm rõ hơn về cấu trúc cũng
 					như chức năng của chúng.
 				</p>
-				<PageHeading text="Các thành phần cơ bản của RDBMS" addOnClass="text-left mt-5" markedAs="" :lvl="3" />
+				<PageHeading text="Các thành phần chính của RDBMS" addOnClass="text-left mt-5" markedAs="" :lvl="3" />
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span
@@ -60,13 +60,13 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span><b>Table (Bảng)</b> Cấu trúc dữ liệu dạng hàng và cột. </span>
 					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					<!--	<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span><b>Row (Hàng)</b> Một bản ghi trong bảng. </span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span><b>Column (Cột)</b> Một thuộc tính của bảng. </span>
 					</li>
-					<!-- <li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+					 <li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span
 							><b>PK - Primary Key (Khóa chính) | Constraints </b> Dùng để định danh duy nhất một hàng trong bảng.
 						</span>
