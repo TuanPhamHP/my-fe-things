@@ -311,6 +311,27 @@
 					tooltip: 'Thực hành',
 					showByApp: ['nodejs'],
 				},
+				// SQL
+				{
+					title: 'Tài liệu',
+					path: '/sql/documentation',
+					pathNameMatch: ['sql', 'sql-documentation'],
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['sql'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/sql/practice',
+					pathNameMatch: ['sql', 'sql-practice'],
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['sql'],
+				},
 			]);
 
 			const currentPathActive = computed((): string => {

@@ -28,6 +28,11 @@ const practiceCategories = [
 		name: 'VueJS',
 		en: 'VueJS',
 	},
+	{
+		id: 6,
+		name: 'SQL',
+		en: 'SQL',
+	},
 ];
 let baseListData: PracticeItem[] = [
 	{
@@ -342,6 +347,18 @@ let baseListData: PracticeItem[] = [
 		status_id: 1,
 		category: [],
 		apps: ['nodejs'],
+	},
+	// SQL
+	{
+		id: 'sql-1',
+		vneseName: 'Bài tập cơ bản 1',
+		eng: 'html header, header example',
+		description: 'Bài tập cơ bản SQL (P1)',
+		link: '/sql/practice/e_1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['sql'],
 	},
 ];
 

@@ -7,57 +7,56 @@
 			<div class="h-[1px] dark:bg-white bg-slate-900"></div>
 		</div>
 		<PageHeading text="Đề bài" addOnClass="text-left" markedAs="env" />
-		<p className="text-slate-900 dark:text-white mt-5 font-bold text-xl">Xây dựng Server Node.js với Routes cơ bản:</p>
+		<p className="text-slate-900 dark:text-white mt-5 font-bold text-xl">
+			Bài tập 1: Hiểu và tạo database theo mô hình quan hệ
+		</p>
 
-		<p className="text-slate-900 dark:text-white mt-5">
-			xây dựng một server HTTP cơ bản sử dụng Node.js thuần và thực hiện việc mapping routes (định tuyến) cho các đường
-			dẫn khác nhau:
+		<p className="text-slate-900 dark:text-white mt-2 text-lg">
+			<b>Mô tả:</b>
 		</p>
 		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			1 - Tạo một server Node.js lắng nghe trên cổng <b>`3000`</b>
+			Giả sử bạn đang thiết kế một hệ thống quản lý thư viện. Hãy thực hiện các bước sau:
 		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">2 - Xử lý các route cơ bản như:</p>
 		<ul class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span>
-					<FilePath>/</FilePath> : Trang chủ, trả về một đoạn HTML đơn giản như "Xin chào các bạn" với định dạng code
-					HTML</span
-				>
+				Tạo một database tên là LibraryDB.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span>
-					<FilePath>/about</FilePath> : Trang giới thiệu, trả về một đoạn HTML đơn giản với 3 dòng thông tin:
-					<br />
-					- Họ Tên:
-					<br />
-					- Năm sinh:
-					<br />
-					- Email:
-				</span>
+				Tạo 2 bảng books và authors theo mô hình quan hệ:
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>books</FilePath>: chứa các thông tin về sách như <b>id, title, author_id, published_year</b>.
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>authors</FilePath>: chứa thông tin tác giả với các cột <b>id, name, birth_year</b>.
+					</li>
+				</ul>
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span> Các route khác: Trả về thông báo "404 Not Found" cho các route không tồn tại. </span>
+				Định nghĩa khóa chính và khóa ngoại giữa bảng <FilePath>books</FilePath>, <FilePath>authors</FilePath>
 			</li>
 		</ul>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">3 - Cho danh sách dữ liệu sau:</p>
-		<div class="max-h-[200px] overflow-y-scroll rounded-lg mt-3">
-			<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+		<p className="text-slate-900 dark:text-white mt-2 text-lg">
+			<b>Yêu cầu:</b>
+		</p>
+		<ul class="pl-10">
+			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				Viết câu lệnh để tạo <b>database, table</b> tương ứng.
+			</li>
+			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				Định nghĩa đủ <b>Primary Key (PK), Foreign Key (FK)</b>.
+			</li>
+			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				Thêm dữ liệu mẫu vào bảng <FilePath>books</FilePath>, <FilePath>authors</FilePath> bằng các lệnh sql.
+			</li>
+			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				Hiển thị toàn bộ dữ liệu theo bảng.
+			</li>
+		</ul>
+
+		<div class="bg-neutral-100 px-5 py-1 rounded">
+			<img src="@/assets/images/documentation/sql-1.png" alt="" class="rounded-lg mt-3 block" />
 		</div>
-		<ul class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<div>
-					Tạo route <FilePath>/user/:id</FilePath> : với <b>`:id`</b> là biến truyền vào từ người dùng. Xử lý tìm kiếm
-					và trả ra thông tin user có id tương ứng.
-					<br />
-					VD: <FilePath>/user/1</FilePath>: sẽ trả ra view thông tin:
-					<div class="px-3 py-3 rounded border my-3">
-						<h3>- Họ Tên: Nguyễn Văn A</h3>
-						<h3>- Năm sinh: 2001</h3>
-						<h3>- Email: nguyenvana@gmail.com</h3>
-					</div>
-				</div>
-			</li>
-		</ul>
 		<DocNextPage :pagination="pagePagination" />
 	</div>
 </template>
@@ -99,43 +98,13 @@
 				pagePagination: {
 					next: {
 						title: 'Bài 2',
-						link: '/nodejs/practice/e_2',
+						link: '/sql/practice/e_2',
 					},
 					prev: {
 						title: 'Danh sách',
-						link: '/nodejs/practice',
+						link: '/sql/practice',
 					},
 				},
-				b1: `const dummyDatas = [
-    [
-        "id" => 1,
-        "name" => "Nguyễn Văn A",
-        "email" => "nguyenvana@gmail.com",
-        "score" => 85.6,
-        "yob" => 2001
-    ],
-    [
-        "id" => 2,
-        "name" => "Trần Thị B",
-        "email" => "tranthib@gmail.com",
-        "score" => 78.4,
-        "yob" => 2002
-    ],
-    [
-        "id" => 3,
-        "name" => "Lê Văn C",
-        "email" => "levanc@gmail.com",
-        "score" => 92.1,
-        "yob" => 2003
-    ],
-    [
-        "id" => 4,
-        "name" => "Phạm Thị D",
-        "email" => "phamthid",
-        "score" => 88.9,
-        "yob" => 2004
-    ],
-];`,
 			};
 		},
 		computed: {},

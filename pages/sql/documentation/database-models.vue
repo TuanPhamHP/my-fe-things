@@ -120,25 +120,145 @@
 						class="rounded-lg mt-3 block"
 					/>
 				</div>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Bảng (Table)</b>
+				</p>
 				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<FilePath>Bảng (Table)</FilePath>
-						<br />
-						<br />
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content">
 						<p class="pl-5">
-							Mô hình quan hệ tổ chức dữ liệu trong các bảng (hay gọi là <b>Relation</b> ). Mỗi bảng bao gồm các cột (
+							- Mô hình quan hệ tổ chức dữ liệu trong các bảng (hay gọi là <b>Relation</b> ). Mỗi bảng bao gồm các cột (
 							<b>columns | attributes</b> ) và dòng ( <b>rows | tuples</b> ).
 						</p>
 						<br />
 						<p class="pl-5">
-							Mỗi bảng có một tên riêng biệt và mỗi cột trong bảng có tên và kiểu dữ liệu xác định. VD: Tên relation ở
-							trên là <b>Student</b> và các cột là <b>name: varchar</b> vầ <b>cgpa: float</b>
+							- Mỗi bảng có một tên riêng biệt và mỗi cột trong bảng có tên và kiểu dữ liệu xác định.
+							<br />
+							<br />
+							VD: Tạo relation <b>Customers</b> và các cột là <b>name: varchar</b> và <b>email: varchar</b>
+						</p>
+						<div class="pl-5 mt-3">
+							<ClientOnly>
+								<div class="col-span-1"><VCodeBlock :code="b3" highlightjs lang="sql" theme="atom-one-dark" /></div>
+							</ClientOnly>
+						</div>
+					</li>
+				</ul>
+
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Mối quan hệ (Relationships)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Mối quan hệ giữa các bảng trong mô hình quan hệ được xác định thông qua các khóa ngoại
+							<b> (foreign keys) </b> hoặc khóa chính <b> (primary keys) </b>.
+						</p>
+						<br />
+						<p class="pl-5">
+							- Các mối quan hệ giữa các bảng có thể là <b>One-to-One</b>, <b>One-to-Many</b>, hoặc <b>Many-to-Many</b>.
 						</p>
 					</li>
 				</ul>
-				<ClientOnly>
-					<div class="col-span-1"><VCodeBlock :code="b3" highlightjs lang="sql" theme="atom-one-dark" /></div>
-				</ClientOnly>
+				<div class="bg-neutral-100 px-5 py-1 rounded">
+					<img src="@/assets/images/documentation/sql-db-1.png" alt="" class="rounded-lg mt-3 block" />
+				</div>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Khóa chính (Primary Key)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Mỗi bảng trong RDBMS có một cột hoặc nhóm các cột được gọi là khóa chính. Khóa chính là
+							<b>duy nhất</b> đối với mỗi bản ghi trong bảng và <b>không thể có giá trị NULL</b>.
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Ví dụ, trong bảng Users, cột id là khóa chính nó <b>duy nhất - unique </b> và <b>Not NULL</b>, được dùng
+							để định danh cho bản ghi
+						</p>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Khóa ngoại (Foreign Key)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Khóa ngoại là một cột hoặc tập hợp các cột trong một bảng <b>tham chiếu đến khóa chính</b> của một bảng
+							khác. Nó thiết lập mối quan hệ giữa hai bảng. Ví dụ:
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<ClientOnly>
+							<div class="col-span-1"><VCodeBlock :code="b4" highlightjs lang="sql" theme="atom-one-dark" /></div>
+						</ClientOnly>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Ở đây, user_id là khóa ngoại trong bảng Orders, tham chiếu đến cột id trong bảng Users.
+						</p>
+					</li>
+				</ul>
+
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Ràng buộc (Constraints)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Các ràng buộc giúp đảm bảo tính toàn vẹn dữ liệu và hạn chế giá trị không hợp lệ. Các ràng buộc phổ biến
+							trong mô hình quan hệ bao gồm:
+						</p>
+					</li>
+
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- <b>NOT NULL</b>: Đảm bảo một cột không được chứa giá trị NULL.
+							<br />
+							<br />
+							- <b>UNIQUE</b>: Đảm bảo giá trị trong một cột là duy nhất.
+							<br />
+							<br />
+							- <b>CHECK</b>: Đảm bảo giá trị trong một cột thoả mãn một điều kiện nhất định.
+							<br />
+							<br />
+							- <b>DEFAULT</b>: Cung cấp giá trị mặc định cho cột nếu không có giá trị nào được cung cấp.
+						</p>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Chuẩn hóa (Normalization)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Chuẩn hóa là quá trình tổ chức dữ liệu trong các bảng sao cho dữ liệu được lưu trữ một cách hiệu quả và
+							tránh sự dư thừa.
+						</p>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b class="text-xl">Tính Toàn Vẹn (Integrity)</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- Mô hình quan hệ đảm bảo tính toàn vẹn dữ liệu thông qua các ràng buộc như Toàn vẹn Entity (Entity
+							Integrity) và Toàn vẹn Tham chiếu (Referential Integrity).
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">- <b>Entity Integrity</b> đảm bảo rằng mỗi bảng có một khóa chính duy nhất, không NULL.</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+						<p class="pl-5">
+							- <b>Referential Integrity</b> đảm bảo rằng mọi giá trị trong khóa ngoại đều có một giá trị hợp lệ trong
+							bảng tham chiếu.
+						</p>
+					</li>
+				</ul>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -196,12 +316,40 @@ console.log('File đang được đọc...');
 │   │── Charlie (Employee)
 │   │── David (Employee)
 `,
-				b3: `CREATE TABLE Users (
+				b3: `CREATE TABLE Customers (
     id INT PRIMARY KEY,
     name VARCHAR(100),
     email VARCHAR(100)
 );
 `,
+				b4: `CREATE TABLE Profiles (
+		id INT PRIMARY KEY,
+		user_id INT,
+		bio TEXT,
+		FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+`,
+				b5: `create table customers (
+  id int primary key,
+  name varchar(50),
+  email varchar(50) unique
+);
+
+create table profiles (
+  id int primary key,
+  bio text,
+  user_id int,
+  foreign key (user_id) references customers(id)
+);
+
+insert into customers (id, name, email) values (1, 'Mr A', 'mra@gmail.com');
+insert into customers (id, name, email) values (2, 'Mr B', 'mrb@gmail.com');
+insert into customers (id, name, email) values (3, 'Mr C', 'mrc@gmail.com');
+
+insert into profiles (id, bio, user_id) values (1, 'Bio cua mrA', 2);
+
+select * from customers;
+select * from profiles;`,
 			};
 		},
 		mounted() {

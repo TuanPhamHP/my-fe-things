@@ -63,6 +63,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('nodejs')) {
 		return 'nodejs';
 	}
+	if (currentPathName.includes('sql')) {
+		return 'sql';
+	}
 	return null;
 };
 
