@@ -981,6 +981,16 @@ const SQLBasicDocs = [
 		status_id: 1,
 		apps: ['sql'],
 	},
+	{
+		id: 'sql-4',
+		vneseName: 'D2 - Thao tác với Table',
+		eng: 'RDBMS and SQL',
+		description: 'Giới thiệu về các kiểu dữ liệu trong SQL, thao tác với table, column.',
+		link: '/sql/documentation/data-types-and-table',
+		previewImage: 'course_sql.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
 ] as DocumentItem[];
 
 let baseListData: DocumentItem[] = [
