@@ -360,6 +360,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['sql'],
 	},
+	{
+		id: 'sql-2',
+		vneseName: 'Bài tập cơ bản 2',
+		eng: 'html header, header example',
+		description: 'Bài tập cơ bản SQL (P2)',
+		link: '/sql/practice/e_2',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['sql'],
+	},
 ];
 
 class PaginationDefault {

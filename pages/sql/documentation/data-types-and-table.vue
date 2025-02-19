@@ -39,9 +39,11 @@
 						</table>
 					</div>
 				</div>
-				<PageHeading text="Thao tác với TABLE, COLUMN" addOnClass="text-left" markedAs="manipulate-table-column" />
-				<br />
-				<PageHeading text="Tạo bảng (CREATE TABLE)" addOnClass="text-left" markedAs="create-table" :lvl="2" />
+				<PageHeading text="Thao tác với bảng" addOnClass="text-left" markedAs="manipulate-table" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Đầu tiên, chúng ta sẽ cùng tìm hiểu các cách cơ bản để thao tác cùng <b>bảng</b> trong DB với câu lệnh SQL.
+				</p>
+				<PageHeading text="Tạo bảng (CREATE TABLE)" addOnClass="text-left my-2" markedAs="create-table" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
 					Sử dụng Câu lệnh <FilePath>CREATE TABLE</FilePath> dùng để tạo một bảng mới trong cơ sở dữ liệu. Bạn cần chỉ
 					định tên bảng và định nghĩa các cột trong bảng cùng kiểu dữ liệu tương ứng.
@@ -80,7 +82,12 @@
 					</li>
 				</ul>
 				<br />
-				<PageHeading text="Thay đổi cấu trúc bảng (ALTER TABLE)" addOnClass="text-left" markedAs="column" :lvl="2" />
+				<PageHeading
+					text="Thay đổi cấu trúc bảng (ALTER TABLE)"
+					addOnClass="text-left"
+					markedAs="alter-table"
+					:lvl="2"
+				/>
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
 					<FilePath>ALTER TABLE</FilePath>: dùng để thay đổi cấu trúc bảng đã tồn tại, sau đó chúng ta có thể thao tác
 					thêm, sửa, xoá với các cột trong bảng bằng cách sử dụng các lệnh kèm theo như <FilePath>ADD COLUMN</FilePath>,
@@ -103,6 +110,132 @@
 						<VCodeBlock :code="b4" highlightjs lang="sql"></VCodeBlock>
 					</ClientOnly>
 				</div>
+				<PageHeading text="Xóa bảng (DROP TABLE)" addOnClass="text-left" markedAs="drop-table" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Câu lệnh <FilePath>DROP TABLE</FilePath> dùng để xóa hoàn toàn bảng và tất cả dữ liệu trong bảng đó.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b11" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Ví dụ:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b12" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<PageHeading
+					text="Thao tác với dữ liệu trong bảng"
+					addOnClass="text-left"
+					markedAs="manipulate-tuples"
+					:lvl="1"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Phần tiếp theo chúng ta sẽ cùng tìm hiểu các cách cơ bản để thao tác với các
+					<b>dữ liệu trong bảng (row, tuple ...)</b>
+					với câu lệnh SQL.
+				</p>
+				<PageHeading
+					text="Thêm dữ liệu vào bảng (INSERT INTO)"
+					addOnClass="text-left"
+					markedAs="insert-tuples"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Câu lệnh <FilePath>INSERT INTO</FilePath> dùng để chèn dữ liệu mới vào bảng.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b5" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Ví dụ:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b6" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+
+				<PageHeading text="Sửa dữ liệu trong bảng (UPDATE)" addOnClass="text-left" markedAs="update-tuples" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Cặp lệnh <FilePath>UPDATE</FilePath> và <FilePath>SET</FilePath> dùng để sửa đổi các giá trị đã có trong bảng.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b7" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Ví dụ:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b8" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<PageHeading text="Xóa dữ liệu trong bảng (DELETE)" addOnClass="text-left" markedAs="delete-tuples" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Câu lệnh <FilePath>DELETE</FilePath> dùng để xóa các bản ghi trong bảng.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b9" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Ví dụ:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b10" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
+
+				<p class="col-span-1 text-slate-900 dark:text-white my-2 lg:text-3xl font-bold">Tổng kết</p>
+				<p class="col-span-1 text-slate-900 dark:text-white my-2">
+					Chúng ta cùng tổng kết bài học:
+					<br />
+					<br />
+					<b>Thao tác với bảng</b>
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>CREATE TABLE</FilePath>: Tạo bảng
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>ALTER TABLE</FilePath>: Chỉnh sửa bảng
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>DROP TABLE</FilePath>: Xoá bảng
+					</li>
+				</ul>
+				<p class="col-span-1 text-slate-900 dark:text-white my-2">
+					<b>Thao tác với dữ liệu</b>
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>INSERT INTO</FilePath>: Chèn dữ liệu
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>UPDATE</FilePath>, <FilePath>SET</FilePath>: Chỉnh sửa dữ liệu
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>DELETE</FilePath>: Xoá dữ liệu
+					</li>
+				</ul>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -247,6 +380,15 @@
 					MODIFY COLUMN column_name datatype;
 `,
 				b4: `ALTER TABLE Users ADD COLUMN phone VARCHAR(15);`,
+				b5: `INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);`,
+				b6: `INSERT INTO Users (id, name, email, birthdate) 
+VALUES (1, 'John Doe', 'john.doe@example.com', '1990-05-15');`,
+				b7: `UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;`,
+				b8: `UPDATE Users SET name = 'Jane Doe' WHERE id = 1;`,
+				b9: `DELETE FROM table_name WHERE condition;`,
+				b10: `DELETE FROM Users WHERE id = 1;`,
+				b11: `DROP TABLE table_name;`,
+				b12: `DROP TABLE Users;`,
 			};
 		},
 		mounted() {
