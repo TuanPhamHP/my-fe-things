@@ -396,7 +396,7 @@ VALUES (1, 'John Doe', 'john.doe@example.com', '1990-05-15');`,
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'sql', currentDocId: 'sql-4' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'sql', currentDocId: 'sql-5' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},
