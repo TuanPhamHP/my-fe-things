@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="dark:text-white py-5 mx-auto">
 			<div class="sticky-top top-0 z-10 pb-3">
 				<div class="relative max-w-xl mx-auto mb-3">
@@ -38,7 +38,7 @@
 						</button> -->
 				</div>
 			</div>
-			<div class="grid grid-cols-1 xl:grid-cols-4 gap-4 xl:gap-5">
+			<div class="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 xl:gap-5">
 				<div class="col-span-1" v-for="item in listData" :key="item.id">
 					<DocCardPreview :detail-data="item" />
 				</div>

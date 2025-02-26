@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Number" addOnClass="text-left" markedAs="php-number-method" :lvl="2" />

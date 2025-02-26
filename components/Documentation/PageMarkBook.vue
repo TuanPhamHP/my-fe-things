@@ -8,7 +8,7 @@
 				v-for="item in listMarkBook"
 				:key="item.name"
 				:href="`#${item.link}`"
-				:class="`block pl-${item.lvl} hover:bg-neutral-100`"
+				:class="`block pl-${item.lvl} text-md hover:bg-neutral-100`"
 			>
 				{{ item.name }}
 			</a>

@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Các kiểu dữ liệu trong SQL" addOnClass="text-left" markedAs="sql-data-types" />
@@ -43,10 +43,21 @@
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
 					Đầu tiên, chúng ta sẽ cùng tìm hiểu các cách cơ bản để thao tác cùng <b>bảng</b> trong DB với câu lệnh SQL.
 				</p>
+				<PageHeading text="Danh sách bảng (SHOW TABLE)" addOnClass="text-left my-2" markedAs="show-table" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Sử dụng <FilePath>SHOW TABLE</FilePath> để hiển thị danh sách các bảng đang có trong cơ sở dữ liệu.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b0" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
 				<PageHeading text="Tạo bảng (CREATE TABLE)" addOnClass="text-left my-2" markedAs="create-table" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Sử dụng Câu lệnh <FilePath>CREATE TABLE</FilePath> dùng để tạo một bảng mới trong cơ sở dữ liệu. Bạn cần chỉ
-					định tên bảng và định nghĩa các cột trong bảng cùng kiểu dữ liệu tương ứng.
+					Câu lệnh <FilePath>CREATE TABLE</FilePath> dùng để tạo một bảng mới trong cơ sở dữ liệu. Bạn cần chỉ định tên
+					bảng và định nghĩa các cột trong bảng cùng kiểu dữ liệu tương ứng.
 					<br />
 					<b>Syntax:</b>
 				</p>
@@ -140,6 +151,23 @@
 					<b>dữ liệu trong bảng (row, tuple ...)</b>
 					với câu lệnh SQL.
 				</p>
+				<PageHeading
+					text="Danh sách dữu liệu (SELECT ... FROM ...)"
+					addOnClass="text-left"
+					markedAs="select-tuples"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Câu lệnh <FilePath>SELECT ... FROM</FilePath> dùng để lấy ra danh sách các dữ liệu trong bảng theo các cột
+					tương ứng. Chúng ta có thể kết hợp với các <b>Subquery</b> để tăng khả năng truy vấn.
+					<br />
+					<b>Syntax:</b>
+				</p>
+				<div class="py-2">
+					<ClientOnly>
+						<VCodeBlock :code="b00" highlightjs lang="sql"></VCodeBlock>
+					</ClientOnly>
+				</div>
 				<PageHeading
 					text="Thêm dữ liệu vào bảng (INSERT INTO)"
 					addOnClass="text-left"
@@ -360,6 +388,9 @@
 						],
 					},
 				],
+				b0: `SHOW TABLES;
+`,
+				b00: `SELECT * FROM Users;`,
 				b1: `CREATE TABLE table_name (
   column1 datatype,
   column2 datatype,

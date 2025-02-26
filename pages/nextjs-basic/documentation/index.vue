@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="dark:text-white py-5 mx-auto">
 			<!-- <div class="min-h-[250px] flex items-center justify-center w-full">
 				<h1 class="text-center font-bold xl:text-2xl text-slate-900 dark:text-white leading-10">
@@ -47,7 +47,7 @@
 						</button> -->
 				</div>
 			</div>
-			<div class="grid grid-cols-1 xl:grid-cols-4 gap-4 xl:gap-5">
+			<div class="grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 xl:gap-5">
 				<div class="col-span-1" v-for="item in listData" :key="item.id">
 					<DocCardPreview :detail-data="item" />
 				</div>

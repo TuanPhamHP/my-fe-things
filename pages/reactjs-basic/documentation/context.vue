@@ -1,5 +1,5 @@
 <template>
-	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-6">
+	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
 				<PageHeading text="Introduction" addOnClass="text-left" markedAs="intro" />
@@ -105,7 +105,7 @@ const AuthProvider = ({ children }) => {
 					</p>
 				</div>
 				<PageHeading text="Sử dụng Context" addOnClass="mb-3" markedAs="context-apply" :lvl="2" />
-					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B2: Sử dụng Context</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content font-bold">B2: Sử dụng Context</p>
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Để áp dụng <b>AuthContext</b> cho toàn bộ app, chúng ta bao bọc app bằng AuthProvider là được.

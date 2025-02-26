@@ -995,10 +995,21 @@ const SQLBasicDocs = [
 	},
 	{
 		id: 'sql-5',
-		vneseName: 'D2 - Thao tác với Table',
-		eng: 'RDBMS and SQL',
+		vneseName: 'D2 - Thao tác cơ bản với Table & Row',
+		eng: 'Table and Tuples ',
 		description: 'Giới thiệu về các kiểu dữ liệu trong SQL, thao tác với table, column.',
 		link: '/sql/documentation/data-types-and-table',
+		previewImage: 'course_sql.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
+	{
+		id: 'sql-6',
+		vneseName: 'D3 - Ràng buộc dữ liệu (Constraints)',
+		eng: 'SQL Constraints',
+		description:
+			'Tìm hiểu về các ràng buộc dữ liệu trong SQL: PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, NOT NULL, DEFAULT.',
+		link: '/sql/documentation/sql-constraints',
 		previewImage: 'course_sql.png',
 		status_id: 1,
 		apps: ['sql'],

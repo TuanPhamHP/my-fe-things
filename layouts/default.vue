@@ -11,7 +11,10 @@
 				}`"
 			>
 				<Header v-if="isLogged" />
-				<div :class="isLogged ? 'px-0 py-3 sm:px-6 sm:py-6' : 'px-0'" class="dark:bg-slate-500 bg-[#f1f1f1]">
+				<div
+					:class="isLogged ? 'px-0 py-3 sm:px-2 sm:py-2 2xl:px-6 2xl:py-6' : 'px-0'"
+					class="dark:bg-slate-500 bg-[#f1f1f1]"
+				>
 					<!-- <BreadCrumb v-if="isLogged" /> -->
 					<slot> </slot>
 				</div>

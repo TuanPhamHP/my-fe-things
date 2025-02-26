@@ -17,18 +17,18 @@
 							<nuxt-link
 								:to="item.path"
 								class="v-list-item px-0 flex items-center justify-center rounded-[32px] hover:bg-zinc-100/25"
-								:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-link-active' : ''} ${
+								:class="`${item.pathNameMatch.test(currentPathActive) ? 'bg-link-active' : ''} ${
 									sideBarMini ? 'h-[64px] w-[64px]' : 'w-full'
 								}`"
 							>
 								<div class="flex gap-[8px] items-center rounded-circle w-full">
 									<div
 										class="h-[64px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
-										:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
+										:class="`${item.pathNameMatch.test(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 									>
 										<Icon
 											v-if="item.icon"
-											:class="`${item.pathNameMatch.includes(currentPathActive) ? 'text-slate-900' : 'text-white'}`"
+											:class="`${item.pathNameMatch.test(currentPathActive) ? 'text-slate-900' : 'text-white'}`"
 											:name="item.icon"
 											size="18px"
 										/>
@@ -44,7 +44,7 @@
 						<div v-else class="" @click="sidebarMainClick">
 							<div
 								class="parent-route flex items-center text-slate-900 h-[64px] cursor-pointer hover:bg-zinc-100/25 rounded-[32px]"
-								:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-link-active' : ''} ${
+								:class="`${item.pathNameMatch.test(currentPathActive) ? 'bg-link-active' : ''} ${
 									sideBarMini ? 'min-w-fit' : 'gap-[8px]'
 								}`"
 								@click="
@@ -55,11 +55,11 @@
 							>
 								<div
 									class="h-[64px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
-									:class="`${item.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
+									:class="`${item.pathNameMatch.test(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 								>
 									<Icon
 										v-if="item.icon"
-										:class="item.pathNameMatch.includes(currentPathActive) ? 'text-slate-900' : 'text-white'"
+										:class="item.pathNameMatch.test(currentPathActive) ? 'text-slate-900' : 'text-white'"
 										:name="item.icon"
 										size="18px"
 									/>
@@ -84,7 +84,7 @@
 									<nuxt-link
 										:to="child.path"
 										class="v-list-item px-0 flex items-center justify-center rounded-[32px]"
-										:class="`${child.pathNameMatch.includes(currentPathActive) ? 'font-semibold' : 'font-light'} ${
+										:class="`${child.pathNameMatch.test(currentPathActive) ? 'font-semibold' : 'font-light'} ${
 											sideBarMini ? 'h-[42px] w-[64px]' : 'w-full'
 										}`"
 									>
@@ -92,10 +92,10 @@
 											<div
 												v-if="child.icon"
 												class="h-[42px] w-[64px] min-w-[64px] min-width-[64px] flex items-center justify-center rounded-[100%]"
-												:class="`${child.pathNameMatch.includes(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
+												:class="`${child.pathNameMatch.test(currentPathActive) ? 'bg-white' : 'bg-transparent'}`"
 											>
 												<Icon
-													:class="`${child.pathNameMatch.includes(currentPathActive) ? 'text-white' : 'text-white'}`"
+													:class="`${child.pathNameMatch.test(currentPathActive) ? 'text-white' : 'text-white'}`"
 													:name="child.icon"
 													size="18px"
 												/>
@@ -144,7 +144,7 @@
 		path: string;
 		icon?: string;
 		tooltip?: string;
-		pathNameMatch: string[];
+		pathNameMatch: RegExp;
 		isGroup: Boolean;
 		disabled?: Boolean;
 		permissionAccess: string[];
@@ -163,7 +163,7 @@
 				{
 					title: 'Trang chủ',
 					path: '/',
-					pathNameMatch: ['index'],
+					pathNameMatch: /^index/,
 					permissionAccess: [],
 					icon: 'solar:home-angle-2-linear',
 					isGroup: false,
@@ -172,13 +172,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/reactjs-basic/documentation',
-					pathNameMatch: [
-						'reactjs-basic-documentation',
-						'reactjs-basic-documentation-installation',
-						'reactjs-basic-documentation-hooks',
-						'reactjs-basic-documentation-styled-component',
-						'reactjs-basic-documentation-state-and-prop',
-					],
+					pathNameMatch: /^reactjs-basic-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -188,12 +182,7 @@
 				{
 					title: 'Thực hành',
 					path: '/reactjs-basic/practice',
-					pathNameMatch: [
-						'reactjs-basic-practice',
-						'reactjs-basic-practice-e_1',
-						'reactjs-basic-practice-e_2',
-						'reactjs-basic-practice-e_3',
-					],
+					pathNameMatch: /^reactjs-basic-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -206,17 +195,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/html-css-js-basic/documentation',
-					pathNameMatch: [
-						'html-css-js-basic',
-						'html-css-js-basic-documentation',
-						'html-css-js-basic-documentation-ep-1',
-						'html-css-js-basic-documentation-ep-2',
-						'html-css-js-basic-documentation-ep-3',
-						'html-css-js-basic-documentation-ep-4',
-						'html-css-js-basic-documentation-ep-16',
-						'html-css-js-basic-documentation-ep-17',
-						'html-css-js-basic-documentation-ep-18',
-					],
+					pathNameMatch: /^html-css-js-basic-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -226,11 +205,7 @@
 				{
 					title: 'Thực hành',
 					path: '/html-css-js-basic/practice',
-					pathNameMatch: [
-						'html-css-js-basic',
-						'html-css-js-basic-practice',
-						'html-css-js-basic-practice-practice-header-01',
-					],
+					pathNameMatch: /^html-css-js-basic-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -242,12 +217,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/nextjs-basic/documentation',
-					pathNameMatch: [
-						'nextjs-basic',
-						'nextjs-basic-documentation',
-						'nextjs-basic-documentation-installation',
-						'nextjs-basic-documentation-routers',
-					],
+					pathNameMatch: /^nextjs-basic-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -257,7 +227,7 @@
 				{
 					title: 'Thực hành',
 					path: '/nextjs-basic/practice',
-					pathNameMatch: ['nextjs-basic', 'nextjs-basic-practice'],
+					pathNameMatch: /^nextjs-basic-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -268,7 +238,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/php/documentation',
-					pathNameMatch: ['php', 'php-documentation', 'php-documentation-installation', 'php-documentation-routers'],
+					pathNameMatch: /^php-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -278,7 +248,7 @@
 				{
 					title: 'Thực hành',
 					path: '/php/practice',
-					pathNameMatch: ['php', 'php-practice'],
+					pathNameMatch: /^php-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -289,12 +259,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/nodejs/documentation',
-					pathNameMatch: [
-						'nodejs',
-						'nodejs-documentation',
-						'nodejs-documentation-installation',
-						'nodejs-documentation-routers',
-					],
+					pathNameMatch: /^nodejs-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -304,7 +269,7 @@
 				{
 					title: 'Thực hành',
 					path: '/nodejs/practice',
-					pathNameMatch: ['nodejs', 'nodejs-practice'],
+					pathNameMatch: /^nodejs-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -315,7 +280,7 @@
 				{
 					title: 'Tài liệu',
 					path: '/sql/documentation',
-					pathNameMatch: ['sql', 'sql-documentation'],
+					pathNameMatch: /^sql-documentation/,
 					permissionAccess: [],
 					icon: 'solar:notebook-bookmark-outline',
 					isGroup: false,
@@ -325,7 +290,7 @@
 				{
 					title: 'Thực hành',
 					path: '/sql/practice',
-					pathNameMatch: ['sql', 'sql-practice'],
+					pathNameMatch: /^sql-practice/,
 					permissionAccess: [],
 					icon: 'solar:programming-broken',
 					isGroup: false,
@@ -352,12 +317,13 @@
 					})
 					.map(o => {
 						if (o.isGroup && Array.isArray(o.listChild)) {
-							let match: string[] = [];
+							let match: RegExp;
 							o.listChild.forEach(c => {
-								match = [...match, ...c.pathNameMatch];
+								// match = [...match, ...c.pathNameMatch];
+								match = c.pathNameMatch;
 							});
-							o.pathNameMatch = [...o.pathNameMatch, ...match];
-							o.isOpen = o.pathNameMatch.includes(`${currentPathActive}`) ? true : false;
+							o.pathNameMatch = o.pathNameMatch;
+							o.isOpen = o.pathNameMatch.test(`${currentPathActive}`) ? true : false;
 						}
 						return o;
 					});
