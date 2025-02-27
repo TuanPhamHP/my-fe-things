@@ -1014,6 +1014,16 @@ const SQLBasicDocs = [
 		status_id: 1,
 		apps: ['sql'],
 	},
+	{
+		id: 'sql-7',
+		vneseName: 'D3 - Truy vấn dữ liệu cơ bản',
+		eng: 'SQL Query',
+		description: 'Tìm hiểu về cách Truy vấn dữ liệu cơ bản trong SQL với: SELECT, WHERE, ORDER BY, LIMIT ...',
+		link: '/sql/documentation/sql-query',
+		previewImage: 'course_sql.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
 ] as DocumentItem[];
 
 let baseListData: DocumentItem[] = [
