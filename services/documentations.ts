@@ -1016,7 +1016,7 @@ const SQLBasicDocs = [
 	},
 	{
 		id: 'sql-7',
-		vneseName: 'D3 - Truy vấn dữ liệu cơ bản',
+		vneseName: 'D4 - Truy vấn dữ liệu cơ bản',
 		eng: 'SQL Query',
 		description: 'Tìm hiểu về cách Truy vấn dữ liệu cơ bản trong SQL với: SELECT, WHERE, ORDER BY, LIMIT ...',
 		link: '/sql/documentation/sql-query',

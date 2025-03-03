@@ -282,6 +282,7 @@
 					<b>JOIN</b> giúp kết hợp dữ liệu từ hai hoặc nhiều bảng dựa trên mối quan hệ giữa các cột. Chúng ta có 4 loại
 					Join hay dùng:
 				</p>
+
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span><FilePath>INNER JOIN</FilePath> Chỉ lấy những bản ghi có dữ liệu khớp ở cả hai bảng.</span>
@@ -289,13 +290,13 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span
 							><FilePath>LEFT JOIN</FilePath> Lấy tất cả bản ghi từ bảng bên trái, nếu bảng bên phải không có dữ liệu
-							thì nhận <b>NULL</b>.</span
+							thì nhận <b>NULL</b> ở cột của bảng bên phải.</span
 						>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<span
 							><FilePath>RIGHT JOIN</FilePath> Lấy tất cả bản ghi từ bảng bên phải, nếu bảng bên trái không có dữ liệu
-							thì nhận <b>NULL</b>.</span
+							thì nhận <b>NULL</b> ở cột của bảng bên trái.</span
 						>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
