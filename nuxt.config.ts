@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 			PORT: process.env.NUXT_PORT,
 		},
 	},
-	ssr: false,
+	ssr: true,
 	app: {
 		// pageTransition: { name: 'page', mode: 'out-in' },
 		head: {
