@@ -48,10 +48,126 @@
 						<VCodeBlock :code="b3" highlightjs lang="sql" theme="atom-one-dark" />
 					</div>
 				</ClientOnly>
-				<PageHeading text="Xóa VIEW" addOnClass="text-left my-5" markedAs="drop-view" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Các bài toàn update/delete tương tự với <b>table</b>.
+				</p>
+
+				<PageHeading text="Stored Procedure" addOnClass="text-left mt-5" markedAs="about-stored-procedure" :lvl="1" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Stored Procedure</b> là một tập hợp các câu lệnh SQL được lưu trữ trong database và có thể được gọi để thực
+					thi nhiều lần.
+				</p>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">Lợi ích khi sử dụng <b>Stored Procedure</b>:</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span><b>Hiệu suất cao hơn:</b> Giảm tải cho ứng dụng bằng cách xử lý logic trong database.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span><b>Tái sử dụng:</b> Có thể gọi lại nhiều lần mà không cần viết lại code.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span
+							><b>Bảo mật:</b> Hạn chế quyền truy cập dữ liệu bằng cách chỉ cho phép gọi procedure thay vì truy vấn trực
+							tiếp.</span
+						>
+					</li>
+				</ul>
+				<PageHeading text="Tạo Stored Procedure" addOnClass="text-left my-5" markedAs="create-procedure" :lvl="2" />
+				<ClientOnly>
+					<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+						<div class="col-span-1">
+							<b>MySQL</b>
+							<VCodeBlock :code="b5" highlightjs lang="sql" theme="atom-one-dark" />
+						</div>
+						<div class="col-span-1">
+							<b>SQL Server (T-SQL)</b>
+							<VCodeBlock :code="b6" highlightjs lang="sql" theme="atom-one-dark" />
+						</div>
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Ví dụ:</b>
+					Tạo Procedure không có tham số: in ra danh sách nhân viên
+				</p>
 				<ClientOnly>
 					<div class="col-span-1">
-						<VCodeBlock :code="b4" highlightjs lang="sql" theme="atom-one-dark" />
+						<VCodeBlock :code="b7" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tạo Procedure có tham số: Lấy thông tin nhân viên theo ID
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="b8" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tạo Procedure có tham số IN, OUT: Tính tổng lương của một nhân viên
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="b9" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+
+				<PageHeading text="Các thành phần" addOnClass="text-left mt-5" markedAs="create-procedure" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Chúng ta cùng tìm hiểu các thành phần như <FilePath>IN, OUT, INOUT</FilePath>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span
+							><FilePath>IN</FilePath> Dùng để truyền giá trị vào Procedure, nhưng không thể thay đổi giá trị của nó bên
+							trong Procedure.</span
+						>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span
+							><FilePath>OUT</FilePath> Dùng để trả về kết quả từ Procedure ra ngoài, nhưng không nhận giá trị đầu vào.
+							Khi gọi Procedure, bạn phải dùng biến để nhận giá trị từ tham số OUT.</span
+						>
+						<ClientOnly>
+							<div class="col-span-1 my-2">
+								<VCodeBlock :code="b10" highlightjs lang="sql" theme="atom-one-dark" />
+							</div>
+						</ClientOnly>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span
+							><FilePath>INOUT</FilePath> Vừa truyền giá trị vào, vừa lấy kết quả trả về. Procedure có thể thay đổi giá
+							trị của tham số INOUT.</span
+						>
+						<ClientOnly>
+							<div class="col-span-1 my-2">
+								<VCodeBlock :code="b11" highlightjs lang="sql" theme="atom-one-dark" />
+							</div>
+						</ClientOnly>
+					</li>
+				</ul>
+
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Tóm tắt:</b>
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span><b>Dùng</b> <FilePath>IN</FilePath> khi bạn chỉ muốn nhập giá trị vào mà không cần trả về.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span><b>Dùng</b> <FilePath>OUT</FilePath> khi bạn chỉ cần lấy kết quả từ Procedure.</span>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span
+							><b>Dùng</b> <FilePath>INOUT</FilePath> khi bạn cần vừa nhập vừa thay đổi giá trị trong Procedure.</span
+						>
+					</li>
+				</ul>
+
+				<PageHeading text="Xóa Stored Procedure" addOnClass="text-left my-5" markedAs="drop-procedure" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">Xóa một stored procedure nếu không cần nữa</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="`DROP PROCEDURE IF EXISTS GetAllUsers;`" highlightjs lang="sql" theme="atom-one-dark" />
 					</div>
 				</ClientOnly>
 				<doc-next-page :pagination="pagePagination" />
@@ -100,6 +216,58 @@ FROM users e
 LEFT JOIN departments d ON e.department_id = d.id;`,
 				b3: `SELECT * FROM v_user_department;`,
 				b4: `DROP VIEW v_employee_department;`,
+				b5: `DELIMITER //
+CREATE PROCEDURE ten_procedure (tham_so_kieu_dulieu)
+BEGIN
+    -- Câu lệnh SQL ở đây
+END //
+DELIMITER ;
+`,
+				b6: `CREATE PROCEDURE ten_procedure
+AS
+BEGIN
+		-- Câu lệnh SQL ở đây
+END
+GO;
+`,
+				b7: `DELIMITER //
+CREATE PROCEDURE GetAllUsers()
+BEGIN
+    SELECT * FROM users;
+END //
+DELIMITER ;
+
+-- Gọi procedure
+CALL GetAllUsers();
+`,
+				b8: `DELIMITER //
+CREATE PROCEDURE GetUserById(IN userId INT)
+BEGIN
+    SELECT * FROM users WHERE id = userId;
+END //
+DELIMITER ;
+
+-- Gọi procedure
+CALL GetUserById(2);
+`,
+				b9: `DELIMITER //
+CREATE PROCEDURE GetTotalSalary(IN userId INT, OUT total DECIMAL(10,2))
+BEGIN
+    SELECT SUM(base_salary + bonus) INTO total FROM salaries WHERE user_id = userId;
+END //
+DELIMITER ;
+
+CALL GetTotalSalary(1, @total);
+SELECT @total; -- Lấy giá trị biến @total
+`,
+				b10: `SET @total = 0;  -- Khai báo biến để nhận kết quả
+CALL GetTotalEmployeesByDept(1, @total);
+SELECT @total AS TotalEmployees;
+`,
+				b11: `SET @salary = 5000;  -- Khởi tạo mức lương ban đầu
+CALL DoubleSalary(@salary);
+SELECT @salary AS NewSalary;  -- Kết quả: 10000
+`,
 			};
 		},
 		mounted() {
