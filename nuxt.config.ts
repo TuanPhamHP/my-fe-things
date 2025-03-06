@@ -4,7 +4,6 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 const colors = require('tailwindcss/colors');
 export default defineNuxtConfig({
 	nitro: {
-		preset: 'node-server',
 		prerender: {
 			ignore: ['/login'],
 		},
