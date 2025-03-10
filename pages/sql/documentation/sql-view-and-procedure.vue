@@ -72,6 +72,18 @@
 						>
 					</li>
 				</ul>
+				<PageHeading text="Danh sách Procedure" addOnClass="text-left mt-5" markedAs="list-procedure" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">Xem danh sách các Procedure đang có</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`SHOW PROCEDURE STATUS WHERE db = db_name;`"
+							highlightjs
+							lang="sql"
+							theme="atom-one-dark"
+						/>
+					</div>
+				</ClientOnly>
 				<PageHeading text="Tạo Stored Procedure" addOnClass="text-left my-5" markedAs="create-procedure" :lvl="2" />
 				<ClientOnly>
 					<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -170,6 +182,7 @@
 						<VCodeBlock :code="`DROP PROCEDURE IF EXISTS GetAllUsers;`" highlightjs lang="sql" theme="atom-one-dark" />
 					</div>
 				</ClientOnly>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
