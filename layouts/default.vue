@@ -1,6 +1,6 @@
 <template>
 	<div id="app" :class="`${currentTheme}`">
-		<appLoader v-if="globalLoading" />
+		<!-- <appLoader v-if="globalLoading" /> -->
 		<div class="mx-0 my-0" style="display: flex">
 			<Sidebar v-if="isLogged" />
 
