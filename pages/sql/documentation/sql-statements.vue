@@ -240,7 +240,7 @@
 				<p class="text-slate-900 dark:text-white leading-8">
 					Lý thuyết đủ rồi, làm
 					<a
-						href="/sql/practice/e_7"
+						href="/sql/practice/e_6"
 						target="_blank"
 						rel="noreferrer"
 						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"

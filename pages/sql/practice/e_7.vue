@@ -21,8 +21,9 @@
 				1. Tạo một database tên là <b>index_preview</b>.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				2. Tạo bảng <FilePath>orders</FilePath> chứa thông tin về các đơn hàng với các cột như
-				<b>id, customer_name, order_status, total_amount, created_at</b>.
+				2. Tạo 3 bảng <FilePath>orders_no_index</FilePath>, <FilePath>orders_with_index</FilePath>,
+				<FilePath>products</FilePath> chứa thông tin về các đơn hàng với các cột như
+				<b>id, product_id, quantity, order_date</b>.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 				3. Chèn ít nhất 10,000 bản ghi vào bảng để có dữ liệu thực tế để kiểm tra hiệu suất..
@@ -36,13 +37,14 @@
 				Kiểm tra hiệu suất truy vấn không có Index
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				1. Chạy một truy vấn tìm kiếm dữ liệu theo cột <b>customer_name</b> và đo thời gian thực thi.
+				1. Chạy một truy vấn trả ra bảng JOIN với <b>tên sản phẩm, số lượng, ngày</b> với một id bất kỳ của products và
+				đo thời gian thực thi của 2 bảng orders.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				2. Chạy một truy vấn lọc dữ liệu theo <b>order_status</b> và đo thời gian thực thi.
+				2. Chạy một truy vấn lọc dữ liệu theo <b>product_id</b> và đo thời gian thực thi.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				3. Chạy một truy vấn sắp xếp dữ liệu theo <b>total_amount</b> và đo thời gian thực thi.
+				3. Chạy một truy vấn sắp xếp dữ liệu theo <b>product_id</b> và đo thời gian thực thi.
 			</li>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-xl text-content marker:text-sky-400 font-bold">
 				Thêm Index vào bảng
@@ -67,6 +69,15 @@
 		<p className="text-slate-900 dark:text-white mt-2 pl-5">
 			<b>Seed Data:</b>
 		</p>
+		<FakeTerminalUI :text-coppy="products">
+			<p>products.sql</p>
+		</FakeTerminalUI>
+		<FakeTerminalUI :text-coppy="orders_no_index">
+			<p>orders_no_index.sql</p>
+		</FakeTerminalUI>
+		<FakeTerminalUI :text-coppy="orders_with_index">
+			<p>orders_with_index.sql</p>
+		</FakeTerminalUI>
 		<FakeTerminalUI :text-coppy="seed_data">
 			<p>seed_data.sql</p>
 		</FakeTerminalUI>
@@ -107,20 +118,56 @@
 		},
 		data() {
 			return {
-				seed_data: `CREATE PROCEDURE insert_dummy_orders()
+				products: `CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    price DECIMAL(10,2)
+);`,
+				orders_no_index: `CREATE TABLE orders_no_index (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    quantity INT,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id)
+);
+`,
+				orders_with_index: `CREATE TABLE orders_with_index (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    quantity INT,
+    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    
+    -- Thêm index cho product_id để tối ưu hóa JOIN
+    INDEX idx_product_id (product_id)
+);
+`,
+				seed_data: `
+CREATE PROCEDURE insert_data()
 BEGIN
     DECLARE i INT DEFAULT 1;
+
+    -- Chèn 10,000 sản phẩm
     WHILE i <= 10000 DO
-        INSERT INTO orders (customer_name, order_status, total_amount) 
-        VALUES (
-            CONCAT('customer_', i),
-            ELT(FLOOR(1 + (RAND() * 4)), 'pending', 'completed', 'shipped', 'canceled'),
-            ROUND(RAND() * 1000, 2)
-        );
+        INSERT INTO products (name, price)
+        VALUES (CONCAT('Product ', i), RAND() * 1000);
+        SET i = i + 1;
+    END WHILE;
+
+    SET i = 1;
+
+    -- Chèn 100,000 đơn hàng cho cả hai bảng orders_no_index và orders_with_index
+    WHILE i <= 100000 DO
+        INSERT INTO orders_no_index (product_id, quantity, order_date)
+        VALUES (FLOOR(RAND() * 10000) + 1, FLOOR(RAND() * 10) + 1, NOW() - INTERVAL (RAND() * 365) DAY);
+
+        INSERT INTO orders_with_index (product_id, quantity, order_date)
+        VALUES (FLOOR(RAND() * 10000) + 1, FLOOR(RAND() * 10) + 1, NOW() - INTERVAL (RAND() * 365) DAY);
+
         SET i = i + 1;
     END WHILE;
 END;
-CALL insert_dummy_orders();
+CALL insert_data();
 `,
 				counter: 0,
 				pagePagination: {
