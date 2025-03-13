@@ -43,6 +43,9 @@
 				2. Tạo các trigger dùng để ghi lại các log liên quan đến việc thêm/sửa thông tin nhân viên vào bảng
 				<FilePath>employee_logs</FilePath> ở trên.
 			</li>
+			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				3. Tạo trigger dùng để dừng việc xoá một nhân viên khỏi phòng ban có id = 1.
+			</li>
 		</ul>
 
 		<p className="text-slate-900 dark:text-white mt-2 pl-5">
