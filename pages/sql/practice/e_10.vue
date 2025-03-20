@@ -177,7 +177,7 @@
 				seed_data: `-- Tắt kiểm tra khóa ngoại để tránh lỗi khi xóa dữ liệu có liên kết
 SET FOREIGN_KEY_CHECKS = 0;
 
--- Xóa toàn bộ dữ liệu mà không làm thay đổi ID tự tăng
+-- Xóa toàn bộ dữ liệu
 DELETE FROM registration_logs;
 DELETE FROM registrations;
 DELETE FROM payments;
@@ -188,7 +188,7 @@ DELETE FROM members;
 -- Bật lại kiểm tra khóa ngoại
 SET FOREIGN_KEY_CHECKS = 1;
 
--- Reset AUTO_INCREMENT về 1 để ID bắt đầu lại từ đầu
+-- Reset AUTO_INCREMENT về 1
 ALTER TABLE registration_logs AUTO_INCREMENT = 1;
 ALTER TABLE registrations AUTO_INCREMENT = 1;
 ALTER TABLE payments AUTO_INCREMENT = 1;
@@ -196,35 +196,65 @@ ALTER TABLE classes AUTO_INCREMENT = 1;
 ALTER TABLE trainers AUTO_INCREMENT = 1;
 ALTER TABLE members AUTO_INCREMENT = 1;
 
--- Thêm hội viên
+-- Thêm 30 hội viên (members)
 INSERT INTO members (name, email, phone, join_date, membership_type, membership_expiry) VALUES
-('Nguyễn Văn A', 'a@example.com', '0123456789', '2024-01-10', 'VIP', '2024-12-31'),
-('Trần Thị B', 'b@example.com', '0987654321', '2024-02-05', 'Standard', '2024-08-10');
+('Nguyễn Văn An', 'an.nguyen@example.com', '0123456781', '2024-01-10', 'VIP', '2024-12-31'),
+('Trần Thị Bình', 'binh.tran@example.com', '0987654322', '2024-02-05', 'Standard', '2024-08-10'),
+('Lê Minh Tuấn', 'tuan.le@example.com', '0912345678', '2024-02-15', 'Premium', '2025-02-15'),
+('Phạm Thị Hằng', 'hang.pham@example.com', '0923456789', '2024-03-01', 'VIP', '2025-03-01'),
+('Hoàng Văn Nam', 'nam.hoang@example.com', '0934567890', '2024-03-10', 'Standard', '2024-09-10'),
+('Vũ Thị Lan', 'lan.vu@example.com', '0945678901', '2024-04-01', 'Premium', '2025-04-01'),
+('Đinh Quang Huy', 'huy.dinh@example.com', '0956789012', '2024-04-15', 'VIP', '2025-04-15'),
+('Bùi Thanh Hương', 'huong.bui@example.com', '0967890123', '2024-05-01', 'Standard', '2024-11-01'),
+('Ngô Thị Mai', 'mai.ngo@example.com', '0978901234', '2024-05-10', 'Premium', '2025-05-10'),
+('Trịnh Văn Sơn', 'son.trinh@example.com', '0989012345', '2024-06-01', 'VIP', '2025-06-01'),
+('Đỗ Hoàng Long', 'long.do@example.com', '0990123456', '2024-06-15', 'Standard', '2024-12-15'),
+('Cao Thị Thúy', 'thuy.cao@example.com', '0911234567', '2024-07-01', 'Premium', '2025-07-01'),
+('Tạ Minh Đức', 'duc.ta@example.com', '0922345678', '2024-07-10', 'VIP', '2025-07-10'),
+('Lương Thị Hòa', 'hoa.luong@example.com', '0933456789', '2024-08-01', 'Standard', '2025-02-01'),
+('Dương Hoàng Phúc', 'phuc.duong@example.com', '0944567890', '2024-08-15', 'Premium', '2025-08-15'),
+('Hồ Văn Tùng', 'tung.ho@example.com', '0955678901', '2024-09-01', 'VIP', '2025-09-01'),
+('Đặng Thị Yến', 'yen.dang@example.com', '0966789012', '2024-09-10', 'Standard', '2025-03-10'),
+('Trương Minh Hải', 'hai.truong@example.com', '0977890123', '2024-10-01', 'Premium', '2025-10-01'),
+('Văn Thị Bích', 'bich.van@example.com', '0988901234', '2024-10-15', 'VIP', '2025-10-15'),
+('Phan Hoàng Hưng', 'hung.phan@example.com', '0999012345', '2024-11-01', 'Standard', '2025-05-01');
 
--- Thêm huấn luyện viên
+-- Thêm 12 huấn luyện viên (trainers)
 INSERT INTO trainers (name, specialization, phone, email) VALUES
-('Lê Văn C', 'Yoga', '0933222111', 'trainer1@example.com'),
-('Hoàng Minh D', 'Fitness', '0911555666', 'trainer2@example.com');
+('Lê Văn Cường', 'Yoga', '0933222111', 'trainer1@example.com'),
+('Hoàng Minh Đức', 'Fitness', '0911555666', 'trainer2@example.com'),
+('Nguyễn Thị Hồng', 'Zumba', '0944332211', 'trainer3@example.com'),
+('Trần Văn Tuấn', 'Kickboxing', '0922113344', 'trainer4@example.com'),
+('Phạm Thị Hoa', 'CrossFit', '0955332211', 'trainer5@example.com'),
+('Đinh Hoàng Nam', 'Cardio', '0966443322', 'trainer6@example.com'),
+('Vũ Thị Lệ', 'Bodybuilding', '0987554433', 'trainer7@example.com'),
+('Ngô Minh Anh', 'Pilates', '0998665544', 'trainer8@example.com'),
+('Lê Hoàng Sơn', 'Aerobic', '0909776655', 'trainer9@example.com'),
+('Trịnh Thị Lan', 'Weightlifting', '0910887766', 'trainer10@example.com'),
+('Đặng Minh Tuấn', 'Calisthenics', '0921998877', 'trainer11@example.com'),
+('Phan Văn Kiệt', 'Endurance Training', '0932109988', 'trainer12@example.com');
 
--- Thêm lớp học
+-- Thêm 6 lớp học (classes)
 INSERT INTO classes (name, trainer_id, schedule, max_capacity) VALUES
 ('Yoga Buổi Sáng', 1, 'Thứ 2 - 9:00 AM', 20),
-('Gym Cơ Bản', 2, 'Thứ 3 - 5:00 PM', 15);
+('Gym Cơ Bản', 2, 'Thứ 3 - 5:00 PM', 15),
+('Zumba Dance', 3, 'Thứ 4 - 6:00 PM', 25),
+('Kickboxing Cường Độ Cao', 4, 'Thứ 5 - 7:00 PM', 10),
+('Cardio Burn', 5, 'Thứ 6 - 8:00 AM', 30),
+('Pilates Cải Thiện Dáng', 6, 'Thứ 7 - 9:00 AM', 18);
 
--- Đăng ký lớp học
-INSERT INTO registrations (member_id, class_id, register_date) VALUES
-(1, 1, '2024-03-01'),
-(2, 2, '2024-03-02');
-
--- Thanh toán phí tập
-INSERT INTO payments (member_id, amount, payment_date, method) VALUES
-(1, 500000, '2024-03-01', 'Credit Card'),
-(2, 300000, '2024-03-02', 'Cash');
-
--- Log đăng ký
-INSERT INTO registration_logs (log_time, member_id, class_id, action) VALUES
-(NOW(), 1, 1, 'Registered'),
-(NOW(), 2, 2, 'Registered');
+-- Tạo 100 bản ghi thanh toán với ngày ngẫu nhiên từ 01/12/2024 đến 15/03/2025
+INSERT INTO payments (member_id, amount, payment_date, method)
+SELECT 
+    (SELECT id FROM members ORDER BY RAND() LIMIT 1) AS member_id,
+    FLOOR(RAND() * 500 + 200) * 1000 AS amount, -- Random từ 200,000 đến 700,000
+    DATE_ADD('2024-12-01', INTERVAL FLOOR(RAND() * 105) DAY) AS payment_date, 
+    ELT(FLOOR(1 + RAND() * 3), 'Cash', 'Credit Card', 'Bank Transfer') AS method
+FROM (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION 
+      SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) AS tmp1,
+     (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION 
+      SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) AS tmp2
+LIMIT 100;
 `,
 				counter: 0,
 				pagePagination: {
