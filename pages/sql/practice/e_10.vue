@@ -178,6 +178,7 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- Xóa toàn bộ dữ liệu mà không làm thay đổi ID tự tăng
+DELETE FROM registration_logs;
 DELETE FROM registrations;
 DELETE FROM payments;
 DELETE FROM classes;
@@ -188,6 +189,7 @@ DELETE FROM members;
 SET FOREIGN_KEY_CHECKS = 1;
 
 -- Reset AUTO_INCREMENT về 1 để ID bắt đầu lại từ đầu
+ALTER TABLE registration_logs AUTO_INCREMENT = 1;
 ALTER TABLE registrations AUTO_INCREMENT = 1;
 ALTER TABLE payments AUTO_INCREMENT = 1;
 ALTER TABLE classes AUTO_INCREMENT = 1;
@@ -195,30 +197,34 @@ ALTER TABLE trainers AUTO_INCREMENT = 1;
 ALTER TABLE members AUTO_INCREMENT = 1;
 
 -- Thêm hội viên
-INSERT INTO members (id, name, email, phone, join_date, membership_type, membership_expiry) VALUES
-(1, 'Nguyễn Văn A', 'a@example.com', '0123456789', '2024-01-10', 'VIP', '2024-12-31'),
-(2, 'Trần Thị B', 'b@example.com', '0987654321', '2024-02-05', 'Standard', '2024-08-10');
+INSERT INTO members (name, email, phone, join_date, membership_type, membership_expiry) VALUES
+('Nguyễn Văn A', 'a@example.com', '0123456789', '2024-01-10', 'VIP', '2024-12-31'),
+('Trần Thị B', 'b@example.com', '0987654321', '2024-02-05', 'Standard', '2024-08-10');
 
 -- Thêm huấn luyện viên
-INSERT INTO trainers (id, name, specialization, phone, email) VALUES
-(1, 'Lê Văn C', 'Yoga', '0933222111', 'trainer1@example.com'),
-(2, 'Hoàng Minh D', 'Fitness', '0911555666', 'trainer2@example.com');
+INSERT INTO trainers (name, specialization, phone, email) VALUES
+('Lê Văn C', 'Yoga', '0933222111', 'trainer1@example.com'),
+('Hoàng Minh D', 'Fitness', '0911555666', 'trainer2@example.com');
 
 -- Thêm lớp học
-INSERT INTO classes (id, name, trainer_id, schedule, max_capacity) VALUES
-(1, 'Yoga Buổi Sáng', 1, 'Thứ 2 - 9:00 AM', 20),
-(2, 'Gym Cơ Bản', 2, 'Thứ 3 - 5:00 PM', 15);
+INSERT INTO classes (name, trainer_id, schedule, max_capacity) VALUES
+('Yoga Buổi Sáng', 1, 'Thứ 2 - 9:00 AM', 20),
+('Gym Cơ Bản', 2, 'Thứ 3 - 5:00 PM', 15);
 
 -- Đăng ký lớp học
-INSERT INTO registrations (id, member_id, class_id, register_date) VALUES
-(1, 1, 1, '2024-03-01'),
-(2, 2, 2, '2024-03-02');
+INSERT INTO registrations (member_id, class_id, register_date) VALUES
+(1, 1, '2024-03-01'),
+(2, 2, '2024-03-02');
 
 -- Thanh toán phí tập
-INSERT INTO payments (id, member_id, amount, payment_date, method) VALUES
-(1, 1, 500000, '2024-03-01', 'Credit Card'),
-(2, 2, 300000, '2024-03-02', 'Cash');
+INSERT INTO payments (member_id, amount, payment_date, method) VALUES
+(1, 500000, '2024-03-01', 'Credit Card'),
+(2, 300000, '2024-03-02', 'Cash');
 
+-- Log đăng ký
+INSERT INTO registration_logs (log_time, member_id, class_id, action) VALUES
+(NOW(), 1, 1, 'Registered'),
+(NOW(), 2, 2, 'Registered');
 `,
 				counter: 0,
 				pagePagination: {
