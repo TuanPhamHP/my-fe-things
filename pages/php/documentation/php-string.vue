@@ -122,31 +122,31 @@ function isEmail(string $str){
 				stringMethods: [
 					{
 						id: 1,
-						name: 'strlen()',
+						name: 'strlen(string)',
 						desc: 'Trả ra độ dài của chuỗi - number',
 						syntax: `strlen('Hehe') // Output: 4`,
 					},
 					{
 						id: 2,
-						name: 'substr()',
+						name: 'substr(string,start,length)',
 						desc: 'Trả về một phần của chuỗi theo index - string',
 						syntax: `substr('Hello, World', 7, 5); // Output: World`,
 					},
 					{
 						id: 3,
-						name: 'strpos() | strrpos()',
+						name: 'strpos(str1, str2) | strrpos()',
 						desc: 'Trả về vị trí xuất hiện đầu tiên | cuối cùng của một chuỗi con - number',
 						syntax: `strpos('Hello, World', "World"); // Output: 7`,
 					},
 					{
 						id: 4,
-						name: 'str_replace()',
+						name: 'str_replace(search, replacement, subject)',
 						desc: 'Thay thế tất cả các lần xuất hiện của một chuỗi con bằng một chuỗi khác - number',
 						syntax: `str_replace('World', "PHP", 'Hello, World'); // Output: Hello, PHP`,
 					},
 					{
 						id: 5,
-						name: 'explode()',
+						name: 'explode(separator, string)',
 						desc: 'Tách chuỗi thành mảng dựa vào ký tự - array',
 						syntax: `$array = explode(",", "tuan,dep,trai"); </br>
 						print_r($array); </br>
@@ -154,7 +154,7 @@ function isEmail(string $str){
 					},
 					{
 						id: 6,
-						name: 'implode()',
+						name: 'implode(join_separator, array)',
 						desc: 'Nối các phần tử của mảng thành chuỗi - string',
 						syntax: `$array = ["tuan", "dep", "trai"]; </br>
 						echo implode(" ", $array); </br>
@@ -164,14 +164,14 @@ function isEmail(string $str){
 						id: 7,
 						name: 'strtolower() | strtoupper() | ucfirst() | ucwords()...',
 						desc: 'Chuyển đổi chuỗi thành viết hoa, viết thường, capital ... - string',
-						syntax: `echo strtoupper("hello world", $array); </br>
+						syntax: `echo strtoupper("hello world"); </br>
 						// Output: HELLO WORLD`,
 					},
 					{
 						id: 8,
-						name: 'trim() | ltrim() | rtrim()',
-						desc: 'Hàm kiểm tra và xử lý chuỗi - string',
-						syntax: `echo ltrim("    hello world", $array); </br>
+						name: 'trim(string,charlist) | ltrim() | rtrim()',
+						desc: 'Hàm xóa các ký tự tại đầu | cuối của chuỗi',
+						syntax: `echo ltrim("    hello world",); </br>
 						// Output: hello world`,
 					},
 					{
