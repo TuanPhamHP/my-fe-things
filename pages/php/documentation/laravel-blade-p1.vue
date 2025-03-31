@@ -81,73 +81,38 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 				</div>
 				<PageHeading text="2/ Directives" addOnClass="text-left mt-3" markedAs="laravel-blade-diretives" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 mb-5">
-					Laravel cung cấp nhiều directives để giúp bạn dễ dàng làm việc với Blade.
+					Thông thường, khi chúng ta cần các <b>Control Flow Statements</b>, trong file <FilePath>php</FilePath> chúng
+					ta có thể nghĩ ngay đến việc dùng các statements cơ bản của PHP như <b>foreach, if-else ...</b>, điểm yếu của
+					chúng là cú pháp phải đặt trong syntax <FilePath>{{ `<?php ... ?>` }}</FilePath>, và khi kết hợp với HTML
+					syntax thì trông khá là khó chịu. Đừng lo, Laravel cung cấp nhiều directives để giúp bạn dễ dàng làm việc với
+					Blade mà vẫn có flow tương tự với raw PHP.
 				</p>
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl">
-					<b>2.1/ Conditional</b>: return view theo điều kiện
-				</p>
-				<p class="text-slate-900 dark:text-white"><b>If Statements</b></p>
-				<VCodeBlock
-					:code="`@if ($condition)
-    <p>View when Condition is true</p>
-@else
-    <p>View when Condition is false</p>
-@endif
-`"
-					highlightjs
-					lang="php"
-					theme="vs2015"
-				/>
-				<p class="text-slate-900 dark:text-white"><b>Switch Statements</b></p>
-				<VCodeBlock
-					:code="`@switch($i)
-    @case(1)
-        First case...
-        @break
- 
-    @case(2)
-        Second case...
-        @break
- 
-    @default
-        Default case...
-@endswitch
-`"
-					highlightjs
-					lang="php"
-					theme="vs2015"
-				/>
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.2/ Loops</b>: return view theo vòng lặp</p>
-				<p class="text-slate-900 dark:text-white"><b>For</b></p>
-				<VCodeBlock
-					:code="`@for ($i = 0; $i < 10; $i++)
-    <p>{{ $i }}</p>
-@endfor
-`"
-					highlightjs
-					lang="php"
-					theme="vs2015"
-				/>
-				<p class="text-slate-900 dark:text-white"><b>Foreach</b></p>
-				<VCodeBlock
-					:code="`@foreach ($users as $user)
-    <p>{{ $user->name }}</p>
-@endforeach
-`"
-					highlightjs
-					lang="php"
-					theme="vs2015"
-				/>
-
+				<LaravelBladeDirectives />
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.3/ Include</b>: nhúng một blade-view khác.</p>
 				<p class="text-slate-900 dark:text-white"><b>Include</b></p>
 				<VCodeBlock :code="`@include('view.name', ['some' => 'data'])`" highlightjs lang="php" theme="vs2015" />
 				<p class="text-slate-900 dark:text-white"><b>IncludeIf, IncludeWhen, IncludeFirst ....</b></p>
 
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.4/ Extending a Layout</b>: kế thừa layout.</p>
-				<p class="text-slate-900 dark:text-white">Tạo layout:</p>
+				<p class="text-slate-900 dark:text-white">
+					Trong Laravel Blade, <b>Extending a Layout</b> giúp bạn tái sử dụng một giao diện chung cho nhiều page của một
+					trang web. Thay vì lặp lại cùng một cấu trúc HTML trên nhiều file, bạn có thể tạo một file layout chính và các
+					file con chỉ cần kế thừa nó. Điều này giúp code gọn gàng, dễ bảo trì và mở rộng.
+				</p>
+				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B1: Tạo Layout Chính:</b></p>
 				<VCodeBlock :code="b4" highlightjs lang="php" theme="vs2015" />
-				<p class="text-slate-900 dark:text-white">Kế thừa layout tại view:</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-center gap-1">
+						<FilePath>@yield('title')</FilePath>
+						<span> Cho phép file con đặt tiêu đề tùy chỉnh. Nếu không, nó sẽ dùng "Default Title".. </span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+						<FilePath>@yield('content')</FilePath>
+						<span> Đây là nơi các file con sẽ chèn nội dung của chúng. </span>
+					</li>
+				</ul>
+				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B2: Tạo File Con Kế Thừa Layout :</b></p>
+
 				<VCodeBlock :code="b5" highlightjs lang="php" theme="vs2015" />
 				<p class="text-slate-900 dark:text-white mt-5 mb-2">
 					-) Tại layout chúng ta sử dụng <b>@yield('name')</b> để tạo ra một vùng view dynamic.
@@ -190,6 +155,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import { apiResponde } from '@/models';
 	import DocNextPage from '@/components/DocNextPage.vue';
+	import LaravelBladeDirectives from '@/components/Document/LaravelBladeDirectives.vue';
 	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
@@ -202,6 +168,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 			DisclosureButton,
 			DisclosurePanel,
 			VCodeBlock,
+			LaravelBladeDirectives,
 		},
 		data() {
 			return {
@@ -248,7 +215,7 @@ Route::get('/homepage', [HomepageController::class, 'index']);
     @show
 
     <div class="container">
-        @yield('content')
+        @yield('content')  {{-- Đây là nơi file con chèn nội dung vào --}}
     </div>
 </body>
 </html>

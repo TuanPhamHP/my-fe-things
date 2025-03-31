@@ -8,14 +8,25 @@
 				</p>
 
 				<PageHeading text="Tạo cơ sở dữ liệu MySQL & kết nối" addOnClass="text-left" markedAs="create-database" />
-
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
-					<b>B1 - Tạo file để kết nối cơ sở dữ liệu </b>
-					<br />
+					Là một ngôn ngữ phía server nên PHP thường xuyên phải làm việc với database, khi cần kết nối với CSDL (thường
+					là MySQL) và CRUD data thì các bạn có thể sử dụng 1 trong 2 cách cực kì phổ biến để kết nối với db:
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>MySQLi (MySQL Improved):</b> Dùng với MySQL.
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>PDO (PHP Data Objects):</b> Hỗ trợ nhiều loại CSDL khác nhau như MySQL, PostgreSQL, SQLite... 🔥🔥
+					</li>
+				</ul>
+
+				<PageHeading text="B1 - Tạo file để kết nối cơ sở dữ liệu" :lvl="2" addOnClass="text-left" markedAs="pdo-01" />
+				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					Trước tiên, chúng ta cần tạo cơ sở dữ liệu MySQL. Bạn có thể sử dụng phpMyAdmin hoặc MySQL command line để
-					thực hiện điều này. Ở đây, tôi sẽ sử dụng <b>`mysqli`</b> để thực hiện kết nối DB. Tạo một folder
+					thực hiện điều này. Ở đây, tôi sẽ sử dụng <b>`pdo`</b> để thực hiện kết nối DB. Tạo một folder
 					<FilePath>database</FilePath> để quản lý các tác vụ liên quan đến database, trong đó tạo file
-					<FilePath>db_connect.php</FilePath> - file này có nhiệm vụ khởi tạo và kết nối với database khi chúng ta chạy.
+					<FilePath>Database.php</FilePath> - file này có nhiệm vụ khởi tạo và kết nối với database khi chúng ta chạy.
 				</p>
 
 				<VCodeBlock :code="b1" highlightjs lang="php" theme="tomorrow-night-bright" />
@@ -79,11 +90,15 @@
 						</li>
 					</ul>
 				</div>
+				<PageHeading
+					text="B2 - Tiến hành chạy và kết nối database."
+					:lvl="2"
+					addOnClass="text-left"
+					markedAs="pdo-02"
+				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
-					<b>B2 - Tiến hành chạy và kết nối database. </b>
-					<br />
 					Tiếp theo, tại file <FilePath>index.php</FilePath> chúng ta kết sẽ nhúng file
-					<FilePath>db_connect.php</FilePath> để tạo và kết nối db.
+					<FilePath>Database.php</FilePath> để tạo và kết nối db.
 				</p>
 				<VCodeBlock :code="b2" highlightjs lang="php" theme="tomorrow-night-bright" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
@@ -106,24 +121,44 @@
 					Như vậy là chúng ta vừa tạo một database có tên là <b>`hello_php`</b> và đã kết nối thành công. Tiếp theo
 					chúng ta sẽ tiến hành tạo các table trong database bằng câu lệnh sql.
 				</p>
+
+				<PageHeading text="B3 - Tạo table. " :lvl="2" addOnClass="text-left" markedAs="pdo-03" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
-					<b>B3 - Tạo table. </b>
-					<br />
-					Tiếp theo, chúng ta sẽ tạo bảng <b>`products`</b>, trong thư mục <FilePath>database</FilePath> ta tạo file
-					<b>`create_products_table.php`</b> có mục đích là khởi tạo Table <b>`products`</b>.
+					Tiếp theo, chúng ta sẽ tạo bảng <b>`products`</b>, trong thư mục <FilePath>database/migrations</FilePath> ta
+					tạo file <b>`create_products_table.php`</b> có mục đích là khởi tạo Table <b>`products`</b>. Trong đó,
+					<FilePath>migrations</FilePath>
+					là thư mục chứa các config về bảng biểu với Database của chúng ta.
 				</p>
 				<VCodeBlock :code="b3" highlightjs lang="php" theme="tomorrow-night-bright" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					Ta dùng raw sql để tạo bảng <b>`products`</b>, nếu đã xuất hiện bảng này rồi thì bỏ qua. <br />
 					Lưu ý: Khi tạo bảng chúng ta cần đảm bảo rằng database đã được connect trước khi tạo bảng. Do đó, tôi sẽ
-					<b>require('db_connect.php');</b> để đảm bảo rằng database đã được connect.
+					<b>require('Database.php');</b> để đảm bảo rằng database đã được connect.
 					<br />
-					Tiếp theo chúng ta require <b>create_products_table.php</b>tại <b>index.php</b>. Sau khi khởi tạo thành công,
+					Tiếp theo chúng ta require <b>create_products_table.php</b> tại <b>index.php</b>. Sau khi khởi tạo thành công,
 					chúng ta sẽ có được bảng <b>`products`</b> và cấu trúc của nó như sau:
 				</p>
 				<div>
 					<img src="@/assets/images/php-laravel/database-02.png" alt="" class="rounded-lg mt-3 block" />
 				</div>
+				<p class="text-slate-900 dark:text-white my-5 leading-8">
+					Giải thích 1 chút về methods và đối tượng thường dùng trong PDO nha:
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>$pdo->exec($sql)</b> Dùng cho các câu lệnh trả về dữ liệu (SELECT)<br />
+						Output của nó là: một đối tượng PDOStatement.
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>$pdo->query($sql)</b> Dùng cho các câu lệnh không trả về dữ liệu (INSERT, UPDATE, DELETE, CREATE TABLE,
+						DROP TABLE...). <br />
+						Output của nó là: số dòng bị ảnh hưởng (int), hoặc false nếu lỗi.
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>PDOException</b> là một instance chứa thông tin lỗi của PDO<br />
+						có thể dùng hàm <b>getMessage()</b> để lấy message lỗi.
+					</li>
+				</ul>
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					(❁´◡`❁) xong phần 1, chúng ta đã hoàn thành việc tạo database và bảng <b>`products`</b> của nó, ở phần sau
 					chúng ta sẽ cùng tạo Model, Controller cho product và xử lý bài toán CRUD với database. See ya!!
@@ -166,44 +201,39 @@
 						link: '/html-css-js-basic/documentation',
 					},
 				},
-				b1: ` // database/db_connect.php
-<?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "hello_php";
-	$port = 3306;
+				b1: `<?php
+// Thông tin kết nối
+$host = 'localhost';
+$port = '3306'; // Port tùy chỉnh
+$dbname = 'hello_php'; // Thay bằng tên database thực tế
+$username = 'root';
+$password = '';
 
-	// Tạo kết nối đến MySQL mà không chọn cơ sở dữ liệu
-	$conn = new mysqli($servername, $username, $password, null, $port);
-
-	// Kiểm tra kết nối
-	if ($conn->connect_error) {
-		die("Kết nối thất bại: " . $conn->connect_error);
-	}
-
-	// Tạo cơ sở dữ liệu nếu chưa tồn tại
-	$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
-	if ($conn->query($sql) === TRUE) {
-		echo "Cơ sở dữ liệu '$dbname' đã được tạo hoặc đã tồn tại.<br>";
-	} else {
-		die("Lỗi khi tạo cơ sở dữ liệu: " . $conn->error . "<br>");
-	}
-
-	// Chọn cơ sở dữ liệu để thực hiện các truy vấn khác
-	$conn->select_db($dbname);
+try {
+    $conn = new PDO(
+        "mysql:host=$host;port=$port;dbname=$dbname",
+        $username,
+        $password
+    );
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->exec("SET NAMES 'utf8'");
+} catch (PDOException $e) {
+    echo "Kết nối thất bại: " . $e->getMessage();
+    exit();
+}
 ?>
 `,
 				b2: `// index.php
 <?php
-require('./database/db_connect.php');
+	require_once('./database/Database.php');
 ?>
 `,
-				b3: `// database/create_products_table.php
+				b3: `// database/migrations/create_products_table.php
 <?php
-	require('db_connect.php');
-	// Tạo bảng products
-	$sql = "CREATE TABLE IF NOT EXISTS products (
+	require_once dirname(__DIR__) . '/Database.php';
+	try {
+    $sql = "
+    CREATE TABLE IF NOT EXISTS products (
 			id INT AUTO_INCREMENT PRIMARY KEY,
 			product_name VARCHAR(255) NOT NULL,
 			description TEXT,
@@ -213,11 +243,14 @@ require('./database/db_connect.php');
 			brand_id INT,
 			category_id INT,
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-	)";
+    )";
 
-	if ($conn->query($sql) !== TRUE) {
-		echo "Lỗi khi tạo bảng: " . $conn->error;
+		$conn->exec($sql);
+		echo "Bảng 'comments' đã được tạo thành công!";
+	} catch (PDOException $e) {
+		echo "Lỗi khi tạo bảng: " . $e->getMessage();
 	}
+
 ?>
 `,
 			};
@@ -234,4 +267,3 @@ require('./database/db_connect.php');
 		},
 	};
 </script>
-z

@@ -48,8 +48,7 @@
 				<div class="py-3"></div>
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
-					(❁´◡`❁) xong phần 3, chúng ta đã hoàn thành việc đọc và ghi data, còn về bài toán Update & Delete thì các bạn
-					tự làm nhé :3, tui lười lắm.
+					(❁´◡`❁) xong phần 4, chúng ta đã hoàn thành việc đọc và ghi data từ <b>$_SESSION</b>
 				</p>
 				<doc-next-page :pagination="pagePagination" />
 			</div>

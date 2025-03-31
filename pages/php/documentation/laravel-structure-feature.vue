@@ -6,6 +6,8 @@
 				<p class="text-slate-900 dark:text-white my-5">Cùng tìm hiểu về cấu trúc cơ bản của một Laravel project.</p>
 
 				<PageHeading text="Các thư mục và tập tin chính" addOnClass="text-left hidden" markedAs="structure" :lvl="1" />
+
+				<LaravelStructure></LaravelStructure>
 				<div v-for="item in projectStructure" :key="item.name">
 					<PageHeading :text="`#${item.name}`" addOnClass="text-left" :markedAs="`${item.name}`" :lvl="2" />
 					<p class="text-slate-900 dark:text-white mt-2 leading-8">
@@ -135,6 +137,7 @@
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import { apiResponde } from '@/models';
 	import DocNextPage from '@/components/DocNextPage.vue';
+	import LaravelStructure from '@/components/Document/LaravelStructure.vue';
 	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
@@ -147,6 +150,7 @@
 			DisclosureButton,
 			DisclosurePanel,
 			VCodeBlock,
+			LaravelStructure,
 		},
 		data() {
 			return {
@@ -276,49 +280,49 @@
 				],
 				b1: `namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+	use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
-{
-    protected $fillable = ['name', 'email', 'password'];
-}`,
+	class User extends Model
+	{
+	    protected $fillable = ['name', 'email', 'password'];
+	}`,
 				b2: `<!-- resources/views/users/index.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Users</title>
-</head>
-<body>
-    <h1>Users List</h1>
-    <ul>
-        @foreach ($users as $user)
-            <li>{{ $user->name }}</li>
-        @endforeach
-    </ul>
-</body>
-</html>
-`,
+	<!DOCTYPE html>
+	<html>
+	<head>
+	    <title>Users</title>
+	</head>
+	<body>
+	    <h1>Users List</h1>
+	    <ul>
+	        @foreach ($users as $user)
+	            <li>{{ $user->name }}</li>
+	        @endforeach
+	    </ul>
+	</body>
+	</html>
+	`,
 				b3: `namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+	use App\Models\User;
+	use Illuminate\Http\Request;
 
-class UserController extends Controller
-{
-    public function index()
-    {
-        $users = User::all();
-        return view('users.index', compact('users'));
-    }
+	class UserController extends Controller
+	{
+	    public function index()
+	    {
+	        $users = User::all();
+	        return view('users.index', compact('users'));
+	    }
 
-    public function show($id)
-    {
-        $user = User::find($id);
-        return view('users.show', compact('user'));
-    }
-}
+	    public function show($id)
+	    {
+	        $user = User::find($id);
+	        return view('users.show', compact('user'));
+	    }
+	}
 
-`,
+	`,
 				pagePagination: {
 					next: {
 						title: 'HTML Styles',
