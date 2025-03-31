@@ -2,12 +2,10 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Introduction" addOnClass="text-left" markedAs="intro" />
-				<p class="text-slate-900 dark:text-white my-5">Cùng tìm hiểu về cấu trúc cơ bản của một Laravel project.</p>
-
 				<PageHeading text="MVC Architecture" addOnClass="text-left" markedAs="mvc-architecture" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Laravel sử dụng mô hình MVC để xây dựng hệ thống, chúng ta sẽ cùng tìm hiểu xem:
+					MVC (Model-View-Controller) là một design pattern (mẫu thiết kế) thuộc nhóm Architectural Pattern (mẫu kiến
+					trúc phần mềm). Đây là mô hình rất tốt để xây dựng hệ thống vừa và nhỏ, chúng ta sẽ cùng tìm hiểu xem:
 					<b>
 						<br />
 						- MVC là gì?
