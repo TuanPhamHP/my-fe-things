@@ -20,7 +20,7 @@
 					<br />
 					<ul class="pl-5">
 						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-							<b class="min-w-[70px]">`conn: `</b>
+							<b class="min-w-[70px]">conn:</b>
 							<div>
 								<span>
 									Là properties dùng để lưu lại database, sẽ được dùng để xử lý các lệnh RAW SQL như thêm, sửa, xoá bản
@@ -30,11 +30,28 @@
 							</div>
 						</li>
 						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-							<b class="min-w-[70px]">`table: `</b>
+							<b class="min-w-[70px]">table:</b>
 							<div>
 								<span>
 									Là properties dùng để lưu lại tên table, tương tự như <b>`$conn`</b> sẽ được dùng để xử lý các lệnh
 									RAW SQL như thêm, sửa, xoá bản ghi sau này. Nó cũng sẽ được khai báo là <b>`private`</b>
+								</span>
+							</div>
+						</li>
+						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
+							<b class="min-w-[70px]">$this->conn->query($sql):</b>
+							<div>
+								<span>
+									Sẽ trả ra một <b>PDOStatement</b>, sau đó chúng ta có thể dùng method <b>fetchAll()</b> để lấy danh
+									sách data. Các bạn có thể check các methods tương ứng tại:
+									<a
+										href="https://www.php.net/manual/en/class.pdostatement.php"
+										target="_blank"
+										rel="noreferrer"
+										class="underline text-blue-500"
+									>
+										đây
+									</a>
 								</span>
 							</div>
 						</li>
@@ -170,29 +187,35 @@
 						link: '/html-css-js-basic/documentation',
 					},
 				},
-				b1: ` // models/ProductModel.php
+				b1: ` // Models/ProductModel.php
 <?php
 class ProductModel {
     private $conn;
     private $table = 'products';
 
     // Constructor
-    public function __construct($db) {
-        $this->conn = $db;
+    public function __construct() {
+        $this->conn = Database::getConnection();
     }
+		
+	public function read()
+  {
+    $sql = "SELECT * FROM " . $this->table;
+    return $this->conn->query($sql)->fetchAll();
+  }
 }
 ?>
 `,
 				b2: `// Lấy danh sách products
 public function read() {
         $sql = "SELECT * FROM " . $this->table;
-        return $this->conn->query($sql);
+        return $this->conn->query($sql)->fetchAll();
 }`,
 				b3: ` // Tạo bản ghi mới
 public function create($data) {
 	$sql = "INSERT INTO products (product_name, description, images, regular_price, sale_price, brand_id, category_id) 
         VALUES ('{$data['product_name']}', '{$data['description']}', '{$data['images']}', {$data['regular_price']}, {$data['sale_price']}, {$data['brand_id']}, {$data['category_id']})";
-				return $this->conn->query($sql); 
+				return $this->conn->query($sql)->fetchAll(); 
 }`,
 				b4: ` // Update bản ghi
 public function update($id,$data) {
@@ -205,13 +228,13 @@ public function update($id,$data) {
         brand_id = {$data['brand_id']}, 
         category_id = {$data['category_id']} 
     WHERE id = {$id}";
-	return $this->conn->query($sql);
+	return $this->conn->query($sql)->fetchAll();
 }`,
 				b5: ` // Xoá bản ghi
 public function delete($id) {
   $sql = "DELETE FROM " . $this->table . " WHERE id = {$id}";
 
-  return $this->conn->query($sql);
+  return $this->conn->query($sql)->fetchAll();
 }`,
 				b6: ` // controllers/ProductController.php
 <?php

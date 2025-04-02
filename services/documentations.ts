@@ -704,6 +704,16 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-13-7',
+		vneseName: 'Namespace And Autoload',
+		eng: 'MVC',
+		description: 'Giới thiệu về Namespace And Autoload.',
+		link: '/php/documentation/php-namespace-and-autoload',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-13-1',
 		vneseName: 'MVC Architecture',
 		eng: 'MVC',
@@ -713,6 +723,7 @@ const PHPAndLaravelBasicDocs = [
 		status_id: 1,
 		apps: ['php'],
 	},
+
 	{
 		id: 'php-13-3',
 		vneseName: 'PHP Database - (P2)',
@@ -734,16 +745,6 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 
-	{
-		id: 'php-13-7',
-		vneseName: 'Namespace And Autoload',
-		eng: 'MVC',
-		description: 'Giới thiệu về Namespace And Autoload.',
-		link: '/php/documentation/php-namespace-and-autoload',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
 	{
 		id: 'php-13-5',
 		vneseName: 'PHP Database - (P4)',
