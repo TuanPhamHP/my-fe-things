@@ -778,7 +778,7 @@ const PHPAndLaravelBasicDocs = [
 
 	{
 		id: 'php-14',
-		vneseName: 'Larvel - Setup',
+		vneseName: 'Laravel - Setup',
 		eng: 'AJAX',
 		description: 'Setup ứng dụng laravel.',
 		link: '/php/documentation/laravel-installation',
@@ -788,7 +788,7 @@ const PHPAndLaravelBasicDocs = [
 	},
 	{
 		id: 'php-15',
-		vneseName: 'Larvel - Structure & Features',
+		vneseName: 'Laravel - Structure & Features',
 		eng: 'Installation',
 		description: 'Cấu trúc cơ bản của một Laravel Project. Một số concept, features nổi bật trong Laravel',
 		link: '/php/documentation/laravel-structure-feature',
@@ -797,76 +797,86 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
-		id: 'php-16',
-		vneseName: 'Larvel - Controller & Views',
+		id: 'php-15-n1',
+		vneseName: 'Laravel - Views',
 		eng: 'AJAX',
-		description: 'Làm việc với Controller và Views trong Laravel',
-		link: '/php/documentation/laravel-controllers-and-views',
+		description: 'Làm việc với Views trong Laravel',
+		link: '/php/documentation/laravel-views',
 		previewImage: 'course_php.png',
 		status_id: 1,
 		apps: ['php'],
 	},
+	// {
+	// 	id: 'php-16',
+	// 	vneseName: 'Laravel - Controller & Views',
+	// 	eng: 'AJAX',
+	// 	description: 'Làm việc với Controller và Views trong Laravel',
+	// 	link: '/php/documentation/laravel-controllers-and-views',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
 
-	{
-		id: 'php-16-2',
-		vneseName: 'Larvel - Blade (P1)',
-		eng: 'AJAX',
-		description: 'Làm việc với Blade trong Laravel',
-		link: '/php/documentation/laravel-blade-p1',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
-		id: 'php-16-3',
-		vneseName: 'Larvel - Blade (P2)',
-		eng: 'AJAX',
-		description: 'Làm việc với Blade trong Laravel',
-		link: '/php/documentation/laravel-blade-p2',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
-		id: 'php-17',
-		vneseName: 'Larvel - Database',
-		eng: 'AJAX',
-		description: 'Làm việc với Database trong Laravel',
-		link: '/php/documentation/laravel-database',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
-		id: 'php-18',
-		vneseName: 'Larvel - Eloquent ORM và Model',
-		eng: 'AJAX',
-		description: 'Làm quen với Eloquent ORM và Model trong Laravel',
-		link: '/php/documentation/laravel-orm-and-model',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
-		id: 'php-19',
-		vneseName: 'Larvel - Query Builder và Controller',
-		eng: 'AJAX',
-		description: 'Tìm hiểu về Query Builder và tạo Controller trong Laravel',
-		link: '/php/documentation/laravel-controller',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
-		id: 'php-20',
-		vneseName: 'Larvel - Images & Files',
-		eng: 'images',
-		description: 'Xử lý ảnh local và upload files với laravel',
-		link: '/php/documentation/laravel-images-and-files',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
+	// {
+	// 	id: 'php-16-2',
+	// 	vneseName: 'Laravel - Blade (P1)',
+	// 	eng: 'AJAX',
+	// 	description: 'Làm việc với Blade trong Laravel',
+	// 	link: '/php/documentation/laravel-blade-p1',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
+	// {
+	// 	id: 'php-16-3',
+	// 	vneseName: 'Laravel - Blade (P2)',
+	// 	eng: 'AJAX',
+	// 	description: 'Làm việc với Blade trong Laravel',
+	// 	link: '/php/documentation/laravel-blade-p2',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
+	// {
+	// 	id: 'php-17',
+	// 	vneseName: 'Laravel - Database',
+	// 	eng: 'AJAX',
+	// 	description: 'Làm việc với Database trong Laravel',
+	// 	link: '/php/documentation/laravel-database',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
+	// {
+	// 	id: 'php-18',
+	// 	vneseName: 'Laravel - Eloquent ORM và Model',
+	// 	eng: 'AJAX',
+	// 	description: 'Làm quen với Eloquent ORM và Model trong Laravel',
+	// 	link: '/php/documentation/laravel-orm-and-model',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
+	// {
+	// 	id: 'php-19',
+	// 	vneseName: 'Laravel - Query Builder và Controller',
+	// 	eng: 'AJAX',
+	// 	description: 'Tìm hiểu về Query Builder và tạo Controller trong Laravel',
+	// 	link: '/php/documentation/laravel-controller',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
+	// {
+	// 	id: 'php-20',
+	// 	vneseName: 'Laravel - Images & Files',
+	// 	eng: 'images',
+	// 	description: 'Xử lý ảnh local và upload files với laravel',
+	// 	link: '/php/documentation/laravel-images-and-files',
+	// 	previewImage: 'course_php.png',
+	// 	status_id: 1,
+	// 	apps: ['php'],
+	// },
 ] as DocumentItem[];
 
 const NodeJSBasicDocs = [
@@ -1270,48 +1280,3 @@ const base = () => {
 	};
 };
 export default base;
-
-// Buổi 3 (2 tiếng): SSR, SSG và API Routes
-// Mục tiêu: Phân biệt SSR, SSG, ISR và làm quen với API routes trong Next.js.
-
-// SSR và SSG:
-
-// getServerSideProps vs. getStaticProps
-// ISR (Incremental Static Regeneration)
-// Tạo API routes:
-
-// Tạo API trong thư mục pages/api
-// Xử lý GET và POST request
-// Thực hành:
-
-// Tạo trang hiển thị danh sách sản phẩm từ API (SSG)
-// Tạo API để thêm sản phẩm mới
-
-// Buổi 4 (2 tiếng): Quản lý State và Tích hợp API
-// Mục tiêu: Kết hợp Hooks và các API call trong Next.js.
-
-// Sử dụng useState và useEffect cho dữ liệu động
-
-// Gọi API trong useEffect
-// Tích hợp với các API bên ngoài:
-
-// Fetch dữ liệu từ một REST API hoặc GraphQL
-// Thực hành:
-
-// Tạo form thêm sản phẩm và lưu vào API đã tạo
-// Render lại danh sách sản phẩm sau khi thêm
-
-// Buổi 5 (2 tiếng): Tối ưu và Triển khai
-// Mục tiêu: Tìm hiểu về tối ưu hiệu năng và cách deploy lên Vercel.
-
-// Tối ưu hiệu năng:
-
-// Tải chậm (Lazy loading) với next/image
-// Prefetch dữ liệu với Link và các mẹo khác
-// Triển khai dự án:
-
-// Đăng ký tài khoản trên Vercel
-// Triển khai tự động với GitHub
-// Thực hành:
-
-// Deploy ứng dụng và kiểm tra trên Vercel
