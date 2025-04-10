@@ -108,10 +108,36 @@
 						<VCodeBlock :code="b11" highlightjs lang="html" theme="vs2015" />
 					</div>
 				</div>
-				<!-- <PageHeading text="Passing Data" addOnClass="text-left " markedAs="passing-data" :lvl="1" />
-				<p class="text-slate-900 dark:text-white my-5">Tiếp theo, chúng ta sẽ truyền dữ liệu vào trong view.</p>
-			 	-->
-
+				<PageHeading
+					text="4/ Nhận và hiển thị data"
+					addOnClass="text-left mt-5"
+					markedAs="laravel-blade-data"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white my-5">
+					Chúng ta có thể truyền dữ liệu vào method <b>`view()`</b> để sử dụng trong các blade-view như sau:
+				</p>
+				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`// truyền dữ liệu vào view
+return view('home' , ['name'=>'Tuấn']);`"
+							highlightjs
+							lang="php"
+							theme="vs2015"
+						/>
+					</div>
+					<div class="col-span-1">
+						<VCodeBlock
+							:code="`// ở trong blade-view có thể sử dụng ngay lập tức
+<h1>Xin chào, {{$name}}</h1>
+`"
+							highlightjs
+							lang="php"
+							theme="vs2015"
+						/>
+					</div>
+				</div>
 				<PageHeading text="Directives" addOnClass="text-left mt-3" markedAs="laravel-blade-diretives" :lvl="1" />
 				<p class="text-slate-900 dark:text-white mt-3 mb-5">
 					Thông thường, khi chúng ta cần các <b>Control Flow Statements</b>, trong file <FilePath>php</FilePath> chúng
