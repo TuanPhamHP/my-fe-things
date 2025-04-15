@@ -130,11 +130,8 @@
 				<FakeTerminalUI :textCoppy="'php artisan migrate'">
 					<p>php artisan migrate</p>
 				</FakeTerminalUI>
-
-				<p class="text-slate-900 dark:text-white my-3">
-					Ở đây chúng ta còn cần tạo một bảng <b>`todo_statuses`</b> để chưa các trạng thái của Todo. Đây sẽ là bài tập
-					cho các bạn.
-				</p>
+				<p class="text-slate-900 dark:text-white font-bold mb-1">Artisan-Migrate Commands</p>
+				<DocumentTable :operators="migrateCmd" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Done !!! Ở trên là các thao tác cơ bản với database trong Laravel. Ở bài tiếp theo chúng ta sẽ cùng tìm hiểu
 					sâu hơn về ORM và Query Database 🤓.
@@ -194,10 +191,15 @@ DB_PASSWORD=
 				b3: `public function up()
 {
     Schema::create('todos', function (Blueprint $table) {
-        $table->id();
-        $table->string('content');
-        $table->integer('status_id');
-        $table->timestamps();
+			$table->id();
+			$table->string('content');
+			// Quan hệ với bảng statuses
+			$table->foreignId('status_id')->constrained('statuses')->onDelete('cascade');
+
+			// Quan hệ với bảng categories
+			$table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+
+			$table->timestamps();
     });
 }
 `,
@@ -244,6 +246,54 @@ class Todo extends Model
     ];
 }
 `,
+				migrateCmd: [
+					{
+						id: 0,
+						label: 'Các lệnh Artisan liên quan đến Migrate',
+					},
+					{
+						id: 1,
+						name: 'php artisan migrate',
+						desc: 'Thực thi tất cả các file migration chưa được chạy để tạo bảng trong database.',
+						syntax: 'php artisan migrate',
+					},
+					{
+						id: 2,
+						name: 'php artisan migrate:rollback',
+						desc: 'Quay lại lần migration trước (rollback lần gần nhất).',
+						syntax: 'php artisan migrate:rollback',
+					},
+					{
+						id: 3,
+						name: 'php artisan migrate:reset',
+						desc: 'Quay lại toàn bộ migration (rollback tất cả và không chạy lại).',
+						syntax: 'php artisan migrate:reset',
+					},
+					{
+						id: 4,
+						name: 'php artisan migrate:refresh',
+						desc: 'Rollback toàn bộ migration rồi migrate lại. Dùng để làm mới CSDL.',
+						syntax: 'php artisan migrate:refresh',
+					},
+					{
+						id: 5,
+						name: 'php artisan migrate:fresh',
+						desc: 'Xoá toàn bộ bảng rồi migrate lại từ đầu (nguy hiểm trong môi trường thật).',
+						syntax: 'php artisan migrate:fresh',
+					},
+					{
+						id: 6,
+						name: 'php artisan make:migration migration_file_name',
+						desc: 'Tạo file migration mới với tên file được gen từ *migration_file_name.',
+						syntax: 'php artisan make:migration create_users_table',
+					},
+					{
+						id: 7,
+						name: 'php artisan migrate:status',
+						desc: 'Xem trạng thái các migration đã chạy hay chưa.',
+						syntax: 'php artisan migrate:status',
+					},
+				],
 				pagePagination: {
 					next: {
 						title: 'HTML Styles',
@@ -261,7 +311,7 @@ class Todo extends Model
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-17' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-18' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},
