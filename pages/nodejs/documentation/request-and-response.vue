@@ -10,7 +10,7 @@
 				</p>
 
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">1. Khởi tạo server:</p>
-				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Ở đoạn code trên, chúng ta sử dụng <FilePath>http</FilePath> là một module có sẵn trong NodeJS, nó giúp chúng
@@ -21,7 +21,7 @@
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">
 					2. Tạo event lắng nghe port từ server vừa tạo:
 				</p>
-				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<FilePath>listen</FilePath> nhận vào 2 params là <b>`port`</b> và một <b>`callback`</b> khi hàm thành công
 					trong việc kết nối với port đó
@@ -30,7 +30,7 @@
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">
 					3. Thiệt lập một listener cho event 'request':
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Ở đây, <FilePath>on</FilePath> nhận vào 2 params là <b>`event-name`</b> và một <b>`callback`</b> sẽ thực thi
 					khi 'event' được kích hoạt.
@@ -45,7 +45,7 @@
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Tiếp theo, chúng ta sẽ tìm hiểu về cách làm việc với một số thông tin của request được gửi lên server
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Như vậy, chúng ta có thể lấy ra các data được gửi kèm thông qua params req tại callback-listener.
 				</p>

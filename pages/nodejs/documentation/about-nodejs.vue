@@ -62,7 +62,7 @@
 				<PageHeading text="Non-blocking" addOnClass="text-left mt-3" markedAs="non-blocking" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">Ví dụ về cách hoạt động non-blocking:</p>
 
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Trong ví dụ trên, Node.js sẽ không đợi việc đọc tệp hoàn tất mà sẽ tiếp tục thực thi câu lệnh
 					<br />

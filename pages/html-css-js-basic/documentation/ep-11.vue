@@ -64,7 +64,7 @@
 }`"
 					highlightjs
 					lang="CSS"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<div class="py-3"></div>
 				<PageHeading text="Pseudo Elements" addOnClass="text-left mb-3" markedAs="syntax-pseudo-elements" :lvl="2" />
@@ -111,7 +111,7 @@
 }`"
 					highlightjs
 					lang="CSS"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -129,7 +129,7 @@
 }`"
 					highlightjs
 					lang="CSS"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<div class="py-3"></div>
 				<PageHeading text="Luyện tập" addOnClass="text-left mb-3" markedAs="practice" :lvl="1" />
@@ -141,7 +141,7 @@
 </div>`"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Sử dụng CSS-Pseudo để:

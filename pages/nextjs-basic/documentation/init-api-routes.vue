@@ -6,7 +6,7 @@
 				<p class="text-slate-900 dark:text-white mb-2 leading-8">
 					Đầu tiên, chúng ta sẽ tạo thư mục <FilePath> api</FilePath> để chứa các <b>api routes</b> của app.
 				</p>
-				<VCodeBlock :code="b0" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b0" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mb-2 leading-8">
 					Trong đó, chúng ta sẽ phân chia api theo module. VD: các api của users sẽ nằm trong file
 					<FilePath>users/routes.ts</FilePath>
@@ -37,7 +37,7 @@
 					<br />
 					Ví dụ:
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="Request & Response" addOnClass="text-left mt-5" markedAs="request-response" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Trong lập trình web, <b>Request</b> và <b>Response</b> là hai đối tượng quan trọng trong giao tiếp giữa client
@@ -84,13 +84,13 @@
 					<b>Lấy Query Parameters:</b>
 				</p>
 
-				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Lấy Route Parameters:</b>
 					<br />
 					Ở đây chúng ta sẽ sử dụng dynamic routes (ví dụ: [id].ts), khi đó ta có thể lấy params từ request như sau:
 				</p>
-				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Lấy Request Body:</b>
@@ -98,7 +98,7 @@
 					Khi dữ liệu được gửi từ client lên, chúng ta cần phải xác định được <b>Content-type</b> ở Request headers, do
 					với mỗi <b>Content-type</b> khác nhau thì cách xử lý của chúng ta cũng sẽ khác biệt:
 				</p>
-				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="NextResponse" addOnClass="text-left mt-5" :lvl="2" markedAs="nextResponse" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<FilePath>NextResponse</FilePath> là một lớp được cung cấp bởi Next.js dùng để phản hồi cho client. Chúng ta
@@ -108,19 +108,19 @@
 					<br />
 					Tạo một phản hồi JSON. Thường được sử dụng để trả về dữ liệu từ server cho client.
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Redirect:</b>
 					<br />
 					chuyển hướng đến một URL khác.
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Next:</b>
 					<br />
 					Cho phép tiếp tục xử lý tiếp theo trong middleware (nếu có).
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="atom-one-dark" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />

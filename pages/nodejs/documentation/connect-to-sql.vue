@@ -20,7 +20,7 @@
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					sau khi đã có <b>`mysql2`</b> thì chúng ta bắt đầu tạo kết nối đến cơ sở dữ liệu:
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Ở đoạn code trên, chúng ta sử dụng <FilePath>mysql</FilePath> để tạo ra một <b>`connection`</b> với các config
@@ -33,7 +33,7 @@
 					thể tạo manual hoặc auto bằng code để hoàn thiện việc kết nối.
 				</p>
 				<PageHeading text="2. Tạo database 'hello_nodejs'" addOnClass="text-left my-3" markedAs="step-2" :lvl="2" />
-				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Ở đoạn code trên, chúng ta sử dụng <FilePath>raw sql</FilePath> để tự kiểm tra nếu chưa có database thì sẽ tạo
 					mới và connect, trong trường hợp có rồi thì chúng ta sẽ sử dụng luôn database này.
@@ -43,12 +43,12 @@
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Tạo table <b>users</b> để lưu trữ thông tin người dùng:
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="4. Update Model" addOnClass="text-left my-3" markedAs="step-4" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Cập nhật lại các phương thức của model để phù hợp với database
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Ở đây chỉ đơn giản là chúng ta require connection từ file kết nối database và viết các câu lệnh Raw SQL sau đó
 					để cho
@@ -58,7 +58,7 @@
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Cập nhật lại các phương thức của controller để phù hợp với model
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Tại controller chúng ta sử dụng <b>res.json()</b> để trả ra dữ liệu dạng json thay vì view như trước (do tôi
 					lười, chưa code UI), các bạn cũng có thể update lại để trả về view nếu có.

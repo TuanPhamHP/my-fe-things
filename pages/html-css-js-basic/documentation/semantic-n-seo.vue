@@ -7,7 +7,7 @@
 					Iframe cho phép nhúng một trang web hoặc nội dung bên ngoài vào trang web của bạn.
 				</p>
 
-				<VCodeBlock :code="p1" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p1" highlightjs lang="HTML" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Thẻ iframe thường được sử dụng để nhúng nhanh một trang web hoặc nội dung bên ngoài vào trang web của bạn, và
 					bạn sẽ không có quyền tác động tới nội dung được nhúng. Một số nội dung hay được nhúng như: Youtube, Google
@@ -27,11 +27,11 @@
 					<b>Nhúng Audio</b>
 				</p>
 
-				<VCodeBlock :code="p2" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p2" highlightjs lang="HTML" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>Nhúng Video</b>
 				</p>
-				<VCodeBlock :code="p3" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p3" highlightjs lang="HTML" theme="atom-one-dark" />
 				<PageHeading text="Semantic Tags" addOnClass="text-left my-3" markedAs="semantic-tags" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -89,7 +89,7 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>Ví dụ sử dụng semantic tags:</b>
 				</p>
-				<VCodeBlock :code="p4" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p4" highlightjs lang="HTML" theme="atom-one-dark" />
 				<PageHeading text="SEO và Meta Data" addOnClass="text-left my-3" markedAs="seo-tags" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Việc <b>`tối ưu hóa SEO`</b>(Search Engine Optimization) và sử dụng <b>`metadata`</b> đúng cách là rất quan
@@ -110,22 +110,22 @@
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`Meta charset`</b> Xác định bảng mã ký tự, thường dùng UTF-8 để hỗ trợ tiếng Việt.
 				</p>
-				<VCodeBlock :code="p5" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p5" highlightjs lang="HTML" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`Meta viewport`</b>Tối ưu giao diện trên các thiết bị di động.
 				</p>
-				<VCodeBlock :code="p6" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p6" highlightjs lang="HTML" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`Meta description`</b>Mô tả nội dung trang web. Đây là thông tin mà Google hiển thị trên kết quả tìm kiếm.
 				</p>
-				<VCodeBlock :code="p7" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p7" highlightjs lang="HTML" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b>`Meta robots`</b>Kiểm soát cách công cụ tìm kiếm lập chỉ mục trang web.
 				</p>
-				<VCodeBlock :code="p9" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p9" highlightjs lang="HTML" theme="atom-one-dark" />
 				<PageHeading text="Tối ưu SEO" addOnClass="text-left my-3" markedAs="seo" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Ngoài việc sử dụng các thẻ meta thì còn một vài cách giúp trang web của bạn có chỉ số SEO tốt hơn như:
@@ -138,7 +138,7 @@
 					>: Tiêu đề là phần quan trọng nhất cho SEO, hiển thị trên tab trình duyệt và kết quả tìm kiếm. Nên có tiêu đề
 					ngắn gọn, chứa từ khóa chính.
 				</p>
-				<VCodeBlock :code="p10" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p10" highlightjs lang="HTML" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<b
 						>- Sử dụng Heading  <FilePath>{{ `<h1>, <h2> ...` }}</FilePath></b
@@ -148,7 +148,7 @@
 								<br>
 							<FilePath>{{ `<h2>, <h3>` }}</FilePath>	Dùng cho các tiêu đề phụ.
 				</p>
-				<VCodeBlock :code="p11" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="p11" highlightjs lang="HTML" theme="atom-one-dark" />
 				<DocNextPage :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />

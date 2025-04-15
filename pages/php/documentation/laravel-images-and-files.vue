@@ -14,7 +14,7 @@
 				<p class="text-slate-900 dark:text-white my-3">
 					B1 - Đầu tiên, chúng ta tạo form để upload ảnh từ client với blade:
 				</p>
-				<VCodeBlock :code="b0" highlightjs lang="html" theme="vs2015" />
+				<VCodeBlock :code="b0" highlightjs lang="html" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Lưu ý rằng ở đây để có thể gửi được data dạng file thì ta cần thêm attribute
 					<b>`enctype="multipart/form-data"`</b> cho <b>form</b> nha.
@@ -27,12 +27,12 @@
 				</FakeTerminalUI>
 
 				<p class="text-slate-900 dark:text-white my-3">Trong Controller ta sẽ khai báo Model tương ứng vào:</p>
-				<VCodeBlock :code="b1" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="php" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-3">
 					B3 - Tiếp theo, chúng ta tạo route ứng với việc upload ảnh ở <b>`web.php`</b>
 				</p>
-				<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-3">
 					Done !!! Đến đây, nếu upload thành công thì file sẽ nằm trong thư mục

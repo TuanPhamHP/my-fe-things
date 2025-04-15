@@ -43,7 +43,7 @@
 `"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Như vậy, khi tạo một bảng ta cần tạo thẻ <b>`table`</b> trước để định nghĩa vùng hoạt động cho các thẻ con.
@@ -98,7 +98,7 @@
 `"
 							highlightjs
 							lang="HTML"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1">
@@ -110,7 +110,7 @@ border: 1px solid;
 `"
 							highlightjs
 							lang="CSS"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 						<img src="@/assets/images/html5-basic/table-preview-01.png" alt="" class="rounded-lg mt-3 block" />
 					</div>
@@ -153,7 +153,7 @@ border: 1px solid;
 </table>`"
 										highlightjs
 										lang="HTML"
-										theme="vs2015"
+										theme="atom-one-dark"
 									/>
 								</div>
 								<div class="col-span-1">
@@ -213,7 +213,7 @@ border: 1px solid;
 </table>`"
 										highlightjs
 										lang="HTML"
-										theme="vs2015"
+										theme="atom-one-dark"
 									/>
 								</div>
 								<div class="col-span-1">
@@ -266,7 +266,7 @@ table {
 }`"
 							highlightjs
 							lang="CSS"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1">
@@ -312,7 +312,7 @@ table {
 }`"
 							highlightjs
 							lang="CSS"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1 text-slate-900 dark:text-white my-5 leading-8">

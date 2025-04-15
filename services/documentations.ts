@@ -816,7 +816,6 @@ const PHPAndLaravelBasicDocs = [
 		status_id: 1,
 		apps: ['php'],
 	},
-
 	{
 		id: 'php-18',
 		vneseName: 'Laravel - Database',
@@ -857,6 +856,17 @@ const PHPAndLaravelBasicDocs = [
 		status_id: 1,
 		apps: ['php'],
 	},
+	{
+		id: 'php-22',
+		vneseName: 'Laravel - Paginate',
+		eng: 'AJAX',
+		description: 'Comming soon....',
+		link: '/php/documentation/',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+		// https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/14
+	},
 	// {
 	// 	id: 'php-20',
 	// 	vneseName: 'Laravel - Images & Files',
@@ -867,6 +877,17 @@ const PHPAndLaravelBasicDocs = [
 	// 	status_id: 1,
 	// 	apps: ['php'],
 	// },
+	{
+		id: 'php-99',
+		vneseName: 'Laravel - Common Artisan Command',
+		eng: 'AJAX',
+		description: 'Common Artisan Command',
+		link: '/php/documentation/laravel-artisan-command',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+		// https://laracasts.com/series/30-days-to-learn-laravel-11/episodes/14
+	},
 ] as DocumentItem[];
 
 const NodeJSBasicDocs = [

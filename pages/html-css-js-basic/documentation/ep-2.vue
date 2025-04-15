@@ -13,7 +13,7 @@
 					:code="`<a href='https://www.google.com/' target='_blank'>Click me to view Google</a>`"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Trong đó:</p>
 				<ul class="pl-5">
@@ -48,7 +48,7 @@
 					:code="imageTag"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 			
 				<img src="https://img.freepik.com/free-vector/simple-vibing-cat-square-meme_742173-4493.jpg?size=338&ext=jpg" alt="no-stress, just vibing memes" class="d-block mt-3">
@@ -101,7 +101,7 @@
 					:code="p1"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 			
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Trong đó:</p>
@@ -121,7 +121,7 @@
 					:code="p11"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Các kiểu khác như: <b>disc</b> (mặc định), <b>circle, square, none</b> (không hiển thị ký hiệu).
@@ -135,7 +135,7 @@
 					:code="p2"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 			
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">Trong đó:</p>
@@ -155,7 +155,7 @@
 					:code="p21"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Các kiểu khác như:

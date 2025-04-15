@@ -29,13 +29,13 @@
 					nhiên, chúng ta thường cấu hình các thông số kết nối trong file <b>.env</b>. Ở đây, chúng ta sẽ lựa chọn MySQL
 					để cấu hình. File <b>.env</b> của chúng ta như sau:
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="php" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-3">
 					Tiếp đến là cấu hình file <b>config/database.php</b> để nó đọc thông số từ file <b>.env</b> mà chúng mình vừa
 					cấu hình ở trên
 				</p>
-				<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Về cơ bản, chúng ta làm 2 việc là điều chỉnh lại default database của app để sử dụng <b>mysql</b> thay vì
 					<b>sqlite</b> bằng config <FilePath>default' => env('DB_CONNECTION', 'mysql')</FilePath>. Laravel sử dụng
@@ -91,7 +91,7 @@
 				</p>
 				<div class="flex gap-4">
 					<div class="w-full">
-						<VCodeBlock :code="b3" highlightjs lang="php" theme="vs2015" />
+						<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 					</div>
 					<div>
 						<img src="@/assets/images/documentation/database-2.png" alt="" class="rounded-lg min-w-[450px]" />
@@ -125,7 +125,7 @@
 				<FakeTerminalUI :textCoppy="'php artisan make:migration update_title_to_todos_table'">
 					<p>php artisan make:migration update_title_to_todos_table</p>
 				</FakeTerminalUI>
-				<VCodeBlock :code="b4" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">Tiếp theo đương nhiên phải chạy lại migrate</p>
 				<FakeTerminalUI :textCoppy="'php artisan migrate'">
 					<p>php artisan migrate</p>

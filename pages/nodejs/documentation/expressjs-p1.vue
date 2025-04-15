@@ -9,7 +9,7 @@
 					trúc MVC. Ở bài này chúng ta sẽ tiến hành sử dụng một package là <FilePath>express</FilePath> để cùng tạo lên
 					một app nodejs. Về cơ bản, chúng ta có thể hình dung cấu trúc thư mục của app như sau:
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Bắt đầu tiến hành cài đặt package <FilePath>express</FilePath> để sử dụng
 				</p>
@@ -37,7 +37,7 @@
 					ta khởi tạo server và gán vào biến <b>`server`.</b>
 				</p>
 				<PageHeading text="2. Setup lại file `app.js`" addOnClass="text-left my-3" markedAs="step-2" :lvl="2" />
-				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Trong file <b>`app.js`</b>, ta sẽ khởi tạo server bằng <b>Express</b> và liên kết nó với các routes,
 					controllers, và views theo mô hình MVC.
@@ -47,13 +47,13 @@
 					<b>`Model`</b> chịu trách nhiệm quản lý dữ liệu. Ở đây, dữ liệu người dùng sẽ được lưu trữ tạm thời trong một
 					mảng, nhưng bạn cũng có thể kết nối với cơ sở dữ liệu (như MySQL hoặc MongoDB).
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="4. Tạo Controller" addOnClass="text-left my-3" markedAs="step-4" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					<b>`Controller`</b> sẽ nhận các request, tương tác với Model và trả kết quả về cho View hoặc trả về response
 					trực tiếp.
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Ở đây chúng ta sẽ làm quen với các method <b>`render`</b> và <b>`redirect`</b> của express. Đây đề là các
 					method của <b>`response`</b>, chúng hỗ trợ định nghĩa output của app, các bạn có thể mapping với
@@ -71,13 +71,13 @@
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					<b>`Router `</b> sẽ định nghĩa các đường dẫn (routes) cho ứng dụng và gọi đúng controller để xử lý yêu cầu.
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="6. Tạo View" addOnClass="text-left my-3" markedAs="step-6" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					<b>`View `</b> sẽ là phần giao diện để hiển thị dữ liệu cho người dùng. Ở đây, ta sử dụng EJS để hiển thị danh
 					sách người dùng.
 				</p>
-				<VCodeBlock :code="b8" highlightjs lang="HTML" theme="vs2015" />
+				<VCodeBlock :code="b8" highlightjs lang="HTML" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Gần tương tự như php, nếu các bạn muốn viết js trong file <b>`.ejs`</b> thì chúng ta sẽ sử dụng cặp dấu:
 					<FilePath>

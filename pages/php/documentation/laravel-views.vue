@@ -18,10 +18,10 @@
 				</p>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock :code="b1" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b1" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+						<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 					</div>
 				</div>
 				<p class="text-slate-900 dark:text-white my-5">
@@ -38,12 +38,12 @@
 					sẽ nghĩ đến việc biến nó thành một component, đầu tiên tạo thư mục <FilePath>components</FilePath> để chứa nó
 					đã:
 				</p>
-				<VCodeBlock :code="b4" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5">
 					Như vậy chúng ta đã tạo được component đầu tiên là <b>header.blade.php</b>, để sử dụng component này, chúng ta
 					sẽ gọi theo quy tắc: <br /><FilePath>{{ `<x-*component_name*></x-*component_name*>` }}</FilePath>, như này nè:
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="html" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="html" theme="atom-one-dark" />
 				<PageHeading text="1/ slot" addOnClass="text-left mt-3" markedAs="blade-props-slot" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Khi dùng component trong blade, chúng ta sẽ thường xuyên cần truyền nội dung bổ sung (cotent) vào component
@@ -55,7 +55,7 @@
 				</p>
 				<div class="grid grid-cols-1 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock :code="b6" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b6" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
 						<p class="text-slate-900 dark:text-white my-0">
@@ -64,7 +64,7 @@
 						</p>
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock :code="b7" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b7" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 				</div>
 				<PageHeading text="2/ data" addOnClass="text-left mt-3" markedAs="blade-props-data" :lvl="2" />
@@ -76,7 +76,7 @@
 				</p>
 				<div class="grid grid-cols-1 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock :code="b8" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b8" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
 						<p class="text-slate-900 dark:text-white my-0">
@@ -84,7 +84,7 @@
 						</p>
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock :code="b9" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b9" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 				</div>
 				<PageHeading text="3/ attribute" addOnClass="text-left mt-3" markedAs="blade-props-attribute" :lvl="2" />
@@ -97,7 +97,7 @@
 				</p>
 				<div class="grid grid-cols-1 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock :code="b10" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b10" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
 						<p class="text-slate-900 dark:text-white my-0">
@@ -105,7 +105,7 @@
 						</p>
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock :code="b11" highlightjs lang="html" theme="vs2015" />
+						<VCodeBlock :code="b11" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 				</div>
 				<PageHeading
@@ -124,7 +124,7 @@
 return view('home' , ['name'=>'Tuấn']);`"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1">
@@ -134,7 +134,7 @@ return view('home' , ['name'=>'Tuấn']);`"
 `"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 				</div>

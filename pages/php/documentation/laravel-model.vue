@@ -41,7 +41,7 @@
 					<b>Cake</b> sẽ được tạo tại <b>app/Models/Cake.php</b>. Thông thường chúng ta sẽ định nghĩa các properties và
 					methods của Model tại file này.
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
 				<PageHeading text="Properties" addOnClass="text-left mt-3" markedAs="model-properties" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">Tại model <b>Cake</b> ta định nghĩa các loại properties như:</p>
 				<ul class="pl-5">
@@ -110,7 +110,7 @@
 					Relationship method - (phương thức quan hệ) trong Laravel là loại method được sử dụng để định nghĩa mối quan
 					hệ giữa các model, giúp ta truy xuất dữ liệu từ bảng khác dựa trên các khoá ngoại. Ví dụ:
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="php" theme="atom-one-dark" />
 				<div class="pb-3"></div>
 				<PageHeading text="- Accessor method" addOnClass="text-left" markedAs="accessor-methods" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
@@ -121,7 +121,7 @@
 					<br />
 					Ví dụ:
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="php" theme="atom-one-dark" />
 				<div class="pb-3"></div>
 				<PageHeading text="- Mutator method" addOnClass="text-left" markedAs="mutator-methods" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
@@ -132,7 +132,7 @@
 					<br />
 					Ví dụ:
 				</p>
-				<VCodeBlock :code="b8" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b8" highlightjs lang="php" theme="atom-one-dark" />
 				<PageHeading text="Model Methods" addOnClass="text-left mt-3" markedAs="eloquent-methods" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Tiếp theo là một vài các methods cực kì cơ bản và thông dụng của Model, hỗ trợ cho quá trình làm bài của chúng
@@ -144,11 +144,58 @@
 					<b>Lưu ý:</b> Ở trên là các <b>Eloquent methods</b> KHÔNG PHẢI <b>QUERY BUILDER</b> đây là 2 khái niệm thường
 					xuyên bị nhầm lẫn do tên các method khá tương đồng nhau.
 				</p>
-				<p class="text-slate-900 dark:text-white my-3">
-					Done !!! Như vậy chúng ta đã hoàn thành Model cho bảng todos của chúng ta. Tiếp theo, chúng ta sẽ cùng khởi
-					tạo Controller.
-				</p>
 
+				<PageHeading text="Factory" addOnClass="text-left" markedAs="factory" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Nhìn thấy có xài <FilePath>use HasFactory;</FilePath> trait trong <b>Model</b> chứ hả? Cùng làm rõ nó nha,
+					<b>Factory</b> trong Laravel là một công cụ giúp tạo dữ liệu mẫu (dummy data) cho database, đặc biệt hữu ích
+					khi:
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p>Làm demo hoặc prototyping (seeding).</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p>Chạy thử ứng dụng trước khi có dữ liệu thực.</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p>Viết test (unit test hoặc feature test).</p>
+					</li>
+				</ul>
+				<PageHeading text="Create Factory" addOnClass="text-left" markedAs="create-factory" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Để tạo nhanh một <FilePath>Factory</FilePath> chúng mình có thể sử dụng artisan-command cho lẹ:
+				</p>
+				<FakeTerminalUI :textCoppy="'php artisan make:factory CakeFactory'">
+					<p>php artisan make:factory CakeFactory</p>
+				</FakeTerminalUI>
+
+				<p class="text-slate-900 dark:text-white my-3">
+					Sau đó chúng mình sẽ khai bao các thuộc tính của model vào trong hàm <b>definition()</b> của Factory.
+				</p>
+				<VCodeBlock :code="b9" highlightjs lang="php" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					<b>Faker </b> là một thư viện để sinh ra các dữ liệu giả như tên, địa chỉ, giá, v.v..
+					<br />
+					Oke, giờ thì chúng ta có thể gọi Factory để tạo dữ liệu. Thông thường mình sẽ dùng
+					<b>Tinker, Seeder</b> để tạo.
+				</p>
+				<VCodeBlock :code="b10" highlightjs lang="php" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Dùng luôn trong Seeder nè, mở file <FilePath>DatabaseSeeder.php</FilePath> ra và code:
+				</p>
+				<VCodeBlock :code="b11" highlightjs lang="php" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">sau đó thì chúng mình chạy lệnh artisan:</p>
+				<FakeTerminalUI :textCoppy="'php artisan db:seed'">
+					<p>php artisan db:seed</p>
+				</FakeTerminalUI>
+				<p class="text-slate-900 dark:text-white my-3">
+					Vậy là chúng ta vừa tạo và sử dụng <b>Factory</b> để init dữ liệu local, về cơ bản có thể vẽ lại process của
+					nó như sau:
+				</p>
+				<div class="bg-neutral-100 px-5 py-1 rounded">
+					<img src="@/assets/images/php-laravel/factory-01.png" alt="" class="rounded-lg mt-3 block max-w-[800px]" />
+				</div>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -212,6 +259,23 @@ public function getNameAttribute($value)
 public function setDescriptionAttribute($value)
 {
     $this->attributes['description'] = strtolower($value);
+}
+`,
+				b9: ` public function definition()
+    {
+        return [
+            'name' => $this->faker->word(),
+            'price' => $this->faker->randomFloat(2, 5, 100),
+           	// 'category_id' => Category::factory(), // tạo category kèm luôn!
+        ];
+    }`,
+				b10: `// Tạo một bản ghi
+Cake::factory()->create();
+// Tạo nhiều bản ghi
+Cake::factory()->count(10)->create();`,
+				b11: `public function run()
+{
+    Cake::factory(20)->create();
 }
 `,
 				commonMethods: [

@@ -15,7 +15,7 @@
 					<br />
 					Tạo thư mục <b>`resources/views/layouts`</b> và file <b>`app.blade.php`</b> trong đó:
 				</p>
-				<VCodeBlock :code="b8" highlightjs lang="html" theme="vs2015" />
+				<VCodeBlock :code="b8" highlightjs lang="html" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 mb-5">
 					Lưu ý rằng, ở phần bài tập này chúng ta sử dụng Bootstrap 5 để dựng giao diện. Như vậy, chúng ta đã tạo được
 					một layout, với layout vừa tạo ta sẽ tái sử dụng được phần <b>navbar, footer</b> đồng thời toàn bộ content sẽ
@@ -24,7 +24,7 @@
 					<br />
 					<b>Bước 2: Sử dụng layout trong Blade view</b>
 				</p>
-				<VCodeBlock :code="b9" highlightjs lang="html" theme="vs2015" />
+				<VCodeBlock :code="b9" highlightjs lang="html" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-4 mb-5">
 					<b>Bước 3: Khai báo Controller-action & route</b>
 					<br />
@@ -40,7 +40,7 @@ function index()
 Route::get('/app/todo', [TodoController::class,'index']);`"
 					highlightjs
 					lang="php"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white mt-2 mb-5">
 					Done!!! Lưu ý ở phần này chúng ta sẽ làm đầy đủ các bước là:

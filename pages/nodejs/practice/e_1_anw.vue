@@ -1,6 +1,6 @@
 <template>
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
-		<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+		<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 		<DocNextPage :pagination="pagePagination" />
 	</div>
 </template>

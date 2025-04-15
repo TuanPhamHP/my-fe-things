@@ -93,7 +93,7 @@
 					<p>cd hello-nodejs</p>
 				</FakeTerminalUI>
 				<p class="text-slate-900 dark:text-white mt-5 font-bold">2 - Tạo file app.js:</p>
-				<VCodeBlock :code="`console.log('Hello, Node.js!');`" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="`console.log('Hello, Node.js!');`" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 font-bold">3 - Chạy ứng dụng với terminal:</p>
 				<FakeTerminalUI :textCoppy="'node app.js'">
 					<p>node app.js</p>

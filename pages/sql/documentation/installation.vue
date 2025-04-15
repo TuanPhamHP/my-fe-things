@@ -184,7 +184,7 @@
 				</p>
 				<div>
 					<ClientOnly>
-						<VCodeBlock :code="b1" highlightjs lang="sql" theme="vs2015" />
+						<VCodeBlock :code="b1" highlightjs lang="sql" theme="atom-one-dark" />
 					</ClientOnly>
 				</div>
 				<p class="text-slate-900 dark:text-white my-2">

@@ -22,7 +22,7 @@
 					<FilePath>database/db.ts</FilePath> để chứa các config của database và kết nối:
 				</p>
 
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Ở đoạn code trên, chúng ta sử dụng <FilePath>mysql</FilePath> để tạo ra một <b>`pool`</b> với các config về
@@ -47,14 +47,14 @@
 					<FilePath>app/api/products/route.ts</FilePath>
 				</p>
 
-				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Cuối cùng, các bạn có thể test các API này với các phần mềm hỗ trợ như POSTMAN ...
 					<br />
 					Hoặc các bạn có thể tự tạo view trong chính Next App của các bạn:
 				</p>
-				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />

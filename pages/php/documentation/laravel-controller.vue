@@ -43,7 +43,7 @@
 					Mặc định, Controller sẽ được tạo trong: <FilePath>app/Http/Controllers/</FilePath>.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3">Trong Controller ta sẽ khai báo Model tương ứng vào:</p>
-				<VCodeBlock :code="b1" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Tiếp theo, chúng ta sẽ cùng tạo các methods trong Controller. Ở bài này chúng ta sẽ xử lý bài toán CRUD là
 					chính
@@ -52,18 +52,18 @@
 				<p class="text-slate-900 dark:text-white my-3">
 					Lấy ra toàn bộ danh sách cake và truyền vào view thông qua <b>`compact`</b>
 				</p>
-				<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 
 				<PageHeading text="- Create" addOnClass="text-left mt-3" markedAs="controller-create" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">Tạo mới Cake và return lại view danh sách:</p>
-				<VCodeBlock :code="b3" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 
 				<PageHeading text="- Update" addOnClass="text-left mt-3" markedAs="controller-create" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">Update Cake và return lại view danh sách:</p>
-				<VCodeBlock :code="b4" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
 				<PageHeading text="- Delete" addOnClass="text-left mt-3" markedAs="controller-create" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">Delete Cake và return lại view danh sách:</p>
-				<VCodeBlock :code="b5" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Done !!! Như vậy chúng ta đã hoàn thành tạm 4 methods đơn giản cho CRUD trong Controller.
 				</p>

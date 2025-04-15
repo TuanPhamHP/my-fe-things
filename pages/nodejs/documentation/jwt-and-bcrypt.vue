@@ -62,7 +62,7 @@
 				<p class="text-slate-900 dark:text-white mb-5 leading-8">
 					Thêm <FilePath>authController</FilePath>, <FilePath>middleware/authenticate.js</FilePath> để xử lý xác thực
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">cài packages jwt & bcryptjs</p>
 				<FakeTerminalUI :textCoppy="'npm install jsonwebtoken bcryptjs'"
 					>npm install jsonwebtoken bcryptjs</FakeTerminalUI
@@ -75,13 +75,13 @@
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Tạo bảng <b>users</b> để chứa thông tin đăng ký của người dùng:
 				</p>
-				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="2. Controller " addOnClass="text-left mt-5" markedAs="step-1-2" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Tại controller chúng ta sẽ nhận thông tin đăng ký từ request của người dùng và xử lý mã hoá password -
 					hashedPassword tại đây. Sau đó sẽ lưu hashedPassword vào DB
 				</p>
-				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="Đăng nhập" addOnClass="text-left" markedAs="about-login" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Sau khi đã lưu được người dùng vào DB, chúng ta sẽ làm tính năng đăng nhập cho người dùng vừa đăng ký. Người
@@ -89,14 +89,14 @@
 				</p>
 				<PageHeading text="1. Model " addOnClass="text-left mt-5" markedAs="step-2-1" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">Tìm kiếm người dùng thông qua username trước</p>
-				<VCodeBlock :code="b22" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b22" highlightjs lang="javascript" theme="atom-one-dark" />
 				<PageHeading text="2. Controller " addOnClass="text-left mt-5" markedAs="step-2-2" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Tại controller chúng ta sẽ nhận thông tin đăng nhập từ request của người dùng, sau đó kiểm tra xem trong hệ
 					thông có user nào có username tương ứng hay không, nếu có sẽ tiến hành mã hoá password của người dùng gửi lên
 					và so sánh với password đang có trong DB.
 				</p>
-				<VCodeBlock :code="b32" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b32" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					Làm đến đây chúng ta đã hoàn thành việc đăng ký/đăng nhập cho người dùng, như vậy sau khi đăng nhập người dùng
@@ -113,12 +113,12 @@
 					token ở phần <b>`request.headers`</b> với trường thông tin là <b>`authorization`</b>, cùng tạo middleware tại
 					<FilePath>middleware/authenticate.js</FilePath>
 				</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mb-5 leading-8">
 					Siêu đơn giản, giờ thì chỉ cần gọi đến middlware này tại bất cứ request nào cần với method
 					<FilePath>use</FilePath> của express.
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="atom-one-dark" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />

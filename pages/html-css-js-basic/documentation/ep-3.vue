@@ -60,14 +60,14 @@
 p {
 	color: red;
 	font-size: 24px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`<!--  thẻ này được chọn do tag-name là p -->
 <p>Thẻ này sẽ được chọn</p> 
 
 <!--  thẻ này không được chọn do tag-name không phải p -->
-<span>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="vs2015" />
+<span>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 									</DisclosurePanel>
@@ -94,14 +94,14 @@ p {
 #title {
 	color: cadetblue;
 	font-size: 42px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`<!--  thẻ này được chọn do id có chứa: title -->
 <h1 id='title' >Thẻ này sẽ được chọn</h1> 
 
 <!--  thẻ này không được chọn do id không chứa: title -->
-<h1 >Thẻ này không được chọn</h1>`" highlightjs lang="HTML" theme="vs2015" />
+<h1 >Thẻ này không được chọn</h1>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 
@@ -131,14 +131,14 @@ p {
 .text-blue {
 	color: blue;
 	font-size: 40px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`<!--  thẻ này được chọn do class có chứa: text-blue -->
 <span class='text-blue title'>Thẻ này sẽ được chọn</span> 
 
 <!--  thẻ này không được chọn do class không chứa: text-blue -->
-<span class='text blue title'>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="vs2015" />
+<span class='text blue title'>Thẻ này không được chọn</span>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 										Selector bằng tên lớp (class-name) sẽ buộc phải sử dụng một dấu <b>. - chấm</b> đằng trước tên lớp.
@@ -170,7 +170,7 @@ p {
 .mini-title[name='first-title'] {
 	color: chocolate;
 	font-size: 12px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`<!--  thẻ này được chọn do class có chứa: mini-title
@@ -178,7 +178,7 @@ và attribute name có giá trị  = 'first-title' -->
 <h3 class='mini-title title' name='first-title'>Thẻ này sẽ được chọn</h3> 
 
 <!--  thẻ này không được chọn do attribute name không bằng 'first-title' -->
-<h3 class='mini-title title'>Thẻ này không được chọn</h3>`" highlightjs lang="HTML" theme="vs2015" />
+<h3 class='mini-title title'>Thẻ này không được chọn</h3>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 										Selector bằng tên lớp (class-name) sẽ buộc phải sử dụng một dấu <b>. - chấm</b> đằng trước tên lớp.
@@ -217,7 +217,7 @@ và attribute name có giá trị  = 'first-title' -->
 div .big-title {
 	color: purple;
 	font-size: 32px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`<!--  thẻ này được chọn do vừa là con của div vừa có class big-title -->
@@ -226,7 +226,7 @@ div .big-title {
 </div>
 
 <!--  thẻ này không được chọn do không phải con của thẻ div -->
-<h1 class='big-title' >Thẻ này không được chọn</h1> `" highlightjs lang="HTML" theme="vs2015" />
+<h1 class='big-title' >Thẻ này không được chọn</h1> `" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 										Như vậy <b>Combine Selector</b> đơn giản là việc chúng ta kết hợp, ràng buộc các selector với nhau để tạo lên mối quan hệ giữa chúng.
@@ -239,7 +239,7 @@ div .big-title {
 												<p><b>div p</b> => p là con của div</p>
 												<VCodeBlock :code="`<div>
 	<p>Thẻ này sẽ được chọn</p> 
-</div>`" highlightjs lang="HTML" theme="vs2015" />
+</div>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<p><b>div p span</b> => span là con của p và đồng thời là con của div</p>
@@ -248,7 +248,7 @@ div .big-title {
 	<p>
 		<span>Thẻ này sẽ được chọn</span>
 	</p> 
-</div>`" highlightjs lang="HTML" theme="vs2015" />
+</div>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 										</div>
 									</DisclosurePanel>
@@ -273,7 +273,7 @@ div .big-title {
 							<VCodeBlock :code="`.page-title {
 	color: red;
 	font-size: 24px;
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 						<br>
 							Trong cùng một thẻ thì <b>key</b> là duy nhất. Có nghĩa là nếu ta định nghĩa các key trùng nhau thì chỉ một trong số chúng sẽ được áp dụng.
 							<br>
@@ -283,7 +283,7 @@ div .big-title {
 	color: red;
 	color: green;
 	/* bị trùng key 'color'. */
-}`" highlightjs lang="CSS" theme="vs2015" />
+}`" highlightjs lang="CSS" theme="atom-one-dark" />
 Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này một trong hai giá trị <b>red</b> hoặc <b>green</b> sẽ được áp dụng. Dựa theo quy tắc ưu tiên của css (css priority) thì giá trị
 <b>green</b> sẽ ghi đè lên <b>red</b> và được áp dụng.
 						</div>
@@ -332,7 +332,7 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
 				<VCodeBlock :code="`<a href='https://www.google.com/' target='_blank' style='color:red; font-size:40px;'>
 	Click me to view Google
 </a>`" highlightjs
-					lang="HTML" theme="vs2015" />
+					lang="HTML" theme="atom-one-dark" />
 				
 				
 					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -380,7 +380,7 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
 </body>
 
 </html>`" highlightjs
-					lang="HTML" theme="vs2015" />
+					lang="HTML" theme="atom-one-dark" />
 					<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					<br>Ngon lành, như vậy dù ta có thêm 100 cái link nữa thì cũng chỉ cần khai báo class <b>`my-special-link`</b> cho chúng là xong. 				<b>	(❁´◡`❁)</b> 
 					<br>
@@ -422,7 +422,7 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
   </a>
 </body>
 
-</html>`" highlightjs lang="HTML" theme="vs2015" />
+</html>`" highlightjs lang="HTML" theme="atom-one-dark" />
 											</div>
 											<div class="col-span-1">
 												<VCodeBlock :code="`/* File: ~/style.css */
@@ -430,7 +430,7 @@ Như ví dụ trên ta có thể thấy key <b>color</b> bị trùng, lúc này 
 	color: red;
 	font-size: 40px;
 }
-`" highlightjs lang="CSS" theme="vs2015" />
+`" highlightjs lang="CSS" theme="atom-one-dark" />
 
 
 <p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">

@@ -21,7 +21,7 @@
 `"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Như vậy, khi tạo một form ta cần tạo thẻ <b>`form`</b> trước để định nghĩa vùng hoạt động cho các thẻ con.
@@ -136,7 +136,7 @@
 `"
 							highlightjs
 							lang="HTML"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1 bg-neutral-100 px-5 py-1 rounded">
@@ -160,7 +160,7 @@
 								:code="`<input type='text' placeholder='Nhập tên của bạn' />`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 						</div>
 					</li>
@@ -175,7 +175,7 @@
 								:code="`<input type='password' placeholder='Mật khẩu từ 6 - 10 ký tự' value='12345678' />`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 						</div>
 					</li>
@@ -190,7 +190,7 @@
 								:code="`<input type='email' placeholder='Email của bạn' value='example@gmail.com' />`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 						</div>
 					</li>
@@ -204,7 +204,7 @@
 								:code="`<input type='number' placeholder='Số lượng' />`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 						</div>
 					</li>
@@ -229,7 +229,7 @@
 								:code="`<input type='number' placeholder='Số lượng' />`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 						</div>
 					</li>
@@ -263,7 +263,7 @@
 ></textarea>`"
 								highlightjs
 								lang="HTML"
-								theme="vs2015"
+								theme="atom-one-dark"
 							/>
 				</div>
 				<div class="col-span-1">
@@ -323,7 +323,7 @@
 </div>`"
 														highlightjs
 														lang="HTML"
-														theme="vs2015"
+														theme="atom-one-dark"
 													/>
 					</div>
 <div class="col-span-1 px-3 py-3 bg-gray-200 rounded-lg text-xl">
@@ -397,7 +397,7 @@
 </div>`"
 														highlightjs
 														lang="HTML"
-														theme="vs2015"
+														theme="atom-one-dark"
 													/>
 					</div>
 <div class="col-span-1 px-3 py-3 bg-gray-200 rounded-lg text-xl">
@@ -441,7 +441,7 @@
 `"
 														highlightjs
 														lang="HTML"
-														theme="vs2015"
+														theme="atom-one-dark"
 													/>
 					</div>
 <div class="col-span-1 px-3 py-3 bg-gray-200 rounded-lg text-xl">
@@ -478,7 +478,7 @@
 `"
 														highlightjs
 														lang="HTML"
-														theme="vs2015"
+														theme="atom-one-dark"
 													/>
 					</div>
 <div class="col-span-1 px-3 py-3 bg-gray-200 rounded-lg text-xl">
@@ -522,7 +522,7 @@
 `"
 														highlightjs
 														lang="HTML"
-														theme="vs2015"
+														theme="atom-one-dark"
 													/>
 					</div>
 <div class="col-span-1 px-3 py-3 bg-gray-200 rounded-lg text-xl">

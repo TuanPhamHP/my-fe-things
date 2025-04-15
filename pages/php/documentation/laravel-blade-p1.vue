@@ -22,7 +22,7 @@ class HomepageController extends Controller
 }`"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1">
@@ -34,7 +34,7 @@ class HomepageController extends Controller
 `"
 							highlightjs
 							lang="html"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 						<p class="text-slate-900 dark:text-white my-2">
 							Nhớ tạo cả route để kết nối request và action của Controller nha.
@@ -45,7 +45,7 @@ Route::get('/homepage', [HomepageController::class, 'index']);
 `"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 				</div>
@@ -65,7 +65,7 @@ Route::get('/homepage', [HomepageController::class, 'index']);
 return view('homepage' , ['name'=>'Tuấn']);`"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 					<div class="col-span-1">
@@ -75,7 +75,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 `"
 							highlightjs
 							lang="php"
-							theme="vs2015"
+							theme="atom-one-dark"
 						/>
 					</div>
 				</div>
@@ -90,7 +90,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 				<LaravelBladeDirectives />
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.3/ Include</b>: nhúng một blade-view khác.</p>
 				<p class="text-slate-900 dark:text-white"><b>Include</b></p>
-				<VCodeBlock :code="`@include('view.name', ['some' => 'data'])`" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="`@include('view.name', ['some' => 'data'])`" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white"><b>IncludeIf, IncludeWhen, IncludeFirst ....</b></p>
 
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.4/ Extending a Layout</b>: kế thừa layout.</p>
@@ -100,7 +100,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 					file con chỉ cần kế thừa nó. Điều này giúp code gọn gàng, dễ bảo trì và mở rộng.
 				</p>
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B1: Tạo Layout Chính:</b></p>
-				<VCodeBlock :code="b4" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-center gap-1">
 						<FilePath>@yield('title')</FilePath>
@@ -113,7 +113,7 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 				</ul>
 				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B2: Tạo File Con Kế Thừa Layout :</b></p>
 
-				<VCodeBlock :code="b5" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 mb-2">
 					-) Tại layout chúng ta sử dụng <b>@yield('name')</b> để tạo ra một vùng view dynamic.
 
@@ -130,13 +130,13 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 					<br />
 					Tạo một component file <b>resources/views/components/button.blade.php</b>:
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5">
 					Bây giờ, chúng ta có thể sử dụng Blade Component với cú pháp
 					<FilePath> {{ `<x-component-name> </x-component-name>` }}</FilePath>
 					trong bất kỳ view nào trong view như sau:
 				</p>
-				<VCodeBlock :code="b7" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b7" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5">
 					Ở trên là một ví dụ về cách tạo component cực kì đơn giản, chúng ta cần lưu ý rằng trong thực tế thì có nhiều
 					cách khác để tạo một component với blade, và tuỳ theo bài toán cần xử lí mà chúng ta sẽ có những cách tạo

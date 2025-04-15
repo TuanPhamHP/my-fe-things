@@ -41,7 +41,7 @@
 		</ul>
 		<p className="text-slate-900 dark:text-white mt-2 pl-5">3 - Cho danh sách dữ liệu sau:</p>
 		<div class="max-h-[200px] overflow-y-scroll rounded-lg mt-3">
-			<VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" />
+			<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 		</div>
 		<ul class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">

@@ -16,7 +16,7 @@
 					<br />
 					Ví dụ, tạo một view đơn giản trong file <b>`resources/views/homepage.blade.php`</b>:
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="html" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="html" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5">
 					Còn nhớ kiến thức về mô hình MVC chứ? Sau khi tạo được View, chúng ta sẽ hiển thị ra bằng cách sử dụng
 					<b>`Controller`</b>.
@@ -35,7 +35,7 @@
 					là do artisan sử dụng lệnh make:controller để khởi tạo file cho chúng ta, đây là một tính năng hỗ trợ rất tốt
 					của <b>artisan</b>. Trong class <b>`HomepageController`</b> ta sẽ định nghĩa method <b>`index()`</b> như sau:
 				</p>
-				<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-5">
 					<b>`namespace`</b> giúp tổ chức và quản lý mã nguồn theo các nhóm có liên quan, giúp tránh xung đột tên giữa
 					các lớp và tạo ra cấu trúc thư mục rõ ràng hơn. Bạn có thể hiểu các file dùng chung namespace sẽ được nhóm vào
@@ -116,7 +116,7 @@
 				</p>
 				<div class="grid grid-cols-2 gap-4">
 					<div class="col-span-1">
-						<VCodeBlock :code="b3" highlightjs lang="php" theme="vs2015" />
+						<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1 px-0 py-0 rounded">
 						<img src="@/assets/images/documentation/route-01.png" alt="" class="rounded-lg mt-0 block" />

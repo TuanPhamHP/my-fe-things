@@ -23,8 +23,8 @@
 					</li>
 				</ul>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3 mb-5">
-					<div class="col-span-1"><VCodeBlock :code="b1" highlightjs lang="javascript" theme="vs2015" /></div>
-					<div class="col-span-1"><VCodeBlock :code="b2" highlightjs lang="javascript" theme="vs2015" /></div>
+					<div class="col-span-1"><VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" /></div>
+					<div class="col-span-1"><VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" /></div>
 				</div>
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">Trong ví dụ trên:</p>
 				<ul class="pl-5">
@@ -44,11 +44,11 @@
 					Ngoài ra ta có thể xuất các đối tượng khác nhau bằng <FilePath>module.export</FilePath> như sau:
 				</p>
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">Xuất một hàm</p>
-				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">Xuất một đối tượng</p>
-				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8 font-bold">Xuất một lớp</p>
-				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<PageHeading text="Cách tổ chức dự án Node.js" addOnClass="text-left mt-5" markedAs="about-nodejs" />
 				<p class="text-slate-900 dark:text-white my-3">
@@ -139,7 +139,7 @@
 					</li>
 				</ul>
 				<p class="text-slate-900 dark:text-white my-3">Từ đó, ta có thể tổ chức dự án theo cấu trúc sau:</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="vs2015" />
+				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
 
 				<p class="text-slate-900 dark:text-white mt-3 leading-8 text-2xl">Tổng kết:</p>
 				<ul class="pl-5">

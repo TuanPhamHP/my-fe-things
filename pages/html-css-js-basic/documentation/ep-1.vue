@@ -54,7 +54,7 @@
 					:code="`<p class='text'>Hello World</p>`"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				
 				<div class="">
@@ -74,7 +74,7 @@
 					:code="`${htmlStructure}`"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 				<div class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 					Trong đó:
@@ -115,7 +115,7 @@
 `"
 					highlightjs
 					lang="HTML"
-					theme="vs2015"
+					theme="atom-one-dark"
 				/>
 					</div>
 				<div class="bg-white rounded-lg px-2 py-2 col-span-1">

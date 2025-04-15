@@ -52,7 +52,7 @@
 					</li>
 				</ul>
 
-				<VCodeBlock :code="b1" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b1" highlightjs lang="php" theme="atom-one-dark" />
 				<PageHeading text="2. View" addOnClass="text-left mt-3" markedAs="mvc-view" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
 					View là thành phần chịu trách nhiệm hiển thị dữ liệu cho người dùng. View không chứa logic nghiệp vụ và không
@@ -72,7 +72,7 @@
 					</li>
 				</ul>
 
-				<VCodeBlock :code="b2" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b2" highlightjs lang="php" theme="atom-one-dark" />
 				<PageHeading text="3. Controller" addOnClass="text-left mt-3" markedAs="mvc-controller" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Ta có thể thấy rằng <b>Model</b> và <b>View</b> không làm việc trực tiếp với nhau, chúng cũng không hề can
@@ -94,7 +94,7 @@
 					</li>
 				</ul>
 
-				<VCodeBlock :code="b3" highlightjs lang="php" theme="vs2015" />
+				<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
