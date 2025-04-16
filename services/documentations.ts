@@ -857,7 +857,17 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
-		id: 'php-22',
+		id: 'php-23',
+		vneseName: 'Laravel - Form Handling',
+		eng: 'AJAX',
+		description: 'Xử lý form trong Laravel',
+		link: '/php/documentation/laravel-form',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
+		id: 'php-24',
 		vneseName: 'Laravel - Paginate',
 		eng: 'AJAX',
 		description: 'Comming soon....',

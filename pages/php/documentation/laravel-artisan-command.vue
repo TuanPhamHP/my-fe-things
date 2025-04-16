@@ -12,7 +12,7 @@
 				</p>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
-			<PageMarkBook />
+			<!-- <PageMarkBook /> -->
 		</div>
 	</div>
 </template>
@@ -235,7 +235,7 @@ class Todo extends Model
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-18' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-99' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},

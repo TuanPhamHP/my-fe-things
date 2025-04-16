@@ -52,8 +52,8 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
 						<b class="min-w-[150px]">`$fillable`:</b>
 						<span
-							>Xác định danh sách các cột có thể được gán giá trị thông qua các phương thức như create() hoặc
-							fill().</span
+							>Xác định danh sách các cột có thể được gán giá trị thông qua các phương thức như create() hoặc fill().
+							Ngược lại với nó là <b>$guarded</b></span
 						>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
@@ -191,7 +191,7 @@
 				</FakeTerminalUI>
 				<p class="text-slate-900 dark:text-white my-3">
 					Vậy là chúng ta vừa tạo và sử dụng <b>Factory</b> để init dữ liệu local, về cơ bản có thể vẽ lại process của
-					nó như sau:
+					nó như sau:Tạo Form Request class
 				</p>
 				<div class="bg-neutral-100 px-5 py-1 rounded">
 					<img src="@/assets/images/php-laravel/factory-01.png" alt="" class="rounded-lg mt-3 block max-w-[800px]" />
