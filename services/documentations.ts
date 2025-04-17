@@ -1004,6 +1004,18 @@ const NodeJSBasicDocs = [
 		apps: ['nodejs'],
 	},
 ] as DocumentItem[];
+const NestJSBasicDocs = [
+	{
+		id: 'nest-01',
+		vneseName: 'Tổng quan về NestJS',
+		eng: 'About NestJS',
+		description: '',
+		link: '/nestjs/documentation/about-nestjs',
+		previewImage: 'course_nestjs.png',
+		status_id: 1,
+		apps: ['nestjs'],
+	},
+] as DocumentItem[];
 
 const SQLBasicDocs = [
 	{
@@ -1149,6 +1161,7 @@ let baseListData: DocumentItem[] = [
 	...PHPAndLaravelBasicDocs,
 	...NodeJSBasicDocs,
 	...SQLBasicDocs,
+	...NestJSBasicDocs,
 ];
 class PaginationDefault {
 	constructor(

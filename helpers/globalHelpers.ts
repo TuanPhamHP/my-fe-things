@@ -66,6 +66,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('sql')) {
 		return 'sql';
 	}
+	if (currentPathName.includes('nestjs')) {
+		return 'nestjs';
+	}
 	return null;
 };
 

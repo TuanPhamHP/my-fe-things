@@ -297,6 +297,27 @@
 					tooltip: 'Thực hành',
 					showByApp: ['sql'],
 				},
+				// NEST
+				{
+					title: 'Tài liệu',
+					path: '/nestjs/documentation',
+					pathNameMatch: /^nestjs-documentation/,
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['nestjs'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/nestjs/practice',
+					pathNameMatch: /^nestjs-practice/,
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['nestjs'],
+				},
 			]);
 
 			const currentPathActive = computed((): string => {

@@ -1,52 +1,441 @@
-📝 Đề bài: Thiết Kế & Triển Khai Database Quản Lý Bán Đồ Ăn
-Bài tập 1: Khởi tạo Database (6 điểm)
-Mô tả:
-Bạn được giao nhiệm vụ xây dựng hệ thống quản lý bán đồ ăn. Hãy thực hiện các yêu cầu sau:
+	<!-- HTML - CSS - JS -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">HTML - CSS -JS</h5>
+					</DisclosureButton>
+						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_hcj.png" class="h-[150px] block mx-auto" alt="" />
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5 flex flex-col h-full">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">
+											Các tài liệu cơ bản về HTML,CSS,JS như:
+										</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">HTML: Cấu trúc file, thẻ, attributes ...
+											</li>
+											<li class="flex items-center gap-3 py-1">CSS: Selector, Cách áp dụng CSS ...
+											</li>
+											<li class="flex items-center gap-3 py-1">JS: Data Types, Function, Events, DOM ...
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/html-css-js-basic/documentation')"
+											class="cursor-pointer mt-auto w-fit inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-Yêu cầu:
-1️⃣ Tạo cơ sở dữ liệu có tên FoodOrderManagement.
-2️⃣ Tạo các bảng với cấu trúc sau:
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5 flex flex-col h-full">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về React:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/html-css-js-basic/practice')"
+											class="cursor-pointer mt-auto w-fit inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>
+			<!-- REACTJS -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">ReactJs</h5>
+					</DisclosureButton>
 
-foods (id, name, price, category_id, stock_quantity)
-categories (id, name)
-customers (id, name, email, phone, join_date)
-orders (id, customer_id, order_date, total_amount, status)
-order_details (id, order_id, food_id, quantity, subtotal)
-3️⃣ Thiết lập các ràng buộc:
+					
+						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_reactjs.png" class="h-[150px] block mx-auto" alt="" />
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về React như:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Cách cài đặt
+											</li>
+											<li class="flex items-center gap-3 py-1">Một số hooks cơ bản
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/reactjs-basic/documentation')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-Mỗi món ăn thuộc một danh mục → (foods.category_id → categories.id).
-Mỗi đơn hàng thuộc một khách hàng → (orders.customer_id → customers.id).
-Một đơn hàng có nhiều món ăn, và mỗi món ăn có thể xuất hiện trong nhiều đơn hàng → (order_details.order_id → orders.id, order_details.food_id → foods.id).
-Tổng tiền (orders.total_amount) phải bằng tổng tất cả subtotal của bảng order_details.
-Số lượng món ăn (foods.stock_quantity) phải giảm khi có đơn hàng mới.
-Bài tập 2: Truy vấn dữ liệu cơ bản (6 điểm)
-1️⃣ Lấy danh sách tất cả món ăn kèm theo tên danh mục của chúng.
-2️⃣ Lấy danh sách tất cả khách hàng và số lượng đơn hàng họ đã đặt.
-3️⃣ Tìm món ăn bán chạy nhất.
-4️⃣ Tìm khách hàng chi tiêu nhiều nhất.
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về React:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Kèm hướng dẫn và ví dụ minh họa
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/reactjs-basic/practice')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>
+			<!-- NODEJS -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">NodeJs</h5>
+					</DisclosureButton>
 
-📌 Lưu ý: Tách riêng file có tên query_example.sql.
+					
+						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_nodejs.png" class="h-[150px] block mx-auto" alt="" />
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về NodeJs như:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Cách cài đặt
+											</li>
+											<li class="flex items-center gap-3 py-1">Một số hooks cơ bản
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/nodejs/documentation')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-Bài tập 3: View & Stored Procedure (6 điểm)
-1️⃣ Tạo một View có tên view_order_summary, hiển thị danh sách đơn hàng với thông tin:
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về NodeJs:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Kèm hướng dẫn và ví dụ minh họa
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/nodejs/practice')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>
+			<!-- NEXTJS -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">NextJs</h5>
+					</DisclosureButton>
 
-Tên khách hàng
-Ngày đặt hàng
-Tổng tiền
-Trạng thái đơn hàng
-2️⃣ Tạo một Stored Procedure sp_get_foods_by_category nhận vào id danh mục và trả về danh sách món ăn thuộc danh mục đó.
+					<transition
+						enter-active-class="transition duration-100 ease-out"
+						enter-from-class="transform scale-95 opacity-0"
+						enter-to-class="transform scale-100 opacity-100"
+						leave-active-class="transition duration-75 ease-out"
+						leave-from-class="transform scale-100 opacity-100"
+						leave-to-class="transform scale-95 opacity-0"
+					>
+						<DisclosurePanel>
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về NextJs như:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Cách cài đặt
+											</li>
+											<li class="flex items-center gap-3 py-1">Project strucutures...
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/nextjs-basic/documentation')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-3️⃣ Tạo một Stored Procedure sp_get_top_customers trả về danh sách 3 khách hàng có tổng chi tiêu cao nhất.
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về NextJs:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Kèm hướng dẫn và ví dụ minh họa
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/nextjs-basic/practice')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>
+			<!-- PHP -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">PHP</h5>
+					</DisclosureButton>
 
-📌 Lưu ý: Tách riêng file có tên views_and_procedures.sql.
+					
+						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_php.png" class="h-[150px] block mx-auto" alt="" />
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về PHP như:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Cách cài đặt
+											</li>
+											<li class="flex items-center gap-3 py-1">Project strucutures...
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/php/documentation')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-Bài tập 4: Trigger (5 điểm)
-1️⃣ Viết một Trigger tr_check_stock_before_order để ngăn đặt hàng nếu món ăn đã hết hàng.
-2️⃣ Viết một Trigger tr_update_stock_quantity để giảm số lượng món ăn khi có đơn hàng mới.
-3️⃣ Viết một Trigger tr_order_logs, ghi lại log khi tạo một đơn hàng vào bảng order_logs (id, log_time, order_id, action).
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về PHP:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Kèm hướng dẫn và ví dụ minh họa
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/php/practice')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>
 
-📌 Lưu ý: Tách riêng file có tên triggers.sql.
+			<!-- SQL -->
+			<div class="border rounded-xl px-2 py-3 mb-4 dark:hover:bg-neutral-100/25 hover:bg-neutral-300/25">
+				<Disclosure>
+					<DisclosureButton as="div" class="cursor-pointer">
+						<h5 class="text-3xl w-full font-bold tracking-tight text-gray-900 dark:text-white">SQL</h5>
+					</DisclosureButton>
 
+					
+						<DisclosurePanel>
+							<img src="@/assets/images/documentation/course_sql.png" class="h-[150px] block mx-auto" alt="" />
+							<div class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-5 pt-4">
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Documentation
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các tài liệu cơ bản về SQL như:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">RDBMS Concepts
+											</li>
+											<li class="flex items-center gap-3 py-1">Entity-Relationship (E-R) Model and Normalization ....
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều tài liệu cơ sở khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/sql/documentation')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
 
-
-
+								<div
+									class="col-span-1 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:translate-y-[-10px] transition"
+								>
+									<div class="p-5">
+										<a href="#">
+											<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Example & Train
+											</h5>
+										</a>
+										<p class="mb-3 font-normal text-gray-700 dark:text-white">Các bài tập cơ bản về SQL:</p>
+										<ul class="max-w-md space-y-1 text-gray-500 list-inside dark:text-white mb-3">
+											<li class="flex items-center gap-3 py-1">Bài tập cơ bản, dễ tiếp cận
+											</li>
+											<li class="flex items-center gap-3 py-1">Kèm hướng dẫn và ví dụ minh họa
+											</li>
+											<li class="flex items-center gap-3 py-1"><Icon name="solar:clipboard-list-broken" size="24px" class="text-slate-700 dark:text-white" />Và rất nhiều hỗ trợ khác ...
+											</li>
+										</ul>
+										<div
+											@click="$router.push('/sql/practice')"
+											class="cursor-pointer inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+										>
+											Read more
+											<svgclass="rtl:rotate-180 w-3.5 h-3.5 ms-2"aria-hidden="true"xmlns="http://www.w3.org/2000/svg"fill="none"viewBox="0 0 14 10"
+											><path	stroke="currentColor"	stroke-linecap="round"	stroke-linejoin="round"	stroke-width="2"	d="M1 5h12m0 0L9 1m4 4L9 9"/>
+											</svg>
+										</div>
+									</div>
+								</div>
+							</div>
+						</DisclosurePanel>
+				</Disclosure>
+			</div>

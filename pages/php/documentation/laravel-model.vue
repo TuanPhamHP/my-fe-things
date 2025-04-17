@@ -287,7 +287,7 @@ Cake::factory()->count(10)->create();`,
 					},
 					{
 						id: 1,
-						name: 'find(\$id)',
+						name: 'find(\$id) | findOrFail(\$id)',
 						desc: 'Tìm một bản ghi theo ID.',
 						syntax: 'Cake::find(1);',
 					},
