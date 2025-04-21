@@ -857,6 +857,16 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-22',
+		vneseName: 'Laravel - Middleware',
+		eng: 'AJAX',
+		description: 'Tìm hiểu và tạo Middleware trong Laravel',
+		link: '/php/documentation/laravel-middleware',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-23',
 		vneseName: 'Laravel - Form Handling',
 		eng: 'AJAX',
