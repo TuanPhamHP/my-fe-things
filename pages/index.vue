@@ -67,12 +67,12 @@
 					docs: {
 						title: `Các tài liệu cơ bản về NodeJs như:`,
 						items: ['Cách cài đặt', 'Connection, RestFull Api ...', 'Database, MVC Architecture'],
-						link: '/nodejs-basic/documentation',
+						link: '/nodejs/documentation',
 					},
 					practices: {
 						title: `Các bài tập cơ bản:`,
 						items: ['Bài tập cơ bản, dễ tiếp cận', 'Kèm hướng dẫn và ví dụ minh họa'],
-						link: '/nodejs-basic/practice',
+						link: '/nodejs/practice',
 					},
 				},
 				{

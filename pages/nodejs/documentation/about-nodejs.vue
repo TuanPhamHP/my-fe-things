@@ -63,14 +63,39 @@
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">Ví dụ về cách hoạt động non-blocking:</p>
 
 				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
+
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Trong ví dụ trên, Node.js sẽ không đợi việc đọc tệp hoàn tất mà sẽ tiếp tục thực thi câu lệnh
 					<br />
-					console.log('File đang được đọc...'); <br />trước, sau đó khi việc đọc tệp hoàn thành, kết quả sẽ được trả về.
+					<FilePath>console.log('File đang được đọc...');</FilePath> trước, sau đó khi việc đọc tệp hoàn thành, kết quả
+					sẽ được trả về.
+				</p>
+				<table class="w-full text-sm text-left text-gray-700 dark:text-gray-400 mt-3 rounded overflow-hidden">
+					<thead class="text-sm">
+						<tr class="bg-gray-200">
+							<th class="px-4 py-2">Khái niệm</th>
+							<th class="px-4 py-2">Mô tả</th>
+							<th class="px-4 py-2">Có đợi?</th>
+							<th class="px-4 py-2">Gây nghẽn?</th>
+							<th class="px-4 py-2">Ví dụ</th>
+						</tr>
+					</thead>
+					<tbody class="text-sm">
+						<tr v-for="item in conceptTable" :key="item.term">
+							<td class="border text-left px-4 py-2 font-bold">{{ item.term }}</td>
+							<td class="border text-left px-4 py-2">{{ item.description }}</td>
+							<td class="border text-left px-4 py-2">{{ item.wait }}</td>
+							<td class="border text-left px-4 py-2">{{ item.block }}</td>
+							<td class="border text-left px-4 py-2">
+								<FilePath>{{ item.example }}</FilePath>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Tiếp theo, chúng ta sẽ cùng tìm hiểu về <b>`Event loop`</b> trong NodeJs để hiểu cách thức hoạt động của
 					NodeJs.
 				</p>
-
 				<PageHeading text="Event loop" addOnClass="text-left mt-3" markedAs="event-loop" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Node.js hoạt động trên một single-thread (chỉ có một luồng duy nhất), nhưng nhờ cơ chế Event Loop, nó có thể
@@ -126,7 +151,32 @@
 				<div class="col-span-1 bg-neutral-100 px-5 py-1 rounded">
 					<img src="@/assets/images/nodejs/event-loop-1.png" alt="" class="rounded-lg mt-3 block" />
 				</div>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Sở đồ trên là sơ đồ hoạt động <b>Event Loop</b> á, giải thích xíu cho các loại queue nha:
+				</p>
 
+				<table class="w-full text-sm text-left text-gray-700 dark:text-gray-400 mt-3 rounded overflow-hidden">
+					<thead class="text-sm">
+						<tr class="bg-gray-200">
+							<th class="px-4 py-2">Loại queue</th>
+							<th class="px-4 py-2">Mô tả</th>
+							<th class="px-4 py-2">Ví dụ thường gặp</th>
+							<th class="px-4 py-2">Đặc điểm ưu tiên</th>
+						</tr>
+					</thead>
+					<tbody class="text-sm">
+						<tr v-for="item in eventLoopConceptTable" :key="item.term">
+							<td class="border text-left px-4 py-2 font-bold">{{ item.term }}</td>
+							<td class="border text-left px-4 py-2">{{ item.description }}</td>
+							<td class="border text-left px-4 py-2">
+								<FilePath>{{ item.example }}</FilePath>
+							</td>
+							<td class="border text-left px-4 py-2">{{ item.ft }}</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">Ví dụ về Call Stack, stack (micro, macro) nè:</p>
+				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8 text-2xl">Tổng kết:</p>
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
@@ -184,6 +234,62 @@ fs.readFile('example.txt', 'utf8', (err, data) => {
 
 console.log('File đang được đọc...');
 `,
+				b2: `console.log('1');
+
+setTimeout(() => {
+  console.log('2 (macrotask)');
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('3 (microtask)');
+});
+
+console.log('4');
+`,
+				conceptTable: [
+					{
+						term: 'Synchronous (Đồng bộ)',
+						description: 'Thực hiện từng việc một, theo thứ tự — việc sau phải đợi việc trước xong',
+						wait: '✅ Có đợi',
+						block: '✅ Gây nghẽn (nếu lâu)',
+						example: 'console.log, fs.readFileSync',
+					},
+					{
+						term: 'Asynchronous (Bất đồng bộ)',
+						description: 'Giao việc rồi tiếp tục làm việc khác — khi xong sẽ báo lại',
+						wait: '❌ Không đợi ngay',
+						block: '❌ Không nghẽn',
+						example: 'setTimeout, fs.readFile, fetch',
+					},
+					{
+						term: 'Blocking',
+						description: 'Tác vụ giữ chặt Call Stack cho đến khi hoàn tất',
+						wait: '✅ Có đợi',
+						block: '✅ Gây nghẽn',
+						example: 'fs.readFileSync, vòng lặp nặng',
+					},
+					{
+						term: 'Non-blocking',
+						description: 'Tác vụ được đưa ra khỏi Stack, xử lý ở background',
+						wait: '❌ Không đợi ngay',
+						block: '❌ Không nghẽn',
+						example: 'fs.readFile, callback, promise',
+					},
+				],
+				eventLoopConceptTable: [
+					{
+						term: 'Microtask Queue',
+						description: 'Hàng ưu tiên',
+						ft: 'Luôn được xử lý trước Macrotask',
+						example: 'Promise.then(), queueMicrotask()',
+					},
+					{
+						term: 'Macrotask Queue',
+						description: 'Hàng bình thường',
+						ft: 'Xử lý sau khi Microtask rỗng',
+						example: 'setTimeout(), setInterval(), I/O, setImmediate()',
+					},
+				],
 			};
 		},
 		mounted() {
