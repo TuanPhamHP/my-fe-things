@@ -1025,6 +1025,26 @@ const NestJSBasicDocs = [
 		status_id: 1,
 		apps: ['nestjs'],
 	},
+	{
+		id: 'nest-02',
+		vneseName: 'Decorator',
+		eng: 'About Decorator in NestJS',
+		description: '',
+		link: '/nestjs/documentation/decorator',
+		previewImage: 'course_nestjs.png',
+		status_id: 1,
+		apps: ['nestjs'],
+	},
+	{
+		id: 'nest-03',
+		vneseName: 'Controller',
+		eng: 'About Controller in NestJS',
+		description: '',
+		link: '/nestjs/documentation/controller',
+		previewImage: 'course_nestjs.png',
+		status_id: 1,
+		apps: ['nestjs'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
