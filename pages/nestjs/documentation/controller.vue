@@ -2,41 +2,47 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="NestJS là gì?" addOnClass="text-left" markedAs="about-nest" />
-
+				<PageHeading text="Controllers" addOnClass="text-left" markedAs="about-controller" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					<b>NestJS</b> là một <b>framework Node.js</b> mạnh mẽ, được xây dựng trên <b>TypeScript</b> và tận dụng các
-					khái niệm hiện đại như:
+					<b>Controllers</b> là một thành phần cốt lõi chịu trách nhiệm xử lý các <b>HTTP request</b> và trả về
+					<b>response</b> tương ứng cho client. Controller được sử dụng để định nghĩa các <b>route (đường dẫn)</b> và
+					logic xử lý cho các yêu cầu từ phía client.
 				</p>
-				<SkyList :docs="newFeatures" />
-
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					NestJS không chỉ để viết <b>REST API</b>, mà còn hỗ trợ:
-				</p>
-				<SkyList :docs="supportDbs" />
-
-				<PageHeading
-					text="NestJS sinh ra để giải quyết vấn đề gì?"
-					addOnClass="text-left"
-					markedAs="nestjs-avd"
-					:lvl="2"
-				/>
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					Khi code với NodeJS chúng ta gặp khá nhiều vấn đề khi dự án được phát triển lớn dần như:
-				</p>
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-					<div class="col-span-1 rounded border border-gray-200 shadow">
-						<p class="px-2 text-slate-900 pb-1 border-b bg-red-400 leading-8 font-bold rounded-t">Code với NodeJS</p>
-						<SkyList :docs="nodePros" />
-					</div>
-					<div class="col-span-1 rounded border border-gray-200 shadow">
-						<p class="px-2 text-slate-900 pb-1 border-b bg-info-300 leading-8 font-bold rounded-t">Code với NestJS</p>
-						<SkyList :docs="nestCons" />
+				<div class="grid grid-cols-2 gap-3">
+					<div class="col-span-2">
+						<img src="https://docs.nestjs.com/assets/Controllers_1.png" alt="" class="w-fit max-w-full rounded-lg" />
 					</div>
 				</div>
-				<PageHeading text="Core Concepts của NestJS" addOnClass="text-left mt-3" markedAs="nest-core-concept" />
-
-				<DocFactoryTable :headers="nestConceptHeader" :items="nestCoreConcepts" />
+				<PageHeading text="1/ Cấu trúc cơ bản" addOnClass="text-left" markedAs="controller-structure" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Controller trong NestJS là một <b>class</b> được đánh dấu bằng decorator <FilePath>@Controller()</FilePath>.
+					Decorator này chỉ định prefix (tiền tố) cho các route của controller. Mỗi phương thức trong controller được
+					gắn với một decorator tương ứng với các HTTP method (như <FilePath>@Get(), @Post()</FilePath> v.v.) để xử lý
+					request. Ví dụ:
+				</p>
+				<div class="my-4 rounded-lg">
+					<VCodeBlock :code="b1" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+				<PageHeading text="2/ Các thành phần chính" addOnClass="text-left" markedAs="controller-main-part" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					🧩<FilePath>@Controller(prefix?)</FilePath>: Định nghĩa một controller và tiền tố route (ví dụ: /users). Nếu
+					không cung cấp prefix, các route sẽ không có tiền tố.
+				</p>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">🧩 <b>HTTP Method Decorators</b> Bao gồm:</p>
+				<SkyList :docs="httpDecor" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					🧩 <b>Parameter Decorators</b> Dùng để lấy dữ liệu từ request:
+				</p>
+				<SkyList :docs="paramDecor" />
+				<PageHeading text="3/ Tạo controller" addOnClass="text-left" markedAs="controller-create" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Nest có hỗ trợ chúng ta tạo nhanh một Controller bằng command:
+				</p>
+				<FakeTerminalUI :textCoppy="'nest g controller  [name]'">nest g controller [name]</FakeTerminalUI>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Hoặc nếu bạn cần tạo một CRUD controller và có built-in validator để sử dụng thì chúng ta có thể tạo resource:
+				</p>
+				<FakeTerminalUI :textCoppy="'nest g resource  [name]'">nest g resource [name]</FakeTerminalUI>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -74,156 +80,49 @@
 						link: '/nestjs/documentation',
 					},
 				},
-				newFeatures: [
+				httpDecor: [
 					{
 						id: 1,
-						content: 'Dependency Injection (DI)',
-					},
-					{
-						id: 2,
-						content: 'Modular Architecture',
-					},
-					{
-						id: 3,
-						content: 'Decorators (giống Angular)',
-					},
-					{
-						id: 4,
-						content: 'Middleware, Guards, Pipes, Interceptors',
+						content: '<b>@Get(path?), @Post(path?), @Put(path?) ...</b>: Xử lý các http request.',
 					},
 				],
-				supportDbs: [
+				paramDecor: [
 					{
 						id: 1,
-						content: 'GraphQL',
+						content: '<b>@Body():</b> Lấy dữ liệu từ body của request.',
 					},
 					{
 						id: 2,
-						content: 'Microservices',
+						content: '<b>@Param():</b> Lấy tham số từ URL (route parameters).',
 					},
 					{
 						id: 3,
-						content: 'WebSockets',
+						content: '<b>@Query():</b> Lấy query parameters từ URL.',
 					},
 					{
 						id: 4,
-						content: 'gRPC',
+						content: '<b>@Req():</b> Lấy toàn bộ request object.',
 					},
 					{
 						id: 5,
-						content: 'Serverless',
+						content:
+							'<b>@Res():</b> Lấy response object (thường ít dùng vì NestJS khuyến khích trả về dữ liệu trực tiếp).',
 					},
 				],
-				nestCons: [
-					{
-						id: 1,
-						content: '<b>DI Container	</b>',
-						subList: ['🔥Dễ inject service, test, tái sử dụng'],
-					},
-					{
-						id: 2,
-						content: '<b>Module System</b>',
-						subList: ['🔥Chia nhỏ ứng dụng theo domain (auth, user, order...)'],
-					},
-					{
-						id: 3,
-						content: '<b>OOP + TypeScript	</b>',
-						subList: ['🔥Có class, type rõ ràng → dễ bảo trì, ít bug'],
-					},
-					{
-						id: 4,
-						content: '<b>Built-in support cho test</b>',
-						subList: ['🔥Unit test & E2E test dễ tích hợp với Jest'],
-					},
-				],
-				nodePros: [
-					{
-						id: 1,
-						content: '<b>Code lộn xộn, thiếu tổ chức (callback hell, spaghetti code)</b>',
-						subList: [
-							'🔻 Khó mở rộng, dễ trùng lặp code, mỗi file mỗi kiểu',
-							'🔻 Người mới vào team không hiểu logic',
-							'🔻 Dễ bug khi sửa chỗ này ảnh hưởng chỗ khác',
-							'🔻 Không có separation of concerns (tách riêng logic & request)',
-						],
-					},
-					{
-						id: 2,
-						content: '<b>Không có sẵn kiến trúc rõ ràng (Không có MVC, Module, Service...)</b>',
-						subList: [
-							'🔻 Mỗi dev tổ chức theo một kiểu → hỗn loạn',
-							'🔻 Dự án lớn dần trở nên khó maintain',
-							'🔻 Không dễ test do phụ thuộc lẫn nhau',
-							'🔻 Mất thời gian refactor khi dự án phình to',
-						],
-					},
-					{
-						id: 3,
-						content: '<b>Không có DI Container như các framework lớn (Laravel, Spring)</b>',
-						subList: [
-							'🔻 Khó tái sử dụng component',
-							'🔻 Viết unit test trở nên khó khăn',
-							'🔻 Phải tự quản lý việc tạo & truyền đối tượng',
-							'🔻 Không có "lifecycle" rõ ràng khi khởi tạo các class/service',
-						],
-					},
-				],
-				nestConceptHeader: [
-					{
-						id: 1,
-						name: 'Tên',
-					},
-					{
-						id: 2,
-						name: 'Mô tả ngắn gọn',
-					},
-				],
-				nestCoreConcepts: [
-					{
-						name: 'Module',
-						description: 'Chia ứng dụng thành các khối độc lập, dễ tổ chức và tái sử dụng.',
-					},
-					{
-						name: 'Controller',
-						description: 'Xử lý các request đến từ client, trả response tương ứng.',
-					},
-					{
-						name: 'Service',
-						description: 'Chứa logic nghiệp vụ chính, có thể được inject vào controller.',
-					},
-					{
-						name: 'Provider',
-						description: 'Mọi thứ có thể được inject – ví dụ: service, repository, factory, v.v.',
-					},
-					{
-						name: 'Dependency Injection (DI)',
-						description: 'Cơ chế tự động "tiêm" phụ thuộc giúp code dễ test, mở rộng.',
-					},
-					{
-						name: 'Decorator',
-						description: 'Cú pháp ngắn gọn định nghĩa metadata như route, module, middleware...',
-					},
-					{
-						name: 'Pipe',
-						description: 'Xử lý transform hoặc validate dữ liệu trước khi vào controller.',
-					},
-					{
-						name: 'Middleware',
-						description: 'Can thiệp vào request trước khi vào route xử lý.',
-					},
-					{
-						name: 'Guard',
-						description: 'Kiểm tra quyền truy cập – thường dùng cho Auth, Role, Permission.',
-					},
-					{
-						name: 'Interceptor',
-						description: 'Can thiệp vào trước/sau controller để logging, transform, handle timeout...',
-					},
-					{
-						name: 'Exception Filter',
-						description: 'Bắt và xử lý lỗi theo chuẩn, có thể global hoặc custom.',
-					},
-				],
+				b1: `import { Controller, Get, Post, Body } from '@nestjs/common';
+
+@Controller('users') // Prefix cho tất cả route trong controller là '/users'
+export class UsersController {
+  @Get() // Xử lý GET /users
+  getAllUsers() {
+    return { message: 'Danh sách tất cả user' };
+  }
+
+  @Post() // Xử lý POST /users
+  createUser(@Body() userData: any) {
+    return { message: 'Tạo user mới', data: userData };
+  }
+}`,
 			};
 		},
 		mounted() {
@@ -232,7 +131,7 @@
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-1' })
+					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-03' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

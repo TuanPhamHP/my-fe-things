@@ -35,10 +35,8 @@
 					</div>
 				</div>
 				<PageHeading text="Core Concepts của NestJS" addOnClass="text-left mt-3" markedAs="nest-core-concept" />
+
 				<DocFactoryTable :headers="nestConceptHeader" :items="nestCoreConcepts" />
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					Ví dụ: thử tạo một <b>ping - pong</b> request với nodejs (expressjs) và NestJS
-				</p>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -182,31 +180,27 @@
 				],
 				nestCoreConcepts: [
 					{
-						name: '🔥Module',
+						name: 'Module',
 						description: 'Chia ứng dụng thành các khối độc lập, dễ tổ chức và tái sử dụng.',
 					},
 					{
-						name: '🔥Controller',
+						name: 'Controller',
 						description: 'Xử lý các request đến từ client, trả response tương ứng.',
 					},
 					{
-						name: '🔥Service',
+						name: 'Service',
 						description: 'Chứa logic nghiệp vụ chính, có thể được inject vào controller.',
-					},
-					{
-						name: 'Routing',
-						description: '	Định nghĩa route: @Get(), @Post()',
-					},
-					{
-						name: 'Dependency Injection (DI)',
-						description: 'Cơ chế tự động "tiêm" phụ thuộc giúp code dễ test, mở rộng.',
 					},
 					{
 						name: 'Provider',
 						description: 'Mọi thứ có thể được inject – ví dụ: service, repository, factory, v.v.',
 					},
 					{
-						name: '🔥Decorator',
+						name: 'Dependency Injection (DI)',
+						description: 'Cơ chế tự động "tiêm" phụ thuộc giúp code dễ test, mở rộng.',
+					},
+					{
+						name: 'Decorator',
 						description: 'Cú pháp ngắn gọn định nghĩa metadata như route, module, middleware...',
 					},
 					{
@@ -238,7 +232,7 @@
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-01' })
+					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-04' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

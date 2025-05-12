@@ -362,7 +362,7 @@ export class CatsController {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-1' })
+					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-02' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

@@ -38,7 +38,7 @@
 		<div className="text-slate-900 dark:text-white mt-2 pl-5">
 			2 - Cho data đầu vào là mảng `$products`:
 			<div class="mt-4 h-[320px] overflow-y-scroll rounded-lg">
-				<VCodeBlock :code="b1" highlightjs lang="jsx" theme="tomorrow-night-bright" />
+				<VCodeBlock :code="b1" highlightjs lang="jsx" theme="atom-one-dark" />
 			</div>
 
 			<p class="px-5 pt-3">

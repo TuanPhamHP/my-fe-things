@@ -1016,7 +1016,7 @@ const NodeJSBasicDocs = [
 ] as DocumentItem[];
 const NestJSBasicDocs = [
 	{
-		id: 'nest-01',
+		id: 'nestjs-01',
 		vneseName: 'Tổng quan về NestJS',
 		eng: 'About NestJS',
 		description: '',
@@ -1025,8 +1025,9 @@ const NestJSBasicDocs = [
 		status_id: 1,
 		apps: ['nestjs'],
 	},
+
 	{
-		id: 'nest-02',
+		id: 'nestjs-02',
 		vneseName: 'Decorator',
 		eng: 'About Decorator in NestJS',
 		description: '',
@@ -1035,12 +1036,23 @@ const NestJSBasicDocs = [
 		status_id: 1,
 		apps: ['nestjs'],
 	},
+
 	{
-		id: 'nest-03',
+		id: 'nestjs-03',
 		vneseName: 'Controller',
 		eng: 'About Controller in NestJS',
 		description: '',
 		link: '/nestjs/documentation/controller',
+		previewImage: 'course_nestjs.png',
+		status_id: 1,
+		apps: ['nestjs'],
+	},
+	{
+		id: 'nestjs-04',
+		vneseName: 'Module',
+		eng: 'About Module in NestJS',
+		description: '',
+		link: '/nestjs/documentation/module',
 		previewImage: 'course_nestjs.png',
 		status_id: 1,
 		apps: ['nestjs'],
@@ -1311,6 +1323,7 @@ const base = () => {
 							return isMatchApp;
 						});
 						const idx = nData.findIndex(o => o.id === currentDoc);
+						console.log(currentDoc);
 
 						if (idx === -1) {
 							res(initSuccessResponse({ pagination: new PaginationDefault(null, null) }));

@@ -145,7 +145,7 @@
 				this.loading = true;
 				const body = {
 					search: this.search,
-					appIds: 'nodejs',
+					appIds: 'nestjs',
 				};
 				const res = await this.$api.trainingTask.getListData(body);
 				this.loading = false;
