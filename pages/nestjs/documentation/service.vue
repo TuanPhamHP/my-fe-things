@@ -40,6 +40,21 @@
 				</div>
 				<p class="text-slate-900 dark:text-white my-2 leading-8 font-bold">Kết luận:</p>
 				<SkyList :docs="sum" />
+
+				<p class="text-slate-900 dark:text-white my-2 leading-8 font-bold">Nguyên tắc "SOLID"</p>
+				<div v-for="item in solid" :key="item.name" class="mb-2">
+					<Disclosure v-slot="{ open }">
+						<DisclosureButton
+							class="flex w-full justify-between bg-indigo-500 px-4 py-2 text-white font-bold"
+							:class="open ? 'rounded-t-lg' : 'rounded-lg'"
+						>
+							<div v-html="item.name"></div>
+						</DisclosureButton>
+						<DisclosurePanel class="px-4 pb-2 pt-1 text-sm rounded-b-lg bg-indigo-100/50">
+							<div v-html="item.desc"></div>
+						</DisclosurePanel>
+					</Disclosure>
+				</div>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -150,6 +165,63 @@ export class BookingController {
     return this.bookingService.getHello();
   }
 }`,
+				solid: [
+					{
+						name: `<span>S – Single Responsibility Principle (Nguyên tắc trách nhiệm đơn lẻ)</span>`,
+						desc: `<div class="text-slate-900 dark:text-white mt-0 leading-8">
+							<b>Một class chỉ nên có một lý do để thay đổi.</b>
+							<br />
+							❤️ Hiểu đơn giản: Một class chỉ nên làm một việc duy nhất.
+							<br />
+							🔥 Trong NestJS: BookingService chỉ lo xử lý logic booking, còn BookingController chỉ nhận request và trả
+							response.
+						</div>`,
+					},
+					{
+						name: `<span>O – Open/Closed Principle (Mở rộng nhưng đóng với thay đổi)</span>`,
+						desc: `<div class="text-slate-900 dark:text-white mt-0 leading-8">
+							<b>Class nên mở để mở rộng, nhưng đóng với sửa đổi.</b>
+							<br />
+							❤️ Hiểu đơn giản: Bạn nên mở rộng class bằng cách kế thừa hoặc inject, không nên chỉnh sửa trực tiếp code cũ vì dễ gây lỗi.
+						</div>`,
+					},
+					{
+						name: `<span>L – Liskov Substitution Principle (Nguyên tắc thay thế Liskov)</span>`,
+						desc: `<div class="text-slate-900 dark:text-white mt-0 leading-8">
+							<b>Khi kế thừa, subclass phải có thể thay thế class cha mà không làm hỏng chương trình.</b>
+							<br />
+							❤️ Hiểu đơn giản: Bạn nên mở rộng class bằng cách kế thừa hoặc inject, không nên chỉnh sửa trực tiếp code cũ vì dễ gây lỗi.
+							<br />
+							🔥 Bạn có thể thay NormalBookingService bằng VipBookingService mà không cần sửa BookingController — vì cả hai đều tuân theo IBookingService.
+						</div>`,
+					},
+					{
+						name: `<span> I – Interface Segregation Principle (Nguyên tắc tách giao diện)</span>`,
+						desc: `<div class="text-slate-900 dark:text-white mt-0 leading-8">
+							<b>Không ép client dùng những interface không cần thiết.</b>
+							<br />
+							❤️ Hiểu đơn giản: Bạn nên tạo ra nhiều interface nhỏ, thay vì một cái to đùng.
+							<br />
+							🔥 ICreatable, IUpdatable, IDeletable riêng biệt thay vì một interface ICRUD.
+						</div>`,
+					},
+					{
+						name: `<span> D – Dependency Inversion Principle (Nguyên tắc đảo ngược phụ thuộc)</span>`,
+						desc: `<div class="text-slate-900 dark:text-white mt-0 leading-8">
+							<b>High-level modules không nên phụ thuộc vào low-level modules. Cả hai nên phụ thuộc vào abstraction.</b>
+							<br />
+							❤️ Hiểu đơn giản: Trong NestJS, bạn inject Service qua constructor, thay vì khởi tạo trực tiếp
+							<br />
+							🔥 Bạn nên:
+							<br />
+							❤️<b>constructor(private readonly bookingService: BookingService) {}</b> // phụ thuộc lỏng => không quan tâm đến constructor và properties của low-level
+							<br />
+							Thay vì:
+							<br />
+							❌<b>const bookingService = new BookingService(); </b>// phụ thuộc chặt => bắt buộc phải đọc constructor và properties của low-level, tạo thành ràng buộc
+						</div>`,
+					},
+				],
 			};
 		},
 		mounted() {
