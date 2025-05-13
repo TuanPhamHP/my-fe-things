@@ -1049,6 +1049,16 @@ const NestJSBasicDocs = [
 	},
 	{
 		id: 'nestjs-04',
+		vneseName: 'Service',
+		eng: 'About Service in NestJS',
+		description: '',
+		link: '/nestjs/documentation/service',
+		previewImage: 'course_nestjs.png',
+		status_id: 1,
+		apps: ['nestjs'],
+	},
+	{
+		id: 'nestjs-05',
 		vneseName: 'Module',
 		eng: 'About Module in NestJS',
 		description: '',

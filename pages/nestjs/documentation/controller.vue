@@ -23,7 +23,7 @@
 				<div class="my-4 rounded-lg">
 					<VCodeBlock :code="b1" highlightjs lang="ts" theme="atom-one-dark" />
 				</div>
-				<PageHeading text="2/ Các thành phần chính" addOnClass="text-left" markedAs="controller-main-part" :lvl="2" />
+				<PageHeading text="2/ Các thành phần chính" addOnClass="text-left" markedAs="main-part" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					🧩<FilePath>@Controller(prefix?)</FilePath>: Định nghĩa một controller và tiền tố route (ví dụ: /users). Nếu
 					không cung cấp prefix, các route sẽ không có tiền tố.
@@ -34,7 +34,7 @@
 					🧩 <b>Parameter Decorators</b> Dùng để lấy dữ liệu từ request:
 				</p>
 				<SkyList :docs="paramDecor" />
-				<PageHeading text="3/ Tạo controller" addOnClass="text-left" markedAs="controller-create" :lvl="2" />
+				<PageHeading text="3/ Tạo controller" addOnClass="text-left" markedAs="create" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Nest có hỗ trợ chúng ta tạo nhanh một Controller bằng command:
 				</p>
@@ -43,6 +43,70 @@
 					Hoặc nếu bạn cần tạo một CRUD controller và có built-in validator để sử dụng thì chúng ta có thể tạo resource:
 				</p>
 				<FakeTerminalUI :textCoppy="'nest g resource  [name]'">nest g resource [name]</FakeTerminalUI>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Sau khi tạo, chúng mình sẽ dùng các core concepts như <b>DI, Decorator</b> để định nghĩa lên Controller:
+				</p>
+				<div class="my-4 rounded-lg">
+					<VCodeBlock :code="b2" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+				<PageHeading text="4/ Status code" addOnClass="text-left" markedAs="custom-response" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					NestJS cho phép trả về dữ liệu trực tiếp từ controller, và framework sẽ tự động chuyển đổi thành JSON và gửi
+					response với status code phù hợp (mặc định là 200 cho GET, 201 cho POST). Bạn cũng có thể tùy chỉnh response
+					bằng cách sử dụng @Res() hoặc các decorator như @HttpCode().
+				</p>
+				<div class="my-4 rounded-lg">
+					<VCodeBlock :code="b3" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+				<PageHeading text="5/ Shared State" addOnClass="text-left" markedAs="shared-state" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					<b>State Sharing</b> đề cập đến việc quản lý và chia sẻ dữ liệu hoặc trạng thái giữa các thành phần khác nhau
+					trong ứng dụng, chẳng hạn như giữa các Controller, Service, hoặc các request. <b>Service</b> là cách phổ biến
+					nhất để chia sẻ trạng thái trong NestJS. Vì Service là một singleton theo mặc định (được quản lý bởi
+					Dependency Injection), nó có thể lưu trữ trạng thái và chia sẻ giữa các Controller hoặc các thành phần khác.
+				</p>
+				<div class="grid grid-cols-1 lg:grid-cols-2 my-4 gap-3">
+					<div class="col-span-1">
+						<div class="rounded-lg">
+							<p class="font-bold italic text-slate-900 dark:text-white mt-1 leading-8">Tạo Shared Service</p>
+							<VCodeBlock :code="b4" highlightjs lang="ts" theme="atom-one-dark" />
+						</div>
+					</div>
+					<div class="col-span-1">
+						<div class="rounded-lg">
+							<p class="font-bold italic text-slate-900 dark:text-white mt-1 leading-8">Sử dụng</p>
+							<VCodeBlock :code="b5" highlightjs lang="ts" theme="atom-one-dark" />
+						</div>
+					</div>
+				</div>
+				<PageHeading text="6/ Asynchronicity" addOnClass="text-left" markedAs="asynchronicity" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					NestJS hỗ trợ xử lý bất đồng bộ rất mạnh, chỉ cần nhớ rằng khi tạo một <b>async method</b> thì chúng ta bắt
+					buộc phải return ra một
+					<FilePath>Promise</FilePath>
+				</p>
+				<div class="rounded-lg">
+					<p class="font-bold italic text-slate-900 dark:text-white mt-1 leading-8">Sử dụng</p>
+					<VCodeBlock :code="b6" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+				<PageHeading text="7/ Query Param" addOnClass="text-left mt-2 mb-1" markedAs="query-param" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-1 leading-8">
+					Để nhận và xử lý Query Parameters trong routes, chúng ta có thể dùng
+					<FilePath>@Query()</FilePath> decorator.
+				</p>
+				<div class="rounded-lg">
+					<p class="font-bold italic text-slate-900 dark:text-white mt-1 leading-8">Sử dụng</p>
+					<VCodeBlock :code="b7" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+				<PageHeading text="8/ Request Payload" addOnClass="text-left mt-2 mb-1" markedAs="request-payload" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-1 leading-8">
+					Để nhận và xử lý Payload gửi lên từ các method (POST, PUT ...) trong routes, chúng ta có thể dùng
+					<FilePath>@Body()</FilePath> decorator.
+				</p>
+				<div class="rounded-lg">
+					<p class="font-bold italic text-slate-900 dark:text-white mt-1 leading-8">Sử dụng</p>
+					<VCodeBlock :code="b8" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -119,10 +183,82 @@ export class UsersController {
   }
 
   @Post() // Xử lý POST /users
-  createUser(@Body() userData: any) {
+  createUser(@Body() userData: { name: string; price: number }) {
     return { message: 'Tạo user mới', data: userData };
   }
 }`,
+				b2: `@Get()
+findAll(@Req() request: Request): string {
+	console.log(request);
+	return 'This action returns all users';
+}
+
+@Get(':id') // GET /users/:id
+getProductById(@Param('id') id: string) {
+	return { message: "Sản phẩm với ID:" + id };
+}`,
+				b3: `import { Controller, Get, HttpCode } from '@nestjs/common';
+
+@Controller('example')
+export class ExampleController {
+  @Get()
+  @HttpCode(202) // Trả về status code 202
+  return { message: 'Yêu cầu đã được chấp nhận' };
+}`,
+				b4: `import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class SharedStateService {
+  private counter = 0;
+
+  increment() {
+    this.counter++;
+    return this.counter;
+  }
+
+  getCounter() {
+    return this.counter;
+  }
+}`,
+				b5: `import { Controller, Get } from '@nestjs/common';
+import { SharedStateService } from './shared-state.service';
+
+@Controller('state')
+export class StateController {
+  constructor(private readonly sharedStateService: SharedStateService) {}
+
+  @Get('increment')
+  incrementCounter() {
+    return { counter: this.sharedStateService.increment() };
+  }
+
+  @Get('counter')
+  getCounter() {
+    return { counter: this.sharedStateService.getCounter() };
+  }
+}`,
+				b6: `@Get()
+async findAll(): Promise<any[]> {
+  return [];
+}
+`,
+				b7: `@Get()
+async findAll(@Query('age') age: number, @Query('breed') breed: string) {
+  return "This action returns all cats filtered by age: {age} and breed: {breed}";
+}
+`,
+				b8: `class CreateCatDto {
+  name: string;
+  age: number;
+  breed: string;
+}
+
+
+@Post()
+async create(@Body() createCatDto: CreateCatDto) {
+  return 'This action adds a new cat';
+}
+`,
 			};
 		},
 		mounted() {
