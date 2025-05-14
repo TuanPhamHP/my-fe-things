@@ -2,41 +2,54 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="NestJS là gì?" addOnClass="text-left" markedAs="about-nest" />
-
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					<b>NestJS</b> là một <b>framework Node.js</b> mạnh mẽ, được xây dựng trên <b>TypeScript</b> và tận dụng các
-					khái niệm hiện đại như:
-				</p>
-				<SkyList :docs="newFeatures" />
-
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					NestJS không chỉ để viết <b>REST API</b>, mà còn hỗ trợ:
-				</p>
-				<SkyList :docs="supportDbs" />
-
-				<PageHeading
-					text="NestJS sinh ra để giải quyết vấn đề gì?"
-					addOnClass="text-left"
-					markedAs="nestjs-avd"
-					:lvl="2"
-				/>
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					Khi code với NodeJS chúng ta gặp khá nhiều vấn đề khi dự án được phát triển lớn dần như:
-				</p>
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
-					<div class="col-span-1 rounded border border-gray-200 shadow">
-						<p class="px-2 text-slate-900 pb-1 border-b bg-red-400 leading-8 font-bold rounded-t">Code với NodeJS</p>
-						<SkyList :docs="nodePros" />
-					</div>
-					<div class="col-span-1 rounded border border-gray-200 shadow">
-						<p class="px-2 text-slate-900 pb-1 border-b bg-info-300 leading-8 font-bold rounded-t">Code với NestJS</p>
-						<SkyList :docs="nestCons" />
+				<PageHeading text="Module" addOnClass="text-left" markedAs="about" />
+				<div class="grid grid-cols-2 gap-3">
+					<div class="col-span-2">
+						<img src="https://docs.nestjs.com/assets/Modules_1.png" alt="" class="w-fit max-w-full rounded-lg" />
 					</div>
 				</div>
-				<PageHeading text="Core Concepts của NestJS" addOnClass="text-left mt-3" markedAs="nest-core-concept" />
+				<p class="text-slate-900 dark:text-white mt-5 leading-8">
+					<b>Module</b> là một <b>class</b> trong NestJS, được đánh dấu bằng decorator
+					<FilePath>@Module()</FilePath> đóng vai trò như một container để nhóm các thành phần liên quan (như
+					Controller, Service, Provider, hoặc các Module khác) thành một đơn vị logic. Module giúp:
+				</p>
+				<SkyList :docs="moduleAttributes" />
+				<p class="text-slate-900 dark:text-white mt-5 leading-8">
+					Module là cách NestJS thực hiện nguyên tắc <b>Separation of Concerns (tách biệt trách nhiệm)</b> và
+					<b>Modular Architecture</b>.
+				</p>
 
-				<DocFactoryTable :headers="nestConceptHeader" :items="nestCoreConcepts" />
+				<PageHeading text="1/ Tạo module" addOnClass="text-left" markedAs="create" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Nest có hỗ trợ chúng ta tạo nhanh một Module bằng command:
+				</p>
+				<FakeTerminalUI :textCoppy="'nest g module [name]'">nest g module [name]</FakeTerminalUI>
+				<PageHeading text="2/ Cấu trúc cơ bản" addOnClass="text-left" markedAs="structure" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Một Module được định nghĩa bằng decorator <FilePath>@Module()</FilePath>, nhận một object với các thuộc tính
+					sau:
+				</p>
+				<SkyList :docs="moduleParts" />
+				<div class="my-4 rounded-lg">
+					<VCodeBlock :code="b1" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
+
+				<PageHeading text="3/ Các loại Module" addOnClass="text-left" markedAs="types" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Tuy rằng NestJS không định nghĩa chính thức các "loại" Module, nhưng dựa trên mục đích và cách sử dụng, chúng
+					ta có thể phân loại Module như sau:
+				</p>
+				<div v-for="item in moduleTypes" :key="item.name">
+					<p class="text-slate-900 font-bold dark:text-white my-1 leading-8">
+						{{ item.name }}
+					</p>
+					<SkyList :docs="item.descs" />
+				</div>
+				<PageHeading text="4/ Cách hoạt động" addOnClass="text-left" markedAs="using" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Module trong NestJS hoạt động dựa trên <b>Dependency Injection (DI)</b> và <b>Module System</b>:
+				</p>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -74,156 +87,160 @@
 						link: '/nestjs/documentation',
 					},
 				},
-				newFeatures: [
+				sum: [
 					{
 						id: 1,
-						content: 'Dependency Injection (DI)',
+						content: 'Service là nơi xử lý chính, không phải controller.',
 					},
 					{
 						id: 2,
-						content: 'Modular Architecture',
+						content: 'Nên dùng <b>@Injectable()</b> để Nest có thể inject Service vào nơi khác.',
 					},
 					{
 						id: 3,
-						content: 'Decorators (giống Angular)',
+						content:
+							'Service giúp tuân thủ nguyên tắc <b>SOLID</b>, đặc biệt là nguyên tắc tách biệt nhiệm vụ (Single Responsibility).',
 					},
 					{
 						id: 4,
-						content: 'Middleware, Guards, Pipes, Interceptors',
+						content:
+							'Sử dụng Service là bước khởi đầu để xây dựng một ứng dụng theo hướng modular, testable và maintainable.',
 					},
 				],
-				supportDbs: [
+				moduleAttributes: [
 					{
 						id: 1,
-						content: 'GraphQL',
+						content:
+							'<b>Tổ chức code:</b> Phân chia ứng dụng thành các khối chức năng riêng biệt (ví dụ: module cho booking, user, payment).',
 					},
 					{
 						id: 2,
-						content: 'Microservices',
-					},
-					{
-						id: 3,
-						content: 'WebSockets',
+						content: '<b>Tăng tính modular:</b> Mỗi Module quản lý một tính năng cụ thể, dễ tái sử dụng hoặc thay thế.',
 					},
 					{
 						id: 4,
-						content: 'gRPC',
-					},
-					{
-						id: 5,
-						content: 'Serverless',
+						content: '<b>Tăng khả năng bảo trì:</b>Code được tổ chức rõ ràng, dễ mở rộng và debug.',
 					},
 				],
-				nestCons: [
+				moduleParts: [
 					{
 						id: 1,
-						content: '<b>DI Container	</b>',
-						subList: ['🔥Dễ inject service, test, tái sử dụng'],
+						content: '<b>imports</b>: Các Module khác được import để sử dụng trong Module hiện tại',
 					},
 					{
 						id: 2,
-						content: '<b>Module System</b>',
-						subList: ['🔥Chia nhỏ ứng dụng theo domain (auth, user, order...)'],
+						content: '<b>exports</b>: Các Provider hoặc Module được export để Module khác sử dụng.',
 					},
 					{
 						id: 3,
-						content: '<b>OOP + TypeScript	</b>',
-						subList: ['🔥Có class, type rõ ràng → dễ bảo trì, ít bug'],
+						content: '<b>controllers</b>: Các Controller xử lý HTTP request cho Module.',
 					},
 					{
 						id: 4,
-						content: '<b>Built-in support cho test</b>',
-						subList: ['🔥Unit test & E2E test dễ tích hợp với Jest'],
+						content: '<b>providers</b>: Các Provider (như Service) cung cấp logic nghiệp vụ hoặc chức năng khác.',
 					},
 				],
-				nodePros: [
+				moduleTypes: [
 					{
-						id: 1,
-						content: '<b>Code lộn xộn, thiếu tổ chức (callback hell, spaghetti code)</b>',
-						subList: [
-							'🔻 Khó mở rộng, dễ trùng lặp code, mỗi file mỗi kiểu',
-							'🔻 Người mới vào team không hiểu logic',
-							'🔻 Dễ bug khi sửa chỗ này ảnh hưởng chỗ khác',
-							'🔻 Không có separation of concerns (tách riêng logic & request)',
+						name: 'a. Feature Module',
+						descs: [
+							{
+								id: 1,
+								content:
+									'<b>Mô tả</b>: Module xử lý một tính năng cụ thể của ứng dụng, như quản lý booking, user, hoặc payment.',
+							},
+							{
+								id: 2,
+								content:
+									'<b>Khi sử dụng</b>: Khi bạn muốn nhóm các Controller, Service, và Entity liên quan đến một tính năng.',
+							},
+							{
+								id: 3,
+								content: '<b>Ví dụ</b>: Module cho quản lý booking.',
+							},
 						],
 					},
 					{
-						id: 2,
-						content: '<b>Không có sẵn kiến trúc rõ ràng (Không có MVC, Module, Service...)</b>',
-						subList: [
-							'🔻 Mỗi dev tổ chức theo một kiểu → hỗn loạn',
-							'🔻 Dự án lớn dần trở nên khó maintain',
-							'🔻 Không dễ test do phụ thuộc lẫn nhau',
-							'🔻 Mất thời gian refactor khi dự án phình to',
+						name: 'b. Shared Module',
+						descs: [
+							{
+								id: 1,
+								content:
+									'<b>Mô tả</b>: Module chứa các <b>Provider</b> hoặc <b>Service</b> được chia sẻ trên nhiều Module, thường export các thành phần chung.',
+							},
+							{
+								id: 2,
+								content:
+									'<b>Khi sử dụng</b>: Khi bạn cần tái sử dụng Service (như ConfigService, NotificationService) trong toàn ứng dụng.',
+							},
+							{
+								id: 3,
+								content: '<b>Ví dụ</b>: Module chứa NotificationService để gửi email.',
+							},
 						],
 					},
 					{
-						id: 3,
-						content: '<b>Không có DI Container như các framework lớn (Laravel, Spring)</b>',
-						subList: [
-							'🔻 Khó tái sử dụng component',
-							'🔻 Viết unit test trở nên khó khăn',
-							'🔻 Phải tự quản lý việc tạo & truyền đối tượng',
-							'🔻 Không có "lifecycle" rõ ràng khi khởi tạo các class/service',
+						name: 'c. Global Module',
+						descs: [
+							{
+								id: 1,
+								content:
+									'<b>Mô tả</b>: Module được đánh dấu bằng <b>@Global()</b>, cho phép các Provider của nó được sử dụng mà không cần import Module.',
+							},
+							{
+								id: 2,
+								content:
+									'<b>Khi sử dụng</b>: Khi bạn muốn một số Service (như ConfigService) có sẵn trên toàn ứng dụng.',
+							},
+							{
+								id: 3,
+								content: '<b>Ví dụ</b>: Module chứa cấu hình ứng dụng.',
+							},
+						],
+					},
+					{
+						name: 'd. Dynamic Module',
+						descs: [
+							{
+								id: 1,
+								content:
+									'<b>Mô tả</b>: Module được tạo động (thông qua hàm tĩnh như forRoot hoặc forFeature), cho phép cấu hình linh hoạt.',
+							},
+							{
+								id: 2,
+								content:
+									'<b>Khi sử dụng</b>: Khi bạn cần Module có thể được cấu hình khác nhau tùy thuộc vào ngữ cảnh (ví dụ: TypeOrmModule.forRoot()).',
+							},
+							{
+								id: 3,
+								content: '<b>Ví dụ</b>: Module tích hợp TypeORM hoặc Cache.',
+							},
 						],
 					},
 				],
-				nestConceptHeader: [
-					{
-						id: 1,
-						name: 'Tên',
-					},
-					{
-						id: 2,
-						name: 'Mô tả ngắn gọn',
-					},
-				],
-				nestCoreConcepts: [
-					{
-						name: 'Module',
-						description: 'Chia ứng dụng thành các khối độc lập, dễ tổ chức và tái sử dụng.',
-					},
-					{
-						name: 'Controller',
-						description: 'Xử lý các request đến từ client, trả response tương ứng.',
-					},
-					{
-						name: 'Service',
-						description: 'Chứa logic nghiệp vụ chính, có thể được inject vào controller.',
-					},
-					{
-						name: 'Provider',
-						description: 'Mọi thứ có thể được inject – ví dụ: service, repository, factory, v.v.',
-					},
-					{
-						name: 'Dependency Injection (DI)',
-						description: 'Cơ chế tự động "tiêm" phụ thuộc giúp code dễ test, mở rộng.',
-					},
-					{
-						name: 'Decorator',
-						description: 'Cú pháp ngắn gọn định nghĩa metadata như route, module, middleware...',
-					},
-					{
-						name: 'Pipe',
-						description: 'Xử lý transform hoặc validate dữ liệu trước khi vào controller.',
-					},
-					{
-						name: 'Middleware',
-						description: 'Can thiệp vào request trước khi vào route xử lý.',
-					},
-					{
-						name: 'Guard',
-						description: 'Kiểm tra quyền truy cập – thường dùng cho Auth, Role, Permission.',
-					},
-					{
-						name: 'Interceptor',
-						description: 'Can thiệp vào trước/sau controller để logging, transform, handle timeout...',
-					},
-					{
-						name: 'Exception Filter',
-						description: 'Bắt và xử lý lỗi theo chuẩn, có thể global hoặc custom.',
-					},
-				],
+				b1: `import { Module } from '@nestjs/common';
+import { MyController } from './my.controller';
+import { MyService } from './my.service';
+
+@Module({
+  imports: [],
+  controllers: [MyController],
+  providers: [MyService],
+  exports: [MyService],
+})
+export class MyModule {}`,
+				b3: `import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { BookingService } from './booking.service';
+
+@Controller('bookings')
+export class BookingController {
+  constructor(private readonly bookingService: BookingService) {}
+
+  @Get()
+  findAll() {
+    return this.bookingService.getHello();
+  }
+}`,
 			};
 		},
 		mounted() {
@@ -232,7 +249,7 @@
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-05' })
+					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-04' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});
