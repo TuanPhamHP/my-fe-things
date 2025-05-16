@@ -1005,6 +1005,16 @@ const NodeJSBasicDocs = [
 	},
 	{
 		id: 'node-10',
+		vneseName: 'Middleware trong NodeJs',
+		eng: 'Request, Respone nodejs',
+		description: 'Tìm hiểu về middleware trong NodeJS.',
+		link: '/nodejs/documentation/middleware',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-11',
 		vneseName: 'Authenticate trong NodeJs với JWT & bcryptjs ',
 		eng: 'Request, Respone nodejs',
 		description: 'sử dụng jwt và bcryptjs để thực hiện tính năng bảo mật trong nodejs',
