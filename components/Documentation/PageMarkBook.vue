@@ -8,7 +8,7 @@
 				v-for="item in listMarkBook"
 				:key="item.name"
 				:href="`#${item.link}`"
-				:class="`block pl-${item.lvl} text-md hover:bg-neutral-100`"
+				:class="`block pl-${item.lvl} rounded text-md hover:bg-neutral-100 dark:hover:text-gray-700`"
 			>
 				{{ item.name }}
 			</a>
@@ -20,7 +20,7 @@
 		setup() {},
 		data() {
 			return {
-				listMarkBook: [] as { name: string; link: string }[],
+				listMarkBook: [] as { name: string; link: string; lvl?: string | number }[],
 			};
 		},
 		mounted() {

@@ -1023,6 +1023,26 @@ const NodeJSBasicDocs = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-12',
+		vneseName: '[Advanced] - Type ORM',
+		eng: 'Request, Respone nodejs',
+		description: 'sử dụng type orm trong expressjs',
+		link: '/nodejs/documentation/type-orm',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-13',
+		vneseName: '[Advanced] - Type ORM | Entity',
+		eng: 'Request, Respone nodejs',
+		description: 'tìm hiểu và sử dụng entity trong type orm',
+		link: '/nodejs/documentation/typeorm-entity',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ] as DocumentItem[];
 const NestJSBasicDocs = [
 	{
