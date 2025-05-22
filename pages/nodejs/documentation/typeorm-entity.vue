@@ -19,12 +19,13 @@
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">Cùng tạo một Entity</p>
 				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<SkyList :docs="entityDecorator"></SkyList>
-				<PageHeading text="2/ Manager Vs Repository" addOnClass="text-left mt-3" markedAs="manager-vs-repo" />
+				<PageHeading text="Manager Vs Repository" addOnClass="text-left mt-3" markedAs="manager-vs-repo" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Tiếp theo, để thao tác trực tiếp với database trong TypeORM chúng ta có 2 cách sau:
 					<br />
-					1 - Tạo ra Repository <br />
-					2 - Sử dụng manager
+					1 - Tạo ra Repository: Dùng <FilePath>AppDataSource.getRepository()</FilePath>
+					<br />
+					2 - Sử dụng manager: Dùng <FilePath>AppDataSource.manager</FilePath>
 				</p>
 				<div class="grid gird-cols-1 lg:grid-cols-2 gap-3">
 					<div class="col-span-1">
@@ -43,6 +44,13 @@
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Từ đó các bạn có thể lựa chọn xem khi nào dùng cái gì rồi chứ? Như tui thì hay xài Repository hơn.
 				</p>
+				<PageHeading text="Repository Methods" addOnClass="text-left mt-3" markedAs="repo-methods" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Tiếp theo là một vài các methods cực kì cơ bản và thông dụng của Repository, hỗ trợ cho quá trình làm bài của
+					chúng mình nha.
+				</p>
+
+				<DocumentTable :operators="commonMethods" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -81,6 +89,92 @@
 						link: '/nodejs/documentation',
 					},
 				},
+				commonMethods: [
+					{
+						id: 0,
+						name: 'find()',
+						desc: 'Lấy toàn bộ dữ liệu hoặc có thể lọc với where, order, skip, take...',
+						syntax: `userRepository.find({ where: { isActive: true, name : Like('%abc%') }, order: { name: 'ASC' } });`,
+					},
+					{
+						id: 1,
+						name: 'findOne()',
+						desc: 'Tìm một bản ghi duy nhất theo điều kiện. Từ v0.3+ phải có { where: { ... } }.',
+						syntax: `userRepository.findOne({ where: { id: 1 } });`,
+					},
+					{
+						id: 2,
+						name: 'findBy()',
+						desc: 'Tìm nhiều bản ghi theo điều kiện (viết gọn hơn find).',
+						syntax: `userRepository.findBy({ isActive: true });`,
+					},
+					{
+						id: 3,
+						name: 'findOneBy()',
+						desc: 'Tìm một bản ghi theo điều kiện (viết gọn hơn findOne).',
+						syntax: `userRepository.findOneBy({ email: 'test@example.com' });`,
+					},
+					{
+						id: 4,
+						name: 'findAndCount()',
+						desc: 'Trả về cả dữ liệu và tổng số lượng bản ghi.',
+						syntax: `const [users, count] = await userRepository.findAndCount();`,
+					},
+					{
+						id: 5,
+						name: 'save()',
+						desc: 'Thêm mới hoặc cập nhật một entity nếu có id.',
+						syntax: `userRepository.save({ id: 1, name: 'Updated Name' });`,
+					},
+					{
+						id: 6,
+						name: 'insert()',
+						desc: 'Thêm mới bản ghi, KHÔNG hỗ trợ update.',
+						syntax: `userRepository.insert({ name: 'Alice' });`,
+					},
+					{
+						id: 7,
+						name: 'update()',
+						desc: 'Cập nhật bản ghi theo điều kiện mà không cần load entity trước.',
+						syntax: `userRepository.update({ id: 1 }, { name: 'New Name' });`,
+					},
+					{
+						id: 8,
+						name: 'remove()',
+						desc: 'Xóa bản ghi (phải load entity trước đó).',
+						syntax: `const user = await userRepository.findOneBy({ id: 1 });\nuserRepository.remove(user);`,
+					},
+					{
+						id: 9,
+						name: 'delete()',
+						desc: 'Xóa bản ghi trực tiếp theo điều kiện.',
+						syntax: `userRepository.delete({ id: 1 });`,
+					},
+					{
+						id: 10,
+						name: 'count()',
+						desc: 'Đếm số lượng bản ghi thoả điều kiện.',
+						syntax: `userRepository.count({ where: { isActive: true } });`,
+					},
+					{
+						id: 11,
+						name: 'create()',
+						desc: 'Tạo một entity object mới (chưa lưu DB).',
+						syntax: `const user = userRepository.create({ name: 'Alice' });`,
+					},
+					{
+						id: 12,
+						name: 'preload()',
+						desc: 'Tạo entity để update, chỉ dùng khi đã có id.',
+						syntax: `const user = await userRepository.preload({ id: 1, name: 'New Name' });`,
+					},
+					{
+						id: 13,
+						name: 'createQueryBuilder()',
+						desc: 'Tạo truy vấn linh hoạt, hỗ trợ join, custom SQL.',
+						syntax: `userRepository.createQueryBuilder('user')\n  .where('user.name = :name', { name: 'Alice' })\n  .getOne();`,
+					},
+				],
 				entityProperties: [
 					{
 						id: 1,
@@ -144,124 +238,124 @@
 					},
 				],
 				b1: `{
-	"compilerOptions": {
-		"target": "es2021",
-		"module": "commonjs",
-		"moduleResolution": "node",
-		"lib": ["es2021"],
-		"outDir": "./build",
-		"sourceMap": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"esModuleInterop": true,
-		"strict": true
-	},
-	"include": ["src/**/*"]
-}
-`,
+		"compilerOptions": {
+			"target": "es2021",
+			"module": "commonjs",
+			"moduleResolution": "node",
+			"lib": ["es2021"],
+			"outDir": "./build",
+			"sourceMap": true,
+			"emitDecoratorMetadata": true,
+			"experimentalDecorators": true,
+			"esModuleInterop": true,
+			"strict": true
+		},
+		"include": ["src/**/*"]
+	}
+	`,
 				b2: `MyProject
-├── src                   // place of your TypeScript code
-│   ├── entities          // place where your entities (database models) are stored
-│   │   └── User.ts       // sample entity
-│   ├── repositories      // place where your entities (database models) are stored
-│   │   └── User.ts       // sample entity
-│   ├── migration         // place where your migrations are stored
-│   ├── data-source.ts    // data source and all connection configuration
-│   └── index.ts          // start point of your application
-├── .gitignore            // standard gitignore file
-├── package.json          // node module dependencies
-├── README.md             // simple readme file
-└── tsconfig.json         // TypeScript compiler options`,
+	├── src                   // place of your TypeScript code
+	│   ├── entities          // place where your entities (database models) are stored
+	│   │   └── User.ts       // sample entity
+	│   ├── repositories      // place where your entities (database models) are stored
+	│   │   └── User.ts       // sample entity
+	│   ├── migration         // place where your migrations are stored
+	│   ├── data-source.ts    // data source and all connection configuration
+	│   └── index.ts          // start point of your application
+	├── .gitignore            // standard gitignore file
+	├── package.json          // node module dependencies
+	├── README.md             // simple readme file
+	└── tsconfig.json         // TypeScript compiler options`,
 				b3: `import 'reflect-metadata';
-import { DataSource } from 'typeorm';
-import 'dotenv';
+	import { DataSource } from 'typeorm';
+	import 'dotenv';
 
-export const AppDataSource = new DataSource({
-	type: 'postgres',
-	host: process.env.DB_HOST,
-	port: 5432,
-	username: process.env.DB_USERNAME,
-	password: process.env.DB_PASSWORD,
-	database: process.env.DB_NAME,
-	synchronize: false,
-	migrationsRun: true,
-	logging: true,
-	entities: [],
-	subscribers: [],
-	migrations: [],
-});
-`,
+	export const AppDataSource = new DataSource({
+		type: 'postgres',
+		host: process.env.DB_HOST,
+		port: 5432,
+		username: process.env.DB_USERNAME,
+		password: process.env.DB_PASSWORD,
+		database: process.env.DB_NAME,
+		synchronize: false,
+		migrationsRun: true,
+		logging: true,
+		entities: [],
+		subscribers: [],
+		migrations: [],
+	});
+	`,
 				b4: `// file: src/entities/Job.ts
 
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Category } from './Category';
+	import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+	import { Category } from './Category';
 
-@Entity()
-export class Job {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@Entity()
+	export class Job {
+	  @PrimaryGeneratedColumn()
+	  id: number;
 
-  @Column()
-  title: string;
+	  @Column()
+	  title: string;
 
-  @Column()
-  companyName: string;
+	  @Column()
+	  companyName: string;
 
-  @Column()
-  location: string;
+	  @Column()
+	  location: string;
 
-  @Column({ nullable: true })
-  salary: number;
+	  @Column({ nullable: true })
+	  salary: number;
 
-  @Column()
-  experienceLevel: string;
+	  @Column()
+	  experienceLevel: string;
 
-  @ManyToOne(() => Category, (category) => category.jobs)
-  category: Category;
-}
-`,
+	  @ManyToOne(() => Category, (category) => category.jobs)
+	  category: Category;
+	}
+	`,
 				b5: `import { AppDataSource } from '../database/data-source';
-import { Job } from '../entities/Job';
-import { Category } from '../entities/Category';
+	import { Job } from '../entities/Job';
+	import { Category } from '../entities/Category';
 
-export const createJobWithEntity = async () => {
-  const category = await AppDataSource.manager.findOneBy(Category, { id: 3 });
-  if (!category) throw new Error('Category not found');
+	export const createJobWithEntity = async () => {
+	  const category = await AppDataSource.manager.findOneBy(Category, { id: 3 });
+	  if (!category) throw new Error('Category not found');
 
-  const job = new Job();
-  job.title = 'Frontend Developer';
-  job.companyName = 'OpenAI';
-  job.location = 'San Francisco';
-  job.salary = 200000;
-  job.experienceLevel = 'Senior';
-  job.category = category;
+	  const job = new Job();
+	  job.title = 'Frontend Developer';
+	  job.companyName = 'OpenAI';
+	  job.location = 'San Francisco';
+	  job.salary = 200000;
+	  job.experienceLevel = 'Senior';
+	  job.category = category;
 
-  await AppDataSource.manager.save(job);
-};
-`,
+	  await AppDataSource.manager.save(job);
+	};
+	`,
 				b6: `import { AppDataSource } from '../database/data-source';
-import { Job } from '../entities/Job';
-import { Category } from '../entities/Category';
+	import { Job } from '../entities/Job';
+	import { Category } from '../entities/Category';
 
-export const createJobWithRepository = async () => {
-  const jobRepo = AppDataSource.getRepository(Job);
-  const categoryRepo = AppDataSource.getRepository(Category);
+	export const createJobWithRepository = async () => {
+	  const jobRepo = AppDataSource.getRepository(Job);
+	  const categoryRepo = AppDataSource.getRepository(Category);
 
-  const category = await categoryRepo.findOneBy({ id: 3 });
-  if (!category) throw new Error('Category not found');
+	  const category = await categoryRepo.findOneBy({ id: 3 });
+	  if (!category) throw new Error('Category not found');
 
-  const job = jobRepo.create({
-    title: 'Frontend Developer',
-    companyName: 'OpenAI',
-    location: 'San Francisco',
-    salary: 200000,
-    experienceLevel: 'Senior',
-    category: category,
-  });
+	  const job = jobRepo.create({
+	    title: 'Frontend Developer',
+	    companyName: 'OpenAI',
+	    location: 'San Francisco',
+	    salary: 200000,
+	    experienceLevel: 'Senior',
+	    category: category,
+	  });
 
-  await jobRepo.save(job);
-};
-`,
+	  await jobRepo.save(job);
+	};
+	`,
 				tableHeader: [
 					{ id: 1, name: 'Tiêu chí', key: 'name' },
 					{ id: 2, name: 'Manager', key: 'manager' },
