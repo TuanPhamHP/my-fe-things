@@ -1043,6 +1043,16 @@ const NodeJSBasicDocs = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-14',
+		vneseName: '[Advanced] - Type Migrations',
+		eng: 'Request, Respone nodejs',
+		description: 'tìm hiểu và sử dụng Migrations trong type orm',
+		link: '/nodejs/documentation/typeorm-migrations',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ] as DocumentItem[];
 const NestJSBasicDocs = [
 	{
