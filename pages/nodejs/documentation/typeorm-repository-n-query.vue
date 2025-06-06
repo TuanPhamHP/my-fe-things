@@ -57,6 +57,8 @@
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">Sử dụng Query Builder:</p>
 				<VCodeBlock :code="qbUsing" highlightjs lang="js" theme="atom-one-dark" />
 
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">Cùng so sánh ha:</p>
+				<DocFactoryV2Table :headers="tableHeader" :items="tableItems" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -81,14 +83,68 @@
 			return {
 				pagePagination: {
 					next: {
-						title: 'QueryBuilder',
-						link: '/nodejs/documentation/ep-4',
+						title: 'Relation',
+						link: '/nodejs/documentation/typeorm-relations',
 					},
 					prev: {
 						title: 'Entity',
 						link: '/nodejs/documentation/ep-2',
 					},
 				},
+				tableHeader: [
+					{ id: 1, name: 'Tiêu chí', key: 'name' },
+					{ id: 2, name: 'Repository', key: 'repository' },
+					{ id: 3, name: 'QueryBuilder', key: 'querybuilder' },
+				],
+
+				tableItems: [
+					{
+						name: 'Mục tiêu chính',
+						repository: 'Thao tác CRUD cơ bản, đơn giản, trực tiếp với entity',
+						querybuilder: 'Xây dựng truy vấn phức tạp, tuỳ biến, có nhiều điều kiện hoặc logic',
+					},
+					{
+						name: 'Cú pháp',
+						repository: 'Ngắn gọn, rõ ràng, dễ dùng cho người mới bắt đầu',
+						querybuilder: 'Tùy biến cao, cú pháp dài hơn nhưng linh hoạt hơn',
+					},
+					{
+						name: 'Hiệu suất',
+						repository: 'Tốt cho các truy vấn đơn giản, ít JOIN',
+						querybuilder: 'Tốt hơn khi cần tối ưu hoá các truy vấn có điều kiện phức tạp, JOIN nhiều bảng',
+					},
+					{
+						name: 'Khả năng mở rộng',
+						repository: 'Giới hạn khi truy vấn cần điều kiện động hoặc xử lý phức tạp',
+						querybuilder: 'Rất linh hoạt, có thể thêm WHERE, JOIN, ORDER BY, GROUP BY, LIMIT,...',
+					},
+					{
+						name: 'Ví dụ sử dụng',
+						repository: 'repo.find(), repo.save(), repo.delete()',
+						querybuilder: 'createQueryBuilder().where().leftJoin().getMany()',
+					},
+					{
+						name: 'Quan hệ (relations)',
+						repository: 'Hỗ trợ thông qua { relations: [...] } trong các method',
+						querybuilder: 'Phải dùng .leftJoinAndSelect() hoặc .innerJoin() thủ công',
+					},
+
+					{
+						name: 'Khi nào nên dùng?',
+						repository: 'CRUD cơ bản, lấy entity theo ID, lấy danh sách đơn giản',
+						querybuilder: 'Truy vấn có nhiều điều kiện, tìm kiếm, phân trang, lọc, sắp xếp',
+					},
+					{
+						name: 'Tính năng đặc biệt',
+						repository: 'Có thể custom Repository cho từng entity',
+						querybuilder: 'Hỗ trợ alias, sub-query, native SQL nếu cần',
+					},
+					{
+						name: 'Khả năng kết hợp điều kiện động',
+						repository: 'Hạn chế (cần viết nhiều if bên ngoài)',
+						querybuilder: 'Rất tốt, có thể .andWhere() nhiều lần tùy theo query',
+					},
+				],
 				repoConcepts: [
 					{ id: 1, content: `<b>Repository:</b> Repository cơ bản, dùng cho các thao tác CRUD đơn giản.` },
 					{

@@ -1063,6 +1063,16 @@ const NodeJSBasicDocs = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-16',
+		vneseName: '[Advanced] - TypeORM | Relation',
+		eng: 'Relation in TypeORM',
+		description: 'Tìm hiểu Relation',
+		link: '/nodejs/documentation/typeorm-relations',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ] as DocumentItem[];
 const NestJSBasicDocs = [
 	{
