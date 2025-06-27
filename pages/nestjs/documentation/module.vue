@@ -249,7 +249,7 @@ export class BookingController {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-04' })
+					.getPagination({ appIds: 'nestjs', currentDocId: 'nestjs-05' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

@@ -2,7 +2,7 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Controllers" addOnClass="text-left" markedAs="about-controller" />
+				<PageHeading text="Controllers" addOnClass="text-left mt-3" markedAs="about-controller" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Controllers</b> là một thành phần cốt lõi chịu trách nhiệm xử lý các <b>HTTP request</b> và trả về
 					<b>response</b> tương ứng cho client. Controller được sử dụng để định nghĩa các <b>route (đường dẫn)</b> và
@@ -13,7 +13,7 @@
 						<img src="https://docs.nestjs.com/assets/Controllers_1.png" alt="" class="w-fit max-w-full rounded-lg" />
 					</div>
 				</div>
-				<PageHeading text="1/ Cấu trúc cơ bản" addOnClass="text-left" markedAs="controller-structure" :lvl="2" />
+				<PageHeading text="1/ Cấu trúc cơ bản" addOnClass="text-left mt-3" markedAs="controller-structure" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Controller trong NestJS là một <b>class</b> được đánh dấu bằng decorator <FilePath>@Controller()</FilePath>.
 					Decorator này chỉ định prefix (tiền tố) cho các route của controller. Mỗi phương thức trong controller được
@@ -23,7 +23,7 @@
 				<div class="my-4 rounded-lg">
 					<VCodeBlock :code="b1" highlightjs lang="ts" theme="atom-one-dark" />
 				</div>
-				<PageHeading text="2/ Các thành phần chính" addOnClass="text-left" markedAs="main-part" :lvl="2" />
+				<PageHeading text="2/ Các thành phần chính" addOnClass="text-left mt-3" markedAs="main-part" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					🧩<FilePath>@Controller(prefix?)</FilePath>: Định nghĩa một controller và tiền tố route (ví dụ: /users). Nếu
 					không cung cấp prefix, các route sẽ không có tiền tố.
@@ -34,7 +34,7 @@
 					🧩 <b>Parameter Decorators</b> Dùng để lấy dữ liệu từ request:
 				</p>
 				<SkyList :docs="paramDecor" />
-				<PageHeading text="3/ Tạo controller" addOnClass="text-left" markedAs="create" :lvl="2" />
+				<PageHeading text="3/ Tạo controller" addOnClass="text-left mt-3" markedAs="create" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					Nest có hỗ trợ chúng ta tạo nhanh một Controller bằng command:
 				</p>
@@ -49,7 +49,7 @@
 				<div class="my-4 rounded-lg">
 					<VCodeBlock :code="b2" highlightjs lang="ts" theme="atom-one-dark" />
 				</div>
-				<PageHeading text="4/ Status code" addOnClass="text-left" markedAs="custom-response" :lvl="2" />
+				<PageHeading text="4/ Status code" addOnClass="text-left mt-3" markedAs="custom-response" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					NestJS cho phép trả về dữ liệu trực tiếp từ controller, và framework sẽ tự động chuyển đổi thành JSON và gửi
 					response với status code phù hợp (mặc định là 200 cho GET, 201 cho POST). Bạn cũng có thể tùy chỉnh response
@@ -58,7 +58,7 @@
 				<div class="my-4 rounded-lg">
 					<VCodeBlock :code="b3" highlightjs lang="ts" theme="atom-one-dark" />
 				</div>
-				<PageHeading text="5/ Shared State" addOnClass="text-left" markedAs="shared-state" :lvl="2" />
+				<PageHeading text="5/ Shared State" addOnClass="text-left mt-3" markedAs="shared-state" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					<b>State Sharing</b> đề cập đến việc quản lý và chia sẻ dữ liệu hoặc trạng thái giữa các thành phần khác nhau
 					trong ứng dụng, chẳng hạn như giữa các Controller, Service, hoặc các request. <b>Service</b> là cách phổ biến
@@ -79,7 +79,7 @@
 						</div>
 					</div>
 				</div>
-				<PageHeading text="6/ Asynchronicity" addOnClass="text-left" markedAs="asynchronicity" :lvl="2" />
+				<PageHeading text="6/ Asynchronicity" addOnClass="text-left mt-3" markedAs="asynchronicity" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					NestJS hỗ trợ xử lý bất đồng bộ rất mạnh, chỉ cần nhớ rằng khi tạo một <b>async method</b> thì chúng ta bắt
 					buộc phải return ra một
