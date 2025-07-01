@@ -58,6 +58,12 @@
 				<div class="my-4 rounded-lg">
 					<VCodeBlock :code="b3" highlightjs lang="ts" theme="atom-one-dark" />
 				</div>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Trong trường hợp xử lý lỗi, bạn có thể sử dụng <b>Exception Filters</b> để trả về các mã lỗi HTTP
+				</p>
+				<div class="my-4 rounded-lg">
+					<VCodeBlock :code="b3_1" highlightjs lang="ts" theme="atom-one-dark" />
+				</div>
 				<PageHeading text="5/ Shared State" addOnClass="text-left mt-3" markedAs="shared-state" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-3 leading-8">
 					<b>State Sharing</b> đề cập đến việc quản lý và chia sẻ dữ liệu hoặc trạng thái giữa các thành phần khác nhau
@@ -205,6 +211,10 @@ export class ExampleController {
   @HttpCode(202) // Trả về status code 202
   return { message: 'Yêu cầu đã được chấp nhận' };
 }`,
+				b3_1: ` @Get('/exception')
+  async getUser() {
+    throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
+  }`,
 				b4: `import { Injectable } from '@nestjs/common';
 
 @Injectable()
