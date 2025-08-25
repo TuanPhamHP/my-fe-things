@@ -131,6 +131,20 @@
 						link: '/sql/practice',
 					},
 				},
+				{
+					courseName: `MongoDB`,
+					courseImg: `@/assets/images/documentation/course_sql.png`,
+					docs: {
+						title: `Các tài liệu cơ bản về MongoDB như:`,
+						items: ['Cách cài đặt', 'NoSQL', 'MongoDB Compass', 'Database ...'],
+						link: '/mongo-db/documentation',
+					},
+					practices: {
+						title: `Các bài tập cơ bản:`,
+						items: ['Bài tập cơ bản, dễ tiếp cận', 'Kèm hướng dẫn và ví dụ minh họa'],
+						link: '/mongo-db/practice',
+					},
+				},
 			]);
 
 			return {

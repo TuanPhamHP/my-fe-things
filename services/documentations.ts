@@ -33,6 +33,11 @@ const practiceCategories = [
 		name: 'NodeJS',
 		en: 'NodeJS',
 	},
+	{
+		id: 7,
+		name: 'MongoDB',
+		en: 'MongoDB',
+	},
 ];
 const REACTBasicDocs = [
 	{
@@ -1277,6 +1282,31 @@ const SQLBasicDocs = [
 	},
 ] as DocumentItem[];
 
+const MongoDBBasicDocs = [
+	{
+		id: 'mongo-1',
+		vneseName: 'D1 -  Giới thiệu MongoDB và Cơ sở dữ liệu NoSQL',
+		eng: 'NoSQL and MongoDB',
+		description:
+			'Giới thiệu về NoSQL và MongoDB, các khái niệm cơ bản về NoSQL, MongoDB và các loại cơ sở dữ liệu NoSQL khác.',
+		link: '/mongo-db/documentation/about-nosql-and-mongodb',
+		previewImage: 'course_mongodb.png',
+		status_id: 1,
+		apps: ['mongodb'],
+	},
+	{
+		id: 'mongo-2',
+		vneseName: 'D1 -  Làm quen với MongoDB và Compass',
+		eng: 'MongoDB and Compass',
+		description:
+			'Giới thiệu về MongoDB Compass, cách cài đặt và sử dụng các tính năng cơ bản của Compass để quản lý cơ sở dữ liệu MongoDB.',
+		link: '/mongo-db/documentation/mongodb-and-compass',
+		previewImage: 'course_mongodb.png',
+		status_id: 1,
+		apps: ['mongodb'],
+	},
+] as DocumentItem[];
+
 let baseListData: DocumentItem[] = [
 	...HTMLBasicDocs,
 	...REACTBasicDocs,
@@ -1285,6 +1315,7 @@ let baseListData: DocumentItem[] = [
 	...NodeJSBasicDocs,
 	...SQLBasicDocs,
 	...NestJSBasicDocs,
+	...MongoDBBasicDocs,
 ];
 class PaginationDefault {
 	constructor(

@@ -318,6 +318,27 @@
 					tooltip: 'Thực hành',
 					showByApp: ['nestjs'],
 				},
+				// MONGO
+				{
+					title: 'Tài liệu',
+					path: '/mongo-db/documentation',
+					pathNameMatch: /^mongo-db-documentation/,
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['mongodb'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/mongo-db/practice',
+					pathNameMatch: /^mongo-db-practice/,
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['mongodb'],
+				},
 			]);
 
 			const currentPathActive = computed((): string => {
