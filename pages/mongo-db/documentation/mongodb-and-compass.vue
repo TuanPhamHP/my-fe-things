@@ -26,8 +26,8 @@
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 						<span>
 							<b>Không có schema:</b> Đây là điểm khác biệt lớn nhất. Các document trong cùng một collection không bắt
-							buộc phải có cùng cấu trúc hoặc trường dữ liệu. Điều này mang lại sự linh hoạt tối đa, cho phép bạn thay
-							đổi cấu trúc dữ liệu dễ dàng.
+							buộc phải có cùng cấu trúc hoặc trường dữ liệu. Điều này mang lại sự linh hoạt tối đa, cho phép chúng ta
+							thay đổi cấu trúc dữ liệu dễ dàng.
 						</span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
@@ -38,8 +38,8 @@
 					</li>
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 						<span>
-							<b>Lưu trữ vật lý:</b> Dữ liệu của một collection được lưu trữ trong các tệp trên ổ đĩa. Khi bạn sử dụng
-							sharding, một collection có thể được phân tán trên nhiều máy chủ khác nhau.
+							<b>Lưu trữ vật lý:</b> Dữ liệu của một collection được lưu trữ trong các tệp trên ổ đĩa. Khi chúng ta sử
+							dụng sharding, một collection có thể được phân tán trên nhiều máy chủ khác nhau.
 						</span>
 					</li>
 				</ul>
@@ -97,56 +97,81 @@
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 						<span>
-							<b>Tự sinh khoá chính:</b>Mỗi document bắt buộc phải có một trường <b>_id</b> duy nhất. Nếu bạn không cung
-							cấp, MongoDB sẽ tự động tạo một giá trị ObjectId cho nó. Trường này tương đương với khóa chính (Primary
-							Key) trong SQL.
+							<b>Tự sinh khoá chính:</b>Mỗi document bắt buộc phải có một trường <FilePath>_id</FilePath> duy nhất. Nếu
+							chúng ta không cung cấp, MongoDB sẽ tự động tạo một giá trị ObjectId cho nó. Trường này tương đương với
+							khóa chính (Primary Key) trong SQL.
 						</span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 						<span>
 							<b>Cấu trúc lồng nhau:</b> Một document có thể chứa các document hoặc mảng (array) khác bên trong. Điều
-							này cho phép bạn lưu trữ các dữ liệu có quan hệ lồng ghép trong cùng một document, giảm thiểu các thao tác
-							join phức tạp.
+							này cho phép chúng ta lưu trữ các dữ liệu có quan hệ lồng ghép trong cùng một document, giảm thiểu các
+							thao tác join phức tạp.
 						</span>
 					</li>
 				</ul>
 
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					<b>So sánh với SQL:</b>
+					<b>Khi cần liên kết với các <b>Collection</b> khác thì chúng ta có 2 cách chính:</b>
 				</p>
+				<PageHeading text="Embedding (nhúng)" addOnClass="text-left mt-5" markedAs="embed" :lvl="2" />
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<b>SQL (cần nhiều bảng):</b>Dữ liệu sản phẩm và đánh giá có thể lưu trong hai bảng <b>products</b> và
-						<b>reviews</b> riêng biệt.
-					</li>
-					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<b>MongoDB (dữ liệu lồng nhau):</b> Bạn có thể lưu trữ <b>product</b> và <b>reviews</b> trong cùng một
-						document.
+						Dùng khi dữ liệu liên quan ít, không thay đổi nhiều. Ví dụ:
 					</li>
 				</ul>
-				<div class="grid grid-cols-1 lg:grid-cols-2 rounded p-2 border">
+				<VCodeBlock :code="b1" highlightjs lang="js" theme="atom-one-dark" />
+
+				<div class="grid grid-cols-1 lg:grid-cols-2 rounded p-2 border mt-3">
 					<div class="col-span-1">
-						<PageHeading text="Tóm tắt" addOnClass="text-left" markedAs="" :lvl="3" />
 						<ul class="pl-5">
-							<li
-								class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-							>
+							<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content">
 								<span> <b>✨Ưu điểm:</b> </span>
 								<ul class="pl-5 col-span-1">
 									<li
 										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 									>
-										Không có schema
+										<b>Truy xuất nhanh:</b> chỉ cần query một document đã có đầy đủ thông tin (không cần join).
 									</li>
 									<li
 										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 									>
-										Tạo tự động
+										<b>Đảm bảo tính toàn vẹn:</b> dữ liệu liên quan nằm chung trong một object → giảm nguy cơ mất đồng
+										bộ. Trong mongodb, mọi thao tác ghi (write operation) trên một document đều là atomic (nguyên tử).
+										Điều này có nghĩa là một thao tác hoặc hoàn thành toàn bộ, hoặc thất bại hoàn toàn, đảm bảo rằng dữ
+										liệu bên trong document luôn trong trạng thái nhất quán. Nhưng lưu ý, <b>toàn vẹn</b> ở đây là về
+										mặt dữ liệu, không phải về mặt tham chiếu.
 									</li>
 									<li
 										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 									>
-										Lưu trữ vật lý
+										<b>Phù hợp dữ liệu ít thay đổi:</b> như profile user kèm địa chỉ, order kèm order_items. Mô hình này
+										thực ra phù hợp với dữ liệu có mối quan hệ 1-đến-ít (one-to-few) hoặc dữ liệu mà chúng ta thường
+										xuyên truy vấn cùng lúc.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="col-span-1">
+						<ul class="pl-5">
+							<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content">
+								<span> <b>❌Nhược điểm:</b> </span>
+								<ul class="pl-5 col-span-1">
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Document quá to:</b> MongoDB giới hạn 16MB/document → khó quản lý nếu mảng con quá lớn.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Cập nhật cồng kềnh:</b> thay đổi nhỏ trong mảng con → phải update cả document.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Dữ liệu lặp lại:</b> cùng 1 "reviewer" xuất hiện ở nhiều product → khó tái sử dụng.
 									</li>
 								</ul>
 							</li>
@@ -154,154 +179,104 @@
 					</div>
 				</div>
 
-				<PageHeading text="Khái niệm cơ bản" addOnClass="text-left mt-5" markedAs="mongodb-desc" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					Làm rõ hơn về MongoDB - một trong những hệ quản trị cơ sở dữ liệu NoSQL phổ biến nhất hiện nay.:
-				</p>
 				<ul class="pl-5">
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> MongoDB là <b>cơ sở dữ liệu NoSQL dạng document.</b> </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>Ra đời năm 2009 bởi MongoDB Inc. </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Dữ liệu lưu trữ theo <b>document JSON/BSON,</b> thay vì bảng (table) như SQL. </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>
-							Được thiết kế cho: Dữ liệu lớn, phi cấu trúc, thay đổi linh hoạt như Ứng dụng web, mobile, IoT, big
-							data.</span
-						>
-					</li>
-				</ul>
-
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					Tiếp theo, chúng ta sẽ cùng tìm hiểu về các thành phần có trong <b>RDBMS</b> để làm rõ hơn về cấu trúc cũng
-					như chức năng của chúng.
-				</p>
-				<PageHeading
-					text="Các thành phần chính của MongoDB"
-					addOnClass="text-left mt-5"
-					markedAs="mongodb-structure"
-					:lvl="2"
-				/>
-
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-					<ul class="pl-5 col-span-1">
-						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-							<span
-								><b>Database:</b> Tập hợp các Collection. Bạn có thể có nhiều database trong một MongoDB instance.
-							</span>
-						</li>
-						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-							<span
-								><b>Collection:</b> Tập hợp các Document, tương đương với một bảng (table) trong SQL. Một collection
-								không có schema cố định.
-							</span>
-						</li>
-						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-							<span
-								><b>Document:</b> Một bản ghi dữ liệu, tương đương với một hàng (row) trong SQL. Dữ liệu trong document
-								được lưu trữ dưới dạng <b>BSON (Binary JSON)</b>, cho phép lưu trữ nhiều kiểu dữ liệu hơn JSON như Date,
-								Binary data...
-							</span>
-						</li>
-						<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-							<span
-								><b>Field:</b> Một cặp <b>key - value</b> trong một document, tương đương với một cột trong SQL.
-							</span>
-						</li>
-					</ul>
-
-					<div class="col-span-1">
-						<p class="text-slate-900 dark:text-white mt-3 leading-8">So sánh với RDBMS:</p>
-						<div class="bg-neutral-100 px-5 py-1 rounded w-fit">
-							<img
-								src="@/assets/images/documentation/mongodb-2.png"
-								alt=""
-								class="rounded-lg mt-3 block max-w-[500px]"
-							/>
-						</div>
-					</div>
-				</div>
-				<div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-					<div class="col-span-1">
-						<p class="text-slate-900 dark:text-white mt-3 leading-8">Mô hình hoá MongoDB:</p>
-						<div class="bg-neutral-100 px-5 py-1 rounded w-fit">
-							<img
-								src="@/assets/images/documentation/mongodb-3.png"
-								alt=""
-								class="rounded-lg mt-3 block max-w-[600px]"
-							/>
-						</div>
-					</div>
-				</div>
-
-				<PageHeading text="Ví dụ" addOnClass="text-left mt-5" markedAs="" :lvl="3" />
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">Ví dụ về một document trong collection "users":</p>
-				<VCodeBlock :code="b1" highlightjs lang="js" theme="atom-one-dark" />
-				<PageHeading text="Đặc điểm nổi bật" addOnClass="text-left mt-5" markedAs="mongodb-structure" :lvl="2" />
-				<PageHeading text="1/ Schema-less (linh hoạt)" addOnClass="text-left mt-5" markedAs="" :lvl="3" />
-				<ul class="pl-5">
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Không cần định nghĩa trước cấu trúc bảng. </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Các <b>document</b> trong <b>cùng một collection có thể khác nhau về field</b>. </span>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content">
+						<PageHeading text="Ví dụ:" addOnClass="text-left" markedAs="" :lvl="3" />
+						<ul class="pl-5 col-span-1">
+							<li
+								class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								Lịch sử giao dịch của người dùng: Khi người dùng truy cập trang tài khoản của họ, họ thường chỉ cần xem
+								một vài giao dịch gần nhất. Việc nhúng một mảng các giao dịch gần đây giúp tải trang nhanh chóng mà
+								không cần truy vấn đến một collection giao dịch lớn. Đối với lịch sử giao dịch đầy đủ, chúng ta vẫn có
+								thể sử dụng một collection riêng và tham chiếu đến tài liệu người dùng.
+							</li>
+						</ul>
 					</li>
 				</ul>
 				<VCodeBlock :code="b2" highlightjs lang="js" theme="atom-one-dark" />
 
-				<PageHeading text="2/ Ngôn ngữ truy vấn JSON-like" addOnClass="text-left mt-5" markedAs="" :lvl="3" />
+				<PageHeading
+					text="Referenced Documents (tham chiếu)"
+					addOnClass="text-left mt-5"
+					markedAs="referenced"
+					:lvl="2"
+				/>
 				<ul class="pl-5">
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Truy vấn dễ học vì gần giống JavaScript. </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>
-							CRUD operations: <b>insertOne, find, updateOne, deleteOne</b> đều có tính thân thiện với người dùng.
-						</span>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Dùng khi dữ liệu liên quan thường thay đổi, cần đảm bảo tính "đúng đắn" và tái sử dụng. Ví dụ:
 					</li>
 				</ul>
 
-				<PageHeading text="Cài đặt" addOnClass="text-left mt-5" markedAs="setup" />
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					Ở phần này, chúng ta sẽ cài đặt MongoDB Server & MongoDB Compass (giao diện đồ hoạ) trên máy tính cá nhân.
-				</p>
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					<b>1/ Cài đặt MongoDB và MongoDB Compass</b>
-				</p>
-				<ul class="pl-5">
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>
-							Truy cập: <a href="https://www.mongodb.com/try/download/community">MongoDB Community Server</a>
-						</span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Chọn bản <b>MSI Installer</b> → Download → cài đặt bình thường. </span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>
-							Chọn các option theo mặc định, nhớ tích chọn <b>"Install MongoDB as a Service"</b> để MongoDB tự chạy ngầm
-							luôn khi bật máy.
-						</span>
-					</li>
-				</ul>
-				<p class="text-slate-900 dark:text-white mt-3 leading-8">
-					<b>2/ Kết nối với MongoDB Compass</b>
-				</p>
-				<ul class="pl-5">
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span>
-							Mở MongoDB Compass, kết nối với máy chủ MongoDB cục bộ bằng địa chỉ mặc định
-							<FilePath>mongodb://localhost:27017/</FilePath>
-						</span>
-					</li>
-					<li class="marker:text-sky-400 list-disc text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
-						<span> Tạo connection, sau đó connect với Database và Collection </span>
-					</li>
-				</ul>
+				<div class="grid grid-cols-1 lg:grid-cols-2 rounded p-2 border mt-3">
+					<div class="col-span-1">
+						<ul class="pl-5">
+							<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content">
+								<span> <b>✨Ưu điểm:</b> </span>
+								<ul class="pl-5 col-span-1">
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Tránh trùng lặp:</b> Trong mô hình tham chiếu, một document con (ví dụ: đơn hàng) sẽ chứa tham
+										chiếu (thường là _id) đến document cha (users). Điểm mạnh thực sự là việc giảm sự trùng lặp dữ liệu
+										nếu một thông tin chung được sử dụng bởi nhiều tài liệu khác nhau.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Quản lý mảng lớn:</b> Giới hạn kích thước tài liệu 16MB của MongoDB là một trong những lý do
+										chính khiến mô hình tham chiếu được ưu tiên. Khi một document có thể có một mảng các đối tượng con
+										(ví dụ: một bài viết có hàng triệu bình luận) thì việc nhúng tất cả vào một document là không khả
+										thi. Mô hình tham chiếu cho phép chúng ta lưu trữ các bình luận này trong một collection riêng biệt,
+										và chỉ lưu _id của chúng trong tài liệu cha, giúp chúng ta vượt qua giới hạn 16MB và dễ dàng mở
+										rộng.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Cập nhật linh hoạt:</b> Điểm mạnh của mô hình tham chiếu là việc cập nhật một tài liệu con không
+										ảnh hưởng đến tài liệu cha. Điều này làm giảm chi phí hoạt động, đặc biệt khi một tài liệu cha có
+										nhiều tài liệu con và các tài liệu con được cập nhật liên tục.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="col-span-1">
+						<ul class="pl-5">
+							<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content">
+								<span> <b>❌Nhược điểm:</b> </span>
+								<ul class="pl-5 col-span-1">
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Phải join (lookup):</b> Việc sử dụng mô hình tham chiếu yêu cầu chúng ta phải thực hiện nhiều
+										truy vấn để lấy được dữ liệu đầy đủ. ở đây chúng ta có thể truy vấn các bảng liên quan và map, hoặc
+										là sử dụng aggregation pipeline với toán tử <FilePath>$lookup</FilePath>. Cả hai phương pháp này đều
+										tốn thời gian hơn so với việc truy xuất một tài liệu duy nhất trong mô hình embed.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Tính toàn vẹn yếu hơn:</b> hay có thể nói là cực kỳ yếu. MongoDB không hỗ trợ ràng buộc khóa
+										ngoại (foreign key constraints), hay toàn vẹn tham chiếu (referential integrity) như các hệ cơ sở dữ
+										liệu quan hệ. Điều này có nghĩa là chúng ta phải tự quản lý tính toàn vẹn của dữ liệu giữa các
+										Document. Ví dụ: ếu bạn xóa một tài liệu con (ví dụ: một review) mà không xóa tham chiếu đến nó
+										trong tài liệu cha (ví dụ: product), tài liệu cha sẽ chứa một _id "mồ côi" không trỏ đến bất kỳ dữ
+										liệu nào.
+									</li>
+									<li
+										class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+									>
+										<b>Truy vấn phức tạp hơn:</b> So với mô hình nhúng, mô hình tham chiếu đòi hỏi logic phức tạp hơn.
+										Bạn phải viết code để thực hiện các thao tác $lookup hoặc chạy nhiều truy vấn và sau đó kết hợp dữ
+										liệu lại trong code ứng dụng.
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
 				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -343,23 +318,43 @@
 					},
 				},
 				lessonSum: [
-					`Hiểu khái niệm <b>NoSQL</b> và sự khác biệt với SQL (RDBMS).`,
-					`Nắm được kiến trúc cơ bản của MongoDB.`,
-					`Cài đặt MongoDB & công cụ hỗ trợ.`,
-					`Tạo database, collection và document đầu tiên.`,
+					`Hiểu khái niệm Collection.`,
+					`Điểm mạnh của Collection: <b>Không có schema</b>, <b>Tạo tự động</b>, <b>Lưu trữ vật lý</b>.`,
+					`Document có 2 cách chính để liên kết với nhau: <b>Embedding</b> và <b>Referencing</b>.`,
+					`<b>Embedded</b>: khi dữ liệu luôn đi chung, ít thay đổi, số lượng con nhỏ (order, profile)`,
+					`<b>Referenced</b>: khi dữ liệu nhiều, dùng lại ở nhiều nơi, hoặc cần quản lý riêng (user, comments)`,
 				],
-				b1: `// Document trong collection students
+				b1: `// Embedding (nhúng) thẳng reviews vào document sản phẩm
 {
-  "name": "Nguyen Van A",
-  "age": 21,
-  "class": "12A1",
-  "subjects": ["Math", "Physics"],
-  "address": { "city": "Hanoi", "zipcode": "10000" }
+  "_id": 1,
+  "name": "Laptop XPS",
+  "brand": "Dell",
+  "reviews": [
+    { "author": "Alice", "rating": 5, "comment": "Sản phẩm tuyệt vời!" },
+    { "author": "Bob", "rating": 4, "comment": "Thiết kế đẹp." }
+  ]
 }
+
 `,
-				b2: `// 2 document trong cùng 1 collection
-{ "name": "Nguyen Van A", "age": 21 }
-{ "name": "Nguyen Van B", "email": "b@example.com" }
+				b2: `{
+  "user_id": "U-789",
+  "username": "Michael",
+  "account_balance": 1500,
+  "recent_transactions": [
+    {
+      "transaction_id": "T-001",
+      "amount": -50.00,
+      "type": "payment",
+      "date": "2023-10-25"
+    },
+    {
+      "transaction_id": "T-002",
+      "amount": 200.00,
+      "type": "deposit",
+      "date": "2023-10-26"
+    }
+  ]
+}
 `,
 				b3: `CREATE TABLE users (
     id SERIAL PRIMARY KEY,

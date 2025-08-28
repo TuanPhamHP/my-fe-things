@@ -1296,10 +1296,10 @@ const MongoDBBasicDocs = [
 	},
 	{
 		id: 'mongo-2',
-		vneseName: 'D1 -  Làm quen với MongoDB và Compass',
+		vneseName: 'D1 -  Làm quen với MongoDB: Collection và Document',
 		eng: 'MongoDB and Compass',
 		description:
-			'Giới thiệu về MongoDB Compass, cách cài đặt và sử dụng các tính năng cơ bản của Compass để quản lý cơ sở dữ liệu MongoDB.',
+			'Giới thiệu về MongoDB Compass và cách sử dụng nó để quản lý cơ sở dữ liệu MongoDB, tìm hiểu về Collection và Document trong MongoDB.',
 		link: '/mongo-db/documentation/mongodb-and-compass',
 		previewImage: 'course_mongodb.png',
 		status_id: 1,
