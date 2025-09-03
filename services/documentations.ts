@@ -1305,6 +1305,28 @@ const MongoDBBasicDocs = [
 		status_id: 1,
 		apps: ['mongodb'],
 	},
+	{
+		id: 'mongo-3',
+		vneseName: 'D2 - Database',
+		eng: 'MongoDB Database',
+		description:
+			'Tìm hiểu về các thao tác CRUD (Create, Read, Update, Delete) trong MongoDB, cách sử dụng các lệnh cơ bản để thực hiện các thao tác này trên Database.',
+		link: '/mongo-db/documentation/mongodb-database',
+		previewImage: 'course_mongodb.png',
+		status_id: 1,
+		apps: ['mongodb'],
+	},
+	{
+		id: 'mongo-4',
+		vneseName: 'D2 - Collection',
+		eng: 'MongoDB Collection',
+		description:
+			'Tìm hiểu về các thao tác CRUD (Create, Read, Update, Delete) trong MongoDB, cách sử dụng các lệnh cơ bản để thực hiện các thao tác này trên Collection.',
+		link: '/mongo-db/documentation/mongodb-collection',
+		previewImage: 'course_mongodb.png',
+		status_id: 1,
+		apps: ['mongodb'],
+	},
 ] as DocumentItem[];
 
 let baseListData: DocumentItem[] = [

@@ -27,10 +27,14 @@
 <script lang="ts">
 	import { PropType } from 'nuxt/dist/app/compat/capi';
 	type OpeItem = {
+		group?: string;
+		command?: string;
+		function?: string;
+		syntax?: string;
+		example?: string;
 		label?: string;
 		name?: string;
 		description?: string;
-		syntax?: string;
 	};
 
 	type HeaderItem = {
