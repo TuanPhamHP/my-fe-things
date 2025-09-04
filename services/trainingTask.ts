@@ -462,17 +462,17 @@ let baseListData: PracticeItem[] = [
 		apps: ['sql'],
 	},
 	// MongoDB
-	// {
-	// 	id: 'mongo-1',
-	// 	vneseName: 'Bài tập cơ bản 1',
-	// 	eng: 'html header, header example',
-	// 	description: 'Bài tập cơ bản MongoDB (P1)',
-	// 	link: '/mongo-db/practice/e_1',
-	// 	previewImage: 'course_practice-1.png',
-	// 	status_id: 1,
-	// 	category: [],
-	// 	apps: ['mongodb'],
-	// },
+	{
+		id: 'mongo-1',
+		vneseName: 'Tạo Database, Collection',
+		eng: 'database, collection',
+		description: 'Tạo Database, Collection trong mongodb',
+		link: '/mongo-db/practice/e_1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['mongodb'],
+	},
 ];
 
 class PaginationDefault {

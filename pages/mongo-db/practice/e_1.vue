@@ -8,55 +8,36 @@
 		</div>
 		<PageHeading text="Đề bài" addOnClass="text-left" markedAs="env" />
 		<p className="text-slate-900 dark:text-white mt-5 font-bold text-xl">
-			Bài tập 1: Hiểu và tạo database theo mô hình quan hệ
+			Bài tập 1: Hiểu và tạo database, collection trong MongoDB
 		</p>
 
 		<p className="text-slate-900 dark:text-white mt-2 text-lg">
 			<b>Mô tả:</b>
 		</p>
 		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			Giả sử bạn đang thiết kế một hệ thống quản lý thư viện. Hãy thực hiện các bước sau:
+			Giả sử bạn đang thiết kế một hệ thống quản lý quản lý nhà hàng / đặt món online.
 		</p>
-		<ul class="pl-10">
+		<ul>
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Tạo một database tên là LibraryDB.
+				Tạo một database tên là <b>eMeal</b> gồm:
 			</li>
+		</ul>
+		<ul v-for="section in docs" :key="section.id" class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Tạo 2 bảng books và authors theo mô hình quan hệ:
+				Collection <FilePath>{{ section.id }}</FilePath
+				>: {{ section.name }}.
 				<ul class="pl-10">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<FilePath>books</FilePath>: chứa các thông tin về sách như <b>id, title, author_id, published_year</b>.
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<FilePath>authors</FilePath>: chứa thông tin tác giả với các cột <b>id, name, birth_year</b>.
+					<li
+						v-for="item in section.items"
+						:key="item"
+						class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+					>
+						{{ item }}
 					</li>
 				</ul>
 			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Định nghĩa khóa chính và khóa ngoại giữa bảng <FilePath>books</FilePath>, <FilePath>authors</FilePath>
-			</li>
-		</ul>
-		<p className="text-slate-900 dark:text-white mt-2 text-lg">
-			<b>Yêu cầu:</b>
-		</p>
-		<ul class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Viết câu lệnh để tạo <b>database, table</b> tương ứng.
-			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Định nghĩa đủ <b>Primary Key (PK), Foreign Key (FK)</b>.
-			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Thêm dữ liệu mẫu vào bảng <FilePath>books</FilePath>, <FilePath>authors</FilePath> bằng các lệnh sql.
-			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Hiển thị toàn bộ dữ liệu theo bảng.
-			</li>
 		</ul>
 
-		<div class="bg-neutral-100 px-5 py-1 rounded">
-			<img src="@/assets/images/documentation/sql-1.png" alt="" class="rounded-lg mt-3 block" />
-		</div>
 		<DocNextPage :pagination="pagePagination" />
 	</div>
 </template>
@@ -105,6 +86,66 @@
 						link: '/sql/practice',
 					},
 				},
+				docs: [
+					{
+						id: 'users',
+						name: 'Người dùng',
+						items: [
+							'Mục đích: Lưu thông tin khách hàng, chủ nhà hàng, admin.',
+							"Validator: email unique, đúng định dạng; role chỉ trong ['customer','owner','admin'].",
+						],
+						coding: 'validator + unique index on email',
+					},
+					{
+						id: 'restaurants',
+						name: 'Nhà hàng',
+						items: [
+							'Mục đích: Lưu thông tin nhà hàng.',
+							'Validator: name bắt buộc, owner_id là ObjectId hợp lệ.',
+							'Index: text index trên name và categories để tìm kiếm.',
+						],
+						coding: 'validator + text index',
+					},
+					{
+						id: 'menus',
+						name: 'Món ăn',
+						items: [
+							'Mục đích: Lưu thực đơn của từng nhà hàng.',
+							'Validator: price >= 0, restaurant_id bắt buộc.',
+							'Index: compound index (restaurant_id, name).',
+						],
+						coding: 'validator + compound index',
+					},
+					{
+						id: 'orders',
+						name: 'Đơn hàng',
+						items: [
+							'Mục đích: Quản lý đơn đặt món của khách hàng.',
+							"Validator: items không rỗng, quantity >= 1, status chỉ trong ['pending','confirmed','delivering','completed','canceled'].",
+							'Index: (user_id, created_at), (restaurant_id, status).',
+						],
+						coding: 'validator + multiple indexes',
+					},
+					{
+						id: 'reviews',
+						name: 'Đánh giá',
+						items: [
+							'Mục đích: Khách hàng đánh giá nhà hàng.',
+							'Validator: rating từ 1–5, comment tối đa 500 ký tự.',
+							'Index: (restaurant_id, created_at).',
+						],
+						coding: 'validator + index',
+					},
+					{
+						id: 'order_logs',
+						name: 'Log đơn hàng (capped)',
+						items: [
+							'Mục đích: Ghi log sự kiện realtime khi có order mới.',
+							'Capped: true, size = 1MB, max = 5000 records.',
+						],
+						coding: 'capped collection + tailable cursor',
+					},
+				],
 			};
 		},
 		computed: {},
