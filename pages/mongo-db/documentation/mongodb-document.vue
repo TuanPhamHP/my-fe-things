@@ -58,7 +58,11 @@
 					</li>
 				</ul>
 				<VCodeBlock :code="b1" highlightjs lang="js" theme="atom-one-dark" />
-
+				<p class="text-slate-900 dark:text-white mt-2 leading-8">
+					Trong trường hợp chúng ta cần các <b>Unique field</b> khác ngoài <b>_id</b>, ta có thể tạo
+					<b>Unique Index</b> trên các trường đó để đảm bảo tính duy nhất.
+				</p>
+				<VCodeBlock :code="b10" highlightjs lang="js" theme="atom-one-dark" />
 				<PageHeading text="Read" addOnClass="text-left mt-2" markedAs="read" />
 				<p class="text-slate-900 dark:text-white mt-2 leading-8">
 					Cơ chế đọc dữ liệu (Read) với truy vấn đơn giản sử dụng phương thức <b>find()</b> và <b>pretty()</b>
@@ -312,6 +316,10 @@ db.students.find({ "address.city": "Hà Nội" })
   ]
 })
 `,
+				b10: `db.students.createIndex(
+  { email: 1 },      // 1 = ascending
+  { unique: true }   // đảm bảo giá trị duy nhất
+)`,
 				headers2: [
 					{
 						id: 1,

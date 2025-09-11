@@ -8,21 +8,14 @@
 		</div>
 		<PageHeading text="Đề bài" addOnClass="text-left" markedAs="env" />
 		<p className="text-slate-900 dark:text-white mt-5 font-bold text-xl">
-			Bài tập 1: Hiểu và tạo database, collection trong MongoDB
+			Bài tập: Xử lý CRUD với document trong MongoDB.
 		</p>
 
 		<p className="text-slate-900 dark:text-white mt-2 text-lg">
 			<b>Mô tả:</b>
 		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			Giả sử bạn đang thiết kế một hệ thống quản lý quản lý nhà hàng / đặt món online.
-		</p>
-		<ul>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Tạo một database tên là <b>eMeal</b> gồm:
-			</li>
-		</ul>
-		<ul v-for="section in docs" :key="section.id" class="pl-10">
+		<p className="text-slate-900 dark:text-white mt-2 pl-5">Tiếp tục với bài 1.</p>
+		<ul v-for="section in tasks" :key="section.id" class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 				Collection <FilePath>{{ section.id }}</FilePath
 				>: {{ section.name }}.
@@ -79,71 +72,75 @@
 				pagePagination: {
 					next: {
 						title: 'Bài 2',
-						link: '/mongo-db/practice/e_2',
+						link: '/mongo-db/practice/e_3',
 					},
 					prev: {
 						title: 'Danh sách',
 						link: '/mongo-db/practice',
 					},
 				},
-				docs: [
+				tasks: [
 					{
 						id: 'users',
 						name: 'Người dùng',
 						items: [
-							'Mục đích: Lưu thông tin khách hàng, chủ nhà hàng, admin.',
-							"Validator: email unique, đúng định dạng; role chỉ trong ['customer','owner','admin'].",
+							'Thêm một khách hàng mới.',
+							'Thêm nhiều chủ nhà hàng cùng lúc.',
+							'Tìm tất cả admin.',
+							'Cập nhật email của 1 user.',
+							'Xóa 1 user theo _id.',
 						],
-						coding: 'validator + unique index on email',
+						coding: 'insertOne + insertMany + find + updateOne + deleteOne',
 					},
 					{
 						id: 'restaurants',
 						name: 'Nhà hàng',
 						items: [
-							'Mục đích: Lưu thông tin nhà hàng.',
-							'Validator: name bắt buộc, owner_id là ObjectId hợp lệ.',
-							'Index: text index trên name và categories để tìm kiếm.',
+							'Thêm nhà hàng mới.',
+							'Tìm nhà hàng theo từ khóa (text search).',
+							'Cập nhật địa chỉ nhà hàng.',
+							'Xóa nhà hàng theo _id.',
 						],
-						coding: 'validator + text index',
+						coding: 'insertOne + find (text) + updateOne + deleteOne',
 					},
 					{
 						id: 'menus',
 						name: 'Món ăn',
 						items: [
-							'Mục đích: Lưu thực đơn của từng nhà hàng.',
-							'Validator: price >= 0, restaurant_id bắt buộc.',
-							'Index: compound index (restaurant_id, name).',
+							'Thêm món ăn cho nhà hàng cụ thể.',
+							'Tìm tất cả món ăn thuộc 1 nhà hàng.',
+							'Cập nhật giá món ăn.',
+							'Xóa 1 món ăn.',
 						],
-						coding: 'validator + compound index',
+						coding: 'insertOne + find + updateOne + deleteOne',
 					},
 					{
 						id: 'orders',
 						name: 'Đơn hàng',
 						items: [
-							'Mục đích: Quản lý đơn đặt món của khách hàng.',
-							"Validator: items không rỗng, quantity >= 1, status chỉ trong ['pending','confirmed','delivering','completed','canceled'].",
-							'Index: (user_id, created_at), (restaurant_id, status).',
+							'Tạo đơn hàng mới.',
+							'Tìm tất cả đơn hàng của 1 khách hàng.',
+							"Cập nhật trạng thái đơn hàng từ 'pending' sang 'confirmed'.",
+							'Xóa đơn hàng bị hủy.',
 						],
-						coding: 'validator + multiple indexes',
+						coding: 'insertOne + find + updateOne + deleteMany',
 					},
 					{
 						id: 'reviews',
 						name: 'Đánh giá',
 						items: [
-							'Mục đích: Khách hàng đánh giá nhà hàng.',
-							'Validator: rating từ 1–5, comment tối đa 500 ký tự.',
-							'Index: (restaurant_id, created_at).',
+							'Thêm review mới.',
+							'Tìm tất cả review của 1 nhà hàng, sắp xếp theo ngày.',
+							'Cập nhật comment review.',
+							'Xóa review spam.',
 						],
-						coding: 'validator + index',
+						coding: 'insertOne + find (sort) + updateOne + deleteOne',
 					},
 					{
 						id: 'order_logs',
 						name: 'Log đơn hàng (capped)',
-						items: [
-							'Mục đích: Ghi log sự kiện realtime khi có order mới.',
-							'Capped: true, size = 1MB, max = 5000 records.',
-						],
-						coding: 'capped collection + tailable cursor',
+						items: ['Thêm log khi có đơn hàng mới.', 'Xem 10 log mới nhất.'],
+						coding: 'insertOne + find (limit/sort)',
 					},
 				],
 			};

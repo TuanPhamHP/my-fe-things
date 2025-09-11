@@ -1329,7 +1329,7 @@ const MongoDBBasicDocs = [
 	},
 	{
 		id: 'mongo-5',
-		vneseName: 'D3 - Document',
+		vneseName: 'D3 - Document (P1)',
 		eng: 'MongoDB Document',
 		description:
 			'Tìm hiểu về các thao tác CRUD (Create, Read, Update, Delete) trong MongoDB, cách sử dụng các lệnh cơ bản để thực hiện các thao tác này trên Document.',
