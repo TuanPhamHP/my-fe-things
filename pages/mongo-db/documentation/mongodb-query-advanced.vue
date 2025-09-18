@@ -110,6 +110,12 @@
 					</li>
 				</ul>
 				<VCodeBlock :code="b6" highlightjs lang="js" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white mt-2 leading-8">
+					Để so sánh rõ ràng hơn chúng ta có thể sử dụng <FilePath>explain('executionStats')</FilePath>
+					để xem chi tiết hiệu năng của từng truy vấn. Ví dụ tốt nhất với collection có số lượng bản ghi cực lớn (> 500
+					nghìn document).
+				</p>
+
 				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
