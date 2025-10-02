@@ -239,6 +239,7 @@
       as: "menuDocs"
     }
   },
+	{ $unwind: "$menuDocs" },
   {
     $lookup: {
       from: "restaurants",
@@ -247,6 +248,7 @@
       as: "restaurantDocs"
     }
   },
+	{ $unwind: "$restaurantDoc" },
   {
     $project: {
       orderId: "$_id",
