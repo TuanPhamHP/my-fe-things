@@ -112,7 +112,7 @@
 						items: [
 							'Tính giá trung bình của tất cả các món ăn (menus).',
 							'Với mỗi nhà hàng, lấy tổng số món ăn mà họ có.',
-							'Tìm top 3 món ăn đắt nhất trong toàn hệ thống.',
+							'Tìm top 3 món ăn đắt nhất trong toàn hệ thống kèm theo thông tin của cửa hàng có món ăn đó.',
 							'Lấy danh sách tất cả reviews kèm theo tên nhà hàng.',
 							'Tính rating trung bình của từng nhà hàng.',
 							'Tìm nhà hàng có rating trung bình cao nhất.',
@@ -128,15 +128,6 @@
 							'Xóa tất cả reviews có rating = 1 và comment chứa từ "tệ".',
 							'Thêm một review mới vào 1 nhà hàng bất kỳ với rating = 5 và comment tùy ý.',
 							'Tạo một order_log mới cho một order bất kỳ với action = "system_test".',
-						],
-					},
-					{
-						id: 'bonus',
-						name: 'Bonus',
-						items: [
-							'Xuất báo cáo tổng hợp: Tổng số nhà hàng, tổng số khách hàng, tổng số món ăn.',
-							'Trung bình giá món ăn theo từng nhà hàng.',
-							'Top 3 khách hàng có nhiều review nhất.',
 						],
 					},
 				],

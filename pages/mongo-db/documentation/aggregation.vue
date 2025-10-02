@@ -162,7 +162,7 @@
 				},
 				states: [
 					{
-						name: '$match',
+						name: '🔥$match',
 						contents: ['Tương tự WHERE trong SQL', 'Lọc document dựa trên điều kiện.'],
 						target: 'Giảm dữ liệu đầu vào càng sớm càng tốt.',
 						placed: 'Nên đặt ở đầu pipeline để tận dụng index.',
@@ -171,7 +171,7 @@
 	])`,
 					},
 					{
-						name: '$project',
+						name: '🔥$project',
 						contents: ['Chọn/biến đổi các field trong output', 'Có thể thêm field mới, ẩn field, đổi cấu trúc.'],
 						target: 'Chỉ giữ lại dữ liệu cần thiết, giảm tải cho các stage sau.',
 						placed: 'Thường đặt ngay sau $match để loại bỏ field dư thừa.',
@@ -180,7 +180,7 @@
 	])`,
 					},
 					{
-						name: '$group',
+						name: '🔥$group',
 						contents: [
 							'Gom nhóm dữ liệu theo một hoặc nhiều field',
 							'Thường dùng với hàm tích lũy ($sum, $avg, $max, $min...).',
@@ -197,7 +197,7 @@
 	])`,
 					},
 					{
-						name: '$sort',
+						name: '🔥$sort',
 						contents: ['Sắp xếp document theo field.'],
 						target: 'Trả dữ liệu theo một thứ tự cụ thể.',
 						placed: 'Đặt sau $match/$group, nhưng cẩn trọng vì tốn RAM.',
@@ -226,24 +226,43 @@
 	])`,
 					},
 					{
-						name: '$lookup',
+						name: '🔥$lookup',
 						contents: ['Join dữ liệu giữa các collection.', 'Tương tự JOIN trong SQL.'],
 						target: 'Kết hợp dữ liệu từ nhiều collection.',
 						placed: 'Đặt sau $match để giảm dữ liệu cần join.',
 						example: `db.orders.aggregate([
-	  { $lookup: {
-	      from: "customers",
-	      localField: "customerId",
-	      foreignField: "_id",
-	      as: "customerInfo"
-	  } }
-	])`,
+  {
+    $lookup: {
+      from: "menus",
+      localField: "items",
+      foreignField: "_id",
+      as: "menuDocs"
+    }
+  },
+  {
+    $lookup: {
+      from: "restaurants",
+      localField: "menuDocs.restaurant_id",
+      foreignField: "_id",
+      as: "restaurantDocs"
+    }
+  },
+  {
+    $project: {
+      orderId: "$_id",
+      status: 1,
+      customer_id: 1,
+      menus: "$menuDocs.name",
+      restaurants: "$restaurantDocs.name"
+    }
+  }
+])`,
 					},
 					{
 						name: '$addFields',
 						contents: ['Thêm hoặc tính toán thêm field mới.'],
 						target: 'Tạo field tính toán, enrich dữ liệu.',
-						placed: 'Đặt sau $match/$project, trước khi $group nếu cần field mới để group.',
+						placed: 'Đặt sau $match/$project, trước khi $group nếu cần field mới để group. Hoặc đổi loại dữ liệu.',
 						example: `db.products.aggregate([
 	  { $addFields: { discountPrice: { $multiply: ["$price", 0.9] } } }
 	])`,
