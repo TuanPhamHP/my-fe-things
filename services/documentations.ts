@@ -1360,6 +1360,16 @@ const MongoDBBasicDocs = [
 		status_id: 1,
 		apps: ['mongodb'],
 	},
+	{
+		id: 'mongo-8',
+		vneseName: 'D5 - Aggregation',
+		eng: 'MongoDB Document',
+		description: 'Kiến thức về Aggregation và Pipeline trong mongodb',
+		link: '/mongo-db/documentation/aggregation',
+		previewImage: 'course_mongodb.png',
+		status_id: 1,
+		apps: ['mongodb'],
+	},
 ] as DocumentItem[];
 
 let baseListData: DocumentItem[] = [
