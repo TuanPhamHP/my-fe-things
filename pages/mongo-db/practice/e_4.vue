@@ -14,12 +14,19 @@
 		<p className="text-slate-900 dark:text-white mt-2 text-lg">
 			<b>Mô tả:</b>
 		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			Tiếp tục với bài 3.
-			<a href="/seed.mongodb.js" download target="_blank" class="text-blue-500 dark:text-blue-300 underline">
-				File seed!</a
-			>
-		</p>
+		<ul class="pl-5">
+			<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				<a href="/db.mongodb.js" download target="_blank" class="text-blue-500 dark:text-blue-300 underline">
+					File database!</a
+				>
+			</li>
+			<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				<a href="/seed.mongodb.js" download target="_blank" class="text-blue-500 dark:text-blue-300 underline">
+					File seed!</a
+				>
+			</li>
+		</ul>
+		<p className="text-slate-900 dark:text-white mt-2 pl-5">Tiếp tục với bài 3.</p>
 
 		<ul v-for="section in tasks" :key="section.id" class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
