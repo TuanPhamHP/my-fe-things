@@ -506,6 +506,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['mongodb'],
 	},
+	{
+		id: 'mongo-5',
+		vneseName: 'Ôn tập 1',
+		eng: 'document',
+		description: 'Ôn tập các bài với mongodb.',
+		link: '/mongo-db/practice/e_5',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['mongodb'],
+	},
 ];
 
 class PaginationDefault {
