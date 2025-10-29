@@ -1,0 +1,4 @@
+[
+	{ "id": 1, "type": "income", "amount": 5000000, "note": "Lương tháng 10", "date": "2025-10-25" },
+	{ "id": 2, "type": "expense", "amount": 1500000, "note": "Ăn uống", "date": "2025-10-26" }
+]

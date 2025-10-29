@@ -305,6 +305,17 @@ let baseListData: PracticeItem[] = [
 	},
 	// NODEJS
 	{
+		id: 'node-0',
+		vneseName: 'Asynchronous in Nodejs',
+		eng: 'html header, header example',
+		description: 'Bài tập về Asynchronous trong Nodejs',
+		link: '/nodejs/practice/e_0',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
+	{
 		id: 'node-1',
 		vneseName: 'Mapping Routes',
 		eng: 'html header, header example',
