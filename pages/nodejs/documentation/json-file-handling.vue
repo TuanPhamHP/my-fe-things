@@ -2,7 +2,7 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="JSON" addOnClass="text-left" markedAs="about-module" />
+				<PageHeading text="JSON" addOnClass="text-left" markedAs="about-json" />
 
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					<b>Module</b> (JavaScript Object Notation) là một định dạng trao đổi dữ liệu nhẹ, dễ đọc, dễ viết cho con
@@ -55,7 +55,18 @@
 					Tiếp theo là ghi vào <FilePath>data.json</FilePath>:
 				</p>
 				<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
-
+				<PageHeading text="File Path" addOnClass="text-left mt-5" markedAs="about-file-path" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tiếp theo, chúng ta sẽ tìm hiểu về cách làm việc với đường dẫn file trong Node.js sử dụng module
+					<FilePath>path</FilePath>. Trong Trong CommonJS (require()), Node cung cấp sẵn các thông số như
+					<br /><FilePath>__filename</FilePath> - đường dẫn tuyệt đối file hiện tại <br />
+					<FilePath>__dirname</FilePath> - đường dẫn thư mục hiện tại.
+					<br />
+					Nhưng khi dùng ES Module (import/export, "type":"module"), hai biến trên không tồn tại. Thay vào đó Node cho
+					một biến chuẩn là <FilePath>import.meta.url</FilePath> — một URL mô tả vị trí file hiện tại, nên ta cần dùng
+					module <FilePath>path</FilePath> để chuyển đổi nó về đường dẫn hệ thống.
+				</p>
+				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
 				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -160,6 +171,17 @@ readJsonFile();
 const newItem = { "id": 103, "productName": "Keyboard Z", "price": 850 };
 updateProduct(newItem);
 `,
+				b4: `import path from 'path';
+import { fileURLToPath } from 'url';
+
+// 1) __filename từ import.meta.url
+const __filename = fileURLToPath(import.meta.url);
+
+// 2) __dirname từ __filename
+const __dirname = path.dirname(__filename);
+
+// 3) đường dẫn tuyệt đối tới data/data.json
+const FILE_PATH = path.resolve(__dirname, '../data/data.json');`,
 			};
 		},
 		mounted() {
