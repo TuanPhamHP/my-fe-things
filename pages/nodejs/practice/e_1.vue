@@ -7,57 +7,39 @@
 			<div class="h-[1px] dark:bg-white bg-slate-900"></div>
 		</div>
 		<PageHeading text="Đề bài" addOnClass="text-left" markedAs="env" />
-		<p className="text-slate-900 dark:text-white mt-5 font-bold text-xl">Xây dựng Server Node.js với Routes cơ bản:</p>
+		<p className="text-slate-900 dark:text-white my-5 font-bold text-xl">
+			Tạo một file <FilePath>data/users.json</FilePath> với cấu trúc mẫu:
+		</p>
+		<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 
-		<p className="text-slate-900 dark:text-white mt-5">
-			xây dựng một server HTTP cơ bản sử dụng Node.js thuần và thực hiện việc mapping routes (định tuyến) cho các đường
-			dẫn khác nhau:
-		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">
-			1 - Tạo một server Node.js lắng nghe trên cổng <b>`3000`</b>
-		</p>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">2 - Xử lý các route cơ bản như:</p>
-		<ul class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span>
-					<FilePath>/</FilePath> : Trang chủ, trả về một đoạn HTML đơn giản như "Xin chào các bạn" với định dạng code
-					HTML</span
-				>
-			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span>
-					<FilePath>/about</FilePath> : Trang giới thiệu, trả về một đoạn HTML đơn giản với 3 dòng thông tin:
-					<br />
-					- Họ Tên:
-					<br />
-					- Năm sinh:
-					<br />
-					- Email:
-				</span>
-			</li>
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<span> Các route khác: Trả về thông báo "404 Not Found" cho các route không tồn tại. </span>
-			</li>
-		</ul>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5">3 - Cho danh sách dữ liệu sau:</p>
-		<div class="max-h-[200px] overflow-y-scroll rounded-lg mt-3">
-			<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
+		<div class="relative overflow-x-auto mt-5 border rounded-lg">
+			<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+				<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+					<tr>
+						<th scope="col" class="px-5 py-3">Method</th>
+						<th scope="col" class="px-5 py-3">Path</th>
+						<th scope="col" class="px-5 py-3">Desc</th>
+						<th scope="col" class="px-5 py-3">Handler</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="item in tasks" :key="item.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+						<th scope="row" class="px-5 py-4">
+							<FilePath>{{ item.method }}</FilePath>
+						</th>
+
+						<td class="px-5 py-4">
+							<FilePath>{{ item.route }}</FilePath>
+						</td>
+						<td class="px-5 py-4">{{ item.description }}</td>
+						<td class="px-5 py-4">{{ item.handler }}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		<ul class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				<div>
-					Tạo route <FilePath>/user/:id</FilePath> : với <b>`:id`</b> là biến truyền vào từ người dùng. Xử lý tìm kiếm
-					và trả ra thông tin user có id tương ứng.
-					<br />
-					VD: <FilePath>/user/1</FilePath>: sẽ trả ra view thông tin:
-					<div class="px-3 py-3 rounded border my-3">
-						<h3>- Họ Tên: Nguyễn Văn A</h3>
-						<h3>- Năm sinh: 2001</h3>
-						<h3>- Email: nguyenvana@gmail.com</h3>
-					</div>
-				</div>
-			</li>
-		</ul>
+
+		<p className="text-slate-900 dark:text-white my-5 font-bold text-xl">User data:</p>
+		<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 		<DocNextPage :pagination="pagePagination" />
 	</div>
 </template>
@@ -67,6 +49,7 @@
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
+	import { FilePath } from '../../../.nuxt/components';
 	import {
 		Disclosure,
 		DisclosureButton,
@@ -106,36 +89,69 @@
 						link: '/nodejs/practice',
 					},
 				},
-				b1: `const dummyDatas = [
-    [
-        "id" => 1,
-        "name" => "Nguyễn Văn A",
-        "email" => "nguyenvana@gmail.com",
-        "score" => 85.6,
-        "yob" => 2001
-    ],
-    [
-        "id" => 2,
-        "name" => "Trần Thị B",
-        "email" => "tranthib@gmail.com",
-        "score" => 78.4,
-        "yob" => 2002
-    ],
-    [
-        "id" => 3,
-        "name" => "Lê Văn C",
-        "email" => "levanc@gmail.com",
-        "score" => 92.1,
-        "yob" => 2003
-    ],
-    [
-        "id" => 4,
-        "name" => "Phạm Thị D",
-        "email" => "phamthid",
-        "score" => 88.9,
-        "yob" => 2004
-    ],
-];`,
+				b1: `finance-lab/
+│
+├── data/
+│   └── transactions.json
+│   └── data.json
+├── fileHandler/
+│   └── fileHandler.js
+├── services/
+│   └── financeService.js
+└── main.js
+`,
+				b2: `{
+	name: string,
+	yob: number,
+	email: string, // unique
+	phone: string, // unique
+}`,
+				docs: [
+					{
+						id: 'fileHandler.js',
+						name: 'Service xử lý đọc/lưu data vào file transaction.json.',
+						items: [
+							'Mục đích: xử lý các nghiệp vụ với file như đọc, ghi.',
+							'Yêu cầu: Viết các hàm: </br><b>readTransactions()</b> - đọc và trả ra toàn bộ transactions từ transaction.json.</br> <b>writeTransactions(data)</b> - ghi thêm data vào transaction.json',
+						],
+						coding: 'validator + unique index on email',
+					},
+					{
+						id: 'financeService.js',
+						name: 'Service xử lý các nghiệp vụ tài chính.',
+						items: [
+							'Mục đích: xử lý các nghiệp vụ tài chính như đọc, ghi, lọc, tổng hợp giao dịch.',
+							`Yêu cầu: Viết các hàm </br><b>listTransactions()</b> - In ra màn hình toàn bộ transaction gồm type | note | amount.
+							 </br><b>addTransaction()</b> - Thêm giao dịch mới với các tham số: id, type, note, amount, date.
+							 </br><b>lastFiveTransaction()</b> - Lấy 5 giao dịch gần nhất.`,
+						],
+						coding: 'validator + unique index on email',
+					},
+				],
+				tasks: [
+					{
+						id: 1,
+						method: 'GET',
+						route: '/users',
+						description: 'Lấy danh sách user',
+						handler: 'Đọc từ file users.json và trả về toàn bộ danh sách dưới dạng JSON, có thể lọc theo tên ("name").',
+					},
+					{
+						id: 2,
+						method: 'GET',
+						route: '/users/:id',
+						description: 'Lấy thông tin user theo ID',
+						handler: 'Tìm user theo id trong file users.json, nếu không có trả 404',
+					},
+					{
+						id: 3,
+						method: 'POST',
+						route: '/users',
+						description: 'Thêm user mới',
+						handler:
+							'Nhận dữ liệu từ body, thêm user mới vào file users.json. Kiểm tra email và phone phải là duy nhất.',
+					},
+				],
 			};
 		},
 		computed: {},

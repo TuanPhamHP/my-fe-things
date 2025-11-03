@@ -2,14 +2,12 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Mô hình MVC" addOnClass="text-left" markedAs="about-mvc" />
-
+				<PageHeading text="ExpressJS" addOnClass="text-left" markedAs="about-express-js" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Ở bài trước, chúng ta đã cùng tìm hiểu về mô hình MVC và cấu trúc cơ bản của một project khi tổ chức theo kiến
-					trúc MVC. Ở bài này chúng ta sẽ tiến hành sử dụng một package là <FilePath>express</FilePath> để cùng tạo lên
-					một app nodejs. Về cơ bản, chúng ta có thể hình dung cấu trúc thư mục của app như sau:
+					<b>ExpressJS</b> là một framework web ứng dụng cho Node.js, được thiết kế để xây dựng các ứng dụng web và API
+					một cách nhanh chóng và dễ dàng. ExpressJS cung cấp một tập hợp các tính năng mạnh mẽ giúp quản lý các yêu cầu
+					HTTP, routing, middleware, và nhiều hơn nữa.
 				</p>
-				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
 					Bắt đầu tiến hành cài đặt package <FilePath>express</FilePath> để sử dụng
 				</p>
@@ -25,79 +23,147 @@
 				</p>
 				<FakeTerminalUI :textCoppy="'npm init -y'">npm init -y</FakeTerminalUI>
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					sau khi đã có <b>`package.json`</b> thì tiến hành cài đặt <FilePath>express</FilePath> và
-					<FilePath>ejs</FilePath>
+					sau khi đã có <b>`package.json`</b> thì tiến hành cài đặt <FilePath>express</FilePath>:
 				</p>
-				<FakeTerminalUI :textCoppy="'npm install express ejs'">npm install express ejs</FakeTerminalUI>
+				<FakeTerminalUI :textCoppy="'npm install express'">npm install express</FakeTerminalUI>
 
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Ở đoạn code trên, chúng ta sử dụng <FilePath>http</FilePath> là một module có sẵn trong NodeJS, nó giúp chúng
-					ta khởi tạo nhanh một webserver với giao thức HTTP để xử lý request và response.
-					<br />
-					ta khởi tạo server và gán vào biến <b>`server`.</b>
-				</p>
-				<PageHeading text="2. Setup lại file `app.js`" addOnClass="text-left my-3" markedAs="step-2" :lvl="2" />
+				<PageHeading text="2. Setup lại server" addOnClass="text-left mt-3" markedAs="step-2" :lvl="2" />
 				<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Trong file <b>`app.js`</b>, ta sẽ khởi tạo server bằng <b>Express</b> và liên kết nó với các routes,
-					controllers, và views theo mô hình MVC.
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Ta sẽ khởi tạo server bằng <b>Express</b> và sử dụng phương thức <FilePath>app.listen()</FilePath> để lắng
+					nghe các kết nối đến cổng được chỉ định.
 				</p>
-				<PageHeading text="3. Tạo Model" addOnClass="text-left my-3" markedAs="step-3" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					<b>`Model`</b> chịu trách nhiệm quản lý dữ liệu. Ở đây, dữ liệu người dùng sẽ được lưu trữ tạm thời trong một
-					mảng, nhưng bạn cũng có thể kết nối với cơ sở dữ liệu (như MySQL hoặc MongoDB).
+
+				<PageHeading text="Routing với ExpressJS" addOnClass="text-left mt-5" markedAs="routing-methods" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Routing trong ExpressJS là quá trình xác định cách ứng dụng của bạn phản hồi các yêu cầu từ client dựa trên
+					<b>path - đường dẫn URL</b> và <b>method - phương thức HTTP</b>. Mỗi route sẽ liên kết một URL cụ thể với một
+					hàm xử lý (handler function) để thực hiện các hành động như gửi dữ liệu, render trang, hoặc thực hiện các thao
+					tác khác. <br />
+					Như vậy, về cơ bản có thể hiểu Một route (tuyến) trong Express là quy tắc định nghĩa cách ứng dụng phản hồi
+					HTTP request dựa vào:
 				</p>
-				<VCodeBlock :code="b6" highlightjs lang="javascript" theme="atom-one-dark" />
-				<PageHeading text="4. Tạo Controller" addOnClass="text-left my-3" markedAs="step-4" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					<b>`Controller`</b> sẽ nhận các request, tương tác với Model và trả kết quả về cho View hoặc trả về response
-					trực tiếp.
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <FilePath>Path</FilePath> Đường dẫn mà client truy cập. </span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <FilePath>Route Methods</FilePath> Phương thức HTTP (GET, POST, PUT, DELETE, …). </span>
+					</li>
+				</ul>
+				<PageHeading text="Routing pattern" addOnClass="text-left mt-5" markedAs="routing-patterns" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					Tiếp theo, chúng ta sẽ tìm hiểu về các pattern thường dùng trong routing. Dưới đây là cấu trúc cơ bản của một
+					route:
 				</p>
 				<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					Ở đây chúng ta sẽ làm quen với các method <b>`render`</b> và <b>`redirect`</b> của express. Đây đề là các
-					method của <b>`response`</b>, chúng hỗ trợ định nghĩa output của app, các bạn có thể mapping với
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<FilePath>METHOD</FilePath> là phương thức giúp chúng ta định tuyến các <b>method</b> ứng với
+							<b>path</b> được chỉ định. VD: <FilePath>app.get('/', (req, res) =&gt; {...})</FilePath>
+						</span>
+						<ul class="pl-5">
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span>
+									Các methods thường dùng: <FilePath>get()</FilePath>, <FilePath>post()</FilePath>,
+									<FilePath>put()</FilePath>, <FilePath>delete()</FilePath>.
+								</span>
+							</li>
+						</ul>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span> <FilePath>PATH</FilePath> đường dẫn URL (pattern) </span>
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<FilePath>HANDLER</FilePath>callback <FilePath>(req, res) => {}</FilePath> được gọi đến nếu route match
+						</span>
+					</li>
+				</ul>
+				<PageHeading text="Parameters" addOnClass="text-left mt-5" markedAs="routing-params" :lvl="2" />
+				<!--  -->
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<FilePath>Route Parameters:</FilePath> Dùng để nhận giá trị động từ URL. Dùng dấu
+							<FilePath>:</FilePath> để khai báo tham số động. Các thông số này được truy cập qua
+							<FilePath>req.params</FilePath>
+						</span>
+						<ul class="pl-5">
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span
+									>Một tham số :<FilePath>/products/:id</FilePath> sẽ truy cập thông qua
+									<FilePath>req.params.id</FilePath>
+								</span>
+							</li>
 
-					<a
-						href="#about-res-method"
-						rel="noreferrer"
-						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"
-					>
-						bảng
-					</a>
-					để xem.
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span
+									>Nhiều tham số :<FilePath>/product/:productId/review/:reviewId</FilePath> sẽ truy cập thông qua
+									<FilePath>req.params</FilePath> - một object chứa các params
+								</span>
+							</li>
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span
+									>Optional Params:<FilePath>/product/:productId?</FilePath> sử dụng dấu <FilePath>?</FilePath> sau tên
+									param, để biết match cho dù có tham số hay không.
+								</span>
+							</li>
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span
+									>Wildcard:<FilePath>/product/*</FilePath> sử dụng dấu <FilePath>*</FilePath> để tạo pattern.
+								</span>
+							</li>
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span
+									>segment:<FilePath>/product/:category-:id</FilePath> sử dụng dấu <FilePath>-, _, /</FilePath> để tạo
+									group/segment.
+								</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<PageHeading text="Query" addOnClass="text-left mt-5" markedAs="routing-params" :lvl="2" />
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					<b>Query Parameters</b> là các tham số được thêm vào cuối URL sau dấu hỏi chấm <FilePath>?</FilePath>. Chúng
+					thường được sử dụng để truyền các thông tin bổ sung như lọc, sắp xếp, phân trang, v.v.
 				</p>
-				<PageHeading text="5. Tạo Routes" addOnClass="text-left my-3" markedAs="step-5" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					<b>`Router `</b> sẽ định nghĩa các đường dẫn (routes) cho ứng dụng và gọi đúng controller để xử lý yêu cầu.
-				</p>
-				<VCodeBlock :code="b7" highlightjs lang="javascript" theme="atom-one-dark" />
-				<PageHeading text="6. Tạo View" addOnClass="text-left my-3" markedAs="step-6" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 leading-8">
-					<b>`View `</b> sẽ là phần giao diện để hiển thị dữ liệu cho người dùng. Ở đây, ta sử dụng EJS để hiển thị danh
-					sách người dùng.
-				</p>
-				<VCodeBlock :code="b8" highlightjs lang="HTML" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Gần tương tự như php, nếu các bạn muốn viết js trong file <b>`.ejs`</b> thì chúng ta sẽ sử dụng cặp dấu:
-					<FilePath>
-						{{ `<% %>` }}
-					</FilePath>
-					để đánh dấu template.
-				</p>
-
-				<PageHeading
-					text="Bảng danh sách các method của response"
-					addOnClass="text-left mt-5"
-					markedAs="about-res-method"
-				/>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<span>
+							<FilePath>Query Parameters:</FilePath> Dùng cho việc gửi các thông tin (thường là lọc) lên server, các
+							thông số này được truy cập qua <FilePath>req.query</FilePath></span
+						>
+						<ul class="pl-5">
+							<li
+								class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+							>
+								<span>VD:<FilePath>/products?limit=10</FilePath> sẽ trả giá trị qua <b>req.query.limit</b>. </span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<!--  -->
 				<div class="relative overflow-x-auto mt-5 border rounded-lg">
 					<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
 							<tr>
-								<th scope="col" class="px-5 py-3">Tên</th>
-								<th scope="col" class="px-5 py-3">Ý nghĩa</th>
-								<th scope="col" class="px-5 py-3">VD:</th>
+								<th scope="col" class="px-5 py-3">Đặc điểm</th>
+								<th scope="col" class="px-5 py-3">Route Params</th>
+								<th scope="col" class="px-5 py-3">Query Params</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -106,45 +172,18 @@
 								:key="item.id"
 								class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
 							>
-								<th
-									v-if="item.label"
-									colspan="3"
-									scope="row"
-									class="px-5 py-4 text-center font-semibold text-gray-900 whitespace-nowrap bg-neutral-200"
-								>
-									{{ item.label }}
-								</th>
-								<th
-									v-if="!item.label"
-									scope="row"
-									class="px-5 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white"
-								>
+								<th scope="row" class="px-5 py-4">
 									{{ item.name }}
 								</th>
-								<td v-if="!item.label" class="px-5 py-4">{{ item.desc }}</td>
-								<td v-if="!item.label" class="px-5 py-4" v-html="item.syntax"></td>
+
+								<td class="px-5 py-4">{{ item.param }}</td>
+								<td class="px-5 py-4">{{ item.query }}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Ở bài tiếp theo, chúng ta sẽ tìm hiểu kỹ hơn về <FilePath>ejs</FilePath> và <FilePath>express</FilePath>
-				</p>
 
-				<p class="text-slate-900 dark:text-white mt-3 leading-8 text-2xl">Tổng kết:</p>
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span>
-							<FilePath>express</FilePath> là một package cực kì phổ biến trong lập trình NodeJS, nó giúp chúng ta tạo
-							ra một dynamic app một cách đơn giản.
-						</span>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<FilePath>ejs</FilePath> là một <b>`template engine`</b> cho phép chúng ta nhúng mã JavaScript vào HTML. Nó
-						rất phổ biến khi sử dụng với Node.js và Express để render nội dung động từ phía server. EJS cho phép bạn
-						chèn các giá trị động, thực hiện lặp, điều kiện, và quản lý bố cục cho trang web.
-					</li>
-				</ul>
+				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -152,6 +191,7 @@
 	</div>
 </template>
 <script lang="ts">
+	import LessonSum from '@/components/Documentation/LessonSum.vue';
 	import PageMarkBook from '@/components/Documentation/PageMarkBook.vue';
 	import PageHeading from '@/components/Documentation/PageHeading.vue';
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
@@ -169,6 +209,7 @@
 			Disclosure,
 			DisclosureButton,
 			DisclosurePanel,
+			LessonSum,
 		},
 		data() {
 			return {
@@ -182,66 +223,30 @@
 						link: '/nodejs/documentation',
 					},
 				},
-				b1: `myapp/
-│
-├── controllers/
-│   └── userController.js
-│
-├── models/
-│   └── userModel.js
-│
-├── routes/
-│   └── userRoutes.js
-│
-├── views/
-│   └── user.ejs
-│
-├── app.js
-└── package.json
-`,
+				lessonSum: [
+					`Express định tuyến các yêu cầu HTTP bằng cách khớp HTTP Method (GET, POST, PUT, DELETE) và Path với hàm xử lý`,
+					`Route Parameters là tham số động trong URL, truy cập qua req.params`,
+					`Query Parameters là tham số sau dấu ? trong URL, truy cập qua req.query`,
+				],
 				b3: `// app.js
 const http = require('http');
 const server = http.createServer();
 `,
-				b4: `const express = require('express');
+				b4: `import express from 'express';
+
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-// Sử dụng EJS làm template engine
-app.set('view engine', 'ejs');
+app.get('/', (req, res) => {
+  res.send('Chào mừng đến với Express.js!');
+});
 
-// middleware để lấy dữ liệu từ POST request
-app.use(express.urlencoded({ extended: true }));
-
-
-// Import routes
-const userRoutes = require('./routes/userRoutes');
-
-// Sử dụng router cho các route liên quan đến người dùng
-app.use('/users', userRoutes);
-
-// Lắng nghe server tại cổng 3000
 app.listen(port, () => {
   console.log('Server is running on port ' + port);
 });
 
 `,
-				b5: `// userController.js
-const User = require('../models/userModel');
-
-// Lấy danh sách người dùng
-exports.getUsers = (req, res) => {
-  const users = User.getAllUsers();
-  res.render('user', { users });
-};
-
-// Thêm người dùng mới
-exports.addUser = (req, res) => {
-  const { name } = req.body;
-  User.addUser(name);
-  res.redirect('/users');
-};
-`,
+				b5: `app.METHOD(PATH, HANDLER)`,
 				b6: `// userModel.js
 let users = [
   { id: 1, name: 'Alice' },
@@ -299,100 +304,21 @@ module.exports = router;
 				commonMethods: [
 					{
 						id: 1,
-						name: 'send()',
-						desc: 'Gửi phản hồi HTTP với nội dung body (string, object, array) đến client.',
-						syntax: "res.send('Hello World!');",
+						name: 'Vị trí',
+						param: 'Trong URL pattern (/users/:id)',
+						query: 'Sau dấu ? (/users?id=5)',
 					},
 					{
 						id: 2,
-						name: 'json()',
-						desc: 'Gửi phản hồi JSON đến client. Tự động thiết lập Content-Type là application/json.',
-						syntax: "res.json({ message: 'Hello, World!' });",
+						name: 'Truy cập',
+						param: 'req.params',
+						query: 'req.query',
 					},
 					{
 						id: 3,
-						name: 'status()',
-						desc: 'Thiết lập mã trạng thái HTTP cho phản hồi.',
-						syntax: "res.status(404).send('Not Found');",
-					},
-					{
-						id: 4,
-						name: 'sendFile()',
-						desc: 'Gửi một file đến client.',
-						syntax: "res.sendFile(__dirname + '/file.txt');",
-					},
-					{
-						id: 5,
-						name: 'redirect()',
-						desc: 'Chuyển hướng đến một URL khác. Có thể thiết lập mã trạng thái HTTP.',
-						syntax: "res.redirect('https://example.com');",
-					},
-					{
-						id: 6,
-						name: 'render()',
-						desc: 'Render một view sử dụng template engine đã thiết lập (như EJS, Pug).',
-						syntax: "res.render('index', { title: 'Home Page' });",
-					},
-					{
-						id: 7,
-						name: 'set()',
-						desc: 'Thiết lập header HTTP cho phản hồi.',
-						syntax: "res.set('Content-Type', 'text/html');",
-					},
-					{
-						id: 8,
-						name: 'cookie()',
-						desc: 'Thiết lập một cookie trong phản hồi HTTP.',
-						syntax: "res.cookie('username', 'John Doe', { maxAge: 900000 });",
-					},
-					{
-						id: 9,
-						name: 'clearCookie()',
-						desc: 'Xóa một cookie bằng cách đặt thời gian hết hạn của nó.',
-						syntax: "res.clearCookie('username');",
-					},
-					{
-						id: 10,
-						name: 'type()',
-						desc: 'Thiết lập Content-Type cho phản hồi HTTP.',
-						syntax: "res.type('application/json');",
-					},
-					{
-						id: 11,
-						name: 'download()',
-						desc: 'Bắt đầu tải về một file. Có thể cung cấp tên file và callback.',
-						syntax: "res.download('/path/to/file.zip', 'file.zip');",
-					},
-					{
-						id: 12,
-						name: 'location()',
-						desc: 'Thiết lập header Location để chuyển hướng, nhưng không tự động thực hiện chuyển hướng.',
-						syntax: "res.location('/new-path');",
-					},
-					{
-						id: 13,
-						name: 'end()',
-						desc: 'Kết thúc phản hồi, tùy chọn gửi dữ liệu body.',
-						syntax: "res.end('Response completed');",
-					},
-					{
-						id: 14,
-						name: 'format()',
-						desc: 'Cho phép gửi phản hồi với các định dạng khác nhau dựa trên Accept header từ client.',
-						syntax:
-							"res.format({ 'text/plain': () => res.send('text response'), 'application/json': () => res.json({}) });",
-					},
-					{
-						id: 15,
-						name: 'links()',
-						desc: 'Thiết lập liên kết HTTP Link cho phản hồi.',
-						syntax: "res.links({ next: '/page/2', last: '/page/5' });",
-					},
-					{
-						id: 16,
-						name: 'vary()',
-						desc: 'Thêm header Vary cho phản hồi, sử dụng khi muốn chỉ định các giá trị trong header cần đa dạng.',
-						syntax: "res.vary('Accept-Encoding');",
+						name: 'Sử dụng với',
+						param: 'ID, tài nguyên cố định',
+						query: 'Lọc, tìm kiếm, phân trang',
 					},
 				],
 			};
