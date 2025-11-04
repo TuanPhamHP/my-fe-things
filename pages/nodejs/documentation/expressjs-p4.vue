@@ -365,7 +365,7 @@ app.use(errorHandler);
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nodejs', currentDocId: 'node-8' })
+					.getPagination({ appIds: 'nodejs', currentDocId: 'node-9' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

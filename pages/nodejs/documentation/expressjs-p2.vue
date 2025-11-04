@@ -412,7 +412,7 @@ app.post('/upload', upload.single('avatar'), (req, res) => {
 		methods: {
 			getPagination() {
 				this.$api.documentations
-					.getPagination({ appIds: 'nodejs', currentDocId: 'node-6' })
+					.getPagination({ appIds: 'nodejs', currentDocId: 'node-7' })
 					.then((res: apiResponde) => {
 						this.pagePagination = res?.data?.pagination || [];
 					});

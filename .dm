@@ -1,63 +1,100 @@
-B4: Truy vấn nâng cao
+🔹 Đề xuất 6 bài học tiếp theo (lý thuyết chuyên sâu, 2h/bài)
+9. Express (P3) – Middleware & Error Handling
 
-Query với điều kiện: $in, $nin, $exists, $regex
+Mục tiêu: Hiểu và tự viết middleware, quản lý luồng xử lý request.
+Nội dung chính:
 
-Projection (chọn field cần lấy)
+Cấu trúc middleware trong Express
 
-Sort, Limit, Skip (phân trang)
+app.use(), next(), chuỗi middleware
 
-Thực hành: viết query để tìm kiếm & lọc dữ liệu
+Loại middleware: Application, Router, Built-in, Third-party
 
-B5: Indexing & Performance
+Xử lý lỗi toàn cục (error-handling middleware)
 
-Index cơ bản (single field, compound index)
+Ví dụ: logger, auth, rate-limit middleware
 
-Unique index
+So sánh với interceptor hoặc filter trong các framework khác
 
-Cách hoạt động của index
+10. Express (P4) – Routing nâng cao & Modularization
 
-Thực hành: tạo index và so sánh hiệu năng trước/ sau
+Mục tiêu: Tổ chức router chuyên nghiệp, dễ mở rộng.
+Nội dung chính:
 
-B6: Aggregation Framework (Phần 1)
+Router module (express.Router())
 
-Giới thiệu pipeline
+Nested routers & prefix routes
 
-$match, $group, $project, $sort
+RESTful route convention
 
-Thực hành: nhóm dữ liệu, tính tổng, trung bình
+Dynamic params, query, optional params
 
-B7: Aggregation Framework (Phần 2)
+Controller hóa logic: tách route – controller – service
 
-Các stage nâng cao: $lookup (join), $unwind, $addFields
+Thiết kế module CRUD chuẩn REST API
 
-Thực hành: báo cáo phức tạp với nhiều stage
+11. Làm việc với MongoDB & Mongoose (P1) – Kết nối & Schema
 
-B8: Data Modeling trong MongoDB
+Mục tiêu: Làm quen với cơ chế NoSQL, thiết kế schema và model.
+Nội dung chính:
 
-Thiết kế schema: Embed vs Reference
+Giới thiệu MongoDB và Mongoose ORM
 
-One-to-One, One-to-Many, Many-to-Many
+Kết nối MongoDB Atlas / local
 
-Trade-off giữa tốc độ đọc/ghi và tính toàn vẹn dữ liệu
+Định nghĩa Schema & Model
 
-Thực hành: thiết kế DB cho một ứng dụng mini (VD: blog, bán hàng)
+Kiểu dữ liệu và Validation
 
-B9: Quản trị MongoDB
+Tạo – đọc – cập nhật – xóa (CRUD) với Mongoose
 
-Cài đặt MongoDB (local & cloud)
+Quan hệ 1-nhiều, tham chiếu (ref)
 
-Backup/Restore
+12. Mongoose (P2) – Query nâng cao, Hooks & Aggregation
 
-User & role, authentication
+Mục tiêu: Làm chủ query engine và pipeline của MongoDB.
+Nội dung chính:
 
-Monitoring cơ bản
+Query builder trong Mongoose (find, select, populate, sort, limit, skip)
 
-B10: MongoDB nâng cao & Tổng kết
+Virtual fields & computed data
 
-Transactions (ACID trong MongoDB)
+Middleware (pre/post hooks)
 
-Replica set (tổng quan, ý nghĩa)
+Aggregation pipeline cơ bản
 
-Sharding (cơ bản)
+Thực hành: báo cáo thống kê từ dữ liệu
 
-Ôn tập, giải bài tập lớn cuối khóa
+13. Authentication & Authorization trong Express
+
+Mục tiêu: Bảo mật và kiểm soát truy cập API.
+Nội dung chính:
+
+Cơ chế xác thực (Session vs Token)
+
+JSON Web Token (JWT) cơ bản
+
+Quy trình đăng nhập, lưu token, verify middleware
+
+Phân quyền người dùng (Role-based Access)
+
+Lưu ý bảo mật: CORS, bcrypt, env variables
+
+Ví dụ: API login, register, refresh token
+
+14. Triển khai & Bảo trì ứng dụng NodeJS
+
+Mục tiêu: Hiểu cách đưa ứng dụng lên môi trường thật.
+Nội dung chính:
+
+Cấu hình môi trường .env
+
+Log & monitoring (Morgan, Winston)
+
+Quản lý tiến trình với PM2
+
+Build & deploy trên VPS / Render / Railway / Docker
+
+Tối ưu hiệu năng (cluster, caching cơ bản)
+
+Giới thiệu CI/CD và backup database
