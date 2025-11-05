@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_1"
+  targetNamespace="http://bpmn.io/schema/bpmn">
+  
+  <bpmn:process id="Process_XCWalletParking" isExecutable="true">
+  
+    <bpmn:startEvent id="StartEvent" name="Xe đăng ký ví XC">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <bpmn:task id="Task_RegisterWallet" name="Parking System ghi nhận ví XC">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent" targetRef="Task_RegisterWallet" />
+    
+    <bpmn:task id="Task_ServiceDone" name="Dịch vụ hoàn thành">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_RegisterWallet" targetRef="Task_ServiceDone" />
+    
+    <bpmn:task id="Task_DeductWallet_Service" name="Trừ ví XC (phí dịch vụ)">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_ServiceDone" targetRef="Task_DeductWallet_Service" />
+    
+    <bpmn:task id="Task_WaitParking" name="Xe tiếp tục đỗ trong bãi">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_DeductWallet_Service" targetRef="Task_WaitParking" />
+    
+    <bpmn:task id="Task_Checkout" name="Xe ra bãi - tính phí lưu đỗ">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_6</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_WaitParking" targetRef="Task_Checkout" />
+    
+    <bpmn:exclusiveGateway id="Gateway_CheckBalance" name="Số dư ví đủ?">
+      <bpmn:incoming>Flow_6</bpmn:incoming>
+      <bpmn:outgoing>Flow_7_yes</bpmn:outgoing>
+      <bpmn:outgoing>Flow_7_no</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Checkout" targetRef="Gateway_CheckBalance" />
+    
+    <!-- Case đủ tiền -->
+    <bpmn:task id="Task_DeductWallet_Remain" name="Trừ ví phần dư">
+      <bpmn:incoming>Flow_7_yes</bpmn:incoming>
+      <bpmn:outgoing>Flow_8_yes</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_7_yes" name="Đủ" sourceRef="Gateway_CheckBalance" targetRef="Task_DeductWallet_Remain" />
+
+    <bpmn:task id="Task_OpenGate_OK" name="Mở cổng xe ra">
+      <bpmn:incoming>Flow_8_yes</bpmn:incoming>
+      <bpmn:outgoing>Flow_End_Yes</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_8_yes" sourceRef="Task_DeductWallet_Remain" targetRef="Task_OpenGate_OK" />
+    <bpmn:sequenceFlow id="Flow_End_Yes" sourceRef="Task_OpenGate_OK" targetRef="EndEvent" />
+
+    <!-- Case không đủ tiền -->
+    <bpmn:task id="Task_PayManual" name="Thanh toán phần dư tại bốt (Tiền mặt/QR)">
+      <bpmn:incoming>Flow_7_no</bpmn:incoming>
+      <bpmn:outgoing>Flow_8_no</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_7_no" name="Không đủ" sourceRef="Gateway_CheckBalance" targetRef="Task_PayManual" />
+
+    <bpmn:task id="Task_OpenGate_Manual" name="Xác nhận thanh toán đủ & Mở cổng xe ra">
+      <bpmn:incoming>Flow_8_no</bpmn:incoming>
+      <bpmn:outgoing>Flow_End_No</bpmn:outgoing>
+    </bpmn:task>
+
+    <bpmn:sequenceFlow id="Flow_8_no" sourceRef="Task_PayManual" targetRef="Task_OpenGate_Manual" />
+    <bpmn:sequenceFlow id="Flow_End_No" sourceRef="Task_OpenGate_Manual" targetRef="EndEvent" />
+
+    <bpmn:endEvent id="EndEvent" name="Xe ra khỏi bãi (Kết thúc)" />
+
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Parking">
+    <bpmndi:BPMNPlane id="BPMNPlane_Parking" bpmnElement="Process_XCWalletParking">
+      <!-- Layout auto handled by bpmn.io -->
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -2,45 +2,32 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Middleware" addOnClass="text-left" markedAs="middleware" />
+				<PageHeading text="Router Module" addOnClass="text-left" markedAs="router-module" />
 				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					<b>Middleware</b> là một hàm trung gian có quyền truy cập vào đối tượng yêu cầu <FilePath>(req)</FilePath>,
-					đối tượng phản hồi <FilePath>(res)</FilePath>, và hàm <FilePath>next()</FilePath> tiếp theo trong chu kỳ yêu
-					cầu-phản hồi của ứng dụng. Các bạn có thể hiểu nó giống như các trạm kiểm soát giữa đường đi của request từ
-					client → server → response.
-					<br />
-					Đây là cấu trúc của một <b>Middleware</b>
+					Khi xây dựng các ứng dụng lớn với nhiều route, việc quản lý tất cả route trong một file duy nhất sẽ trở nên
+					khó khăn và lộn xộn. Thay vì định nghĩa tất cả route trong file chính (app.js hoặc server.js), chúng ta nên
+					tách các route theo chức năng hoặc đối tượng (ví dụ: users, products, auth) vào các file module riêng biệt.
 				</p>
 				<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white mt-5 leading-8">
+					Sau đó, chúng ta có thể import và sử dụng các router module này trong file chính của ứng dụng:
+				</p>
+				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white mt-5 leading-8">
+					Như vậy, chúng ta đã tách biệt các route theo module, giúp mã nguồn trở nên rõ ràng và dễ bảo trì hơn.
+				</p>
 
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8">
-						<span> <FilePath>next()</FilePath> và Chuỗi Middleware (Middleware Chain)</span>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<span>
-							<FilePath>next()</FilePath> Là hàm được gọi để chuyển quyền điều khiển sang hàm middleware kế tiếp trong
-							chuỗi xử lý của ứng dụng. <br />
-							Nếu một middleware không gọi next() hoặc không tự kết thúc bằng res.send(), request sẽ bị treo (hang) vì
-							Express không biết phải làm gì tiếp theo.</span
-						>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-						<span><b>Chuỗi xử lý (Chain)</b>: Express xử lý các middleware theo thứ tự chúng được khai báo.</span>
-					</li>
-				</ul>
-
-				<PageHeading text="Dùng middleware" addOnClass="text-left mt-5" markedAs="middleware-use" :lvl="2" />
+				<PageHeading text="RESTful Route Convention" addOnClass="text-left mt-5" markedAs="restful-route" :lvl="2" />
 				<p class="text-slate-900 dark:text-white mt-1 leading-8">
-					Để áp dụng middleware trong express chúng ta có thể dùng method <FilePath>use()</FilePath>.
+					REST (Representational State Transfer) là quy tắc thiết kế API chuẩn:
 				</p>
 				<div class="relative overflow-x-auto my-1 border rounded-lg">
 					<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
 						<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
 							<tr>
-								<th scope="col" class="px-5 py-3">Syntax</th>
-								<th scope="col" class="px-5 py-3">Scope</th>
-								<th scope="col" class="px-5 py-3">Desc</th>
+								<th scope="col" class="px-5 py-3">Method</th>
+								<th scope="col" class="px-5 py-3">Endpoint</th>
+								<th scope="col" class="px-5 py-3">Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -61,112 +48,7 @@
 						</tbody>
 					</table>
 				</div>
-				<p class="text-slate-900 dark:text-white mt-1 leading-8">
-					Ví dụ về việc sử dụng middleware, chain trong Express.js:
-				</p>
-				<VCodeBlock :code="b2" highlightjs lang="javascript" theme="atom-one-dark" />
 
-				<PageHeading text="Phân loại" addOnClass="text-left mt-5" markedAs="types" />
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					ExpressJS có nhiều loại middleware khác nhau phục vụ các mục đích cụ thể trong quá trình xử lý request và
-					response:
-				</p>
-				<PageHeading text="Application-level Middleware" addOnClass="text-left mt-5" markedAs="lvl1" :lvl="2" />
-				<div class="mx-3">
-					<ul class="pl-5">
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span>
-								<b>Mục đích:</b> Áp dụng các chức năng chung cho toàn bộ hoặc một phần lớn ứng dụng (như logger,
-								security headers).</span
-							>
-						</li>
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span>
-								<b>Sử dụng:</b> <FilePath>app.use()</FilePath> hoặc <FilePath>app.method()</FilePath> (ví dụ: app.get(),
-								app.post())</span
-							>
-						</li>
-						<li class="text-slate-900 dark:text-white my-2 marker:text-sky-400 list-disc">
-							<VCodeBlock :code="b3" highlightjs lang="javascript" theme="atom-one-dark" />
-						</li>
-					</ul>
-				</div>
-				<PageHeading text="Router-level Middleware" addOnClass="text-left mt-5" markedAs="lvl2" :lvl="2" />
-				<div class="mx-3">
-					<ul class="pl-5">
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span>
-								<b>Mục đích:</b> Tổ chức middleware theo từng nhóm route logic (ví dụ: tất cả route /admin đều cần kiểm
-								tra quyền admin).</span
-							>
-						</li>
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span> <b>Sử dụng:</b> Được gắn vào một đối tượng <FilePath>express.Router()</FilePath>.</span>
-						</li>
-						<li class="text-slate-900 dark:text-white my-2 marker:text-sky-400 list-disc">
-							<VCodeBlock :code="b4" highlightjs lang="javascript" theme="atom-one-dark" />
-						</li>
-					</ul>
-				</div>
-				<PageHeading text="Built-in Middleware" addOnClass="text-left mt-5" markedAs="lvl3" :lvl="2" />
-				<div class="mx-3">
-					<ul class="pl-5">
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span> <b>Mục đích:</b> Sử dụng các middleware được cung cấp sẵn từ express, hoặc các 3rd lib.</span>
-						</li>
-						<li class="text-slate-900 dark:text-white my-2 leading-8 marker:text-sky-400 list-disc">
-							<span>
-								<b>Ví dụ:</b> <FilePath>express.json()</FilePath>,
-								<FilePath>express.urlencoded({ extended: true })</FilePath>, <FilePath>CORS</FilePath>,
-								<FilePath>Morgan</FilePath>...</span
-							>
-						</li>
-					</ul>
-				</div>
-
-				<PageHeading text="Error-Handling" addOnClass="text-left mt-5" markedAs="errors-handling" />
-				<p class="text-slate-900 dark:text-white mt-5 leading-8">
-					Xử lý lỗi toàn cục trong hệ thống bằng cách sử dụng middleware. Middleware xử lý lỗi khác biệt ở chỗ nó có 4
-					tham số thay vì 3: <FilePath>(err, req, res, next)</FilePath>.
-				</p>
-				<div class="mx-3">
-					<ul class="pl-5">
-						<li
-							class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-						>
-							<span>
-								<b>Vị trí:</b>Middleware xử lý lỗi LUÔN PHẢI được khai báo cuối cùng, sau tất cả các app.use() và Route
-								Handler khác.</span
-							>
-						</li>
-						<li
-							class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-						>
-							<span> <b>Trigger:</b>Middleware xử lý lỗi sẽ chạy khi:</span>
-							<ul class="pl-5">
-								<li
-									class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-								>
-									<span> Một lỗi (Error object) được truyền vào hàm next() (ví dụ: next(error))</span>
-								</li>
-								<li
-									class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-								>
-									<span>
-										Có lỗi xảy ra trong các hàm bất đồng bộ (async) của route handler, hoặc các kỹ thuật
-										try/catch.</span
-									>
-								</li>
-							</ul>
-						</li>
-						<li
-							class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
-						>
-							<VCodeBlock :code="b5" highlightjs lang="javascript" theme="atom-one-dark" />
-						</li>
-					</ul>
-				</div>
-				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -260,38 +142,26 @@
 					`Middleware xử lý lỗi (error-handling middleware) có 4 tham số: (err, req, res, next) và được đặt cuối cùng trong chuỗi.`,
 					`Gọi next(err) trong middleware sẽ bỏ qua các middleware còn lại và chuyển tới error handler.`,
 				],
-				b1: `const myMiddleware = (req, res, next) => {
-    // 1. Thực hiện một công việc nào đó (ví dụ: ghi log, kiểm tra quyền)
-    console.log('Đã có một request được gửi đến.');
+				b1: `import express from 'express';
+const router = express.Router(); 
 
-    // 2. Chỉnh sửa đối tượng req/res (ví dụ: thêm thuộc tính vào req)
-    req.requestTime = Date.now();
+// Định nghĩa các route cho User
+router.get('/', (req, res) => {
+    res.send('Get all users (ESM)');
+});
 
-    // 3. Quyết định tiếp tục hay kết thúc chuỗi xử lý
-    // Nếu muốn tiếp tục chuyển giao cho middleware/route handler tiếp theo:
-    next();
+router.post('/', (req, res) => {
+    res.send('Create a new user (ESM)');
+});
 
-    // Nếu muốn kết thúc (gửi response ngay lập tức, ví dụ: lỗi 401 Unauthorized):
-    // return res.status(401).send('Bạn không có quyền truy cập.');
-};
+export default router;
 `,
-				b2: `// Middleware 1: Logger
-const loggerMiddleware = (req, res, next) => {
-    console.log("[LOG] Request: " + req.method + req.originalUrl + " | Time: " +new Date().toISOString());
-    next(); // Chuyển sang Middleware tiếp theo
-};
+				b2: `import userRouter from "./routes/users.js";
+// ... logic 
 
-// Middleware 2: Kiểm tra thời gian
-const timeCheckerMiddleware = (req, res, next) => {
-    if (new Date().getHours() < 9 || new Date().getHours() > 17) {
-        // Tự kết thúc request và không gọi next()
-        return res.status(503).send('Ứng dụng đang bảo trì, vui lòng quay lại trong giờ hành chính.');
-    }
-    next(); // Chuyển sang Route Handler
-};
-// Áp dụng Middleware toàn cục (chạy trước mọi route)
-app.use(loggerMiddleware);
-app.use(timeCheckerMiddleware);
+// mount router với prefix /users
+app.use("/users", userRouter);
+
 `,
 				b3: `app.use((req, res, next) => {
 console.log('App-level middleware');
@@ -340,21 +210,27 @@ app.use(errorHandler);
 				useMethods: [
 					{
 						id: 1,
-						syntax: 'app.use(middlewareFunc)',
-						scope: 'Áp dụng cho TẤT CẢ các Request.',
-						desc: 'Chạy cho mọi Request <b>(GET, POST, /users, /posts,...)</b>',
+						syntax: 'GET',
+						scope: '/users | /users/:id',
+						desc: 'Lấy danh sách, hoặc chi tiết',
 					},
 					{
 						id: 2,
-						syntax: `app.use('/api', middlewareFunc)`,
-						scope: 'Áp dụng cho các Request có đường dẫn BẮT ĐẦU bằng <b>/api</b>.',
-						desc: 'Chạy cho <b>/api/v1/users, /api/products,...</b>',
+						syntax: `POST`,
+						scope: '/users',
+						desc: 'Tạo mới',
 					},
 					{
 						id: 3,
-						syntax: `app.get('/users', middlewareFunc, routeHandler)`,
-						scope: 'Áp dụng cho Route cụ thể.',
-						desc: 'Chỉ chạy cho Request <b>GET /users.</b>',
+						syntax: `PUT/PATCH`,
+						scope: '/users',
+						desc: 'Cập nhật',
+					},
+					{
+						id: 4,
+						syntax: `DELETE`,
+						scope: '/users/:id',
+						desc: 'Xoá',
 					},
 				],
 			};
