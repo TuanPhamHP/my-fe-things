@@ -25,10 +25,10 @@
 		<p className="text-slate-900 dark:text-white mt-2 pl-5 font-bold ">1. Application-level Middleware</p>
 		<ul class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
-				Tạo middleware ghi log khi người dùng đăng xác thực thành công ở api
-				<FilePath>GET /api/users/me:</FilePath> theo dạng:
+				Tạo middleware ghi log khi người dùng request bất kì api nào. Ví dụ:
+
 				<br />
-				<b>"người dùng ${username} vừa đăng nhập vào hệ thống"</b>
+				<b>"[LOGGER] - 2025-01-01 12:23:34: GET | localhost:3000/api/users"</b>
 			</li>
 		</ul>
 		<p className="text-slate-900 dark:text-white mt-2 pl-5 font-bold ">2. Router-level Middleware</p>
@@ -50,12 +50,12 @@
 				Trả về lỗi 500 kèm nội dung: { error: "Nội dung lỗi" }
 			</li>
 		</ul>
-		<p className="text-slate-900 dark:text-white mt-2 pl-5 font-bold ">4. Third-party Middleware</p>
+		<!-- <p className="text-slate-900 dark:text-white mt-2 pl-5 font-bold ">4. Third-party Middleware</p>
 		<ul class="pl-10">
 			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 				Sử dụng middleware <b>cors</b> để xử lý lỗi cors khi call api
 			</li>
-		</ul>
+		</ul> -->
 		<p className="text-slate-900 dark:text-white mt-2 pl-0 font-bold ">Gợi ý cấu trúc thư mục:</p>
 		<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
 		<DocNextPage :pagination="pagePagination" />
@@ -106,7 +106,7 @@
 						link: '/nodejs/practice',
 					},
 				},
-				b1: `middleware-demo/
+				b1: `project/
 ├── index.js
 ├── routes/
 │   └── user.routes.js
