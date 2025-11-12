@@ -326,6 +326,7 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['nodejs'],
 	},
+
 	// {
 	// 	id: 'node-1',
 	// 	vneseName: 'Mapping Routes',
@@ -365,6 +366,17 @@ let baseListData: PracticeItem[] = [
 		eng: 'html header, header example',
 		description: 'Bài tập Nodejs về Middleware',
 		link: '/nodejs/practice/e_3-1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
+	{
+		id: 'node-6',
+		vneseName: 'ExpressJS, Mongoose P1',
+		eng: 'html header, header example',
+		description: 'Bài tập Nodejs về Express, Mongoose P1',
+		link: '/nodejs/practice/e_5',
 		previewImage: 'course_practice-1.png',
 		status_id: 1,
 		category: [],
