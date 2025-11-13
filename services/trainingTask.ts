@@ -382,6 +382,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-7',
+		vneseName: 'ExpressJS, Mongoose P2',
+		eng: 'html header, header example',
+		description: 'Bài tập Nodejs về Express, Mongoose P2',
+		link: '/nodejs/practice/e_6',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['nodejs'],
+	},
 	// {
 	// 	id: 'node-4',
 	// 	vneseName: 'RESTful API',
