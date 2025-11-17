@@ -21,6 +21,10 @@
 	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 	import Course from '@/components/Documentation/Course.vue';
 	import NestJSLogo from '@/assets/images/course-logo/nestjs.svg';
+	import NodeJSLogo from '@/assets/images/course-logo/nodejs.png';
+	import LaravelLogo from '@/assets/images/course-logo/laravel.png';
+	import ReactJSLogo from '@/assets/images/course-logo/reactjs.png';
+	import MongoDBLogo from '@/assets/images/course-logo/mongodb.png';
 	export default {
 		components: { Disclosure, DisclosureButton, DisclosurePanel, Course },
 		setup() {
@@ -49,7 +53,7 @@
 				},
 				{
 					courseName: `ReactJs`,
-					courseImg: `@/assets/images/documentation/course_reactjs.png`,
+					courseImg: ReactJSLogo,
 					docs: {
 						title: `Các tài liệu cơ bản về React như:`,
 						items: ['Cách cài đặt', 'Một số hooks cơ bản', 'Fetching data ...'],
@@ -63,7 +67,7 @@
 				},
 				{
 					courseName: `NodeJs`,
-					courseImg: `@/assets/images/documentation/course_nodejs.png`,
+					courseImg: NodeJSLogo,
 					docs: {
 						title: `Các tài liệu cơ bản về NodeJs như:`,
 						items: ['Cách cài đặt', 'Connection, RestFull Api ...', 'Database, MVC Architecture'],
@@ -105,7 +109,7 @@
 				},
 				{
 					courseName: `PHP & Laravel`,
-					courseImg: `@/assets/images/documentation/course_php.png`,
+					courseImg: LaravelLogo,
 					docs: {
 						title: `Các tài liệu cơ bản về PHP như:`,
 						items: ['Cách cài đặt', 'Connection, RestFull Api ...', 'Database, MVC Architecture'],
@@ -133,7 +137,7 @@
 				},
 				{
 					courseName: `MongoDB`,
-					courseImg: `@/assets/images/documentation/course_sql.png`,
+					courseImg: MongoDBLogo,
 					docs: {
 						title: `Các tài liệu cơ bản về MongoDB như:`,
 						items: ['Cách cài đặt', 'NoSQL', 'MongoDB Compass', 'Database ...'],

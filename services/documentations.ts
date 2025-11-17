@@ -1148,6 +1148,16 @@ const NodeJSBasicDocs = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-13',
+		vneseName: 'Authentication & Authorization trong Express',
+		eng: 'EJS template nodejs',
+		description: 'Authentication & Authorization với jwt và bcryptjs trong ExpressJS',
+		link: '/nodejs/documentation/auth',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ] as DocumentItem[];
 
 const NestJSBasicDocs = [
