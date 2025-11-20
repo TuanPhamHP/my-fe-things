@@ -215,6 +215,14 @@
 							'/api/foods | GET: Lấy danh sách món ăn - không yêu cầu đăng nhập. Có thể lọc theo tên, restaurant_id và sắp xếp theo price hoặc rating.',
 						],
 					},
+					// {
+					// 	id: 'qlnh',
+					// 	name: 'Luồng Đơn hàng (Nghiệp vụ cốt lõi)',
+					// 	items: [
+					// 		'Order',
+					// 		'/api/orders | POST: Tạo đơn hàng mới. Logic phức tạp: Tính totalAmount, lưu mảng OrderItem lồng.',
+					// 	],
+					// },
 				],
 			};
 		},
