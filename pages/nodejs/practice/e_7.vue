@@ -22,14 +22,14 @@
 			</li>
 		</ul>
 		<ul v-for="section in docs" :key="section.id" class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+			<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 				Collection <FilePath>{{ section.id }}</FilePath
 				>: {{ section.name }}.
 				<ul class="pl-10">
 					<li
 						v-for="item in section.items"
 						:key="item"
-						class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+						class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 					>
 						{{ item }}
 					</li>
@@ -39,15 +39,63 @@
 
 		<PageHeading text="Yêu cầu" addOnClass="text-left" markedAs="db-query" />
 		<ul v-for="section in tasks" :key="section.id" class="pl-10">
-			<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+			<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
 				<FilePath>{{ section.name }}</FilePath>
 				<ul class="pl-10">
 					<li
 						v-for="item in section.items"
 						:key="item"
-						class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+						class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 					>
-						{{ item }}
+						<div v-html="item"></div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="pl-10">
+			<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+				<FilePath>Luồng Đơn hàng (Nghiệp vụ cốt lõi)</FilePath>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders | POST:</FilePath> Tạo đơn hàng mới . Body bao gồm customer_id (lấy từ token), danh
+							sách món ăn (food_id và quantity). <br /><b>Rules:</b> Yêu cầu đăng nhập (Xác thực qua token). <br />Body
+							ví dụ:
+						</p>
+						<VCodeBlock :code="b1" highlightjs lang="javascript" theme="atom-one-dark" />
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders/me | GET:</FilePath> Xem lịch sử đơn hàng của chính mình (Xác thực qua token).
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders/:id | GET:</FilePath> Xem chi tiết đơn hàng. <br /><b>Rules:</b> Chỉ admin hoặc user
+							tạo đơn hàng mới được xem chi tiết đơn hàng.
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders/:id/in_progress | PUT:</FilePath> Cập nhật đơn hàng thành trạng thái
+							<b>in_progress</b>. <br /><b>Rules:</b> Chỉ admin mới được cập nhật trạng thái đơn hàng, và chỉ được cập
+							nhật từ <b>pending</b> sang <b>in_progress</b>.
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders/:id/shipping | PUT:</FilePath> Cập nhật đơn hàng thành trạng thái <b>shipping</b>.
+							<br /><b>Rules:</b> Chỉ admin mới được cập nhật trạng thái đơn hàng, và chỉ được cập nhật từ
+							<b>in_progress</b> sang <b>shipping</b>.
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<p class="mb-1">
+							<FilePath>/api/orders/:id/delivered | PUT:</FilePath> Cập nhật đơn hàng thành trạng thái <b>shipping</b>.
+							<br /><b>Rules:</b> Chỉ admin mới được cập nhật trạng thái đơn hàng, và chỉ được cập nhật từ
+							<b>shipping</b> sang <b>delivered</b>.
+						</p>
 					</li>
 				</ul>
 			</li>
@@ -101,26 +149,12 @@
 						link: '/mongo-db/practice',
 					},
 				},
-				b1: `blog-api/
-│
-├── models/
-│   ├── user.model.js
-│   ├── category.model.js
-│   ├── post.model.js
-│   └── comment.model.js
-├── controllers/
-│   └── user.controller.js
-├── config/
-│   └── database.config.js
-├── routes/
-│   └── user.routes.js
-├── seed.js
-└── main.js
-│
-├── .env
-├── package.json
-└── README.md
-`,
+				b1: `{
+	order_items: [
+			{ food_id: ObjectId("..."), quantity: 2 },
+			{ food_id: ObjectId("..."), quantity: 1 }
+		]
+}`,
 				docs: [
 					{
 						id: 'users',
@@ -209,10 +243,10 @@
 						id: 'qlnh',
 						name: 'Quản lý Nhà hàng & Món ăn',
 						items: [
-							'/api/restaurants | POST: Thêm nhà hàng mới - chỉ admin mới được thêm.',
-							'/api/restaurants/:id/foods | GET: Lấy danh sách món ăn của nhà hàng - không yêu cầu đăng nhập. Lọc theo tên.',
-							'/api/foods | POST: Thêm món ăn mới - chỉ admin mới được thêm.',
-							'/api/foods | GET: Lấy danh sách món ăn - không yêu cầu đăng nhập. Có thể lọc theo tên, restaurant_id và sắp xếp theo price hoặc rating.',
+							'/api/restaurants | POST: Thêm nhà hàng mới  <br /><b>Rules:</b>chỉ admin mới được thêm.',
+							'/api/restaurants/:id/foods | GET: Lấy danh sách món ăn của nhà hàng - không yêu cầu đăng nhập. Cho phép lọc theo: <b>name, rating</b>',
+							'/api/foods | POST: Thêm món ăn mới  <br /><b>Rules:</b> chỉ admin mới được thêm.',
+							'/api/foods | GET: Lấy danh sách món ăn - không yêu cầu đăng nhập. Cho phép lọc theo:  <b>name, restaurant_id</b> và sắp xếp theo <b>price</b> hoặc <b>rating</b>.',
 						],
 					},
 					// {
@@ -220,7 +254,7 @@
 					// 	name: 'Luồng Đơn hàng (Nghiệp vụ cốt lõi)',
 					// 	items: [
 					// 		'Order',
-					// 		'/api/orders | POST: Tạo đơn hàng mới. Logic phức tạp: Tính totalAmount, lưu mảng OrderItem lồng.',
+					// 		'/api/orders | POST: Tạo đơn hàng mới. Yêu cầu đăng nhập. Đơn hàng bao gồm customer_id (lấy từ token), danh sách món ăn (food_id và quantity), deliveryAddress.',
 					// 	],
 					// },
 				],

@@ -1158,6 +1158,16 @@ const NodeJSBasicDocs = [
 		status_id: 1,
 		apps: ['nodejs'],
 	},
+	{
+		id: 'node-14',
+		vneseName: 'Virtuals và Methods trong Mongoose',
+		eng: 'EJS template nodejs',
+		description: 'Tìm hiểu về Virtuals, Methods trong Mongoose',
+		link: '/nodejs/documentation/virtual-and-methods',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['nodejs'],
+	},
 ] as DocumentItem[];
 
 const NestJSBasicDocs = [
