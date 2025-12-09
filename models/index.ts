@@ -12,6 +12,7 @@ const appNames = [
 	'sql',
 	'nestjs',
 	'mongodb',
+	'python',
 	null,
 ] as const;
 

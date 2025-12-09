@@ -38,6 +38,11 @@ const practiceCategories = [
 		name: 'MongoDB',
 		en: 'MongoDB',
 	},
+	{
+		id: 8,
+		name: 'Python',
+		en: 'Python',
+	},
 ];
 const REACTBasicDocs = [
 	{
@@ -1224,6 +1229,18 @@ const NestJSBasicDocs = [
 		apps: ['nestjs'],
 	},
 ] as DocumentItem[];
+const PythonBasicDocs = [
+	{
+		id: 'py-1',
+		vneseName: 'Tổng quan về Python và cài đặt cơ bản',
+		eng: 'Installation',
+		description: 'Tổng quan về Python.',
+		link: '/python/documentation/installation',
+		previewImage: 'course_nodejs.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+] as DocumentItem[];
 
 const SQLBasicDocs = [
 	{
@@ -1481,6 +1498,7 @@ let baseListData: DocumentItem[] = [
 	...SQLBasicDocs,
 	...NestJSBasicDocs,
 	...MongoDBBasicDocs,
+	...PythonBasicDocs,
 ];
 class PaginationDefault {
 	constructor(

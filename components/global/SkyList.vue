@@ -1,9 +1,9 @@
 <template>
 	<ul class="pl-10">
 		<li
-			v-for="item in docs"
-			:key="item.id"
-			class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+			v-for="(item, index) in docs"
+			:key="index"
+			class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 		>
 			<div v-html="item.content"></div>
 
@@ -11,7 +11,7 @@
 				<li
 					v-for="sub in item.subList"
 					:key="sub"
-					class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc"
+					class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc"
 				>
 					<div v-html="sub"></div>
 				</li>
@@ -22,7 +22,7 @@
 <script lang="ts">
 	import { PropType } from 'nuxt/dist/app/compat/capi';
 	type OpeItem = {
-		id: number;
+		id?: number;
 		content?: string;
 		subList?: string[];
 	};
