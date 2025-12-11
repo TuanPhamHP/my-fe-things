@@ -122,20 +122,20 @@
 						link: '/php/practice',
 					},
 				},
-				// {
-				// 	courseName: `Python`,
-				// 	courseImg: PythonLogo,
-				// 	docs: {
-				// 		title: `Các tài liệu cơ bản về Python như:`,
-				// 		items: ['Data types', 'Function', 'OOP ...'],
-				// 		link: '/python/documentation',
-				// 	},
-				// 	practices: {
-				// 		title: `Các bài tập cơ bản:`,
-				// 		items: ['Bài tập cơ bản, dễ tiếp cận', 'Kèm hướng dẫn và ví dụ minh họa'],
-				// 		link: '/python/practice',
-				// 	},
-				// },
+				{
+					courseName: `Python`,
+					courseImg: PythonLogo,
+					docs: {
+						title: `Các tài liệu cơ bản về Python như:`,
+						items: ['Data types', 'Function', 'OOP ...'],
+						link: '/python/documentation',
+					},
+					practices: {
+						title: `Các bài tập cơ bản:`,
+						items: ['Bài tập cơ bản, dễ tiếp cận', 'Kèm hướng dẫn và ví dụ minh họa'],
+						link: '/python/practice',
+					},
+				},
 				{
 					courseName: `SQL`,
 					courseImg: `@/assets/images/documentation/course_sql.png`,

@@ -10,6 +10,25 @@
 				<SkyList :docs="concepts" />
 				<PageHeading text="Features, Useages, and Benefits" addOnClass="text-left" markedAs="fub" :lvl="2" />
 				<SkyList :docs="fub" />
+				<PageHeading text="Install" addOnClass="text-left" markedAs="installation" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Cài đặt Python rất đơn giản. Bạn chỉ cần truy cập trang chính thức của Python tại
+					<a
+						href="https://www.python.org/downloads/"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-blue-600 hover:underline"
+						>https://www.python.org/downloads/</a
+					>và tải về phiên bản mới nhất phù hợp với hệ điều hành của bạn (Windows, macOS, Linux).
+				</p>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Sau khi cài đặt hoàn tất, chúng ta có thể kiểm tra nhanh version đã cài đặt bằng lệnh sau trong terminal hoặc
+					command prompt:
+				</p>
+				<FakeTerminalUI :command="'py --version'">py --version</FakeTerminalUI>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Nếu thấy hiển thị version Python, tức là bạn đã cài đặt thành công! 😎
+				</p>
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />

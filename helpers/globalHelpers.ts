@@ -73,6 +73,9 @@ const mapPathToApp = (st: string): AppName => {
 	if (currentPathName.includes('nestjs')) {
 		return 'nestjs';
 	}
+	if (currentPathName.includes('python')) {
+		return 'python';
+	}
 	return null;
 };
 

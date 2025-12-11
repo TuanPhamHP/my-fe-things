@@ -584,6 +584,29 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['mongodb'],
 	},
+	// Python
+	{
+		id: 'py-1',
+		vneseName: 'Biến và kiểu dữ liệu trong Python',
+		eng: 'database, collection',
+		description: 'Biến và kiểu dữ liệu trong Python',
+		link: '/python/practice/e_1',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['python'],
+	},
+	{
+		id: 'py-2',
+		vneseName: 'Bài toán về Data types & operators',
+		eng: 'database, collection',
+		description: 'Bài toán về Data types & operators',
+		link: '/python/practice/e_2',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['python'],
+	},
 ];
 
 class PaginationDefault {

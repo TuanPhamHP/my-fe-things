@@ -339,6 +339,27 @@
 					tooltip: 'Thực hành',
 					showByApp: ['mongodb'],
 				},
+				// PYTHON
+				{
+					title: 'Tài liệu',
+					path: '/python/documentation',
+					pathNameMatch: /^python-documentation/,
+					permissionAccess: [],
+					icon: 'solar:notebook-bookmark-outline',
+					isGroup: false,
+					tooltip: 'Tài liệu',
+					showByApp: ['python'],
+				},
+				{
+					title: 'Thực hành',
+					path: '/python/practice',
+					pathNameMatch: /^python-practice/,
+					permissionAccess: [],
+					icon: 'solar:programming-broken',
+					isGroup: false,
+					tooltip: 'Thực hành',
+					showByApp: ['python'],
+				},
 			]);
 
 			const currentPathActive = computed((): string => {
