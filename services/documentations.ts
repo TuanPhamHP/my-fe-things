@@ -1270,6 +1270,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'flow-statements',
+		vneseName: 'Flow Statements',
+		eng: 'Installation',
+		description: 'Các câu lệnh điều khiển trong Python.',
+		link: '/python/documentation/flow-statements',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'functions',
+		vneseName: 'Functions, Parameters, và Callables',
+		eng: 'Installation',
+		description: ' Tìm hiểu về Functions, Parameters, và Callables trong Python.',
+		link: '/python/documentation/functions',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
