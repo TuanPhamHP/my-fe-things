@@ -607,6 +607,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['python'],
 	},
+	{
+		id: 'py-3',
+		vneseName: 'Bài toán về control flow',
+		eng: 'database, collection',
+		description: 'Bài toán về control flow',
+		link: '/python/practice/e_3',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['python'],
+	},
 ];
 
 class PaginationDefault {
