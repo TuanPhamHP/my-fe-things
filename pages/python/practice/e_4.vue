@@ -15,6 +15,10 @@
 		<SkyList
 			:docs="[
 				{
+					id: 0,
+					content: 'Danh mục sản phẩm',
+				},
+				{
 					id: 1,
 					content: 'Mã sản phẩm - Dùng làm key chính',
 				},
@@ -23,11 +27,11 @@
 					content: 'Tên sản phẩm',
 				},
 				{
-					id: 2,
+					id: 3,
 					content: 'Giá sản phẩm',
 				},
 				{
-					id: 3,
+					id: 4,
 					content: 'Số lượng sản phẩm',
 				},
 			]"
@@ -100,6 +104,10 @@
 						id: 3,
 						content:
 							'Viết hàm tim_san_pham(): Cho người dùng nhập mã sản phẩm, in ra thông tin chi tiết. Nếu không thấy, thông báo lỗi.',
+					},
+					{
+						id: 4,
+						content: 'Viết hàm danh_muc(): Trả ra danh sách danh mục sản phẩm (không trùng).',
 					},
 				],
 			};

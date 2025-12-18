@@ -618,6 +618,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['python'],
 	},
+	{
+		id: 'py-4',
+		vneseName: 'Bài toán về các kiểu dữ liệu collection P1',
+		eng: 'database, collection',
+		description: 'Bài toán về các kiểu dữ liệu collection P1',
+		link: '/python/practice/e_4',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['python'],
+	},
 ];
 
 class PaginationDefault {
