@@ -1290,6 +1290,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'list-tuple',
+		vneseName: 'List và Tuple trong Python',
+		eng: 'Installation',
+		description: 'Làm quen với data dạng collection: Lists và Tuples trong Python.',
+		link: '/python/documentation/list-tuple',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'dict-set',
+		vneseName: 'Dictionaries và Set trong Python',
+		eng: 'Installation',
+		description: 'Làm quen với data dạng collection: Dictionaries và Sets trong Python.',
+		link: '/python/documentation/dict-set',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
