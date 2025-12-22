@@ -1310,6 +1310,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'iterators-generators',
+		vneseName: 'Iterators, Generators',
+		eng: 'Installation',
+		description: 'Làm quen với Iterators, Generators trong Python.',
+		link: '/python/documentation/iterators-generators',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'decorators',
+		vneseName: 'Decorators',
+		eng: 'Installation',
+		description: 'Decorators trong Python.',
+		link: '/python/documentation/decorators',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
