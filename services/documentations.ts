@@ -1330,6 +1330,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'oop-p1',
+		vneseName: 'OOP - P1',
+		eng: 'Installation',
+		description: 'OOP trong Python - Phần 1: Tính đóng gói và kế thừa.',
+		link: '/python/documentation/oop-p1',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'oop-p2',
+		vneseName: 'OOP - P2',
+		eng: 'Installation',
+		description: 'OOP trong Python - Phần 2: Tính trừu tượng và tính đa hình.',
+		link: '/python/documentation/oop-p2',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
