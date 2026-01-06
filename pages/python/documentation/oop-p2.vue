@@ -90,6 +90,28 @@
 					</li>
 				</ul>
 				<VCodeBlock :code="b2" highlightjs lang="python" theme="atom-one-dark" />
+				<PageHeading text="Polymorphism" addOnClass="text-left mt-4" markedAs="polymo" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tính đa hình (Polymorphism) là khả năng của các đối tượng thuộc các lớp khác nhau có thể được xử lý thông qua
+					cùng một giao diện (interface) chung. Điều này cho phép các đối tượng có thể được sử dụng thay thế cho nhau mà
+					không cần biết đối tượng cụ thể là gì.
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Giúp giảm sự phụ thuộc (Decoupling): Giúp hệ thống linh hoạt, dễ thay đổi logic bên dưới mà không ảnh hưởng
+						đến code đang sử dụng đối tượng đó.
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Người dùng hàm không cần biết đối tượng cụ thể là gì, chỉ cần biết nó có phương thức cần thiết.
+					</li>
+					<li class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Ví dụ: Hàm <FilePath>start_device(device)</FilePath> không quan tâm đối tượng truyền vào là
+						<FilePath>Speaker</FilePath>, <FilePath>TV</FilePath> hay <FilePath>Radio</FilePath>, miễn là đối tượng đó
+						có phương thức <FilePath>play()</FilePath>.
+					</li>
+				</ul>
+				<VCodeBlock :code="b7" highlightjs lang="python" theme="atom-one-dark" />
+
 				<LessonSum :sumData="lessonSum" />
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -244,6 +266,26 @@ class D( C, B ):
 d_obj = D()
 d_obj.greet() # Python sẽ chọn B hay C?
 print(D.__mro__) # Kết quả: Là thứ tự tìm kiếm methods`,
+				b7: `class Speaker:
+    def play(self):
+        return "Loa đang phát nhạc: Bass cực mạnh!"
+
+class TV:
+    def play(self):
+        return "TV đang chiếu phim: Âm thanh vòm!"
+
+class Radio:
+    def play(self):
+        return "Radio đang phát tin tức: Âm thanh Mono."
+
+# Hàm đa hình: không quan tâm 'device' là gì, miễn là có hàm play()
+def start_device(device):
+    print(device.play())
+
+# Sử dụng
+devices = [Speaker(), TV(), Radio()]
+for d in devices:
+    start_device(d)`,
 			};
 		},
 		mounted() {
