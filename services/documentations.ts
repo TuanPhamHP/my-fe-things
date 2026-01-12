@@ -1350,6 +1350,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'serialization-n-deserialization',
+		vneseName: 'Serialization và Deserialization',
+		eng: 'Serialization and Deserialization',
+		description: 'Tìm hiểu về Serialization và Deserialization trong Python.',
+		link: '/python/documentation/serialization-n-deserialization',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'working-with-fast-api',
+		vneseName: 'Triển khai server với Fast API',
+		eng: 'Serialization and Deserialization',
+		description: 'Cùng triển khai một server đơn giản với Fast API.',
+		link: '/python/documentation/working-with-fast-api',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [

@@ -651,6 +651,17 @@ let baseListData: PracticeItem[] = [
 		category: [],
 		apps: ['python'],
 	},
+	{
+		id: 'py-7',
+		vneseName: 'Fast API - Xây dựng API đơn giản',
+		eng: 'database, collection',
+		description: 'Fast API- Xây dựng API đơn giản',
+		link: '/python/practice/e_7',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['python'],
+	},
 ];
 
 class PaginationDefault {
