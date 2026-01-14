@@ -151,6 +151,9 @@
 					<br />
 					2) Khi hover vào thẻ có class là <b>`my-example-block`</b> thì đổi màu text của thẻ <b>`p`</b> thành màu đỏ
 				</p>
+				<p class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
+				Bài tập 2: Thực hiện bài tập theo  <a class="text-blue-500 underline" href="https://tuanphamhp.github.io/bai-tap/bai-tap-tong-hop-b1.html" target="_blank">đường dẫn</a>
+				</p>
 				<!-- END -->
 
 				<DocNextPage :pagination="pagePagination" />
