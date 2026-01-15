@@ -1370,6 +1370,16 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'fastapi-db-integration',
+		vneseName: 'FastAPI & Database Integration',
+		eng: 'FastAPI & Database Integration',
+		description: 'Database Integration với FastAPI.',
+		link: '/python/documentation/fastapi-db-integration',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
@@ -1637,37 +1647,37 @@ class PaginationDefault {
 	) {
 		this.next = next
 			? {
-					title: next.vneseName || '',
-					link: next.link,
-			  }
+				title: next.vneseName || '',
+				link: next.link,
+			}
 			: {
-					title: '',
-					link: '/',
-			  };
+				title: '',
+				link: '/',
+			};
 		this.prev = prev
 			? {
-					title: prev.vneseName || '',
-					link: prev.link,
-			  }
+				title: prev.vneseName || '',
+				link: prev.link,
+			}
 			: {
-					title: 'Trở về danh sách Doc',
-					link: '/',
-			  };
+				title: 'Trở về danh sách Doc',
+				link: '/',
+			};
 	}
 	next: {
 		title: string;
 		link: string;
 	} = {
-		title: '',
-		link: '/',
-	};
+			title: '',
+			link: '/',
+		};
 	prev: {
 		title: string;
 		link: string;
 	} = {
-		title: 'Trở về danh sách Doc',
-		link: '/html-css-js-basic/documentation',
-	};
+			title: 'Trở về danh sách Doc',
+			link: '/html-css-js-basic/documentation',
+		};
 }
 const getbaseListFromLocalStorage = (): DocumentItem[] | null => {
 	const listData = localStorage.getItem('listDocumentItem');
