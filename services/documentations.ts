@@ -1380,6 +1380,26 @@ const PythonBasicDocs = [
 		status_id: 1,
 		apps: ['python'],
 	},
+	{
+		id: 'dto',
+		vneseName: 'DTO',
+		eng: 'DTO',
+		description: 'DTO trong Python.',
+		link: '/python/documentation/dto',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
+	{
+		id: 'relationship-between-tables',
+		vneseName: 'Quan hệ giữa các bảng',
+		eng: 'Relationship between tables',
+		description: 'Quan hệ giữa các bảng trong cơ sở dữ liệu với SQLAlchemy.',
+		link: '/python/documentation/relationship-between-tables',
+		previewImage: 'course_python.png',
+		status_id: 1,
+		apps: ['python'],
+	},
 ] as DocumentItem[];
 
 const SQLBasicDocs = [
