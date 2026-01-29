@@ -106,6 +106,8 @@
 				},
 			]"
 		/>
+		<p class="text-slate-900 dark:text-white mt-0 leading-8 text-bold">Post body mẫu khi tạo order:</p>
+		<VCodeBlock :code="code" highlightjs lang="python" theme="atom-one-dark" />
 		<p class="text-slate-900 dark:text-white mt-0 leading-8 text-bold">Nâng cao:</p>
 		<SkyList
 			:docs="[
@@ -188,6 +190,15 @@
 						content: 'Viết hàm danh_muc(): Trả ra danh sách danh mục sản phẩm (không trùng).',
 					},
 				],
+				code: `{
+  "user_id": 1,
+  "items": [
+    {
+      "product_id": 2,
+      "quantity": 100
+    }
+  ]
+}`,
 			};
 		},
 		computed: {},
