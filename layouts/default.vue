@@ -1,5 +1,6 @@
 <template>
 	<div id="app" :class="`${currentTheme}`">
+		<!-- <slot> </slot> -->
 		<!-- <appLoader v-if="globalLoading" /> -->
 		<div class="mx-0 my-0" style="display: flex">
 			<Sidebar v-if="isLogged" />
@@ -15,7 +16,6 @@
 					:class="isLogged ? 'px-0 py-3 sm:px-2 sm:py-2 2xl:px-6 2xl:py-6' : 'px-0'"
 					class="dark:bg-slate-500 bg-[#f1f1f1]"
 				>
-					<!-- <BreadCrumb v-if="isLogged" /> -->
 					<slot> </slot>
 				</div>
 			</div>
