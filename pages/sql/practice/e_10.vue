@@ -156,6 +156,7 @@
 		TabPanels,
 		TabPanel,
 	} from '@headlessui/vue';
+	import { usePagination } from '@/composables/usePagination';
 	export default {
 		components: {
 			PageMarkBook,
@@ -171,6 +172,9 @@
 			Tab,
 			TabPanels,
 			TabPanel,
+		},
+		setup() {
+			return usePagination('practice', 'sql-10', 'sql')
 		},
 		data() {
 			return {
@@ -257,16 +261,6 @@ FROM (SELECT 1 UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION
 LIMIT 100;
 `,
 				counter: 0,
-				pagePagination: {
-					next: {
-						title: 'Bài 2',
-						link: '/sql/practice/e_2',
-					},
-					prev: {
-						title: 'Danh sách',
-						link: '/sql/practice',
-					},
-				},
 			};
 		},
 		computed: {},

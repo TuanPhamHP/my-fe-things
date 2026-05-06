@@ -450,6 +450,17 @@ let baseListData: PracticeItem[] = [
 		apps: ['sql'],
 	},
 	{
+		id: 'sql-3pro',
+		vneseName: 'Bài tập cơ bản 3 Pro ',
+		eng: 'html header, header example',
+		description: 'Bài tập cơ bản SQL (P3) - Aggregate Function',
+		link: '/sql/practice/aggregate-function',
+		previewImage: 'course_practice-1.png',
+		status_id: 1,
+		category: [],
+		apps: ['sql'],
+	},
+	{
 		id: 'sql-4',
 		vneseName: 'Bài tập cơ bản 4',
 		eng: 'html header, header example',
@@ -678,41 +689,41 @@ let baseListData: PracticeItem[] = [
 class PaginationDefault {
 	constructor(
 		prev: { link: string; vneseName: string } | PracticeItem | null,
-		next: { link: string; vneseName: string } | PracticeItem | null
+		next: { link: string; vneseName: string } | PracticeItem | null,
 	) {
 		this.next = next
 			? {
-				title: next.vneseName || '',
-				link: next.link,
-			}
+					title: next.vneseName || '',
+					link: next.link,
+			  }
 			: {
-				title: '',
-				link: '/',
-			};
+					title: '',
+					link: '/',
+			  };
 		this.prev = prev
 			? {
-				title: prev.vneseName || '',
-				link: prev.link,
-			}
+					title: prev.vneseName || '',
+					link: prev.link,
+			  }
 			: {
-				title: 'Trở về danh sách Bài tập',
-				link: '/html-css-js-basic/practice',
-			};
+					title: 'Trở về danh sách Bài tập',
+					link: '/html-css-js-basic/practice',
+			  };
 	}
 	next: {
 		title: string;
 		link: string;
 	} = {
-			title: '',
-			link: '/',
-		};
+		title: '',
+		link: '/',
+	};
 	prev: {
 		title: string;
 		link: string;
 	} = {
-			title: 'Trở về danh sách Doc',
-			link: '/html-css-js-basic/documentation',
-		};
+		title: 'Trở về danh sách Doc',
+		link: '/html-css-js-basic/documentation',
+	};
 }
 const getbaseListFromLocalStorage = (): PracticeItem[] | null => {
 	const listData = localStorage.getItem('listPracticeItem');
@@ -814,7 +825,7 @@ const base = () => {
 							res(
 								initSuccessResponse({
 									pagination: new PaginationDefault(nData[idx - 1] || null, nData[idx + 1]),
-								})
+								}),
 							);
 						}
 					}, 10);

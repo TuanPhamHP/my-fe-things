@@ -101,6 +101,7 @@
 		TabPanels,
 		TabPanel,
 	} from '@headlessui/vue';
+	import { usePagination } from '@/composables/usePagination';
 	export default {
 		components: {
 			PageMarkBook,
@@ -116,6 +117,9 @@
 			Tab,
 			TabPanels,
 			TabPanel,
+		},
+		setup() {
+			return usePagination('practice', 'sql-4', 'sql')
 		},
 		data() {
 			return {
@@ -184,16 +188,6 @@ INSERT INTO employee_project (id, employee_id, project_id, role) VALUES
 (15, 15, 5, 'kiểm thử viên');
 `,
 				counter: 0,
-				pagePagination: {
-					next: {
-						title: 'Bài 2',
-						link: '/sql/practice/e_2',
-					},
-					prev: {
-						title: 'Danh sách',
-						link: '/sql/practice',
-					},
-				},
 			};
 		},
 		computed: {},

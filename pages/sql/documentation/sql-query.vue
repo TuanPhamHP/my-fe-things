@@ -119,10 +119,14 @@
 					<li
 						v-for="item in whereConditions"
 						:key="item.symbol"
-						class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content"
+						class="text-slate-900 dark:text-white my-2 leading-8 text-lg text-content flex items-baseline gap-2 flex-wrap"
 					>
-						<span
-							><FilePath>{{ item.symbol }}</FilePath> {{ item.desc }}.</span
+						<FilePath>{{ item.symbol }}</FilePath>
+						<span>{{ item.desc }}</span>
+						<span class="text-slate-400 dark:text-slate-500 text-sm">—</span>
+						<code
+							class="text-sm font-bold text-sky-500 dark:text-sky-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded"
+							>{{ item.small_example }}</code
 						>
 					</li>
 				</ul>
@@ -379,6 +383,69 @@
 						<VCodeBlock :code="b22" highlightjs lang="sql" theme="atom-one-dark" />
 					</div>
 				</ClientOnly>
+				<!-- CLAUSE ORDER -->
+				<PageHeading text="Thứ tự mệnh đề" addOnClass="text-left h-0 opacity-0" markedAs="with-clause-order" :lvl="2" />
+				<PageHeading text="Thứ tự viết các mệnh đề trong SELECT" addOnClass="text-left mt-5" :lvl="3" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Các mệnh đề trong câu lệnh <b>SELECT</b> phải được viết <b>đúng thứ tự cố định</b>. Viết sai thứ tự sẽ gây lỗi
+					cú pháp ngay cả khi logic đúng.
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="bSyntaxOrder" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-4 leading-8 mb-1">Một số lưu ý quan trọng:</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>JOIN</FilePath> không phải là một clause độc lập — nó là phần mở rộng của <FilePath>FROM</FilePath>,
+						đứng ngay bên dưới và trước <FilePath>WHERE</FilePath>. SQL engine xử lý <FilePath>FROM</FilePath> và toàn bộ
+						<FilePath>JOIN</FilePath> trong cùng một bước để xác định tập dữ liệu đầu vào.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>WHERE</FilePath> lọc dữ liệu <b>trước khi nhóm</b> — không dùng được với aggregate function
+						(<FilePath>COUNT</FilePath>, <FilePath>SUM</FilePath>, ...). Vì tại thời điểm
+						<FilePath>WHERE</FilePath> chạy, <FilePath>GROUP BY</FilePath> chưa được thực thi nên các giá trị tổng hợp
+						chưa tồn tại. Muốn lọc sau khi nhóm phải dùng <FilePath>HAVING</FilePath>.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>GROUP BY</FilePath> phải đứng trước <FilePath>HAVING</FilePath> và <FilePath>ORDER BY</FilePath>.
+						Vì <FilePath>HAVING</FilePath> lọc trên kết quả đã nhóm, còn <FilePath>ORDER BY</FilePath> sắp xếp tập dữ
+						liệu cuối cùng — cả hai đều cần <FilePath>GROUP BY</FilePath> hoàn thành trước.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>ORDER BY</FilePath> luôn đứng sau <FilePath>GROUP BY</FilePath> và <FilePath>HAVING</FilePath>. Vì
+						sắp xếp chỉ có ý nghĩa khi dữ liệu đã được lọc và nhóm hoàn toàn — sắp xếp sớm hơn sẽ bị overwrite bởi các
+						bước sau.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<FilePath>LIMIT</FilePath> và <FilePath>OFFSET</FilePath> luôn đứng <b>cuối cùng</b> và đi kèm nhau.
+						<FilePath>OFFSET n</FilePath> bỏ qua <i>n</i> dòng đầu tiên, <FilePath>LIMIT m</FilePath> lấy tối đa
+						<i>m</i> dòng tiếp theo — cặp này là nền tảng của phân trang (pagination). Vì cả hai cắt bớt tập kết quả
+						<b>sau khi</b> toàn bộ pipeline hoàn tất, đặt sớm hơn sẽ cho kết quả sai.
+					</li>
+				</ul>
+				<PageHeading
+					text="Thứ tự thực thi (Execution Order)"
+					addOnClass="text-left mt-5"
+					markedAs="with-execution-order"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					SQL engine <b>không thực thi</b> theo thứ tự bạn viết. Hiểu thứ tự thực thi giúp tránh nhầm lẫn khi dùng
+					<FilePath>alias</FilePath> hoặc aggregate function:
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="bExecutionOrder" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-2 leading-8">
+					Ví dụ thực tế: vì <FilePath>WHERE</FilePath> thực thi trước <FilePath>SELECT</FilePath>, bạn
+					<b>không thể dùng alias</b> đặt trong SELECT ở mệnh đề WHERE. Tương tự, vì <FilePath>HAVING</FilePath> thực
+					thi sau <FilePath>GROUP BY</FilePath>, nó có thể lọc theo aggregate function còn WHERE thì không.
+				</p>
+
 				<p class="text-slate-900 dark:text-white leading-8">
 					Lý thuyết đủ rồi, làm
 					<a
@@ -403,8 +470,8 @@
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import DocNextPage from '@/components/DocNextPage.vue';
 	import VCodeBlock from '@wdns/vue-code-block';
-	import { apiResponde } from 'models';
 	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
+	import { usePagination } from '@/composables/usePagination';
 	export default {
 		components: {
 			PageMarkBook,
@@ -429,18 +496,18 @@
 					},
 				},
 				whereConditions: [
-					{ symbol: '=', desc: 'Bằng' },
-					{ symbol: '<>', desc: 'Khác' },
-					{ symbol: '!=', desc: 'Khác' },
-					{ symbol: '>', desc: 'Lớn hơn' },
-					{ symbol: '<', desc: 'Nhỏ hơn' },
-					{ symbol: '>=', desc: 'Lớn hơn hoặc bằng' },
-					{ symbol: '<=', desc: 'Nhỏ hơn hoặc bằng' },
-					{ symbol: 'AND', desc: 'Kết hợp nhiều điều kiện' },
-					{ symbol: 'OR', desc: 'Một trong các điều kiện đúng' },
-					{ symbol: 'IN', desc: 'Kiểm tra giá trị thuộc danh sách' },
-					{ symbol: 'LIKE', desc: 'Tìm kiếm theo mẫu' },
-					{ symbol: 'BETWEEN', desc: 'Kiểm tra giá trị trong khoảng' },
+					{ symbol: '=', desc: 'Bằng', small_example: 'age = 30' },
+					{ symbol: '<>', desc: 'Khác', small_example: 'age <> 30' },
+					{ symbol: '!=', desc: 'Khác', small_example: 'age != 30' },
+					{ symbol: '>', desc: 'Lớn hơn', small_example: 'age > 30' },
+					{ symbol: '<', desc: 'Nhỏ hơn', small_example: 'age < 30' },
+					{ symbol: '>=', desc: 'Lớn hơn hoặc bằng', small_example: 'age >= 30' },
+					{ symbol: '<=', desc: 'Nhỏ hơn hoặc bằng', small_example: 'age <= 30' },
+					{ symbol: 'AND', desc: 'Kết hợp nhiều điều kiện', small_example: "age > 25 AND city = 'HN'" },
+					{ symbol: 'OR', desc: 'Một trong các điều kiện đúng', small_example: "city = 'HN' OR city = 'HCM'" },
+					{ symbol: 'IN', desc: 'Kiểm tra giá trị thuộc danh sách', small_example: "city IN ('HN', 'HCM', 'DN')" },
+					{ symbol: 'LIKE', desc: 'Tìm kiếm theo mẫu', small_example: "name LIKE 'A%'" },
+					{ symbol: 'BETWEEN', desc: 'Kiểm tra giá trị trong khoảng', small_example: 'age BETWEEN 20 AND 30' },
 				],
 				b1: `SELECT column1, column2, ... 
 FROM table_name;
@@ -522,17 +589,28 @@ FROM Employees e
 LEFT JOIN Departments d
 ON e.department_id = d.id;
 `,
+				bSyntaxOrder: `-- Thứ tự VIẾT (bắt buộc phải đúng thứ tự này)
+SELECT [DISTINCT] column1, column2, ...
+FROM table_name
+    [JOIN_TYPE] other_table ON condition   -- JOIN là phần của FROM, không phải clause riêng
+WHERE condition
+GROUP BY column_name
+HAVING condition
+ORDER BY column_name [ASC | DESC]
+LIMIT number OFFSET offset_value;`,
+				bExecutionOrder: `-- 1. FROM (+ JOIN)  → xác định nguồn dữ liệu (JOIN là một phần của bước này)
+-- 2. WHERE          → lọc dòng (trước khi nhóm)
+-- 3. GROUP BY       → nhóm dữ liệu
+-- 4. HAVING         → lọc nhóm (sau khi nhóm)
+-- 5. SELECT         → chọn các cột cần trả về
+-- 6. DISTINCT       → loại bỏ dòng trùng lặp
+-- 7. ORDER BY       → sắp xếp kết quả
+-- 8. LIMIT + OFFSET → bỏ qua n dòng đầu, lấy tối đa m dòng tiếp theo`,
 			};
 		},
-		mounted() {
-			this.getPagination();
+		setup() {
+			return usePagination('documentation', 'sql-7', 'sql')
 		},
-		methods: {
-			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'sql', currentDocId: 'sql-7' }).then((res: apiResponde) => {
-					this.pagePagination = res?.data?.pagination || [];
-				});
-			},
-		},
+		methods: {},
 	};
 </script>

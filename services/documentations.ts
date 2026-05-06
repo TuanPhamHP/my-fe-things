@@ -1487,6 +1487,26 @@ const SQLBasicDocs = [
 		apps: ['sql'],
 	},
 	{
+		id: 'sql-7.1',
+		vneseName: 'D4 - Truy vấn dữ liệu Nâng cao (Subquery)',
+		eng: 'SQL Sub Query',
+		description: 'Tìm hiểu về cách Truy vấn dữ liệu trong SQL với subquery',
+		link: '/sql/documentation/sql-sub-query',
+		previewImage: 'course_sql.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
+	{
+		id: 'sql-7.2',
+		vneseName: 'D4 - Aggregate Function',
+		eng: 'SQL Aggregate Function',
+		description: 'Tìm hiểu về cách sử dụng Aggregate Function',
+		link: '/sql/documentation/aggregate-function',
+		previewImage: 'course_sql.png',
+		status_id: 1,
+		apps: ['sql'],
+	},
+	{
 		id: 'sql-8',
 		vneseName: 'D5 - View & SQL Procedure',
 		eng: 'SQL Query',
@@ -1673,7 +1693,7 @@ let baseListData: DocumentItem[] = [
 class PaginationDefault {
 	constructor(
 		prev: { link: string; vneseName: string } | DocumentItem | null,
-		next: { link: string; vneseName: string } | DocumentItem | null
+		next: { link: string; vneseName: string } | DocumentItem | null,
 	) {
 		this.next = next
 			? {
@@ -1788,15 +1808,13 @@ const base = () => {
 							return isMatchApp;
 						});
 						const idx = nData.findIndex(o => o.id === currentDoc);
-						console.log(currentDoc);
-
 						if (idx === -1) {
 							res(initSuccessResponse({ pagination: new PaginationDefault(null, null) }));
 						} else {
 							res(
 								initSuccessResponse({
 									pagination: new PaginationDefault(nData[idx - 1] || null, nData[idx + 1]),
-								})
+								}),
 							);
 						}
 					}, 10);

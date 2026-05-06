@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(awk '/data\\\\\\(\\\\\\) \\\\{/,/^\\\\t\\\\t\\\\},$/' t:/my-gitlab/my-pets/my-fe-things/pages/sql/practice/__TRACKED_VAR__.vue)"
+    ]
+  }
+}
