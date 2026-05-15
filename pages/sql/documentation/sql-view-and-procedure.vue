@@ -77,7 +77,7 @@
 				<ClientOnly>
 					<div class="col-span-1">
 						<VCodeBlock
-							:code="`SHOW PROCEDURE STATUS WHERE db = db_name;`"
+							:code="`SHOW PROCEDURE STATUS WHERE Db = 'ten_database';`"
 							highlightjs
 							lang="sql"
 							theme="atom-one-dark"
@@ -230,7 +230,7 @@ LEFT JOIN departments d ON e.department_id = d.id;`,
 				b3: `SELECT * FROM v_user_department;`,
 				b4: `DROP VIEW v_employee_department;`,
 				b5: `DELIMITER //
-CREATE PROCEDURE ten_procedure (tham_so_kieu_dulieu)
+CREATE PROCEDURE ten_procedure (IN ten_tham_so KIEU_DU_LIEU)
 BEGIN
     -- Câu lệnh SQL ở đây
 END //
@@ -274,10 +274,18 @@ CALL GetTotalSalary(1, @total);
 SELECT @total; -- Lấy giá trị biến @total
 `,
 				b10: `SET @total = 0;  -- Khai báo biến để nhận kết quả
-CALL GetTotalEmployeesByDept(1, @total);
-SELECT @total AS TotalEmployees;
+CALL GetTotalSalary(1, @total);
+SELECT @total AS TotalSalary;
 `,
-				b11: `SET @salary = 5000;  -- Khởi tạo mức lương ban đầu
+				b11: `DELIMITER //
+CREATE PROCEDURE DoubleSalary(INOUT salary DECIMAL(10,2))
+BEGIN
+    SET salary = salary * 2;
+END //
+DELIMITER ;
+
+-- Gọi procedure
+SET @salary = 5000;  -- Khởi tạo mức lương ban đầu
 CALL DoubleSalary(@salary);
 SELECT @salary AS NewSalary;  -- Kết quả: 10000
 `,
