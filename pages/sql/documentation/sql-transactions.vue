@@ -8,34 +8,43 @@
 					tác phải được thực hiện trọn vẹn, hoặc không thực hiện gì cả. Đây chính là lúc Transactions phát huy vai trò
 					của mình.
 				</p>
-
 				<ul class="pl-5">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span
-							>Transaction (giao dịch) trong SQL là một tập hợp các câu lệnh SQL thực thi như một đơn vị duy nhất.</span
-						>
+						<span>Transaction (giao dịch) trong SQL là một tập hợp các câu lệnh SQL thực thi như một đơn vị duy nhất.</span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span>Nếu tất cả các câu lệnh trong transaction thành công, dữ liệu sẽ được lưu (COMMIT).</span>
+						<span>Nếu tất cả các câu lệnh trong transaction thành công, dữ liệu sẽ được lưu (<b>COMMIT</b>).</span>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span>Nếu có lỗi xảy ra, tất cả thay đổi sẽ bị hủy bỏ (ROLLBACK).</span>
+						<span>Nếu có lỗi xảy ra, tất cả thay đổi sẽ bị hủy bỏ (<b>ROLLBACK</b>).</span>
 					</li>
 				</ul>
+
+				<PageHeading text="Chuẩn bị dữ liệu" addOnClass="text-left mt-5" markedAs="seed-data" :lvl="1" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tất cả ví dụ trong bài sử dụng database <FilePath>transaction_demo</FilePath> với hai bảng
+					<FilePath>accounts</FilePath> (tài khoản ngân hàng) và <FilePath>transaction_logs</FilePath> (lịch sử giao
+					dịch). Hãy chạy script dưới đây trước khi bắt đầu.
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="seedData" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+
 				<PageHeading text="ACID của Transactions" addOnClass="text-left mt-5" markedAs="acid" :lvl="1" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					ACID là viết tắt của 4 đặc điểm nổi bật của Transactions giúp chúng ta đảm bảo tính toàn vẹn dữ liệu.
+					ACID là viết tắt của 4 đặc điểm quan trọng giúp Transactions đảm bảo tính toàn vẹn dữ liệu.
 				</p>
 				<ul class="pl-5 marker:text-sky-400 list-disc">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
-							<b>Atomicity (Tính nguyên tử)</b>:Transaction phải được thực hiện toàn bộ hoặc không thực hiện gì cả.
-							<br />
+							<b>Atomicity (Tính nguyên tử)</b>: Transaction phải được thực hiện toàn bộ hoặc không thực hiện gì cả.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Giả sử bạn rút 500.000 VNĐ từ tài khoản ngân hàng để chuyển sang một ví điện tử. Nếu số tiền đã bị trừ
-									khỏi tài khoản nhưng chưa cộng vào ví điện tử, thì giao dịch bị lỗi. Atomicity đảm bảo rằng hoặc cả
-									hai thao tác (trừ tiền và cộng tiền) đều thành công, hoặc không thao tác nào diễn ra.
+									Alice chuyển 500,000 VNĐ cho Bob. Nếu tiền đã bị trừ khỏi tài khoản Alice nhưng chưa cộng vào Bob
+									thì hệ thống bị lỗi — Atomicity đảm bảo hoặc cả hai thao tác thành công, hoặc không thao tác nào
+									xảy ra.
 								</li>
 							</ul>
 						</div>
@@ -43,12 +52,10 @@
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
 							<b>Consistency (Tính nhất quán)</b>: Dữ liệu phải duy trì trạng thái nhất quán trước và sau transaction.
-
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Một cửa hàng có 10 chiếc điện thoại trong kho. Nếu một khách hàng đặt hàng, số lượng tồn kho phải giảm
-									xuống còn 9. Nếu transaction bị lỗi giữa chừng (ví dụ: giảm số lượng tồn kho thành công nhưng không
-									ghi nhận đơn hàng), thì hệ thống cần rollback để đảm bảo tính nhất quán.
+									Tổng số dư toàn hệ thống không đổi sau giao dịch chuyển tiền. Nếu Alice chuyển 500,000 cho Bob,
+									tổng tài sản vẫn giữ nguyên — tiền chỉ di chuyển từ tài khoản này sang tài khoản khác.
 								</li>
 							</ul>
 						</div>
@@ -58,10 +65,8 @@
 							<b>Isolation (Tính độc lập)</b>: Các transaction độc lập và không ảnh hưởng lẫn nhau.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Hai khách hàng cùng lúc đặt hàng một chiếc điện thoại duy nhất còn trong kho. Nếu không có cơ chế
-									isolation phù hợp, cả hai giao dịch có thể đọc cùng một số lượng tồn kho (1 chiếc) và cả hai đều được
-									xác nhận. Điều này dẫn đến việc có nhiều đơn hàng hơn số lượng thực tế. Isolation đảm bảo rằng mỗi
-									giao dịch sẽ được thực thi tách biệt mà không bị ảnh hưởng bởi các giao dịch khác.
+									Hai giao dịch cùng lúc đọc số dư của Alice (5,000,000) và đều muốn trừ tiền — Isolation đảm bảo
+									mỗi giao dịch xử lý tuần tự, tránh trường hợp trừ tiền hai lần cùng một lúc.
 								</li>
 							</ul>
 						</div>
@@ -71,183 +76,144 @@
 							<b>Durability (Tính bền vững)</b>: Khi một transaction được commit, dữ liệu sẽ được lưu vĩnh viễn.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Một công ty chuyển lương cho nhân viên. Nếu hệ thống báo đã chuyển thành công, nhưng sau đó bị mất
-									điện đột ngột, thì số tiền vẫn phải được ghi nhận là đã chuyển trong tài khoản nhân viên khi hệ thống
-									khởi động lại. Điều này đảm bảo rằng dữ liệu đã được commit sẽ không bị mất dù có sự cố xảy ra.
+									Sau khi COMMIT thành công, dù server bị restart hay mất điện đột ngột, số dư trong tài khoản vẫn
+									được bảo toàn và không bị mất.
 								</li>
 							</ul>
 						</div>
 					</li>
 				</ul>
+
 				<PageHeading text="Transactions Syntax" addOnClass="text-left mt-5" markedAs="syntax" :lvl="1" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Trong MySQL và MariaDB, chúng ta có thể quản lý transactions thông qua các lệnh sau:
+					Trong MySQL, chúng ta quản lý transactions thông qua ba lệnh chính:
 				</p>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					<ClientOnly>
 						<div class="col-span-1">
 							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">Syntax:</p>
-							<VCodeBlock :code="b1" highlightjs lang="sql" theme="atom-one-dark" />
-							<ul class="pl-5 marker:text-sky-400 list-disc">
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span
-										>Giả sử chúng ta có tình huống Alice chuyển 200$ cho Bob. Nếu một trong các thao tác thất bại, dữ
-										liệu cần được khôi phục về trạng thái ban đầu.</span
-									>
+							<VCodeBlock :code="syntaxBasic" highlightjs lang="sql" theme="atom-one-dark" />
+							<ul class="pl-5 marker:text-sky-400 list-disc mt-3">
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>START TRANSACTION</b>: Bắt đầu một giao dịch mới.
 								</li>
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span
-										><b>COMMIT</b> Nếu cả hai câu lệnh UPDATE thành công, số dư của Alice và Bob sẽ được cập nhật.</span
-									>
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>COMMIT</b>: Lưu vĩnh viễn tất cả thay đổi trong giao dịch.
 								</li>
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span><b>ROLLBACK</b> Nếu một trong hai câu lệnh thất bại, transaction sẽ bị rollback.</span>
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>ROLLBACK</b>: Hủy bỏ tất cả thay đổi, khôi phục dữ liệu về trạng thái trước START TRANSACTION.
 								</li>
 							</ul>
 						</div>
 						<div class="col-span-1">
-							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">
-								Ví dụ thực tế: Chuyển tiền giữa 2 tài khoản.
-							</p>
-							<VCodeBlock :code="b2" highlightjs lang="sql" theme="atom-one-dark" />
+							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">Ví dụ: Alice chuyển 200,000 cho Bob.</p>
+							<VCodeBlock :code="exBasic" highlightjs lang="sql" theme="atom-one-dark" />
 						</div>
 					</ClientOnly>
 				</div>
-				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Viết một procedure <FilePath>Transfers_Between(IN source_id, IN des_id, IN amount)</FilePath>
-					để chuyển khoản giữa 2 tài khoản.
-					<br />
-					<b>COMMIT</b>: nếu đúng stk, số tiền chuyển đúng (không lớn hơn tài nguồn, không âm). Còn lại thì
-					<b>ROLLBACK</b>.
-				</p>
 
 				<PageHeading text="Savepoint trong Transactions" addOnClass="text-left mt-5" markedAs="save-point" :lvl="1" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Trong một số tình huống, chúng ta có thể muốn rollback một phần của transaction thay vì toàn bộ. Savepoint
-					giúp chia nhỏ transactions để rollback từng phần.
+					Savepoint giúp chia nhỏ transaction — khi có lỗi ta có thể rollback về một điểm cụ thể thay vì hủy toàn bộ.
 				</p>
 				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					<ClientOnly>
 						<div class="col-span-1">
 							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">Syntax:</p>
-							<VCodeBlock :code="b3" highlightjs lang="sql" theme="atom-one-dark" />
-							<ul class="pl-5 marker:text-sky-400 list-disc">
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span>
-										Giả sử chúng ta có một hệ thống thanh toán hóa đơn tiện ích (điện, nước, internet). Một khách hàng
-										thực hiện thanh toán ba hóa đơn khác nhau trong một transaction.
-									</span>
+							<VCodeBlock :code="syntaxSavepoint" highlightjs lang="sql" theme="atom-one-dark" />
+							<ul class="pl-5 marker:text-sky-400 list-disc mt-3">
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>SAVEPOINT sp_name</b>: Tạo điểm đánh dấu tại vị trí hiện tại trong transaction.
 								</li>
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span>
-										Lệnh <b>ROLLBACK TO sp2;</b> giúp giữ lại thanh toán hóa đơn điện và nước, nhưng hủy thanh toán hóa
-										đơn internet.
-									</span>
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>ROLLBACK TO sp_name</b>: Quay lại điểm đánh dấu, hủy các thay đổi sau đó nhưng vẫn giữ
+									transaction đang chạy.
 								</li>
-								<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-									<span>Cuối cùng, transaction được commit để xác nhận các thay đổi hợp lệ.</span>
+								<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content">
+									<b>RELEASE SAVEPOINT sp_name</b>: Xóa điểm đánh dấu (không rollback, không commit).
 								</li>
 							</ul>
 						</div>
 						<div class="col-span-1">
 							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">
-								Ví dụ thực tế: Chuyển tiền giữa 2 tài khoản.
+								Ví dụ: Alice thanh toán 3 hóa đơn, hủy hóa đơn cuối.
 							</p>
-							<VCodeBlock :code="b4" highlightjs lang="sql" theme="atom-one-dark" />
+							<VCodeBlock :code="exSavepoint" highlightjs lang="sql" theme="atom-one-dark" />
 						</div>
 					</ClientOnly>
 				</div>
 
 				<PageHeading text="Isolation Levels" addOnClass="text-left mt-5" markedAs="iso-level" :lvl="1" />
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Trong SQL, mức độ cô lập (isolation level) là một khái niệm thuộc về quản lý giao dịch (transaction
-					management) trong cơ sở dữ liệu. Nó định nghĩa mức độ mà một giao dịch được tách biệt khỏi các giao dịch khác
-					đang chạy đồng thời. Nói cách khác, mức độ cô lập kiểm soát cách các giao dịch tương tác với nhau và đảm bảo
-					tính toàn vẹn dữ liệu khi nhiều người dùng hoặc tiến trình truy cập cùng một dữ liệu cùng lúc.
-					<br />
-					<br />
-					Mức độ cô lập quyết định cách các transactions tương tác với nhau. Một số mức độ phổ biến trong MySQL và
-					MariaDB. Có 4 mức độ cô lập tiêu chuẩn được định nghĩa trong SQL (theo chuẩn ANSI/ISO), từ thấp đến cao:
+					Isolation Level kiểm soát mức độ tách biệt giữa các transactions chạy đồng thời. MySQL mặc định dùng
+					<b>REPEATABLE READ</b>. Để kiểm tra hoặc thay đổi:
+				</p>
+				<ClientOnly>
+					<div class="col-span-1 mb-3">
+						<VCodeBlock :code="syntaxIsolation" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Có 4 mức độ cô lập tiêu chuẩn (theo ANSI/ISO), từ thấp đến cao:
 				</p>
 				<ul class="pl-5 marker:text-sky-400 list-disc">
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
 							<b>Read Uncommitted (Đọc chưa cam kết)</b>: Giao dịch có thể đọc dữ liệu mà giao dịch khác đã thay đổi
-							nhưng chưa được cam kết.
-							<br />
+							nhưng chưa COMMIT.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Giả sử bạn đang xem số dư tài khoản ngân hàng trong khi một giao dịch khác đang trừ 1.000.000 VNĐ
-									nhưng chưa hoàn tất. Với mức Read Uncommitted, bạn có thể thấy số dư đã giảm dù giao dịch kia chưa cam
-									kết. Nếu giao dịch đó bị hủy (rollback), số dư bạn thấy sẽ không chính xác. Đây gọi là "dirty read".
+									Bạn đang xem số dư tài khoản Alice trong khi một giao dịch khác đang trừ 1,000,000 nhưng chưa
+									COMMIT. Với Read Uncommitted, bạn thấy số dư đã giảm. Nếu giao dịch đó ROLLBACK, số dư bạn thấy
+									là không chính xác — gọi là "dirty read".
 								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
-							<b>Read Committed (Đọc đã cam kết)</b>: Giao dịch chỉ đọc dữ liệu đã được cam kết bởi giao dịch khác.
+							<b>Read Committed (Đọc đã cam kết)</b>: Giao dịch chỉ đọc dữ liệu đã được COMMIT bởi giao dịch khác.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Trong một cửa hàng online, bạn kiểm tra số lượng tồn kho của một sản phẩm (10 chiếc). Trong lúc bạn
-									xem, một khách hàng khác mua 2 chiếc và giao dịch của họ đã hoàn tất. Với Read Committed, bạn sẽ thấy
-									số lượng tồn kho cập nhật còn 8 chiếc, tránh được "dirty read". Tuy nhiên, nếu bạn kiểm tra lại sau đó
-									và có giao dịch khác hoàn tất, số lượng có thể thay đổi (non-repeatable read).
+									Bạn đọc số dư Alice là 5,000,000. Trong lúc đó, một giao dịch khác COMMIT xong và trừ 500,000.
+									Lần đọc tiếp theo bạn thấy 4,500,000 — dữ liệu thay đổi trong cùng một transaction của bạn, gọi
+									là "non-repeatable read".
 								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
-							<b>Repeatable Read (Đọc lặp lại được)</b>: Đảm bảo dữ liệu đã đọc trong giao dịch không bị thay đổi bởi
-							giao dịch khác cho đến khi giao dịch kết thúc.
+							<b>Repeatable Read (Đọc lặp lại được)</b>: Đảm bảo dữ liệu đã đọc trong giao dịch không bị thay đổi
+							bởi giao dịch khác cho đến khi giao dịch kết thúc.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Hai khách hàng cùng đặt mua một sản phẩm còn 1 chiếc trong kho. Với Repeatable Read, khi khách hàng
-									đầu tiên đọc số lượng tồn kho (1 chiếc), dữ liệu này được "khóa" cho đến khi giao dịch của họ hoàn
-									tất. Khách hàng thứ hai sẽ không thấy số lượng thay đổi cho đến khi giao dịch đầu tiên kết thúc, tránh
-									được "non-repeatable read". Tuy nhiên, nếu khách hàng khác thêm sản phẩm mới vào kho, "phantom read"
-									vẫn có thể xảy ra.
+									Bạn đọc số dư Alice là 5,000,000. Dù giao dịch khác có COMMIT thay đổi số dư, bạn vẫn đọc được
+									5,000,000 trong suốt transaction. Tuy nhiên nếu giao dịch khác chèn thêm bản ghi mới, bạn có thể
+									thấy dữ liệu "ma" — gọi là "phantom read".
 								</li>
 							</ul>
 						</div>
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
-							<b>Serializable (Tuần tự hóa)</b>: Mức cô lập cao nhất, đảm bảo các giao dịch hoàn toàn tách biệt như thể
-							được thực hiện tuần tự.
+							<b>Serializable (Tuần tự hóa)</b>: Mức cô lập cao nhất — các transaction thực thi như thể tuần tự, không
+							đồng thời.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
-									Một công ty bán vé xem phim với 100 ghế. Hai khách hàng cùng đặt mua 2 vé cuối cùng (ghế 99 và 100).
-									Với Serializable, giao dịch của khách hàng đầu tiên sẽ khóa toàn bộ danh sách ghế cho đến khi hoàn
-									tất, đảm bảo khách hàng thứ hai không thể đặt trùng vé. Điều này tránh được tất cả vấn đề như dirty
-									read, non-repeatable read, và phantom read, nhưng có thể làm chậm hệ thống do khóa chặt chẽ.
+									Hai giao dịch cùng đặt mua 1 vé máy bay cuối cùng. Serializable khóa toàn bộ tập dữ liệu liên
+									quan, đảm bảo giao dịch thứ hai phải chờ giao dịch đầu tiên xong. Không xảy ra dirty read,
+									non-repeatable read hay phantom read — nhưng hiệu suất thấp hơn.
 								</li>
 							</ul>
 						</div>
 					</li>
 				</ul>
 
-				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					<b>Tại sao cần mức độ cô lập?</b>
+				<p class="text-slate-900 dark:text-white mt-3 leading-8">
+					<b>Tóm tắt các vấn đề có thể gặp theo mức isolation:</b>
 				</p>
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span>
-							<b>Đảm bảo tính toàn vẹn dữ liệu (data integrity):</b>Khi nhiều giao dịch chạy đồng thời, nếu không có cô
-							lập, dữ liệu có thể bị hỏng hoặc không nhất quán (ví dụ: hai giao dịch cùng cập nhật một giá trị dẫn đến
-							xung đột).
-						</span>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
-						<span>
-							<b>Cân bằng giữa hiệu suất và độ tin cậy:</b>Mức cô lập cao (như Serializable) đảm bảo an toàn tuyệt đối
-							nhưng tốn tài nguyên và làm chậm hệ thống. Mức thấp (như Read Uncommitted) nhanh hơn nhưng dễ gặp lỗi. Tùy
-							ứng dụng, ta chọn mức phù hợp.
-						</span>
-					</li>
-				</ul>
-				<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+				<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-2">
 					<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
 						<tr>
 							<th scope="col" class="px-5 py-3">Isolation Level</th>
@@ -271,7 +237,137 @@
 						</tr>
 					</tbody>
 				</table>
-				<!--  -->
+
+				<PageHeading text="Ví dụ thực hành" addOnClass="text-left mt-5" markedAs="vi-du-thuc-hanh" :lvl="1" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Tất cả ví dụ dưới đây sử dụng database <FilePath>transaction_demo</FilePath> đã tạo ở trên. Nếu cần reset
+					dữ liệu về trạng thái ban đầu, hãy chạy lại script seed ở phần <b>Chuẩn bị dữ liệu</b>.
+				</p>
+
+				<PageHeading
+					text="Ví dụ 1: Chuyển tiền thành công (COMMIT)"
+					addOnClass="text-left mt-5"
+					markedAs="ex1-commit"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Alice chuyển 500,000 VNĐ cho Bob. Cả hai lệnh UPDATE đều thành công → COMMIT để lưu thay đổi.
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="ex1Code" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+
+				<PageHeading
+					text="Ví dụ 2: Số dư không đủ – ROLLBACK"
+					addOnClass="text-left mt-5"
+					markedAs="ex2-rollback"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Charlie chỉ có 1,000,000 VNĐ nhưng muốn chuyển 2,000,000 cho Alice. Sau khi thực hiện UPDATE, ta kiểm tra
+					số dư bị âm rồi dùng ROLLBACK để hủy toàn bộ giao dịch.
+				</p>
+				<ClientOnly>
+					<div class="col-span-1">
+						<VCodeBlock :code="ex2Code" highlightjs lang="sql" theme="atom-one-dark" />
+					</div>
+				</ClientOnly>
+
+				<PageHeading
+					text="Ví dụ 3: Transaction trong Stored Procedure"
+					addOnClass="text-left mt-5"
+					markedAs="ex3-procedure"
+					:lvl="2"
+				/>
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Thực tế, logic kiểm tra thường được đóng gói trong Stored Procedure. Procedure
+					<FilePath>TransferMoney</FilePath> tự động kiểm tra số dư và ROLLBACK nếu không đủ tiền, COMMIT nếu hợp lệ,
+					đồng thời ghi lại log vào bảng <FilePath>transaction_logs</FilePath>.
+				</p>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+					<ClientOnly>
+						<div class="col-span-1">
+							<b>Tạo Procedure</b>
+							<VCodeBlock :code="ex3Procedure" highlightjs lang="sql" theme="atom-one-dark" />
+						</div>
+						<div class="col-span-1">
+							<b>Kiểm tra</b>
+							<VCodeBlock :code="ex3Test" highlightjs lang="sql" theme="atom-one-dark" />
+						</div>
+					</ClientOnly>
+				</div>
+
+				<PageHeading text="Câu hỏi thực hành" addOnClass="text-left mt-5" markedAs="cau-hoi-thuc-hanh" :lvl="1" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					Dùng database <FilePath>transaction_demo</FilePath>. Chạy lại seed data trước mỗi câu nếu cần reset số dư về
+					ban đầu.
+				</p>
+				<ul class="pl-5">
+					<li class="text-slate-900 dark:text-white mb-8 leading-8 text-lg text-content marker:text-sky-400 list-decimal">
+						<p class="mt-0 mb-1">
+							<b>Câu 1 – COMMIT cơ bản:</b> Bob muốn chuyển 1,000,000 VNĐ cho Charlie. Viết một transaction thực hiện
+							hai lệnh UPDATE. Kiểm tra số dư của Bob và Charlie trước và sau khi COMMIT để xác nhận kết quả đúng.
+						</p>
+						<p class="text-slate-500 dark:text-slate-400 text-base mt-1">
+							<i>Gợi ý: Bob bắt đầu với 3,000,000 → sau COMMIT còn 2,000,000. Charlie 1,000,000 → 2,000,000.</i>
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-8 leading-8 text-lg text-content marker:text-sky-400 list-decimal">
+						<p class="mt-0 mb-1">
+							<b>Câu 2 – SAVEPOINT:</b> Alice cần thanh toán 3 hóa đơn trong một transaction: tiền điện 200,000 →
+							tiền nước 100,000 → tiền thuê nhà 5,000,000. Dùng SAVEPOINT sau mỗi lần thanh toán. Sau khi trừ tiền
+							thuê nhà, kiểm tra số dư Alice — nếu âm thì ROLLBACK về điểm sau khi trả tiền nước và COMMIT phần còn
+							lại.
+						</p>
+						<p class="text-slate-500 dark:text-slate-400 text-base mt-1">
+							<i
+								>Gợi ý: Alice bắt đầu 5,000,000. Sau điện + nước còn 4,700,000. Sau thuê nhà còn -300,000 → âm →
+								ROLLBACK TO savepoint sau nước → COMMIT → kết quả cuối: 4,700,000.</i
+							>
+						</p>
+					</li>
+					<li class="text-slate-900 dark:text-white mb-8 leading-8 text-lg text-content marker:text-sky-400 list-decimal">
+						<p class="mt-0 mb-1">
+							<b>Câu 3 – Procedure với Transaction:</b> Viết stored procedure
+							<FilePath>SafeDeposit(account_name VARCHAR(100), amount DECIMAL(10,2))</FilePath> để nạp tiền vào tài
+							khoản. Điều kiện: nếu <FilePath>amount &lt;= 0</FilePath> thì báo lỗi bằng
+							<FilePath>SIGNAL SQLSTATE '45000'</FilePath>. Nếu hợp lệ thì START TRANSACTION → UPDATE balance → INSERT
+							log vào <FilePath>transaction_logs</FilePath> → COMMIT.
+						</p>
+						<p class="text-slate-500 dark:text-slate-400 text-base mt-1">
+							<i
+								>Gợi ý: Dùng <FilePath>SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '...'</FilePath> để báo lỗi. Kiểm
+								tra: CALL SafeDeposit('Alice', 500000) → thành công. CALL SafeDeposit('Bob', -100) → báo lỗi.</i
+							>
+						</p>
+					</li>
+				</ul>
+
+				<PageHeading text="Tổng kết" addOnClass="text-left mt-5" markedAs="tong-ket" :lvl="1" />
+				<p class="text-slate-900 dark:text-white mt-0 leading-8">
+					<b>Trong bài này, chúng ta đã học:</b>
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white mb-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Khái niệm Transaction và 4 tính chất ACID (Atomicity, Consistency, Isolation, Durability)
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Sử dụng <FilePath>START TRANSACTION</FilePath>, <FilePath>COMMIT</FilePath>,
+						<FilePath>ROLLBACK</FilePath> để kiểm soát giao dịch
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Dùng <FilePath>SAVEPOINT</FilePath> để rollback một phần transaction thay vì hủy toàn bộ
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						4 Isolation Levels và khi nào nên dùng từng mức (Read Uncommitted → Serializable)
+					</li>
+					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Tích hợp Transaction vào Stored Procedure kết hợp với xử lý lỗi bằng
+						<FilePath>SIGNAL SQLSTATE</FilePath>
+					</li>
+				</ul>
 
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -341,44 +437,167 @@
 						use_case: 'Sử dụng trong hệ thống đấu giá để đảm bảo không có hai người cùng đặt giá thầu một lúc.',
 					},
 				],
-				b1: `START TRANSACTION;  -- Bắt đầu giao dịch
--- Thực hiện các câu lệnh SQL
-COMMIT;  -- Lưu thay đổi nếu tất cả các câu lệnh thành công
-ROLLBACK;  -- Hủy bỏ thay đổi nếu có lỗi
-`,
-				b2: `CREATE TABLE accounts (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50),
-    balance DECIMAL(10,2)
+				seedData: `CREATE DATABASE IF NOT EXISTS transaction_demo;
+USE transaction_demo;
+
+DROP TABLE IF EXISTS transaction_logs;
+DROP TABLE IF EXISTS accounts;
+
+CREATE TABLE accounts (
+    id      INT PRIMARY KEY AUTO_INCREMENT,
+    name    VARCHAR(100) NOT NULL,
+    balance DECIMAL(10,2) NOT NULL DEFAULT 0
 );
 
-INSERT INTO accounts (name, balance) VALUES ('Alice', 1000.00), ('Bob', 500.00);
+CREATE TABLE transaction_logs (
+    id           INT PRIMARY KEY AUTO_INCREMENT,
+    from_account VARCHAR(100),
+    to_account   VARCHAR(100),
+    amount       DECIMAL(10,2),
+    status       VARCHAR(20) DEFAULT 'SUCCESS',
+    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO accounts (name, balance) VALUES
+    ('Alice',   5000000.00),
+    ('Bob',     3000000.00),
+    ('Charlie', 1000000.00);
+
+-- Kiểm tra dữ liệu
+SELECT * FROM accounts;`,
+				syntaxBasic: `START TRANSACTION;  -- Bắt đầu giao dịch
+
+-- Thực hiện các câu lệnh SQL tại đây
+
+COMMIT;    -- Lưu tất cả thay đổi vào database
+-- ROLLBACK; -- Hoặc hủy bỏ nếu phát hiện lỗi`,
+				exBasic: `USE transaction_demo;
 
 START TRANSACTION;
 
-UPDATE accounts SET balance = balance - 200 WHERE name = 'Alice';
-UPDATE accounts SET balance = balance + 200 WHERE name = 'Bob';
+-- Alice chuyển 200,000 cho Bob
+UPDATE accounts SET balance = balance - 200000 WHERE name = 'Alice';
+UPDATE accounts SET balance = balance + 200000 WHERE name = 'Bob';
 
-ROLLBACK -- Nếu thất bại;
-COMMIT -- Nếu thành công;
-`,
-				b3: `SAVEPOINT savepoint_name;  -- Tạo điểm lưu
-ROLLBACK TO savepoint_name;  -- Quay lại điểm lưu
-RELEASE SAVEPOINT savepoint_name;  -- Xóa điểm lưu
-`,
-				b4: `START TRANSACTION;
-UPDATE accounts SET balance = balance - 100 WHERE name = 'Alice';
-SAVEPOINT sp1; -- Thanh toán hóa đơn điện
+COMMIT;
 
-UPDATE accounts SET balance = balance - 50 WHERE name = 'Alice';
-SAVEPOINT sp2; -- Thanh toán hóa đơn nước
+-- Kiểm tra kết quả
+-- Alice: 5,000,000 - 200,000 = 4,800,000
+-- Bob:   3,000,000 + 200,000 = 3,200,000
+SELECT * FROM accounts;`,
+				syntaxSavepoint: `SAVEPOINT ten_savepoint;          -- Tạo điểm đánh dấu
+ROLLBACK TO ten_savepoint;        -- Quay lại điểm đánh dấu
+RELEASE SAVEPOINT ten_savepoint;  -- Xóa điểm đánh dấu`,
+				exSavepoint: `USE transaction_demo;
 
-UPDATE accounts SET balance = balance - 200 WHERE name = 'Alice';
-SAVEPOINT sp3; -- Thanh toán hóa đơn internet
+START TRANSACTION;
 
--- Giả sử có lỗi xảy ra khi thanh toán hóa đơn internet
-ROLLBACK TO sp2;  -- Quay lại trạng thái sau khi thanh toán hóa đơn nước
-COMMIT;`,
+-- Thanh toán hóa đơn điện: 300,000
+UPDATE accounts SET balance = balance - 300000 WHERE name = 'Alice';
+SAVEPOINT sp_after_electricity;
+
+-- Thanh toán hóa đơn nước: 150,000
+UPDATE accounts SET balance = balance - 150000 WHERE name = 'Alice';
+SAVEPOINT sp_after_water;
+
+-- Thanh toán hóa đơn internet: 500,000 → giả sử gặp lỗi
+UPDATE accounts SET balance = balance - 500000 WHERE name = 'Alice';
+
+-- Hủy chỉ hóa đơn internet, giữ lại điện + nước
+ROLLBACK TO sp_after_water;
+
+COMMIT;
+
+-- Kết quả: 5,000,000 - 300,000 - 150,000 = 4,550,000
+SELECT * FROM accounts WHERE name = 'Alice';`,
+				syntaxIsolation: `-- Xem mức isolation hiện tại của session
+SELECT @@TRANSACTION_ISOLATION;
+
+-- Thay đổi cho session hiện tại
+SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+
+-- Thay đổi chỉ cho transaction tiếp theo
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;`,
+				ex1Code: `USE transaction_demo;
+
+-- Số dư ban đầu: Alice 5,000,000 | Bob 3,000,000
+SELECT * FROM accounts;
+
+START TRANSACTION;
+
+UPDATE accounts SET balance = balance - 500000 WHERE name = 'Alice';
+UPDATE accounts SET balance = balance + 500000 WHERE name = 'Bob';
+
+COMMIT;
+
+-- Kết quả sau COMMIT:
+-- Alice: 5,000,000 - 500,000 = 4,500,000
+-- Bob:   3,000,000 + 500,000 = 3,500,000
+SELECT * FROM accounts;`,
+				ex2Code: `USE transaction_demo;
+
+-- Charlie chỉ có 1,000,000
+SELECT * FROM accounts WHERE name = 'Charlie';
+
+START TRANSACTION;
+
+-- Charlie muốn chuyển 2,000,000 cho Alice → số dư sẽ âm
+UPDATE accounts SET balance = balance - 2000000 WHERE name = 'Charlie';
+UPDATE accounts SET balance = balance + 2000000 WHERE name = 'Alice';
+
+-- Kiểm tra: Charlie bị âm (-1,000,000) → cần ROLLBACK
+SELECT balance FROM accounts WHERE name = 'Charlie';
+
+ROLLBACK;
+
+-- Số dư khôi phục về trạng thái ban đầu: 1,000,000
+SELECT * FROM accounts WHERE name = 'Charlie';`,
+				ex3Procedure: `DELIMITER //
+DROP PROCEDURE IF EXISTS TransferMoney //
+CREATE PROCEDURE TransferMoney(
+    IN from_name VARCHAR(100),
+    IN to_name   VARCHAR(100),
+    IN amount    DECIMAL(10,2)
+)
+BEGIN
+    DECLARE sender_balance DECIMAL(10,2);
+
+    -- Kiểm tra số dư trước khi bắt đầu transaction
+    SELECT balance INTO sender_balance
+    FROM accounts WHERE name = from_name;
+
+    IF sender_balance < amount THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Số dư không đủ để thực hiện giao dịch';
+    ELSE
+        START TRANSACTION;
+
+        UPDATE accounts
+            SET balance = balance - amount
+            WHERE name = from_name;
+
+        UPDATE accounts
+            SET balance = balance + amount
+            WHERE name = to_name;
+
+        INSERT INTO transaction_logs (from_account, to_account, amount, status)
+        VALUES (from_name, to_name, amount, 'SUCCESS');
+
+        COMMIT;
+    END IF;
+END //
+DELIMITER ;`,
+				ex3Test: `-- Test 1: Giao dịch thành công
+-- Alice (5,000,000) chuyển 1,000,000 cho Bob
+CALL TransferMoney('Alice', 'Bob', 1000000);
+
+SELECT * FROM accounts;
+SELECT * FROM transaction_logs;
+
+-- Test 2: Giao dịch thất bại
+-- Charlie chỉ có 1,000,000, muốn chuyển 3,000,000
+CALL TransferMoney('Charlie', 'Alice', 3000000);
+-- Kết quả: Error - Số dư không đủ để thực hiện giao dịch`,
 			};
 		},
 		mounted() {
