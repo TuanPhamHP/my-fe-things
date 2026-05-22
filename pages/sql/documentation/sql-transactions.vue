@@ -110,9 +110,13 @@
 						</div>
 						<div class="col-span-1">
 							<p class="text-slate-900 dark:text-white mt-0 leading-8 font-bold">
-								Ví dụ: Alice chuyển 200,000 cho Bob.
+								Ví dụ COMMIT: Alice chuyển 200,000 cho Bob thành công.
 							</p>
 							<VCodeBlock :code="exBasic" highlightjs lang="sql" theme="atom-one-dark" />
+							<p class="text-slate-900 dark:text-white mt-3 leading-8 font-bold">
+								Ví dụ ROLLBACK: phát hiện lỗi, hủy toàn bộ giao dịch.
+							</p>
+							<VCodeBlock :code="exBasicRollback" highlightjs lang="sql" theme="atom-one-dark" />
 						</div>
 					</ClientOnly>
 				</div>
@@ -496,6 +500,19 @@ COMMIT;
 -- Kiểm tra kết quả
 -- Alice: 5,000,000 - 200,000 = 4,800,000
 -- Bob:   3,000,000 + 200,000 = 3,200,000
+SELECT * FROM accounts;`,
+				exBasicRollback: `USE transaction_demo;
+
+START TRANSACTION;
+
+-- ACC001 (Alice) chuyển 200,000 cho ACC002 (Bob)
+UPDATE accounts SET balance = balance - 200000 WHERE account_number = 'ACC001';
+UPDATE accounts SET balance = balance + 200000 WHERE account_number = 'ACC002';
+
+-- Giả sử phát hiện lỗi → hủy toàn bộ giao dịch
+ROLLBACK;
+
+-- Số dư khôi phục về trạng thái ban đầu
 SELECT * FROM accounts;`,
 				syntaxSavepoint: `SAVEPOINT ten_savepoint;          -- Tạo điểm đánh dấu
 ROLLBACK TO ten_savepoint;        -- Quay lại điểm đánh dấu
