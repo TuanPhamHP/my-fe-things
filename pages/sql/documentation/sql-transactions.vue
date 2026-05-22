@@ -263,14 +263,15 @@
 				</ClientOnly>
 
 				<PageHeading
-					text="Ví dụ 2: Số dư không đủ – ROLLBACK"
+					text="Ví dụ 2: Dùng IF kiểm tra sau UPDATE – ROLLBACK nếu không hợp lệ"
 					addOnClass="text-left mt-5"
 					markedAs="ex2-rollback"
 					:lvl="2"
 				/>
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Charlie chỉ có 1,000,000 VNĐ nhưng muốn chuyển 2,000,000 cho Alice. Sau khi thực hiện UPDATE, ta kiểm tra số
-					dư bị âm rồi dùng ROLLBACK để hủy toàn bộ giao dịch.
+					Procedure <FilePath>CheckAndTransfer</FilePath> thực hiện UPDATE trước, sau đó dùng <FilePath>IF</FilePath>
+					kiểm tra số dư. Nếu phát hiện số dư âm → <FilePath>ROLLBACK</FilePath> hủy toàn bộ. Đây là cách dùng
+					ROLLBACK khi điều kiện lỗi chỉ biết được sau khi thao tác với dữ liệu.
 				</p>
 				<ClientOnly>
 					<div class="col-span-1">
@@ -452,24 +453,25 @@ DROP TABLE IF EXISTS transaction_logs;
 DROP TABLE IF EXISTS accounts;
 
 CREATE TABLE accounts (
-    id      INT PRIMARY KEY AUTO_INCREMENT,
-    name    VARCHAR(100) NOT NULL,
-    balance DECIMAL(10,2) NOT NULL DEFAULT 0
+    id             INT PRIMARY KEY AUTO_INCREMENT,
+    account_number VARCHAR(10)    NOT NULL UNIQUE,
+    name           VARCHAR(100)   NOT NULL,
+    balance        DECIMAL(10,2)  NOT NULL DEFAULT 0
 );
 
 CREATE TABLE transaction_logs (
-    id           INT PRIMARY KEY AUTO_INCREMENT,
-    from_account VARCHAR(100),
-    to_account   VARCHAR(100),
-    amount       DECIMAL(10,2),
-    status       VARCHAR(20) DEFAULT 'SUCCESS',
-    created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    id             INT PRIMARY KEY AUTO_INCREMENT,
+    from_acc       VARCHAR(10),
+    to_acc         VARCHAR(10),
+    amount         DECIMAL(10,2),
+    status         VARCHAR(20)   DEFAULT 'SUCCESS',
+    created_at     TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO accounts (name, balance) VALUES
-    ('Alice',   5000000.00),
-    ('Bob',     3000000.00),
-    ('Charlie', 1000000.00);
+INSERT INTO accounts (account_number, name, balance) VALUES
+    ('ACC001', 'Alice',   5000000.00),
+    ('ACC002', 'Bob',     3000000.00),
+    ('ACC003', 'Charlie', 1000000.00);
 
 -- Kiểm tra dữ liệu
 SELECT * FROM accounts;`,
@@ -483,9 +485,9 @@ COMMIT;    -- Lưu tất cả thay đổi vào database
 
 START TRANSACTION;
 
--- Alice chuyển 200,000 cho Bob
-UPDATE accounts SET balance = balance - 200000 WHERE id = 1;
-UPDATE accounts SET balance = balance + 200000 WHERE id = 2;
+-- Alice (ACC001) chuyển 200,000 cho Bob (ACC002)
+UPDATE accounts SET balance = balance - 200000 WHERE account_number = 'ACC001';
+UPDATE accounts SET balance = balance + 200000 WHERE account_number = 'ACC002';
 
 COMMIT;
 
@@ -500,16 +502,16 @@ RELEASE SAVEPOINT ten_savepoint;  -- Xóa điểm đánh dấu`,
 
 START TRANSACTION;
 
--- Thanh toán hóa đơn điện: 300,000
-UPDATE accounts SET balance = balance - 300000 WHERE name = 'Alice';
+-- Alice (ACC001) thanh toán hóa đơn điện: 300,000
+UPDATE accounts SET balance = balance - 300000 WHERE account_number = 'ACC001';
 SAVEPOINT sp_after_electricity;
 
--- Thanh toán hóa đơn nước: 150,000
-UPDATE accounts SET balance = balance - 150000 WHERE name = 'Alice';
+-- Alice (ACC001) thanh toán hóa đơn nước: 150,000
+UPDATE accounts SET balance = balance - 150000 WHERE account_number = 'ACC001';
 SAVEPOINT sp_after_water;
 
--- Thanh toán hóa đơn internet: 500,000 → giả sử gặp lỗi
-UPDATE accounts SET balance = balance - 500000 WHERE name = 'Alice';
+-- Alice (ACC001) thanh toán hóa đơn internet: 500,000 → giả sử gặp lỗi
+UPDATE accounts SET balance = balance - 500000 WHERE account_number = 'ACC001';
 
 -- Hủy chỉ hóa đơn internet, giữ lại điện + nước
 ROLLBACK TO sp_after_water;
@@ -517,7 +519,7 @@ ROLLBACK TO sp_after_water;
 COMMIT;
 
 -- Kết quả: 5,000,000 - 300,000 - 150,000 = 4,550,000
-SELECT * FROM accounts WHERE name = 'Alice';`,
+SELECT * FROM accounts WHERE account_number = 'ACC001';`,
 				syntaxIsolation: `-- Xem mức isolation hiện tại của session
 SELECT @@TRANSACTION_ISOLATION;
 
@@ -528,51 +530,68 @@ SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;`,
 				ex1Code: `USE transaction_demo;
 
--- Số dư ban đầu: Alice 5,000,000 | Bob 3,000,000
+-- Số dư ban đầu: ACC001 (Alice) 5,000,000 | ACC002 (Bob) 3,000,000
 SELECT * FROM accounts;
 
 START TRANSACTION;
 
-UPDATE accounts SET balance = balance - 500000 WHERE name = 'Alice';
-UPDATE accounts SET balance = balance + 500000 WHERE name = 'Bob';
+UPDATE accounts SET balance = balance - 500000 WHERE account_number = 'ACC001';
+UPDATE accounts SET balance = balance + 500000 WHERE account_number = 'ACC002';
 
 COMMIT;
 
 -- Kết quả sau COMMIT:
--- Alice: 5,000,000 - 500,000 = 4,500,000
--- Bob:   3,000,000 + 500,000 = 3,500,000
+-- ACC001 (Alice): 5,000,000 - 500,000 = 4,500,000
+-- ACC002 (Bob):   3,000,000 + 500,000 = 3,500,000
 SELECT * FROM accounts;`,
-				ex2Code: `USE transaction_demo;
+				ex2Code: `DELIMITER //
+DROP PROCEDURE IF EXISTS CheckAndTransfer //
+CREATE PROCEDURE CheckAndTransfer(
+    IN from_acc VARCHAR(10),
+    IN to_acc   VARCHAR(10),
+    IN amount   DECIMAL(10,2)
+)
+BEGIN
+    DECLARE new_balance DECIMAL(10,2);
 
--- Charlie chỉ có 1,000,000
-SELECT * FROM accounts WHERE name = 'Charlie';
+    START TRANSACTION;
 
-START TRANSACTION;
+    UPDATE accounts SET balance = balance - amount WHERE account_number = from_acc;
+    UPDATE accounts SET balance = balance + amount WHERE account_number = to_acc;
 
--- Charlie muốn chuyển 2,000,000 cho Alice → số dư sẽ âm
-UPDATE accounts SET balance = balance - 2000000 WHERE name = 'Charlie';
-UPDATE accounts SET balance = balance + 2000000 WHERE name = 'Alice';
+    -- Đọc số dư sau khi UPDATE để kiểm tra
+    SELECT balance INTO new_balance FROM accounts WHERE account_number = from_acc;
 
--- Kiểm tra: Charlie bị âm (-1,000,000) → cần ROLLBACK
-SELECT balance FROM accounts WHERE name = 'Charlie';
+    IF new_balance < 0 THEN
+        ROLLBACK;
+        SELECT CONCAT(from_acc, ' không đủ số dư, giao dịch đã bị hủy') AS Message;
+    ELSE
+        COMMIT;
+        SELECT CONCAT('Chuyển thành công ', amount, ' VNĐ từ ', from_acc, ' → ', to_acc) AS Message;
+    END IF;
+END //
+DELIMITER ;
 
-ROLLBACK;
+-- Test 1: Thất bại – ACC003 (Charlie, 1,000,000) muốn chuyển 2,000,000
+CALL CheckAndTransfer('ACC003', 'ACC001', 2000000);
+SELECT * FROM accounts WHERE account_number = 'ACC003'; -- Vẫn 1,000,000
 
--- Số dư khôi phục về trạng thái ban đầu: 1,000,000
-SELECT * FROM accounts WHERE name = 'Charlie';`,
+-- Test 2: Thành công – ACC001 (Alice, 5,000,000) chuyển 500,000
+CALL CheckAndTransfer('ACC001', 'ACC002', 500000);
+SELECT * FROM accounts;`,
 				ex3Procedure: `DELIMITER //
 DROP PROCEDURE IF EXISTS TransferMoney //
 CREATE PROCEDURE TransferMoney(
-    IN from_name VARCHAR(100),
-    IN to_name   VARCHAR(100),
-    IN amount    DECIMAL(10,2)
+    IN from_acc VARCHAR(10),
+    IN to_acc   VARCHAR(10),
+    IN amount   DECIMAL(10,2)
 )
 BEGIN
     DECLARE sender_balance DECIMAL(10,2);
 
     -- Kiểm tra số dư trước khi bắt đầu transaction
     SELECT balance INTO sender_balance
-    FROM accounts WHERE name = from_name;
+    FROM accounts WHERE account_number = from_acc;
 
     IF sender_balance < amount THEN
         SIGNAL SQLSTATE '45000'
@@ -582,29 +601,29 @@ BEGIN
 
         UPDATE accounts
             SET balance = balance - amount
-            WHERE name = from_name;
+            WHERE account_number = from_acc;
 
         UPDATE accounts
             SET balance = balance + amount
-            WHERE name = to_name;
+            WHERE account_number = to_acc;
 
-        INSERT INTO transaction_logs (from_account, to_account, amount, status)
-        VALUES (from_name, to_name, amount, 'SUCCESS');
+        INSERT INTO transaction_logs (from_acc, to_acc, amount, status)
+        VALUES (from_acc, to_acc, amount, 'SUCCESS');
 
         COMMIT;
     END IF;
 END //
 DELIMITER ;`,
 				ex3Test: `-- Test 1: Giao dịch thành công
--- Alice (5,000,000) chuyển 1,000,000 cho Bob
-CALL TransferMoney('Alice', 'Bob', 1000000);
+-- ACC001 (Alice, 5,000,000) chuyển 1,000,000 cho ACC002 (Bob)
+CALL TransferMoney('ACC001', 'ACC002', 1000000);
 
 SELECT * FROM accounts;
 SELECT * FROM transaction_logs;
 
 -- Test 2: Giao dịch thất bại
--- Charlie chỉ có 1,000,000, muốn chuyển 3,000,000
-CALL TransferMoney('Charlie', 'Alice', 3000000);
+-- ACC003 (Charlie, 1,000,000) muốn chuyển 3,000,000
+CALL TransferMoney('ACC003', 'ACC001', 3000000);
 -- Kết quả: Error - Số dư không đủ để thực hiện giao dịch`,
 			};
 		},
