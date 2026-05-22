@@ -63,7 +63,9 @@
 					</li>
 					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content">
 						<div>
-							<b>Isolation (Tính độc lập)</b>: Các transaction độc lập và không ảnh hưởng lẫn nhau.
+							<b>Isolation (Tính độc lập)</b>: Các transaction độc lập và không ảnh hưởng lẫn nhau. Đảm bảo mỗi
+							transaction hoạt động như thể không có transaction nào khác đang chạy đồng thời, tránh đọc phải dữ liệu
+							chưa được commit.
 							<ul class="rounded p-3 border border-gray-300 mt-2">
 								<li class="text-slate-900 dark:text-white leading-8 text-lg text-content">
 									Hai giao dịch cùng lúc đọc số dư của Alice (5,000,000) và đều muốn trừ tiền — Isolation đảm bảo mỗi
@@ -269,9 +271,9 @@
 					:lvl="2"
 				/>
 				<p class="text-slate-900 dark:text-white mt-0 leading-8">
-					Procedure <FilePath>CheckAndTransfer</FilePath> thực hiện UPDATE trước, sau đó dùng <FilePath>IF</FilePath>
-					kiểm tra số dư. Nếu phát hiện số dư âm → <FilePath>ROLLBACK</FilePath> hủy toàn bộ. Đây là cách dùng
-					ROLLBACK khi điều kiện lỗi chỉ biết được sau khi thao tác với dữ liệu.
+					Procedure <FilePath>CheckAndTransfer</FilePath> thực hiện UPDATE trước, sau đó dùng
+					<FilePath>IF</FilePath> kiểm tra số dư. Nếu phát hiện số dư âm → <FilePath>ROLLBACK</FilePath> hủy toàn bộ.
+					Đây là cách dùng ROLLBACK khi điều kiện lỗi chỉ biết được sau khi thao tác với dữ liệu.
 				</p>
 				<ClientOnly>
 					<div class="col-span-1">
