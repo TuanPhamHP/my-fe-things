@@ -86,6 +86,31 @@ echo $fruits[0]; // Apple
 					theme="tomorrow-night-bright"
 				/>
 				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					PHP tự động gán chỉ số bắt đầu từ <b>0</b>. Khi thêm phần tử bằng <b>`$array[]`</b>, PHP lấy index lớn nhất hiện có cộng thêm 1. Khi dùng <b>unset()</b> để xóa, index bị <b>bỏ trống</b> chứ không tự đánh lại.
+				</p>
+				<VCodeBlock
+					:code="`// Thêm phần tử — PHP tự gán index tiếp theo
+$fruits[] = 'Mango';   // index = 3 (tự động)
+$fruits[] = 'Grapes';  // index = 4
+
+// Lấy phần tử cuối mảng
+$last    = end($fruits);                  // 'Grapes'
+$lastAlt = $fruits[count($fruits) - 1];  // cách khác
+
+// Xóa phần tử — index KHÔNG được đánh lại
+unset($fruits[1]);  // xóa 'Banana'
+print_r($fruits);
+// Array ( [0] => Apple [2] => Orange [3] => Mango [4] => Grapes )
+
+// Muốn đánh lại index từ 0:
+$fruits = array_values($fruits);
+// Array ( [0] => Apple [1] => Orange [2] => Mango [3] => Grapes )
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
 					<b>Mảng kết hợp (Associative Array) </b>
 					<br />
 					Mảng kết hợp là mảng mà các phần tử được truy cập bằng khóa (key) thay vì chỉ số. Gần tương tự như Object.
@@ -94,6 +119,39 @@ echo $fruits[0]; // Apple
 				<VCodeBlock
 					:code="`$age = ['Peter' => 35, 'Ben' => 37, 'Joe' => 43];
 echo $age['Peter']; // 35
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Associative Array phù hợp để mô hình hóa đối tượng có thuộc tính — tương tự <b>object literal</b> trong JavaScript. Dùng <b>isset()</b> để kiểm tra key và <b>unset()</b> để xóa.
+				</p>
+				<VCodeBlock
+					:code="`$user = [
+    'name'   => 'Nguyễn Văn A',
+    'email'  => 'a@example.com',
+    'age'    => 25,
+    'active' => true,
+];
+
+// Cập nhật / thêm key mới
+$user['age']  = 26;         // cập nhật
+$user['role'] = 'editor';   // thêm key mới
+
+// Kiểm tra key tồn tại
+if (isset($user['email'])) {
+    echo 'Email: ' . $user['email'];  // Email: a@example.com
+}
+
+// Kiểm tra kể cả khi giá trị là null
+if (array_key_exists('role', $user)) {
+    echo $user['role'];  // editor
+}
+
+// Xóa key
+unset($user['active']);
+print_r($user);
 `"
 					highlightjs
 					lang="php"
@@ -119,9 +177,130 @@ echo $contacts[1]['name']; // Output: Ben
 					theme="tomorrow-night-bright"
 				/>
 				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Trong thực tế, mảng đa chiều thường là <b>Indexed bên ngoài + Associative bên trong</b> — cấu trúc này phổ biến nhất khi làm việc với dữ liệu từ database hay API.
+				</p>
+				<VCodeBlock
+					:code="`// Dạng phổ biến: danh sách (Indexed) các bản ghi (Associative)
+$products = [
+    ['id' => 1, 'name' => 'Laptop', 'price' => 25000000, 'stock' => 10],
+    ['id' => 2, 'name' => 'Phone',  'price' => 12000000, 'stock' => 25],
+    ['id' => 3, 'name' => 'Tablet', 'price' =>  8000000, 'stock' =>  5],
+];
+
+echo $products[0]['name'];   // Laptop
+echo $products[2]['price'];  // 8000000
+
+// 3 chiều: danh mục → loại → sản phẩm
+$catalog = [
+    'electronics' => [
+        'phones'  => ['iPhone 15', 'Samsung S24', 'Xiaomi 14'],
+        'laptops' => ['MacBook Pro', 'Dell XPS'],
+    ],
+    'clothing' => [
+        'men'   => ['T-Shirt', 'Jeans'],
+        'women' => ['Dress', 'Blouse'],
+    ],
+];
+
+echo $catalog['electronics']['phones'][0]; // iPhone 15
+echo $catalog['clothing']['men'][1];        // Jeans
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
 					Ở trên là các loại Array ta thường xuyên gặp khi làm việc với PHP. Tiếp theo, chúng ta sẽ nói đến các method
 					chuyên dụng để xử lý mảng trong PHP.
 				</p>
+
+				<PageHeading text="Ứng dụng thực tế" addOnClass="text-left mt-5" markedAs="php-array-realworld" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Dưới đây là các tình huống thực tế phổ biến mà Array PHP xử lý rất tự nhiên.
+				</p>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					<b>1. Giỏ hàng — Shopping Cart</b>
+				</p>
+				<VCodeBlock
+					:code="`$cart = [
+    ['name' => 'Laptop',   'price' => 25000000, 'qty' => 1],
+    ['name' => 'Chuột',    'price' =>   350000, 'qty' => 2],
+    ['name' => 'Bàn phím', 'price' =>   800000, 'qty' => 1],
+];
+
+// Tính tổng giỏ hàng
+$total = array_reduce($cart, fn($carry, $item) => $carry + $item['price'] * $item['qty'], 0);
+echo 'Tổng: ' . number_format($total) . ' VNĐ';  // 26,500,000 VNĐ
+
+// Lấy danh sách tên sản phẩm
+$names = array_column($cart, 'name');
+// ['Laptop', 'Chuột', 'Bàn phím']
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					<b>2. Hồ sơ người dùng — User Profile</b>
+				</p>
+				<VCodeBlock
+					:code="`$user = [
+    'id'          => 42,
+    'name'        => 'Trần Thị B',
+    'email'       => 'b@example.com',
+    'roles'       => ['editor', 'moderator'],        // Indexed trong Associative
+    'preferences' => ['theme' => 'dark', 'lang' => 'vi'],
+];
+
+// Kiểm tra quyền
+if (in_array('admin', $user['roles'])) {
+    echo 'Có quyền admin';
+} else {
+    echo 'Chỉ là: ' . implode(', ', $user['roles']);  // Chỉ là: editor, moderator
+}
+
+// Đọc preference lồng nhau
+echo $user['preferences']['theme'];  // dark
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					<b>3. Cấu hình ứng dụng — App Config</b>
+				</p>
+				<VCodeBlock
+					:code="`$config = [
+    'db' => [
+        'host'    => 'localhost',
+        'port'    => 3306,
+        'name'    => 'my_database',
+        'charset' => 'utf8mb4',
+    ],
+    'mail' => [
+        'driver' => 'smtp',
+        'host'   => 'smtp.gmail.com',
+        'port'   => 587,
+    ],
+    'debug'     => false,
+    'cache_ttl' => 3600,
+];
+
+echo $config['db']['host'];    // localhost
+echo $config['mail']['port'];  // 587
+
+// Truyền sub-array vào function
+function connectDB(array $db): PDO {
+    $dsn = 'mysql:host=' . $db['host'] . ';dbname=' . $db['name'];
+    return new PDO($dsn, 'root', '');
+}
+connectDB($config['db']);
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+
 				<PageHeading text="Duyệt mảng" addOnClass="text-left mt-5" markedAs="php-array-foreach" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-2 leading-8">
 					Để duyệt qua một mảng ta có thể sử dụng hàm
@@ -191,6 +370,145 @@ foreach ($contacts as $contact) {
 						</tbody>
 					</table>
 				</div>
+
+				<PageHeading text="Bài toán luyện tập" addOnClass="text-left mt-5" markedAs="php-array-exercises" :lvl="2" />
+
+				<p class="text-slate-900 dark:text-white my-2 leading-8 font-semibold">Bài 1 — Thống kê điểm lớp học</p>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Cho mảng điểm số, hãy: (a) tính điểm trung bình, (b) tìm điểm cao nhất, (c) đếm số sinh viên đạt (≥ 5).
+				</p>
+				<VCodeBlock
+					:code="`$scores = [7.5, 4.0, 8.0, 5.5, 9.0, 3.5, 6.0, 8.5];
+
+// TODO: tính trung bình, điểm cao nhất, số đạt
+// Gợi ý: array_sum(), max(), array_filter(), count()
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<Disclosure v-slot="{ open }">
+					<DisclosureButton
+						class="flex items-center gap-2 my-2 px-3 py-1.5 rounded bg-neutral-200 dark:bg-gray-700 text-sm font-medium text-slate-800 dark:text-white hover:bg-neutral-300 dark:hover:bg-gray-600 transition"
+					>
+						<span>{{ open ? 'Ẩn đáp án' : 'Xem đáp án' }}</span>
+					</DisclosureButton>
+					<DisclosurePanel>
+						<VCodeBlock
+							:code="`$avg    = array_sum($scores) / count($scores);                    // 6.5
+$max    = max($scores);                                             // 9.0
+$passed = count(array_filter($scores, fn($s) => $s >= 5));         // 6
+
+echo 'Trung bình: ' . $avg;
+echo 'Cao nhất: '   . $max;
+echo 'Số đạt: '     . $passed;
+`"
+							highlightjs
+							lang="php"
+							theme="tomorrow-night-bright"
+						/>
+					</DisclosurePanel>
+				</Disclosure>
+
+				<p class="text-slate-900 dark:text-white my-2 leading-8 font-semibold">Bài 2 — Lọc và sắp xếp sản phẩm</p>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Từ danh sách sản phẩm: (a) lọc sản phẩm còn hàng (stock > 0), (b) sắp xếp theo giá tăng dần, (c) lấy mảng chỉ chứa tên sản phẩm.
+				</p>
+				<VCodeBlock
+					:code="`$products = [
+    ['name' => 'Laptop',  'price' => 25000000, 'stock' => 3],
+    ['name' => 'Phone',   'price' => 12000000, 'stock' => 0],
+    ['name' => 'Tablet',  'price' =>  8000000, 'stock' => 5],
+    ['name' => 'Earbuds', 'price' =>  1200000, 'stock' => 12],
+];
+
+// TODO: lọc còn hàng → sắp xếp giá tăng dần → lấy tên
+// Gợi ý: array_filter(), array_values(), usort(), array_column()
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<Disclosure v-slot="{ open }">
+					<DisclosureButton
+						class="flex items-center gap-2 my-2 px-3 py-1.5 rounded bg-neutral-200 dark:bg-gray-700 text-sm font-medium text-slate-800 dark:text-white hover:bg-neutral-300 dark:hover:bg-gray-600 transition"
+					>
+						<span>{{ open ? 'Ẩn đáp án' : 'Xem đáp án' }}</span>
+					</DisclosureButton>
+					<DisclosurePanel>
+						<VCodeBlock
+							:code="`// (a) Lọc còn hàng, reset index
+$inStock = array_values(array_filter($products, fn($p) => $p['stock'] > 0));
+
+// (b) Sắp xếp theo giá tăng dần (spaceship operator)
+usort($inStock, fn($a, $b) => $a['price'] <=> $b['price']);
+
+// (c) Lấy cột 'name'
+$names = array_column($inStock, 'name');
+print_r($names);
+// ['Earbuds', 'Tablet', 'Laptop']
+`"
+							highlightjs
+							lang="php"
+							theme="tomorrow-night-bright"
+						/>
+					</DisclosurePanel>
+				</Disclosure>
+
+				<p class="text-slate-900 dark:text-white my-2 leading-8 font-semibold">Bài 3 — Danh bạ điện thoại</p>
+				<p class="text-slate-900 dark:text-white my-2 leading-8">
+					Xây dựng danh bạ đơn giản bằng Associative Array: (a) thêm liên lạc, (b) tìm số điện thoại theo tên, (c) xóa liên lạc.
+				</p>
+				<VCodeBlock
+					:code="`$phonebook = [
+    'An'   => '0901 234 567',
+    'Bình' => '0912 345 678',
+    'Chi'  => '0923 456 789',
+];
+
+// TODO: hoàn thiện 3 hàm dưới
+function addContact(array &$book, string $name, string $phone): void { /* ... */ }
+function findContact(array $book, string $name): ?string { /* ... */ }
+function removeContact(array &$book, string $name): void { /* ... */ }
+`"
+					highlightjs
+					lang="php"
+					theme="tomorrow-night-bright"
+				/>
+				<Disclosure v-slot="{ open }">
+					<DisclosureButton
+						class="flex items-center gap-2 my-2 px-3 py-1.5 rounded bg-neutral-200 dark:bg-gray-700 text-sm font-medium text-slate-800 dark:text-white hover:bg-neutral-300 dark:hover:bg-gray-600 transition"
+					>
+						<span>{{ open ? 'Ẩn đáp án' : 'Xem đáp án' }}</span>
+					</DisclosureButton>
+					<DisclosurePanel>
+						<VCodeBlock
+							:code="`function addContact(array &$book, string $name, string $phone): void {
+    $book[$name] = $phone;
+}
+
+function findContact(array $book, string $name): ?string {
+    return $book[$name] ?? null;
+}
+
+function removeContact(array &$book, string $name): void {
+    unset($book[$name]);
+}
+
+// Sử dụng
+addContact($phonebook, 'Dũng', '0934 567 890');
+echo findContact($phonebook, 'Bình');   // 0912 345 678
+var_dump(findContact($phonebook, 'Hoa')); // NULL
+removeContact($phonebook, 'An');
+print_r($phonebook);
+`"
+							highlightjs
+							lang="php"
+							theme="tomorrow-night-bright"
+						/>
+					</DisclosurePanel>
+				</Disclosure>
+
 				<p class="text-slate-900 dark:text-white leading-8">
 					Lý thuyết đủ rồi, làm
 					<a
@@ -327,4 +645,3 @@ if ($key !== false) {</br>
 		},
 	};
 </script>
-z
