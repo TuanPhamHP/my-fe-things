@@ -2,146 +2,64 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Làm việc với Blade" addOnClass="text-left " markedAs="laravel-blade" :lvl="1" />
+				<PageHeading text="Blade Components" addOnClass="text-left" markedAs="intro" />
 				<p class="text-slate-900 dark:text-white my-5">
-					Trước hết, chúng ta sẽ sử dụng lại <FilePath>HomepageController</FilePath> và
-					<FilePath>homepage.blade.php</FilePath>
-					đã được tạo ở bài trước để phục vụ cho việc demo:
+					Component giúp tái sử dụng các đoạn UI như button, card, alert... Thay vì copy-paste HTML vào từng trang, bạn
+					tạo một file component một lần rồi dùng lại ở nhiều nơi — dễ bảo trì và nhất quán hơn hẳn.
 				</p>
-				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+
+				<PageHeading text="Tạo Component" addOnClass="text-left" markedAs="component-create" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Tạo file component trong <FilePath>resources/views/components/</FilePath>. Ví dụ tạo component
+					<FilePath>todo-card</FilePath>:
+				</p>
+				<VCodeBlock :code="b1" highlightjs lang="html" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					<FilePath>$slot</FilePath> là nơi nhận nội dung được truyền vào từ bên ngoài. Dùng component với cú pháp
+					<FilePath>{{ `<x-tên-component>` }}</FilePath>:
+				</p>
+				<VCodeBlock :code="b2" highlightjs lang="html" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-2 text-sm">
+					Laravel tự map tên file sang tên tag. File <FilePath>todo-card.blade.php</FilePath> tương ứng với tag
+					<FilePath>{{ `<x-todo-card>` }}</FilePath>.
+				</p>
+
+				<PageHeading text="Slot — truyền nội dung" addOnClass="text-left" markedAs="component-slot" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					<FilePath>$slot</FilePath> là nội dung được truyền vào giữa thẻ mở và đóng của component. Có thể kết hợp với
+					props để tạo component linh hoạt:
+				</p>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock
-							:code="`// HomepageController
-class HomepageController extends Controller
-{
-    //
-    public function index()
-    {
-        return view('homepage');
-    }
-}`"
-							highlightjs
-							lang="php"
-							theme="atom-one-dark"
-						/>
+						<VCodeBlock :code="b3" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock
-							:code="`<!-- homepage.blade.php -->
-<div>
-    <h1>Xin chào, tui là Homepage nè.</h1>
-</div>
-`"
-							highlightjs
-							lang="html"
-							theme="atom-one-dark"
-						/>
-						<p class="text-slate-900 dark:text-white my-2">
-							Nhớ tạo cả route để kết nối request và action của Controller nha.
-						</p>
-						<VCodeBlock
-							:code="`// routes/web.php
-Route::get('/homepage', [HomepageController::class, 'index']);
-`"
-							highlightjs
-							lang="php"
-							theme="atom-one-dark"
-						/>
+						<VCodeBlock :code="b4" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 				</div>
-				<PageHeading
-					text="1/ Nhận và hiển thị data"
-					addOnClass="text-left mt-5"
-					markedAs="laravel-blade-data"
-					:lvl="2"
-				/>
-				<p class="text-slate-900 dark:text-white my-5">
-					Chúng ta có thể truyền dữ liệu vào method <b>`view()`</b> để sử dụng trong các blade-view như sau:
+
+				<PageHeading text="@props — khai báo Props" addOnClass="text-left" markedAs="component-props" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					<FilePath>@props()</FilePath> dùng để khai báo rõ ràng các props mà component nhận vào, có thể đặt giá trị
+					mặc định. Props được khai báo qua <FilePath>@props</FilePath> sẽ không nằm trong
+					<FilePath>$attributes</FilePath> mà trở thành biến cục bộ trong component.
 				</p>
-				<div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
 					<div class="col-span-1">
-						<VCodeBlock
-							:code="`// truyền dữ liệu vào view
-return view('homepage' , ['name'=>'Tuấn']);`"
-							highlightjs
-							lang="php"
-							theme="atom-one-dark"
-						/>
+						<VCodeBlock :code="b5" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 					<div class="col-span-1">
-						<VCodeBlock
-							:code="`// ở trong blade-view có thể sử dụng ngay lập tức
-<h1>Xin chào, {{$name}}</h1>
-`"
-							highlightjs
-							lang="php"
-							theme="atom-one-dark"
-						/>
+						<VCodeBlock :code="b6" highlightjs lang="html" theme="atom-one-dark" />
 					</div>
 				</div>
-				<PageHeading text="2/ Directives" addOnClass="text-left mt-3" markedAs="laravel-blade-diretives" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-3 mb-5">
-					Thông thường, khi chúng ta cần các <b>Control Flow Statements</b>, trong file <FilePath>php</FilePath> chúng
-					ta có thể nghĩ ngay đến việc dùng các statements cơ bản của PHP như <b>foreach, if-else ...</b>, điểm yếu của
-					chúng là cú pháp phải đặt trong syntax <FilePath>{{ `<?php ... ?>` }}</FilePath>, và khi kết hợp với HTML
-					syntax thì trông khá là khó chịu. Đừng lo, Laravel cung cấp nhiều directives để giúp bạn dễ dàng làm việc với
-					Blade mà vẫn có flow tương tự với raw PHP.
-				</p>
-				<LaravelBladeDirectives />
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.3/ Include</b>: nhúng một blade-view khác.</p>
-				<p class="text-slate-900 dark:text-white"><b>Include</b></p>
-				<VCodeBlock :code="`@include('view.name', ['some' => 'data'])`" highlightjs lang="php" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white"><b>IncludeIf, IncludeWhen, IncludeFirst ....</b></p>
 
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>2.4/ Extending a Layout</b>: kế thừa layout.</p>
-				<p class="text-slate-900 dark:text-white">
-					Trong Laravel Blade, <b>Extending a Layout</b> giúp bạn tái sử dụng một giao diện chung cho nhiều page của một
-					trang web. Thay vì lặp lại cùng một cấu trúc HTML trên nhiều file, bạn có thể tạo một file layout chính và các
-					file con chỉ cần kế thừa nó. Điều này giúp code gọn gàng, dễ bảo trì và mở rộng.
-				</p>
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B1: Tạo Layout Chính:</b></p>
-				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
-				<ul class="pl-5">
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-center gap-1">
-						<FilePath>@yield('title')</FilePath>
-						<span> Cho phép file con đặt tiêu đề tùy chỉnh. Nếu không, nó sẽ dùng "Default Title".. </span>
-					</li>
-					<li class="text-slate-900 dark:text-white my-5 leading-8 text-lg text-content flex items-start gap-1">
-						<FilePath>@yield('content')</FilePath>
-						<span> Đây là nơi các file con sẽ chèn nội dung của chúng. </span>
-					</li>
-				</ul>
-				<p class="text-slate-900 dark:text-white mt-5 mb-2 text-xl"><b>B2: Tạo File Con Kế Thừa Layout :</b></p>
-
-				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-5 mb-2">
-					-) Tại layout chúng ta sử dụng <b>@yield('name')</b> để tạo ra một vùng view dynamic.
-
-					<br />-) Tại các view con kế thừa nó ta sử dụng <b> @section('name') và @endsection.</b> để cho phép khai báo
-					các view custom theo mong muốn. Laravel sẽ kết nối chúng thông qua 'name'.
-				</p>
-				<PageHeading text="3/ Components" addOnClass="text-left mt-3" markedAs="laravel-components" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 mb-5">
-					Component là một tính năng vô cùng quen thuộc, Blade components cho phép bạn tạo các phần tử UI có thể tái sử
-					dụng.
-					<br />
-					<br />
-					<b>Tạo Component</b>
-					<br />
-					Tạo một component file <b>resources/views/components/button.blade.php</b>:
-				</p>
-				<VCodeBlock :code="b6" highlightjs lang="php" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white my-5">
-					Bây giờ, chúng ta có thể sử dụng Blade Component với cú pháp
-					<FilePath> {{ `<x-component-name> </x-component-name>` }}</FilePath>
-					trong bất kỳ view nào trong view như sau:
-				</p>
-				<VCodeBlock :code="b7" highlightjs lang="php" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white my-5">
-					Ở trên là một ví dụ về cách tạo component cực kì đơn giản, chúng ta cần lưu ý rằng trong thực tế thì có nhiều
-					cách khác để tạo một component với blade, và tuỳ theo bài toán cần xử lí mà chúng ta sẽ có những cách tạo
-					component phù hợp riêng.
-				</p>
+				<div class="mt-6 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
+					<p class="text-slate-900 dark:text-white font-semibold mb-2">Lưu ý</p>
+					<ul class="list-disc pl-5 space-y-1 text-slate-900 dark:text-white text-sm">
+						<li>Component đặt trong thư mục con sẽ có tag tương ứng: <FilePath>components/form/input.blade.php</FilePath> thành <FilePath>{{ `<x-form.input />` }}</FilePath>.</li>
+						<li>Dùng <FilePath>$attributes->merge(['class' => 'base-class'])</FilePath> trong component để gộp class truyền từ ngoài vào với class mặc định.</li>
+					</ul>
+				</div>
 
 				<doc-next-page :pagination="pagePagination" />
 			</div>
@@ -155,218 +73,39 @@ return view('homepage' , ['name'=>'Tuấn']);`"
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import { apiResponde } from '@/models';
 	import DocNextPage from '@/components/DocNextPage.vue';
-	import LaravelBladeDirectives from '@/components/Document/LaravelBladeDirectives.vue';
-	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
-		components: {
-			PageMarkBook,
-			PageHeading,
-			FakeTerminalUI,
-			DocNextPage,
-			Disclosure,
-			DisclosureButton,
-			DisclosurePanel,
-			VCodeBlock,
-			LaravelBladeDirectives,
-		},
+		components: { PageMarkBook, PageHeading, FakeTerminalUI, DocNextPage, VCodeBlock },
 		data() {
 			return {
-				ltr: `{{ }}`,
-				b1: `<!-- resources/views/homepage.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Homepage</title>
-</head>
-<body>
-    <h1>Xin chào, tui là Homepage nè.</h1>
-</body>
-</html>
-`,
-				b2: `namespace App/Http/Controllers;
-
-use App/Http/Controllers/Controller;
-use Illuminate/Http/Request;
-
-class HomepageController extends Controller
-{
-	public function index()
-	{
-			// trả ra view có tên là homepage
-			return view('homepage');
-    }
-}
-`,
-				b3: `// ~/routes/web.php
-use App/Http/Controllers/HomepageController;
-// ...
-Route::get('/homepage', [HomepageController::class, 'index']);
-`,
-				b4: `<!-- resources/views/layouts/app.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@yield('title')</title>
-</head>
-<body>
-    @section('header')
-        This is the master sidebar.
-    @show
-
-    <div class="container">
-        @yield('content')  {{-- Đây là nơi file con chèn nội dung vào --}}
-    </div>
-</body>
-</html>
-`,
-				b5: `<!-- resources/views/child.blade.php -->
-@extends('layouts.app')
-
-@section('title', 'Page Title')
-
-@section('sidebar')
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
-@endsection
-
-@section('content')
-    <p>This is my body content.</p>
-@endsection
-`,
-				b6: `<!-- resources/views/components/button.blade.php -->
-@props(['type' => 'primary', 'disabled' => false])
-
-<button type="button" class="btn btn-{{ $type }}" {{ $disabled ? 'disabled' : '' }}>
+				b1: `<!-- resources/views/components/todo-card.blade.php -->
+<div class="card">
+    <p>{{ $slot }}</p>
+</div>`,
+				b2: `<x-todo-card>
+    Mua sữa — còn 2 ngày
+</x-todo-card>`,
+				b3: `<!-- components/alert.blade.php -->
+<div class="alert alert-{{ $type ?? 'info' }}">
     {{ $slot }}
-</button>
-`,
-				b7: `<!-- Sử dụng trong view -->
-<x-button type="success">
-    Save Changes
-</x-button>
+</div>`,
+				b4: `<x-alert type="success">
+    Todo đã được lưu!
+</x-alert>
 
-<x-button type="danger" :disabled="true">
-    Delete Item
-</x-button>
-`,
-				b8: `<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Todo App')</title>
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <div class="collapse navbar-collapse container">
-    <a class="navbar-brand" href="#">Todo App</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/app/todo">Todo</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<x-alert type="danger">
+    Có lỗi xảy ra.
+</x-alert>`,
+				b5: `<!-- components/todo-card.blade.php -->
+@props(['status' => 'pending', 'title'])
 
-<div class="container mt-4">
-    @yield('content')
-</div>
-
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">&copy; 2024 Todo App by Phạm Anh Tuấn</span>
-    </div>
-</footer>
-</body>
-`,
-				b9: `@extends('layouts.app')
-
-@section('title', 'Todo List')
-
-@section('content')
-    <div class="container">
-        <h1 class="my-4">Todo List</h1>
-
-        <!-- Danh sách to-do -->
-        <table class="table mt-4">
-            <thead>
-            <tr>
-                <th>Tiêu đề</th>
-                <th>Mô tả</th>
-                <th>Trạng thái</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if(!empty($todos))
-            @foreach($todos as $todo)
-                <tr>
-                    <td>{{ $todo->title }}</td>
-                    <td>{{ $todo->description }}</td>
-                    <td>{{ $todo->completed ? 'Hoàn thành' : 'Mới' }}</td>
-                </tr>
-            @endforeach
-                @endif
-            </tbody>
-        </table>
-    </div>
-@endsection
-`,
-				controllerReturns: [
-					{
-						id: 1,
-						name: 'view($viewName)',
-						desc: 'Trả về một view để hiển thị giao diện người dùng. Đây là cách phổ biến nhất để trả về dữ liệu từ controller.',
-						syntax: `return view('welcome');`,
-					},
-					{
-						id: 2,
-						name: 'response()->json($data);',
-						desc: 'Trả về dữ liệu JSON, thường được sử dụng trong các API.',
-						syntax: `return response()->json($data);`,
-					},
-					{
-						id: 3,
-						name: 'response()',
-						desc: 'Trả về một đối tượng Response tùy chỉnh, cho phép bạn thiết lập tiêu đề, cookie, và các thuộc tính khác của phản hồi HTTP.',
-						syntax: `return response()->json($data);`,
-					},
-					{
-						id: 4,
-						name: 'redirect()',
-						desc: 'Chuyển hướng người dùng đến một URL khác, thường được sử dụng sau khi thực hiện một hành động như lưu dữ liệu.',
-						syntax: `return redirect()->route('home')->with('status', 'User created successfully!');`,
-					},
-				],
-				viewsConfig: [
-					{
-						id: 1,
-						name: 'return view("homepage");',
-						desc: 'resources/views/homepage.blade.php',
-					},
-					{
-						id: 2,
-						name: "return view('admin.dashboard');",
-						desc: 'resources/views/admin/dashboard.blade.php',
-					},
-					{
-						id: 3,
-						name: "return view('folder.subfolder.filename');",
-						desc: 'resources/views/folder/subfolder/filename.blade.php',
-					},
-				],
-				pagePagination: {
-					next: {
-						title: 'HTML Styles',
-						link: '/html-css-js-basic/documentation/ep-2',
-					},
-					prev: {
-						title: 'Trở về danh sách Doc',
-						link: '/html-css-js-basic/documentation',
-					},
-				},
+<div class="card border-{{ $status === 'done' ? 'green' : 'gray' }}-400">
+    <p>{{ $title }}</p>
+    <span>{{ $status }}</span>
+</div>`,
+				b6: `<x-todo-card title="Mua sữa" status="done" />
+<x-todo-card title="Học Laravel" />`,
+				pagePagination: null,
 			};
 		},
 		mounted() {

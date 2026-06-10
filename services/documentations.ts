@@ -704,6 +704,16 @@ const PHPAndLaravelBasicDocs = [
 	},
 
 	{
+		id: 'php-12.5',
+		vneseName: 'PHP Session & Cookie',
+		eng: 'Session Cookie',
+		description: 'Quản lý trạng thái người dùng với Session và Cookie trong PHP.',
+		link: '/php/documentation/php-session-n-cookie',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-13-2',
 		vneseName: 'PHP Database - (P1)',
 		eng: 'Database',
@@ -719,6 +729,16 @@ const PHPAndLaravelBasicDocs = [
 		eng: 'MVC',
 		description: 'Giới thiệu về Namespace And Autoload.',
 		link: '/php/documentation/php-namespace-and-autoload',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
+		id: 'php-13-8',
+		vneseName: 'Composer & Autoload PSR-4',
+		eng: 'Composer',
+		description: 'Dùng Composer để quản lý autoload PSR-4, thay thế spl_autoload_register() thủ công.',
+		link: '/php/documentation/php-composer-psr4',
 		previewImage: 'course_php.png',
 		status_id: 1,
 		apps: ['php'],
@@ -786,6 +806,16 @@ const PHPAndLaravelBasicDocs = [
 	// 	apps: ['php'],
 	// },
 
+	{
+		id: 'php-13-9',
+		vneseName: 'Composer - Vendor phổ biến',
+		eng: 'Composer',
+		description: 'Workflow composer require và demo 4 vendor phổ biến: phpunit, var-dumper, monolog, phpdotenv.',
+		link: '/php/documentation/php-composer-vendor',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
 	{
 		id: 'php-14',
 		vneseName: 'Laravel - Setup',

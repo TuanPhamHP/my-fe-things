@@ -217,6 +217,45 @@ echo $result; // 100
 					lang="php"
 					theme="tomorrow-night-bright"
 				/>
+
+				<PageHeading text="Luyện tập" addOnClass="text-left mt-6" markedAs="php-conditional-practice" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Dùng chung mảng sau cho cả 3 bài — mục tiêu là <b>echo ra HTML</b> đúng với yêu cầu:
+				</p>
+				<VCodeBlock :code="practiceData" highlightjs lang="php" theme="tomorrow-night-bright" />
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+					<div class="bg-neutral-300 rounded px-2 py-2 col-span-1 border border-neutral-800 dark:border-neutral-100">
+						<p class="text-center mb-2 font-semibold">Bài 1 — if-else</p>
+						<p class="text-sm">Lặp qua $todos, dùng <code>if-else</code> + <code>echo</code> render thẻ &lt;li&gt; — thêm class <code>text-green-600</code> và ✓ nếu <code>completed</code>, ngược lại <code>text-red-500</code>.</p>
+						<div class="border-t border-slate-700 my-1"></div>
+						<div class="pl-2 pt-2 text-xs font-mono space-y-1 leading-5">
+							<p>&lt;li class="text-green-600"&gt;Học PHP ✓&lt;/li&gt;</p>
+							<p>&lt;li class="text-red-500"&gt;Làm bài tập&lt;/li&gt;</p>
+							<p>&lt;li class="text-red-500"&gt;Đọc docs&lt;/li&gt;</p>
+						</div>
+					</div>
+					<div class="bg-neutral-300 rounded px-2 py-2 col-span-1 border border-neutral-800 dark:border-neutral-100">
+						<p class="text-center mb-2 font-semibold">Bài 2 — match</p>
+						<p class="text-sm">Lặp qua $todos, dùng <code>match</code> gán <code>$badge</code> theo <code>priority</code> rồi <code>echo</code> kèm badge vào HTML.</p>
+						<div class="border-t border-slate-700 my-1"></div>
+						<div class="pl-2 pt-2 text-xs font-mono space-y-1 leading-5">
+							<p>&lt;li&gt;Học PHP &lt;b&gt;[Khẩn cấp]&lt;/b&gt;&lt;/li&gt;</p>
+							<p>&lt;li&gt;Làm bài tập &lt;b&gt;[Bình thường]&lt;/b&gt;&lt;/li&gt;</p>
+							<p>&lt;li&gt;Đọc docs &lt;b&gt;[Thấp]&lt;/b&gt;&lt;/li&gt;</p>
+						</div>
+					</div>
+					<div class="bg-neutral-300 rounded px-2 py-2 col-span-1 border border-neutral-800 dark:border-neutral-100">
+						<p class="text-center mb-2 font-semibold">Bài 3 — ??</p>
+						<p class="text-sm">Lặp qua $todos, dùng <code>??</code> để <code>echo</code> hạn chót — fallback <code>'Chưa đặt'</code> nếu không có <code>due_date</code>.</p>
+						<div class="border-t border-slate-700 my-1"></div>
+						<div class="pl-2 pt-2 text-xs font-mono space-y-1 leading-5">
+							<p>&lt;p&gt;Học PHP — Hạn: 2025-01-31&lt;/p&gt;</p>
+							<p>&lt;p&gt;Làm bài tập — Hạn: Chưa đặt&lt;/p&gt;</p>
+							<p>&lt;p&gt;Đọc docs — Hạn: 2025-02-15&lt;/p&gt;</p>
+						</div>
+					</div>
+				</div>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 
@@ -245,51 +284,12 @@ echo $result; // 100
 		},
 		data() {
 			return {
-				pagePagination: {
-					next: {
-						title: 'HTML Styles',
-						link: '/html-css-js-basic/documentation/ep-2',
-					},
-					prev: {
-						title: 'Trở về danh sách Doc',
-						link: '/html-css-js-basic/documentation',
-					},
-				},
-				stringMethods: [
-					{
-						id: 1,
-						name: 'abs($number)',
-						desc: 'Trả về giá trị tuyệt đối của số. - number',
-						syntax: `echo abs(-5); // Output: 5`,
-					},
-					{
-						id: 2,
-						name: 'round($number, $precision)',
-						desc: 'Làm tròn số tới số chữ số thập phân được chỉ định. - number',
-						syntax: `echo round(3.14159, 2); // Output: 3.14`,
-					},
-					{
-						id: 3,
-						name: 'ceil($number) | floor($number)',
-						desc: 'Làm tròn số lên | xuống đến số nguyên gần nhất. - number',
-						syntax: `echo round(3.14159, 2); // Output: 4 </br>
-						echo floor(3.14159, 2); // Output: 3`,
-					},
-					{
-						id: 4,
-						name: 'min($values) | max($values)',
-						desc: 'Trả về giá trị nhỏ nhất | lớn nhất trong một mảng hoặc danh sách các params. - number',
-						syntax: `echo min(2, 3, 1, 6, 7); // Output: 1; </br>
-						echo max(2, 3, 1, 6, 7); // Output: 7`,
-					},
-					{
-						id: 5,
-						name: 'sqrt($number) | pow($base, $exp)',
-						desc: 'Trả về căn bậc | luỹ thừa - array',
-						syntax: `echo sqrt(16); // Output: 4; </br>
-						echo pow(2, 3); // Output: 8`,
-					},
-				] as { id: string | number; name: string; desc: string; syntax: string; label?: string }[],
+				pagePagination: null,
+				practiceData: `$todos = [
+    ['title' => 'Học PHP',     'completed' => true,  'priority' => 'high',   'due_date' => '2025-01-31'],
+    ['title' => 'Làm bài tập', 'completed' => false, 'priority' => 'medium'],
+    ['title' => 'Đọc docs',    'completed' => false, 'priority' => 'low',    'due_date' => '2025-02-15'],
+];`,
 			};
 		},
 		mounted() {
@@ -304,4 +304,3 @@ echo $result; // 100
 		},
 	};
 </script>
-z

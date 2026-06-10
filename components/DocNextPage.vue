@@ -1,5 +1,5 @@
 <template>
-	<div class="py-2 mt-5 border-t text-indigo-500 dark:text-white flex w-full items-center justify-between">
+	<div v-if="pagination" class="py-2 mt-5 border-t text-indigo-500 dark:text-white flex w-full items-center justify-between">
 		<div
 			v-if="pagination.prev"
 			class="text-indigo-500 dark:text-white cursor-pointer flex items-center gap-2 hover:bg-gray-100/25 w-fit px-2 rounded-lg"

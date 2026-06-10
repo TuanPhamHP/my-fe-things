@@ -2,67 +2,51 @@
 	<div class="punch-page-wrapper dark:bg-slate-700 bg-white rounded-[24px] p-3 xl:p-3 3xl:p-6 pr-0">
 		<div class="w-full flex gap-2">
 			<div class="grow page-data">
-				<PageHeading text="Layouts" addOnClass="text-left mt-3" markedAs="laravel-layout" :lvl="2" />
-				<p class="text-slate-900 dark:text-white mt-2 mb-5">
-					Layout sẽ giúp chúng ta tăng tính tái sử dụng của các components, đồng thời nó cũng giúp tăng tính quản lí và
-					đơn giản hoá việc bảo trì dự án.
-					<br />
-					Để tạo một layout cho Blade view, bạn có thể tạo một file layout chung và sử dụng nó cho các view khác như
-					sau:
-					<br />
-					<br />
-					<b>Bước 1: Tạo layout</b>
-					<br />
-					Tạo thư mục <b>`resources/views/layouts`</b> và file <b>`app.blade.php`</b> trong đó:
+				<PageHeading text="Blade Layouts" addOnClass="text-left" markedAs="intro" />
+				<p class="text-slate-900 dark:text-white my-5">
+					Khi có nhiều trang (danh sách todo, chi tiết, tạo mới...), mỗi trang đều có navbar và footer giống nhau.
+					Copy-paste HTML vào từng file là cách rất tệ — khó bảo trì, dễ lỗi khi cần sửa. Giải pháp: tạo một
+					<b>layout</b> chứa phần dùng chung, các view con chỉ cần định nghĩa phần nội dung riêng của mình.
 				</p>
-				<VCodeBlock :code="b8" highlightjs lang="html" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-2 mb-5">
-					Lưu ý rằng, ở phần bài tập này chúng ta sử dụng Bootstrap 5 để dựng giao diện. Như vậy, chúng ta đã tạo được
-					một layout, với layout vừa tạo ta sẽ tái sử dụng được phần <b>navbar, footer</b> đồng thời toàn bộ content sẽ
-					được inject vào <b>`@yield('content')`</b>.
-					<br />
-					<br />
-					<b>Bước 2: Sử dụng layout trong Blade view</b>
-				</p>
-				<VCodeBlock :code="b9" highlightjs lang="html" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white mt-4 mb-5">
-					<b>Bước 3: Khai báo Controller-action & route</b>
-					<br />
-				</p>
-				<VCodeBlock
-					:code="`// TodoController
-function index()
-{
-	return view('todo-app');
-}
 
-// routes/web.php
-Route::get('/app/todo', [TodoController::class,'index']);`"
-					highlightjs
-					lang="php"
-					theme="atom-one-dark"
-				/>
-				<p class="text-slate-900 dark:text-white mt-2 mb-5">
-					Done!!! Lưu ý ở phần này chúng ta sẽ làm đầy đủ các bước là:
-					<br />
-					1/ Tạo views
-					<br />
-					2/ Tạo Controller để xử lý
-					<br />
-					3/ Tạo route và gán với action tương ứng.
+				<PageHeading text="B1 — Tạo Layout" addOnClass="text-left" markedAs="layout-create" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Tạo thư mục <FilePath>resources/views/layouts/</FilePath> và file <FilePath>app.blade.php</FilePath>:
 				</p>
-				<p class="text-slate-900 dark:text-white leading-8">
-					Lý thuyết đủ rồi, làm
-					<a
-						href="/php/practice/e_4"
-						target="_blank"
-						rel="noreferrer"
-						class="inline-block px-1 rounded text-slate-900 dark:text-white underline decoration-2 hover:text-cyan-500"
-					>
-						bài tập
-					</a>
-					nào.
+				<VCodeBlock :code="b1" highlightjs lang="html" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					<FilePath>@yield('name')</FilePath> tạo ra một "vùng trống" mà các view con sẽ điền vào.
+					<FilePath>@yield('title', 'Todo App')</FilePath> có giá trị mặc định là <FilePath>Todo App</FilePath> nếu view
+					con không override.
 				</p>
+
+				<PageHeading text="B2 — Kế thừa Layout" addOnClass="text-left" markedAs="layout-extend" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					View con dùng <FilePath>@extends</FilePath> để khai báo layout nào sẽ dùng, và
+					<FilePath>@section</FilePath> để điền nội dung vào từng <FilePath>@yield</FilePath>:
+				</p>
+				<VCodeBlock :code="b2" highlightjs lang="html" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Laravel ghép <FilePath>@section('content')</FilePath> của file con vào đúng chỗ
+					<FilePath>@yield('content')</FilePath> của layout. Kết quả là trang HTML hoàn chỉnh có đầy đủ navbar, footer và
+					nội dung.
+				</p>
+
+				<PageHeading text="Kết nối với Controller" addOnClass="text-left" markedAs="layout-flow" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3">
+					Controller không cần biết đến layout. Nó chỉ trả về view con như bình thường — Blade tự xử lý phần ghép
+					layout:
+				</p>
+				<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
+
+				<div class="mt-6 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
+					<p class="text-slate-900 dark:text-white font-semibold mb-2">Lưu ý</p>
+					<ul class="list-disc pl-5 space-y-1 text-slate-900 dark:text-white text-sm">
+						<li><FilePath>@extends</FilePath> phải đặt ở dòng đầu tiên của file — không có nội dung HTML nào trước nó.</li>
+						<li>Dùng <FilePath>@include</FilePath> khi muốn nhúng một partial nhỏ. Dùng layout khi muốn có bố cục chung cho toàn trang.</li>
+					</ul>
+				</div>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -75,137 +59,51 @@ Route::get('/app/todo', [TodoController::class,'index']);`"
 	import FakeTerminalUI from '@/components/FakeTerminalUI.vue';
 	import { apiResponde } from '@/models';
 	import DocNextPage from '@/components/DocNextPage.vue';
-	import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue';
 	import VCodeBlock from '@wdns/vue-code-block';
 	export default {
-		components: {
-			PageMarkBook,
-			PageHeading,
-			FakeTerminalUI,
-			DocNextPage,
-			Disclosure,
-			DisclosureButton,
-			DisclosurePanel,
-			VCodeBlock,
-		},
+		components: { PageMarkBook, PageHeading, FakeTerminalUI, DocNextPage, VCodeBlock },
 		data() {
 			return {
-				b8: `<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'My Happy App')</title>
+				b1: `<!-- resources/views/layouts/app.blade.php -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@yield('title', 'Todo App')</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-    <div class="collapse navbar-collapse container">
-    <a class="navbar-brand" href="#">Todo App</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/app/todo">Todo</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    <nav>
+        <a href="/todos">Todo List</a>
+    </nav>
 
-<div class="container mt-4">
-    @yield('content')
-</div>
+    <main>
+        @yield('content')
+    </main>
 
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container">
-        <span class="text-muted">&copy; 2024 Todo App by Phạm Anh Tuấn</span>
-    </div>
-</footer>
+    <footer>© 2024 Todo App</footer>
 </body>
-`,
-				b9: `@extends('layouts.app')
+</html>`,
+				b2: `<!-- resources/views/todos/index.blade.php -->
+@extends('layouts.app')
 
-@section('title', 'Todo List')
+@section('title', 'Danh sách Todo')
 
 @section('content')
-    <div class="container">
-        <h1 class="my-4">Todo List</h1>
+    <h1>Todo List</h1>
 
-        <!-- Danh sách to-do -->
-        <table class="table mt-4">
-            <thead>
-            <tr>
-                <th>Tiêu đề</th>
-                <th>Mô tả</th>
-                <th>Trạng thái</th>
-            </tr>
-            </thead>
-            <tbody>
-            @if(!empty($todos))
-            @foreach($todos as $todo)
-                <tr>
-                    <td>{{ $todo->title }}</td>
-                    <td>{{ $todo->description }}</td>
-                    <td>{{ $todo->completed ? 'Hoàn thành' : 'Mới' }}</td>
-                </tr>
-            @endforeach
-                @endif
-            </tbody>
-        </table>
-    </div>
-@endsection
-`,
-				controllerReturns: [
-					{
-						id: 1,
-						name: 'view($viewName)',
-						desc: 'Trả về một view để hiển thị giao diện người dùng. Đây là cách phổ biến nhất để trả về dữ liệu từ controller.',
-						syntax: `return view('welcome');`,
-					},
-					{
-						id: 2,
-						name: 'response()->json($data);',
-						desc: 'Trả về dữ liệu JSON, thường được sử dụng trong các API.',
-						syntax: `return response()->json($data);`,
-					},
-					{
-						id: 3,
-						name: 'response()',
-						desc: 'Trả về một đối tượng Response tùy chỉnh, cho phép bạn thiết lập tiêu đề, cookie, và các thuộc tính khác của phản hồi HTTP.',
-						syntax: `return response()->json($data);`,
-					},
-					{
-						id: 4,
-						name: 'redirect()',
-						desc: 'Chuyển hướng người dùng đến một URL khác, thường được sử dụng sau khi thực hiện một hành động như lưu dữ liệu.',
-						syntax: `return redirect()->route('home')->with('status', 'User created successfully!');`,
-					},
-				],
-				viewsConfig: [
-					{
-						id: 1,
-						name: 'return view("homepage");',
-						desc: 'resources/views/homepage.blade.php',
-					},
-					{
-						id: 2,
-						name: "return view('admin.dashboard');",
-						desc: 'resources/views/admin/dashboard.blade.php',
-					},
-					{
-						id: 3,
-						name: "return view('folder.subfolder.filename');",
-						desc: 'resources/views/folder/subfolder/filename.blade.php',
-					},
-				],
-				pagePagination: {
-					next: {
-						title: 'HTML Styles',
-						link: '/html-css-js-basic/documentation/ep-2',
-					},
-					prev: {
-						title: 'Trở về danh sách Doc',
-						link: '/html-css-js-basic/documentation',
-					},
-				},
+    @forelse($todos as $todo)
+        <p>{{ $todo->title }}</p>
+    @empty
+        <p>Chưa có todo nào.</p>
+    @endforelse
+@endsection`,
+				b3: `// TodoController.php
+public function index()
+{
+    $todos = Todo::all();
+    return view('todos.index', compact('todos'));
+    // Blade sẽ tự ghép todos/index.blade.php vào layouts/app.blade.php
+}`,
+				pagePagination: null,
 			};
 		},
 		mounted() {
