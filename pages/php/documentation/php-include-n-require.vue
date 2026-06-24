@@ -62,6 +62,97 @@
 				<p class="text-slate-900 dark:text-white my-3">Kết hợp lại trong <FilePath>index.php</FilePath>:</p>
 				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
 
+				<PageHeading
+					text="Magic Constants — __DIR__ & __FILE__"
+					addOnClass="text-left"
+					markedAs="magic-constants"
+					:lvl="1"
+				/>
+				<p class="text-slate-900 dark:text-white my-3">
+					Bạn vừa thấy <FilePath>__DIR__</FilePath> xuất hiện ở <FilePath>index.php</FilePath> phía trên. Đây là một
+					<b>magic constant</b> — hằng số đặc biệt do PHP tự sinh ra tại thời điểm <i>biên dịch</i>. Tên có dấu gạch
+					dưới đôi cả ở đầu và cuối (<FilePath>__NAME__</FilePath>). Khác với hằng số tạo bằng
+					<FilePath>define()</FilePath>, magic constants không do bạn khai báo — giá trị của chúng
+					<b>phụ thuộc vào vị trí đặt</b> trong code.
+				</p>
+				<div class="relative overflow-x-auto mt-3 border rounded-lg">
+					<table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+						<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+							<tr>
+								<th scope="col" class="px-5 py-3">Hằng số</th>
+								<th scope="col" class="px-5 py-3">Giá trị</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__DIR__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Thư mục chứa file hiện tại (không có dấu <FilePath>/</FilePath> ở cuối). VD:
+									<FilePath>/var/www/project/components</FilePath>.
+								</td>
+							</tr>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__FILE__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Đường dẫn đầy đủ tới file hiện tại. VD:
+									<FilePath>/var/www/project/components/header.php</FilePath>.
+								</td>
+							</tr>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__LINE__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Số dòng nơi hằng số được ghi. Hay dùng khi debug / log lỗi.
+								</td>
+							</tr>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__FUNCTION__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Tên function đang chạy. Ngoài function → chuỗi rỗng.
+								</td>
+							</tr>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__CLASS__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Tên class hiện tại, kèm namespace. Dùng bên trong method.
+								</td>
+							</tr>
+							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__METHOD__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Tên method theo dạng <FilePath>ClassName::methodName</FilePath>.
+								</td>
+							</tr>
+							<tr class="bg-white dark:bg-gray-800">
+								<td class="px-5 py-4 font-mono font-bold text-black dark:text-white">__NAMESPACE__</td>
+								<td class="px-5 py-4 text-black dark:text-gray-300">
+									Namespace hiện tại. Chuỗi rỗng nếu file không khai báo namespace.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<p class="text-slate-900 dark:text-white mt-5 mb-3">
+					<b>Vì sao bắt buộc dùng <FilePath>__DIR__</FilePath> trong include / require?</b>
+				</p>
+				<VCodeBlock :code="bMagic1" highlightjs lang="php" theme="atom-one-dark" />
+				<p class="text-slate-900 dark:text-white my-3">
+					PHP resolve relative path dựa trên <b>working directory</b> — thường là thư mục chứa file
+					<i>được chạy đầu tiên</i> (entry point), <b>không phải</b> thư mục chứa file đang gọi
+					<FilePath>require</FilePath>. Khi <FilePath>sidebar.php</FilePath> được include từ
+					<FilePath>index.php</FilePath> hay từ <FilePath>admin/dashboard.php</FilePath>, working directory hoàn toàn
+					khác nhau → relative path vỡ. <FilePath>__DIR__</FilePath> luôn trả về thư mục chứa
+					<i>chính file đang viết</i> — an toàn ở mọi entry point.
+				</p>
+
+				<p class="text-slate-900 dark:text-white my-3">Demo giá trị các magic constants trong thực tế:</p>
+				<VCodeBlock :code="bMagic2" highlightjs lang="php" theme="atom-one-dark" />
+
+				<p class="text-slate-900 dark:text-white my-3">
+					Lưu ý: <FilePath>dirname(__FILE__)</FilePath> tương đương <FilePath>__DIR__</FilePath> từ PHP 5.3 trở đi —
+					bạn có thể gặp cách viết cũ này khi đọc code legacy.
+				</p>
+
 				<PageHeading text="Truyền data vào file nhúng" addOnClass="text-left" markedAs="passing-data" :lvl="1" />
 				<p class="text-slate-900 dark:text-white my-3">
 					File được nhúng có thể truy cập tất cả các biến đã khai báo trước thời điểm gọi
@@ -151,6 +242,42 @@ require_once __DIR__ . '/config.php';   // bắt buộc, dừng nếu thiếu
     <?php include __DIR__ . '/components/footer.php'; ?>
 </body>
 </html>`,
+				bMagic1: `<?php
+// File: /var/www/project/components/widgets/sidebar.php
+
+// ❌ KHÔNG NÊN — relative path phụ thuộc vào working directory
+require 'config.php';                  // tìm ở working dir, KHÔNG phải thư mục của sidebar.php
+require '../../config.php';            // ổn khi entry point ở /project, vỡ khi ở /project/admin
+
+// ✅ NÊN — __DIR__ là thư mục chứa CHÍNH file này (sidebar.php)
+require __DIR__ . '/../../config.php'; // luôn trỏ đúng tới /var/www/project/config.php
+
+// Cách PHP rút gọn đường dẫn:
+// __DIR__                       = "/var/www/project/components/widgets"
+// __DIR__ . '/../../config.php' = "/var/www/project/components/widgets/../../config.php"
+//                               → "/var/www/project/config.php"  (PHP tự thu gọn ../)
+`,
+				bMagic2: `<?php
+// File: /var/www/app/Services/UserService.php
+
+namespace App\\Services;
+
+class UserService {
+    public function findById(int $id): void {
+        echo __FILE__;       // /var/www/app/Services/UserService.php
+        echo __DIR__;        // /var/www/app/Services
+        echo __LINE__;       // số dòng của lệnh echo này (vd: 10)
+        echo __NAMESPACE__;  // App\\Services
+        echo __CLASS__;      // App\\Services\\UserService
+        echo __FUNCTION__;   // findById
+        echo __METHOD__;     // App\\Services\\UserService::findById
+    }
+}
+
+// Ngoài class/function: __CLASS__, __FUNCTION__, __METHOD__ trả về chuỗi rỗng
+echo __FILE__;     // vẫn cho đường dẫn file
+echo __FUNCTION__; // "" (chuỗi rỗng)
+`,
 				b6: `<?php
 // index.php — truyền biến $todos trước khi include
 $todos = [
