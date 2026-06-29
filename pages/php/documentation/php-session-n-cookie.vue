@@ -19,6 +19,11 @@
 						trình duyệt nếu được đặt thời hạn.
 					</li>
 				</ul>
+				<p class="text-slate-900 dark:text-white my-5 leading-8">
+					Các ví dụ bên dưới viết theo cú pháp <b>PHP 8.x</b> — dùng options array cho <FilePath>setcookie()</FilePath>
+					và <FilePath>session_start()</FilePath>, thuộc tính <FilePath>SameSite</FilePath> chống CSRF, và các API hash
+					mật khẩu hiện đại (<FilePath>password_hash</FilePath> / <FilePath>password_verify</FilePath>).
+				</p>
 
 				<!-- SESSION -->
 				<div class="py-6"></div>
@@ -29,7 +34,8 @@
 					Trước khi đọc hoặc ghi session, bắt buộc phải gọi
 					<FilePath>session_start()</FilePath>
 					ở đầu file — <b>trước mọi output HTML</b> (kể cả khoảng trắng). PHP sẽ tạo mới hoặc tiếp tục
-					session đang tồn tại.
+					session đang tồn tại. Từ PHP 7+ (và là chuẩn trong PHP 8.x), hàm này nhận thêm <b>options array</b>
+					để cấu hình bảo mật cho session cookie ngay tại chỗ — thay vì phải chỉnh <FilePath>php.ini</FilePath>.
 				</p>
 				<VCodeBlock :code="sessionBasic" highlightjs lang="php" theme="tomorrow-night-bright" />
 				<div class="py-4"></div>
@@ -64,7 +70,9 @@
 				<PageHeading text="Cách sử dụng" addOnClass="text-left" markedAs="php-sc-cookie-usage" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					Cookie được tạo bằng hàm <FilePath>setcookie()</FilePath>. Tương tự session, cookie phải được set
-					<b>trước mọi output HTML</b>.
+					<b>trước mọi output HTML</b>. Từ PHP 7.3 (chuẩn cho PHP 8.x), <FilePath>setcookie()</FilePath> hỗ trợ
+					truyền <b>options array</b> ở tham số thứ 3 — code dễ đọc hơn và là cách <b>duy nhất</b> để khai báo
+					thuộc tính <FilePath>SameSite</FilePath>.
 				</p>
 				<VCodeBlock :code="cookieBasic" highlightjs lang="php" theme="tomorrow-night-bright" />
 				<div class="py-2"></div>
@@ -101,6 +109,37 @@
 					Cookie tồn tại ngay cả sau khi đóng trình duyệt (khác session). Demo dưới đây ghi nhớ tên 30 ngày.
 				</p>
 				<VCodeBlock :code="cookieDemo" highlightjs lang="php" theme="tomorrow-night-bright" />
+
+				<!-- BEST PRACTICES PHP 8.x -->
+				<div class="py-6"></div>
+				<PageHeading text="Best practices bảo mật (PHP 8.x)" addOnClass="text-left" markedAs="php-sc-best-practices" :lvl="2" />
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Luôn cấu hình <FilePath>session_start()</FilePath> bằng options array — đừng dựa hoàn toàn vào
+						<FilePath>php.ini</FilePath> vì mỗi host có default khác nhau.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Gọi <FilePath>session_regenerate_id(true)</FilePath> ngay sau khi đăng nhập, đổi mật khẩu, hoặc
+						nâng quyền — chống <b>session fixation</b>.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						<b>Không bao giờ</b> so sánh mật khẩu bằng <FilePath>===</FilePath>. Dùng cặp
+						<FilePath>password_hash()</FilePath> / <FilePath>password_verify()</FilePath> — chống timing attack
+						và tự động chọn thuật toán mạnh nhất (mặc định là bcrypt).
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Mọi cookie nhạy cảm cần đủ 3 cờ: <FilePath>secure</FilePath>, <FilePath>httponly</FilePath>,
+						<FilePath>samesite</FilePath>. Production HTTPS bắt buộc bật <FilePath>secure</FilePath>.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Luôn <FilePath>htmlspecialchars()</FilePath> dữ liệu cookie / session khi đổ ra HTML — chống XSS.
+						Không bao giờ tin cookie là "an toàn" chỉ vì server đã set nó.
+					</li>
+					<li class="text-slate-900 dark:text-white my-3 leading-8 text-lg text-content marker:text-sky-400 list-disc">
+						Khi xóa cookie phải truyền <b>cùng</b> <FilePath>path</FilePath> (và <FilePath>domain</FilePath> nếu có)
+						với lúc tạo — nếu sai, trình duyệt sẽ giữ nguyên cookie cũ.
+					</li>
+				</ul>
 
 				<!-- SO SÁNH -->
 				<div class="py-6"></div>
@@ -170,6 +209,11 @@
 					{ name: 'domain', type: 'string', desc: "Domain có hiệu lực. '' = domain hiện tại" },
 					{ name: 'secure', type: 'bool', desc: 'Chỉ gửi qua HTTPS' },
 					{ name: 'httponly', type: 'bool', desc: 'Cookie không đọc được bằng JavaScript — bảo mật hơn' },
+					{
+						name: 'samesite',
+						type: "'Lax' | 'Strict' | 'None'",
+						desc: "Chống CSRF. 'Lax' (mặc định khuyên dùng), 'Strict' chặt nhất, 'None' bắt buộc đi kèm secure=true. Chỉ khai báo được qua options array (PHP 7.3+)",
+					},
 				],
 				compareTable: [
 					{ criteria: 'Nơi lưu', session: 'Server', cookie: 'Trình duyệt' },
@@ -180,14 +224,21 @@
 					{ criteria: 'Use case phổ biến', session: 'Đăng nhập, giỏ hàng, flash message', cookie: 'Ghi nhớ ngôn ngữ, theme, "nhớ tôi"' },
 				],
 				sessionBasic: `<?php
-session_start(); // Bắt buộc gọi TRƯỚC mọi output HTML
+// PHP 8.x — session_start() nhận options array (chuẩn hiện đại)
+session_start([
+    'cookie_lifetime' => 0,        // 0 = hết khi đóng trình duyệt
+    'cookie_httponly' => true,     // JS không đọc được session cookie
+    'cookie_secure'   => true,     // chỉ gửi qua HTTPS (bật khi deploy production)
+    'cookie_samesite' => 'Lax',    // 'Lax' | 'Strict' | 'None' — chống CSRF
+    'use_strict_mode' => true,     // chỉ chấp nhận session ID do server cấp → chống session fixation
+]);
 
 // --- Ghi ---
 $_SESSION['username'] = 'NguyenVanA';
 $_SESSION['role']     = 'admin';
 
-// --- Đọc ---
-echo $_SESSION['username']; // NguyenVanA
+// --- Đọc với null coalescing operator ---
+echo $_SESSION['username'] ?? 'Khách'; // NguyenVanA
 
 // --- Xóa một key ---
 unset($_SESSION['role']);
@@ -199,18 +250,22 @@ session_destroy(); // Hủy file session trên server
 				visitCounter: `<?php
 session_start();
 
-if (!isset($_SESSION['visit_count'])) {
-    $_SESSION['visit_count'] = 0;
-}
+// Null coalescing assignment ??= (PHP 7.4+) — gán nếu key chưa tồn tại / null
+$_SESSION['visit_count'] ??= 0;
 $_SESSION['visit_count']++;
 
-echo "Bạn đã truy cập trang này " . $_SESSION['visit_count'] . " lần.";
+// String interpolation với cú pháp {$var}
+echo "Bạn đã truy cập trang này {$_SESSION['visit_count']} lần.";
 // → Reload trang: số tăng dần
 // → Đóng trình duyệt: session mất, đếm lại từ 1
 ?>`,
 				loginPhp: `<?php
 // login.php
-session_start();
+session_start([
+    'cookie_httponly' => true,
+    'cookie_samesite' => 'Lax',
+    'use_strict_mode' => true,
+]);
 
 // Đã đăng nhập → vào thẳng dashboard
 if (isset($_SESSION['user'])) {
@@ -220,13 +275,26 @@ if (isset($_SESSION['user'])) {
 
 $error = '';
 
+// "Database" giả lập — bài PHP Database sẽ thay bằng truy vấn DB thật.
+// Hash bên dưới được tạo từ: password_hash('123456', PASSWORD_DEFAULT)
+$users = [
+    'admin' => [
+        'name'          => 'Admin',
+        'password_hash' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+    ],
+];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
-    $password = trim($_POST['password'] ?? '');
+    $password = $_POST['password'] ?? ''; // KHÔNG trim password — khoảng trắng có thể là 1 phần mật khẩu
 
-    // Hardcode để demo — bài PHP Database sẽ thay bằng truy vấn DB thật
-    if ($username === 'admin' && $password === '123456') {
-        $_SESSION['user'] = ['name' => 'Admin', 'username' => $username];
+    $userRow = $users[$username] ?? null;
+
+    // password_verify() so sánh hash an toàn (chống timing attack)
+    if ($userRow !== null && password_verify($password, $userRow['password_hash'])) {
+        // 🔒 Đổi session ID sau khi xác thực — chống session fixation
+        session_regenerate_id(true);
+        $_SESSION['user'] = ['name' => $userRow['name'], 'username' => $username];
         header('Location: dashboard.php');
         exit;
     }
@@ -278,38 +346,48 @@ exit;
 ?>`,
 				cookieBasic: `<?php
 // ⚠️ setcookie() phải gọi TRƯỚC mọi output HTML
+// PHP 7.3+ : truyền options dạng mảng (khuyến nghị cho PHP 8.x)
 
-// --- Tạo cookie tồn tại 7 ngày ---
-setcookie(
-    'username',              // Tên
-    'NguyenVanA',           // Giá trị
-    time() + 7 * 24 * 3600, // Hết hạn sau 7 ngày
-    '/',                     // Có hiệu lực toàn bộ domain
-    '',                      // Domain ('' = domain hiện tại)
-    false,                   // Secure (true = chỉ HTTPS)
-    true                     // HttpOnly (true = JS không đọc được)
-);
+setcookie('username', 'NguyenVanA', [
+    'expires'  => time() + 7 * 24 * 3600, // Hết hạn sau 7 ngày
+    'path'     => '/',                    // Hiệu lực toàn bộ domain
+    'domain'   => '',                     // '' = domain hiện tại
+    'secure'   => true,                   // Chỉ gửi qua HTTPS
+    'httponly' => true,                   // JS không đọc được
+    'samesite' => 'Lax',                  // 'Lax' | 'Strict' | 'None' — chống CSRF
+]);
 
 // --- Đọc cookie ---
 if (isset($_COOKIE['username'])) {
     echo "Xin chào, " . htmlspecialchars($_COOKIE['username']);
 }
 
-// --- Xóa cookie: đặt expires về quá khứ ---
-setcookie('username', '', time() - 3600, '/');
+// --- Xóa cookie: đặt expires về quá khứ (giữ nguyên path/domain với cookie gốc) ---
+setcookie('username', '', [
+    'expires' => time() - 3600,
+    'path'    => '/',
+]);
 ?>`,
 				cookieDemo: `<?php
 // remember-me.php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
-    if ($name) {
+    if ($name !== '') {
         // Ghi nhớ 30 ngày, kể cả sau khi đóng trình duyệt
-        setcookie('remembered_name', $name, time() + 30 * 24 * 3600, '/');
+        setcookie('remembered_name', $name, [
+            'expires'  => time() + 30 * 24 * 3600,
+            'path'     => '/',
+            'httponly' => true,
+            'samesite' => 'Lax',
+        ]);
         header('Location: remember-me.php');
         exit;
     }
     // Xóa cookie khi name rỗng
-    setcookie('remembered_name', '', time() - 3600, '/');
+    setcookie('remembered_name', '', [
+        'expires' => time() - 3600,
+        'path'    => '/',
+    ]);
     header('Location: remember-me.php');
     exit;
 }
