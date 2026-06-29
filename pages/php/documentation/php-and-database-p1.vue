@@ -246,7 +246,7 @@ try {
     )";
 
 		$conn->exec($sql);
-		echo "Bảng 'comments' đã được tạo thành công!";
+		echo "Bảng 'products' đã được tạo thành công!";
 	} catch (PDOException $e) {
 		echo "Lỗi khi tạo bảng: " . $e->getMessage();
 	}
