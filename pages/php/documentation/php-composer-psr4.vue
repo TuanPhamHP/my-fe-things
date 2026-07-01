@@ -276,26 +276,6 @@
 					<FilePath>vendor/</FilePath> và loại code test khỏi bản deploy.
 				</p>
 
-				<PageHeading text="Các kiểu autoload khác: classmap và files" addOnClass="text-left" markedAs="other-autoload" :lvl="1" />
-				<p class="text-slate-900 dark:text-white my-3">Ngoài <FilePath>psr-4</FilePath>, Composer còn 2 kiểu autoload:</p>
-				<ul class="pl-10">
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>classmap</FilePath> — Composer quét sẵn thư mục, build một map
-						<FilePath>ClassName ⇒ path</FilePath> lưu vào file tĩnh. Dùng cho code legacy không theo PSR-4 (ví
-						dụ 1 file chứa nhiều class, hoặc tên file đặt tùy ý).
-					</li>
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>files</FilePath> — <FilePath>require</FilePath> file mỗi request. Dùng cho các helper
-						function toàn cục (function không phải class nên không thể autoload theo tên).
-					</li>
-				</ul>
-				<p class="text-slate-900 dark:text-white my-3">Kết hợp cả 3 kiểu trong một <FilePath>composer.json</FilePath>:</p>
-				<VCodeBlock :code="b15" highlightjs lang="json" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white my-3">
-					Nhớ chạy <FilePath>composer dump-autoload</FilePath> mỗi khi thêm file mới vào
-					<FilePath>classmap</FilePath> — Composer đã cache map, không tự phát hiện file mới.
-				</p>
-
 				<PageHeading text="Các lệnh Composer thường dùng" addOnClass="text-left" markedAs="common-commands" :lvl="1" />
 				<div class="relative overflow-x-auto mt-3 border rounded-lg">
 					<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -330,31 +310,6 @@
 					chỉ cần đổi handler — logic ghi log không đổi. Đây là sức mạnh thật sự của package ecosystem: bạn tập
 					trung code business logic, còn lại giao cho thư viện.
 				</p>
-
-				<PageHeading text="Tối ưu autoloader cho production" addOnClass="text-left" markedAs="production-opt" :lvl="1" />
-				<p class="text-slate-900 dark:text-white my-3">
-					Mặc định autoloader phải <FilePath>file_exists()</FilePath> mỗi khi load class mới → chậm. Trên production,
-					chạy lệnh sau khi build:
-				</p>
-				<VCodeBlock :code="b17" highlightjs lang="bash" theme="atom-one-dark" />
-				<p class="text-slate-900 dark:text-white my-3">Giải thích các cờ:</p>
-				<ul class="pl-10">
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>--no-dev</FilePath> — bỏ qua <FilePath>require-dev</FilePath> + <FilePath>autoload-dev</FilePath>.
-					</li>
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>-o</FilePath> / <FilePath>--optimize-autoloader</FilePath> — quét toàn bộ file PSR-4 sinh
-						classmap tĩnh, autoloader không cần <FilePath>file_exists()</FilePath> nữa.
-					</li>
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>--classmap-authoritative</FilePath> — nếu class không có trong classmap thì báo lỗi luôn,
-						KHÔNG thử tìm file. Nhanh nhất, nhưng cấm bổ sung class ở runtime.
-					</li>
-					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<FilePath>--apcu-autoloader</FilePath> — cache kết quả tra cứu vào APCu (bật khi PHP có APCu
-						extension).
-					</li>
-				</ul>
 
 				<PageHeading text="Lỗi thường gặp & cách xử lý" addOnClass="text-left" markedAs="troubleshooting" :lvl="1" />
 				<div class="relative overflow-x-auto mt-3 border rounded-lg">
@@ -425,10 +380,6 @@
 						<li>
 							Version constraint mặc định <FilePath>^</FilePath> nhận bugfix + feature update, không nhảy
 							major version.
-						</li>
-						<li>
-							Deploy production dùng
-							<FilePath>composer install --no-dev -o --classmap-authoritative</FilePath> để load nhanh nhất.
 						</li>
 						<li>
 							Chỉ cần <FilePath>require_once 'vendor/autoload.php'</FilePath> một lần — tất cả class và
@@ -644,20 +595,6 @@ sudo mv composer.phar /usr/local/bin/composer`,
         "psr-4": { "Tests\\\\": "tests/" }
     }
 }`,
-				b15: `{
-    "autoload": {
-        "psr-4": {
-            "App\\\\": "src/"
-        },
-        "classmap": [
-            "legacy/",
-            "database/seeds"
-        ],
-        "files": [
-            "src/helpers.php"
-        ]
-    }
-}`,
 				b16: `<?php
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -672,7 +609,6 @@ $log->info('User đăng nhập', ['user_id' => 42]);
 $log->warning('Session sắp hết hạn');
 $log->error('Kết nối DB thất bại');
 // → File app.log có 3 dòng JSON tương ứng`,
-				b17: `composer install --no-dev --optimize-autoloader --classmap-authoritative --apcu-autoloader`,
 			};
 		},
 		mounted() {
