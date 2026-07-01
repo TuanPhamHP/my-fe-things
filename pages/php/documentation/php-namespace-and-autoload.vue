@@ -11,8 +11,9 @@
 
 				<PageHeading text="Namespace" addOnClass="text-left" markedAs="namespace" :lvl="1" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Namespace giống như <b>thư mục cho code</b> — giúp nhóm các class liên quan lại và tránh xung đột tên. Ví dụ bạn
-					có hai class đều tên <FilePath>Mailer</FilePath>, một cho email, một cho SMS — namespace sẽ phân biệt chúng.
+					Namespace giống như <b>thư mục cho code</b> — giúp nhóm các class liên quan lại và tránh xung đột tên. Ví dụ
+					bạn có hai class đều tên <FilePath>Mailer</FilePath>, một cho email, một cho SMS — namespace sẽ phân biệt
+					chúng.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					Khai báo namespace ở <b>dòng đầu tiên</b> của file, dùng <FilePath>use</FilePath> để import class từ namespace
@@ -27,8 +28,8 @@
 					</div>
 				</div>
 				<p class="text-slate-900 dark:text-white my-3">
-					Quy ước: namespace nên <b>khớp với cấu trúc thư mục</b>. File
-					<FilePath>App/Service/Mailer.php</FilePath> khai báo namespace <FilePath>App\Service</FilePath>.
+					Quy ước: namespace nên <b>khớp với cấu trúc thư mục</b>. File <FilePath>App/Service/Mailer.php</FilePath> khai
+					báo namespace <FilePath>App\Service</FilePath>.
 				</p>
 
 				<PageHeading text="Autoload" addOnClass="text-left" markedAs="autoload" :lvl="1" />
@@ -43,8 +44,8 @@
 				<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Cơ chế hoạt động: khi PHP gặp một class chưa được load, nó gọi hàm autoloader và truyền vào tên class đầy đủ
-					(bao gồm namespace). Autoloader chuyển dấu <FilePath>\</FilePath> thành <FilePath>/</FilePath> để tạo đường dẫn
-					file, rồi <FilePath>require_once</FilePath> file đó.
+					(bao gồm namespace). Autoloader chuyển dấu <FilePath>\</FilePath> thành <FilePath>/</FilePath> để tạo đường
+					dẫn file, rồi <FilePath>require_once</FilePath> file đó.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					Ví dụ: <FilePath>App\Service\Mailer</FilePath> → <FilePath>App/Service/Mailer.php</FilePath>
@@ -56,25 +57,24 @@
 				<p class="text-slate-900 dark:text-white my-3">Tạo class <FilePath>Mailer</FilePath> với namespace:</p>
 				<VCodeBlock :code="b5" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Trong <FilePath>index.php</FilePath>, chỉ cần require autoloader một lần duy nhất — tất cả class sẽ được load tự
-					động:
+					Trong <FilePath>index.php</FilePath>, chỉ cần require autoloader một lần duy nhất — tất cả class sẽ được load
+					tự động:
 				</p>
 				<VCodeBlock :code="b6" highlightjs lang="php" theme="atom-one-dark" />
 
-				<PageHeading text="Câu hỏi hay gặp" addOnClass="text-left" markedAs="faq" :lvl="1" />
+				<PageHeading text="Câu hỏi hay gặp" addOnClass="text-left my-3" markedAs="faq" :lvl="1" />
 
 				<PageHeading
 					text="Q1: Bỏ qua autoload.php ở index.php thì không được dùng use à?"
-					addOnClass="text-left"
+					addOnClass="text-left my-3"
 					markedAs="faq-q1"
 					:lvl="2"
 				/>
 				<p class="text-slate-900 dark:text-white my-3"><b>Không phải vậy.</b> Cần tách 2 khái niệm:</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					<FilePath>use</FilePath> chỉ là <b>bí danh (alias) tên class</b> — nó KHÔNG load file.
-					<FilePath>use App\Service\Mailer;</FilePath> chỉ nói với PHP: "khi tôi viết
-					<FilePath>Mailer</FilePath> thì hiểu là <FilePath>App\Service\Mailer</FilePath>". Cú pháp này luôn hợp
-					lệ, dù có autoload hay không.
+					<FilePath>use App\Service\Mailer;</FilePath> chỉ nói với PHP: "khi tôi viết <FilePath>Mailer</FilePath> thì
+					hiểu là <FilePath>App\Service\Mailer</FilePath>". Cú pháp này luôn hợp lệ, dù có autoload hay không.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					Việc <b>load file class</b> là chuyện khác. PHP cần biết class <FilePath>App\Service\Mailer</FilePath>
@@ -82,8 +82,7 @@
 				</p>
 				<ul class="pl-10">
 					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
-						<b>Autoload</b> (như <FilePath>autoload.php</FilePath> ở ví dụ trên) — tự động tìm file khi class
-						được gọi.
+						<b>Autoload</b> (như <FilePath>autoload.php</FilePath> ở ví dụ trên) — tự động tìm file khi class được gọi.
 					</li>
 					<li class="text-slate-900 dark:text-white my-2 leading-8 list-disc marker:text-sky-400">
 						<FilePath>require</FilePath> / <FilePath>include</FilePath> thủ công — bạn tự nạp file.
@@ -100,7 +99,7 @@
 
 				<PageHeading
 					text="Q2: Đã require_once file class rồi thì cần gì use nữa?"
-					addOnClass="text-left"
+					addOnClass="text-left my-3"
 					markedAs="faq-q2"
 					:lvl="2"
 				/>
@@ -117,10 +116,9 @@
 					</li>
 				</ul>
 				<p class="text-slate-900 dark:text-white my-3">
-					Class <FilePath>Mailer</FilePath> ở ví dụ trên nằm trong namespace <FilePath>App\Service</FilePath>,
-					nên <b>tên đầy đủ</b> (Fully Qualified Class Name — FQCN) là <FilePath>App\Service\Mailer</FilePath>.
-					Sau khi <FilePath>require</FilePath>, class đã có trong bộ nhớ, nhưng bạn vẫn phải gọi bằng tên đầy
-					đủ.
+					Class <FilePath>Mailer</FilePath> ở ví dụ trên nằm trong namespace <FilePath>App\Service</FilePath>, nên
+					<b>tên đầy đủ</b> (Fully Qualified Class Name — FQCN) là <FilePath>App\Service\Mailer</FilePath>. Sau khi
+					<FilePath>require</FilePath>, class đã có trong bộ nhớ, nhưng bạn vẫn phải gọi bằng tên đầy đủ.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3">
 					<b>Không dùng <FilePath>use</FilePath></b> — vẫn chạy được, nhưng phải viết đầy đủ:
@@ -155,18 +153,18 @@
 					</table>
 				</div>
 				<p class="text-slate-900 dark:text-white my-3">
-					<b>Lưu ý:</b> nếu class <b>không có namespace</b> (chỉ khai báo <FilePath>class Mailer</FilePath> mà
-					không kèm dòng <FilePath>namespace</FilePath>), thì chỉ cần <FilePath>require</FilePath> là đủ, không
-					cần <FilePath>use</FilePath>. Nhưng vì file ở ví dụ trên có <FilePath>namespace App\Service;</FilePath>
-					ở dòng đầu, nên bắt buộc phải gọi bằng tên đầy đủ hoặc dùng <FilePath>use</FilePath> để rút gọn.
+					<b>Lưu ý:</b> nếu class <b>không có namespace</b> (chỉ khai báo <FilePath>class Mailer</FilePath> mà không kèm
+					dòng <FilePath>namespace</FilePath>), thì chỉ cần <FilePath>require</FilePath> là đủ, không cần
+					<FilePath>use</FilePath>. Nhưng vì file ở ví dụ trên có <FilePath>namespace App\Service;</FilePath> ở dòng
+					đầu, nên bắt buộc phải gọi bằng tên đầy đủ hoặc dùng <FilePath>use</FilePath> để rút gọn.
 				</p>
 
 				<div class="mt-6 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
 					<p class="text-slate-900 dark:text-white font-semibold mb-2">Lưu ý</p>
 					<ul class="list-disc pl-5 space-y-1 text-slate-900 dark:text-white text-sm">
 						<li>
-							<FilePath>use</FilePath> không phải "import file" — nó chỉ là alias ngắn. PHP vẫn dùng autoloader để thực sự
-							tìm và load file khi bạn khởi tạo class lần đầu.
+							<FilePath>use</FilePath> không phải "import file" — nó chỉ là alias ngắn. PHP vẫn dùng autoloader để thực
+							sự tìm và load file khi bạn khởi tạo class lần đầu.
 						</li>
 						<li>
 							Autoload thủ công với <FilePath>spl_autoload_register</FilePath> tốt để hiểu concept. Trong dự án thực tế,
