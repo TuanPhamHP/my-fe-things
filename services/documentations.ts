@@ -714,16 +714,6 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
-		id: 'php-13-2',
-		vneseName: 'PHP Database - (P1)',
-		eng: 'Database',
-		description: 'Thiết lập và kết nối databse trong PHP.',
-		link: '/php/documentation/php-and-database-p1',
-		previewImage: 'course_php.png',
-		status_id: 1,
-		apps: ['php'],
-	},
-	{
 		id: 'php-13-7',
 		vneseName: 'Namespace And Autoload',
 		eng: 'MVC',
@@ -754,6 +744,16 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 
+	{
+		id: 'php-13-2',
+		vneseName: 'PHP Database - (P1)',
+		eng: 'Database',
+		description: 'Thiết lập và kết nối databse trong PHP.',
+		link: '/php/documentation/php-and-database-p1',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
 	{
 		id: 'php-13-3',
 		vneseName: 'PHP Database - (P2)',

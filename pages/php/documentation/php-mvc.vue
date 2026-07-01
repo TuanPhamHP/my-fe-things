@@ -254,22 +254,48 @@
 				</div>
 
 				<PageHeading text="Câu hỏi hay gặp" addOnClass="text-left mt-5" markedAs="mvc-faq" :lvl="1" />
-				<PageHeading text="Q1: MVC và MVVM khác gì?" addOnClass="text-left my-3" markedAs="mvc-faq-q1" :lvl="2" />
+				<PageHeading
+					text="Q1: Không theo MVC, viết dồn tất cả vào 1 file có được không?"
+					addOnClass="text-left my-3"
+					markedAs="mvc-faq-q1"
+					:lvl="2"
+				/>
 				<p class="text-slate-900 dark:text-white my-3">
-					MVVM (Model-View-ViewModel) thường dùng cho app có 2 chiều dữ liệu (Vue, Angular, WPF) — <b>ViewModel</b> giữ
-					state UI và tự đồng bộ với View. MVC dùng cho web truyền thống: request đi 1 chiều từ browser → server → HTML.
-					Bản chất giống nhau ở chỗ "tách data khỏi UI".
+					<b>Vẫn chạy được</b> — PHP không bắt buộc bạn theo MVC. Với 1 trang tĩnh, 1 form liên hệ nhỏ, viết dồn 1 file
+					còn nhanh hơn. Nhưng khi dự án đạt ~5–10 trang trở lên, kiểu viết dồn sẽ nhanh chóng thành "mì spaghetti" —
+					sửa 1 chỗ vỡ 3 chỗ. MVC là <b>đầu tư ban đầu</b>: mất công tách file lúc đầu, đổi lại code dễ đọc và dễ sửa
+					khi lớn lên.
 				</p>
-				<PageHeading text="Q2: Trong Laravel, Model có phải chỗ chứa SQL không?" addOnClass="text-left my-3" markedAs="mvc-faq-q2" :lvl="2" />
+				<PageHeading
+					text="Q2: 1 class Model có phải tương ứng với 1 bảng trong DB không?"
+					addOnClass="text-left my-3"
+					markedAs="mvc-faq-q2"
+					:lvl="2"
+				/>
 				<p class="text-slate-900 dark:text-white my-3">
-					Laravel dùng <b>Eloquent ORM</b>, nên bạn thường không viết SQL trực tiếp. Model kế thừa
-					<FilePath>Illuminate\Database\Eloquent\Model</FilePath> — mỗi class map 1-1 với 1 bảng. Logic phức tạp hơn (ví
-					dụ: gộp 3 model, gửi mail sau khi lưu) nên tách ra <b>Service</b> để Model không quá to.
+					<b>Thường là có, nhưng không bắt buộc.</b> Quy ước phổ biến: bảng <FilePath>products</FilePath> ↔ class
+					<FilePath>Product</FilePath>, bảng <FilePath>users</FilePath> ↔ class <FilePath>User</FilePath>. Tuy nhiên Model
+					có thể là:
 				</p>
-				<PageHeading text="Q3: MVC có phù hợp với REST API không?" addOnClass="text-left my-3" markedAs="mvc-faq-q3" :lvl="2" />
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						1 class gộp dữ liệu từ nhiều bảng (ví dụ <FilePath>OrderReport</FilePath>).
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						1 class không có bảng DB tương ứng (ví dụ <FilePath>Cart</FilePath> lưu trong session).
+					</li>
+				</ul>
+				<PageHeading
+					text="Q3: Tên file, tên thư mục có bắt buộc là Model/View/Controller không?"
+					addOnClass="text-left my-3"
+					markedAs="mvc-faq-q3"
+					:lvl="2"
+				/>
 				<p class="text-slate-900 dark:text-white my-3">
-					<b>Có.</b> Chỉ khác 1 chỗ: View không render HTML mà trả JSON. Cấu trúc Model + Controller giữ nguyên. Controller
-					thay <FilePath>include 'view.php'</FilePath> bằng <FilePath>echo json_encode($data)</FilePath>.
+					<b>Về mặt cú pháp thì không</b> — PHP không quan tâm bạn đặt tên gì, miễn <FilePath>require</FilePath> đúng
+					đường dẫn. Nhưng đây là <b>quy ước</b> gần như cả cộng đồng theo, giúp người khác vào dự án hiểu ngay code ở
+					đâu. Các framework thực tế cũng theo: Laravel có <FilePath>app/Models</FilePath>,
+					<FilePath>app/Http/Controllers</FilePath>, <FilePath>resources/views</FilePath>. Cứ theo chuẩn cho lành.
 				</p>
 
 				<!-- ===================== LUYỆN TẬP ===================== -->
