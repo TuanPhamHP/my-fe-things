@@ -5,13 +5,22 @@
 				<PageHeading text="View & Xử lý Form" addOnClass="text-left" markedAs="php-intro" />
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Sau
-					<a href="/php/documentation/php-and-database-p2" target="_blank" rel="noreferrer"
-						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500">phần 2 (Model)</a>
+					<a
+						href="/php/documentation/php-and-database-p2"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500"
+						>phần 2 (Model)</a
+					>
 					và
-					<a href="/php/documentation/php-and-database-p3" target="_blank" rel="noreferrer"
-						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500">phần 3 (Controller &amp; Router)</a>,
-					chúng ta đã có 2 trong 3 chân của MVC. Bài này ghép nốt chân còn lại — <b>View</b> — để một request từ browser
-					chạy trọn vòng: URL → Router → Controller → Model → View → HTML.
+					<a
+						href="/php/documentation/php-and-database-p3"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500"
+						>phần 3 (Controller &amp; Router)</a
+					>, chúng ta đã có 2 trong 3 chân của MVC. Bài này ghép nốt chân còn lại — <b>View</b> — để một request từ
+					browser chạy trọn vòng: URL → Router → Controller → Model → View → HTML.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">Nội dung chính:</p>
 				<ul class="pl-10">
@@ -54,7 +63,12 @@
 					<FilePath>App/Views/</FilePath> cho gọn folder.
 				</p>
 
-				<PageHeading text="2. View đầu tiên — danh sách sản phẩm" addOnClass="text-left mt-5" markedAs="view-list" :lvl="1" />
+				<PageHeading
+					text="2. View đầu tiên — danh sách sản phẩm"
+					addOnClass="text-left mt-5"
+					markedAs="view-list"
+					:lvl="1"
+				/>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Tạo file <FilePath>App/Views/product_list.php</FilePath>:
 				</p>
@@ -75,17 +89,21 @@
 					</li>
 				</ul>
 
-				<PageHeading text="3. Controller render View" addOnClass="text-left mt-5" markedAs="controller-render" :lvl="1" />
+				<PageHeading
+					text="3. Controller render View"
+					addOnClass="text-left mt-5"
+					markedAs="controller-render"
+					:lvl="1"
+				/>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
-					Ở p3, các method Controller <FilePath>return $products</FilePath> ra ngoài. Giờ chúng ta đổi lại:
-					Controller <b>tự render View</b> để trả HTML về cho browser. Thêm helper
-					<FilePath>render()</FilePath> vào Controller:
+					Ở p3, các method Controller <FilePath>return $products</FilePath> ra ngoài. Giờ chúng ta đổi lại: Controller
+					<b>tự render View</b> để trả HTML về cho browser. Thêm helper <FilePath>render()</FilePath> vào Controller:
 				</p>
 				<VCodeBlock :code="bCtrlRender" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
-					Điểm mấu chốt là hàm <FilePath>extract($data)</FilePath> — nó lấy các key trong mảng và biến thành biến
-					local. Ví dụ <FilePath>extract(['products' =&gt; [...]])</FilePath> sẽ tạo ra biến
-					<FilePath>$products</FilePath> — chính là biến mà View đang trông chờ.
+					Điểm mấu chốt là hàm <FilePath>extract($data)</FilePath> — nó lấy các key trong mảng và biến thành biến local.
+					Ví dụ <FilePath>extract(['products' =&gt; [...]])</FilePath> sẽ tạo ra biến <FilePath>$products</FilePath> —
+					chính là biến mà View đang trông chờ.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Đường dẫn <FilePath>__DIR__ . "/../Views/{$view}.php"</FilePath> đi lên 1 cấp từ folder
@@ -115,12 +133,17 @@
 						<FilePath>$errors</FilePath> — mảng lỗi validate (rỗng khi form vừa mở lần đầu).
 					</li>
 					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
-						<FilePath>$old</FilePath> — dữ liệu user đã nhập lần trước, để form giữ lại khi validate fail. Rỗng khi
-						form mở lần đầu.
+						<FilePath>$old</FilePath> — dữ liệu user đã nhập lần trước, để form giữ lại khi validate fail. Rỗng khi form
+						mở lần đầu.
 					</li>
 				</ul>
 
-				<PageHeading text="6. Xử lý form POST — Controller" addOnClass="text-left mt-5" markedAs="controller-post" :lvl="1" />
+				<PageHeading
+					text="6. Xử lý form POST — Controller"
+					addOnClass="text-left mt-5"
+					markedAs="controller-post"
+					:lvl="1"
+				/>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Bổ sung 2 action <FilePath>create()</FilePath> (hiện form — GET) và <FilePath>store()</FilePath> (nhận POST):
 				</p>
@@ -144,7 +167,12 @@
 					</li>
 				</ol>
 
-				<PageHeading text="7. PRG Pattern — Post / Redirect / Get" addOnClass="text-left mt-5" markedAs="prg" :lvl="1" />
+				<PageHeading
+					text="7. PRG Pattern — Post / Redirect / Get"
+					addOnClass="text-left mt-5"
+					markedAs="prg"
+					:lvl="1"
+				/>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Chú ý ở bước 3 và 4 phía trên: sau khi xử lý POST, chúng ta <b>không render trực tiếp</b>, mà
 					<FilePath>header('Location: ...')</FilePath> để browser tự GET trang mới. Đây là pattern kinh điển
@@ -182,8 +210,8 @@
 				<VCodeBlock :code="bFinalIndex" highlightjs lang="php" theme="atom-one-dark" />
 				<div class="mt-4 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
 					<p class="text-slate-900 dark:text-white text-sm">
-						<b>Lưu ý thứ tự route:</b> <FilePath>/products/create</FilePath> phải được đăng ký
-						<b>trước</b> <FilePath>/products/{id}</FilePath>. Vì <FilePath>/products/{id}</FilePath> match cả URL
+						<b>Lưu ý thứ tự route:</b> <FilePath>/products/create</FilePath> phải được đăng ký <b>trước</b>
+						<FilePath>/products/{id}</FilePath>. Vì <FilePath>/products/{id}</FilePath> match cả URL
 						<FilePath>/products/create</FilePath> (do <FilePath>create</FilePath> khớp với pattern
 						<FilePath>([^/]+)</FilePath>). Router chạy theo thứ tự khai báo — cái nào cụ thể hơn nên khai báo trước.
 					</p>
@@ -193,8 +221,8 @@
 				<VCodeBlock :code="bTree" highlightjs lang="bash" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Chạy thử: <FilePath textCoppy="php -S localhost:8000">php -S localhost:8000</FilePath>, mở
-					<FilePath>http://localhost:8000/products</FilePath> — kiểm tra danh sách, click 1 item xem chi tiết, ấn
-					"Thêm mới" nhập form → submit → thấy flash message ở trang danh sách.
+					<FilePath>http://localhost:8000/products</FilePath> — kiểm tra danh sách, click 1 item xem chi tiết, ấn "Thêm
+					mới" nhập form → submit → thấy flash message ở trang danh sách.
 				</p>
 
 				<PageHeading text="Câu hỏi hay gặp" addOnClass="text-left mt-5" markedAs="faq" :lvl="1" />
@@ -206,13 +234,13 @@
 				/>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
 					Nếu user mở thẳng <FilePath>App/Views/product_list.php</FilePath>, biến <FilePath>$products</FilePath> chưa
-					tồn tại — file sẽ lỗi. Ngoài ra Controller còn làm 2 việc quan trọng khác trước khi render: <b>lấy dữ liệu
-					từ Model</b> và <b>kiểm tra quyền</b>. Vì vậy mọi request phải đi qua <FilePath>index.php</FilePath> →
-					Router → Controller → mới đến View.
+					tồn tại — file sẽ lỗi. Ngoài ra Controller còn làm 2 việc quan trọng khác trước khi render:
+					<b>lấy dữ liệu từ Model</b> và <b>kiểm tra quyền</b>. Vì vậy mọi request phải đi qua
+					<FilePath>index.php</FilePath> → Router → Controller → mới đến View.
 				</p>
 				<p class="text-slate-900 dark:text-white my-3 leading-8">
-					Trong Laravel, thư mục <FilePath>resources/views</FilePath> nằm ngoài <FilePath>public/</FilePath> nên
-					browser không thể mở trực tiếp. Chúng ta cũng nên cấu hình web server chỉ trỏ vào folder chứa
+					Trong Laravel, thư mục <FilePath>resources/views</FilePath> nằm ngoài <FilePath>public/</FilePath> nên browser
+					không thể mở trực tiếp. Chúng ta cũng nên cấu hình web server chỉ trỏ vào folder chứa
 					<FilePath>index.php</FilePath>, còn <FilePath>App/</FilePath> để ngoài — sẽ học ở bài Laravel.
 				</p>
 
@@ -235,16 +263,14 @@
 					markedAs="faq-q3"
 					:lvl="2"
 				/>
-				<p class="text-slate-900 dark:text-white my-3 leading-8">
-					2 lý do:
-				</p>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">2 lý do:</p>
 				<ul class="pl-10">
 					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
 						Query string hiện trong URL — user share link là bạn share luôn message. Session ẩn.
 					</li>
 					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
-						Query string dễ bị user tay ngang bịa (mở URL <FilePath>?msg=Đã%20xoá%20DB</FilePath> để lừa). Session
-						chỉ server ghi.
+						Query string dễ bị user tay ngang bịa (mở URL <FilePath>?msg=Đã%20xoá%20DB</FilePath> để lừa). Session chỉ
+						server ghi.
 					</li>
 				</ul>
 
@@ -257,12 +283,13 @@
 				<!-- Bài 1 -->
 				<div class="mt-4 p-4 rounded-lg border border-neutral-200 dark:border-gray-600">
 					<div class="flex items-center gap-2 mb-3">
-						<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0">01</span>
+						<span
+							class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0"
+							>01</span
+						>
 						<p class="text-slate-900 dark:text-white font-semibold">Layout partial — header &amp; footer</p>
 					</div>
-					<p class="text-slate-900 dark:text-white text-sm mb-1">
-						Luyện: tách phần lặp lại của View ra file partial.
-					</p>
+					<p class="text-slate-900 dark:text-white text-sm mb-1">Luyện: tách phần lặp lại của View ra file partial.</p>
 					<ul class="list-disc pl-5 space-y-1 text-slate-900 dark:text-white text-sm mb-3">
 						<li>
 							Tạo 2 file <FilePath>App/Views/partials/header.php</FilePath> và
@@ -273,10 +300,12 @@
 						<li>
 							Trong <FilePath>product_list.php</FilePath>, <FilePath>product_detail.php</FilePath>,
 							<FilePath>product_form.php</FilePath> — thay HTML boilerplate bằng
-							<FilePath>&lt;?php require __DIR__ . '/partials/header.php'; ?&gt;</FilePath> ở đầu và tương tự cho footer.
+							<FilePath>&lt;?php require __DIR__ . '/partials/header.php'; ?&gt;</FilePath> ở đầu và tương tự cho
+							footer.
 						</li>
 						<li>
-							Header nhận biến <FilePath>$title</FilePath> để đặt <FilePath>&lt;title&gt;</FilePath> khác nhau cho mỗi trang.
+							Header nhận biến <FilePath>$title</FilePath> để đặt <FilePath>&lt;title&gt;</FilePath> khác nhau cho mỗi
+							trang.
 						</li>
 					</ul>
 					<VCodeBlock :code="p1" highlightjs lang="php" theme="atom-one-dark" />
@@ -285,7 +314,10 @@
 				<!-- Bài 2 -->
 				<div class="mt-4 p-4 rounded-lg border border-neutral-200 dark:border-gray-600">
 					<div class="flex items-center gap-2 mb-3">
-						<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0">02</span>
+						<span
+							class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0"
+							>02</span
+						>
 						<p class="text-slate-900 dark:text-white font-semibold">Form Edit — GET và POST /products/{id}/edit</p>
 					</div>
 					<p class="text-slate-900 dark:text-white text-sm mb-1">
@@ -313,7 +345,10 @@
 				<!-- Bài 3 -->
 				<div class="mt-4 p-4 rounded-lg border border-neutral-200 dark:border-gray-600">
 					<div class="flex items-center gap-2 mb-3">
-						<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0">03</span>
+						<span
+							class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 font-bold text-xs shrink-0"
+							>03</span
+						>
 						<p class="text-slate-900 dark:text-white font-semibold">Helper global — hàm view() và flash()</p>
 					</div>
 					<p class="text-slate-900 dark:text-white text-sm mb-1">
@@ -331,9 +366,8 @@
 							<FilePath>App/helpers.php</FilePath> mỗi request.
 						</li>
 						<li>
-							Refactor Controller: thay <FilePath>$this-&gt;render(...)</FilePath> bằng
-							<FilePath>view(...)</FilePath>, thay <FilePath>$_SESSION['flash'] = ...</FilePath> bằng
-							<FilePath>flash('flash', '...')</FilePath>.
+							Refactor Controller: thay <FilePath>$this-&gt;render(...)</FilePath> bằng <FilePath>view(...)</FilePath>,
+							thay <FilePath>$_SESSION['flash'] = ...</FilePath> bằng <FilePath>flash('flash', '...')</FilePath>.
 						</li>
 					</ul>
 					<VCodeBlock :code="p3" highlightjs lang="php" theme="atom-one-dark" />
@@ -341,8 +375,13 @@
 
 				<p class="text-slate-900 dark:text-white my-5 leading-8">
 					(❁´◡`❁) Xong phần 4 — chúng ta đã có 1 web app MVC đầy đủ chức năng CRUD. Ở
-					<a href="/php/documentation/php-and-database-p5" target="_blank" rel="noreferrer"
-						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500">phần 5</a>
+					<a
+						href="/php/documentation/php-and-database-p5"
+						target="_blank"
+						rel="noreferrer"
+						class="inline-block px-1 rounded underline decoration-2 hover:text-cyan-500"
+						>phần 5</a
+					>
 					chúng ta sẽ mở rộng schema — thêm bảng <FilePath>categories</FilePath> và học cách xử lý quan hệ giữa các
 					bảng. See ya!
 				</p>
@@ -420,7 +459,7 @@
 </html>`,
 				bCtrlRender: `<?php
 // App/Controllers/ProductController.php
-declare(strict_types=1);
+
 
 namespace App\\Controllers;
 
@@ -590,7 +629,7 @@ Browser  ──GET /products──▶  Controller::index()
                               chỉ đọc DB, KHÔNG tạo bản ghi trùng`,
 				bFinalIndex: `<?php
 // index.php
-declare(strict_types=1);
+
 
 session_start();                              // Bật session — flash message cần
 require __DIR__ . '/vendor/autoload.php';
@@ -696,7 +735,7 @@ Route::get('/products/{id}/edit', fn(string $id): mixed => $ctrl->edit((int) $id
 Route::post('/products/{id}',     fn(string $id): mixed => $ctrl->update((int) $id));`,
 				p3: `<?php
 // App/helpers.php — TODO viết 2 function global
-declare(strict_types=1);
+
 
 /**
  * Render 1 view file, inject $data thành biến local.
