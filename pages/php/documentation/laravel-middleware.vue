@@ -60,7 +60,7 @@
 				</p>
 				<VCodeBlock :code="b3" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white mb-3">
-					Done, giờ thử gửi một request lên <FilePath>/categories</FilePath> để check kết quả nha.
+					Done, giờ thử gửi một request lên <FilePath>/cakes</FilePath> để check kết quả nha.
 				</p>
 				<PageHeading
 					text="Một số ứng dụng phổ biến của Middleware"
@@ -126,10 +126,27 @@
 		}
 		return $next($request);
 }`,
-				b2: `Route::get('/categories', [CategoryController::class, 'index'])->middleware(CustomMiddleware::class);`,
-				b3: `->withMiddleware(function (Middleware $middleware) {
-	CustomMiddleware::class
-})`,
+				b2: `Route::get('/cakes', [CakeController::class, 'index'])->middleware(CustomMiddleware::class);`,
+				b3: `<?php
+// bootstrap/app.php
+use App\\Http\\Middleware\\CustomMiddleware;
+use Illuminate\\Foundation\\Application;
+use Illuminate\\Foundation\\Configuration\\Exceptions;
+use Illuminate\\Foundation\\Configuration\\Middleware;
+
+return Application::configure(basePath: dirname(__DIR__))
+    ->withRouting(
+        web: __DIR__.'/../routes/web.php',
+        commands: __DIR__.'/../routes/console.php',
+        health: '/up',
+    )
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->append(CustomMiddleware::class);   // áp cho MỌI request
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })
+    ->create();`,
 
 				cprs: [
 					{
@@ -171,7 +188,7 @@
 		},
 		methods: {
 			getPagination() {
-				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-23' }).then((res: apiResponde) => {
+				this.$api.documentations.getPagination({ appIds: 'php', currentDocId: 'php-22' }).then((res: apiResponde) => {
 					this.pagePagination = res?.data?.pagination || [];
 				});
 			},

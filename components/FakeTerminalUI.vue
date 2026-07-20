@@ -9,7 +9,9 @@
 				@click="handleCopy(textCoppy)"
 			/>
 		</ClientOnly>
-		<slot></slot>
+		<slot>
+			<p>{{ textCoppy }}</p>
+		</slot>
 	</div>
 </template>
 <script lang="ts">

@@ -115,25 +115,40 @@
 <div class="d-flex justify-content-center">
 	{{ $cakes->links() }}
 </div>`,
-				b3: `public function boot(): void
+				b3: `<?php
+// app/Providers/AppServiceProvider.php
+namespace App\\Providers;
+
+use Illuminate\\Pagination\\Paginator;
+use Illuminate\\Support\\ServiceProvider;
+
+class AppServiceProvider extends ServiceProvider
 {
-    // Dùng Bootstrap 5
-    Paginator::useBootstrapFive();
+    public function boot(): void
+    {
+        // Dùng UI Bootstrap 5 thay cho Tailwind mặc định
+        Paginator::useBootstrapFive();
+    }
 }`,
-				b4: `public function list(Request $request)
+				b4: `<?php
+// app/Http/Controllers/CakeController.php
+public function list(Request $request)
 {
-	$perPage = $request->input('per_page', 10);
-	$rslt = $this->model->paginate($perPage);
-	$data = [
-			'cakes' => $rslt->items(),
-			'pagination' => [
-				'current_page' => $rslt->currentPage(),
-				'last_page' => $rslt->lastPage(),
-				'per_page' => $rslt->perPage(),
-				'total' => $rslt->total()
-			]
-	];
-	return response()->json($data);
+    $perPage = (int) $request->input('per_page', 10);
+    $paginator = Cake::paginate($perPage);
+
+    return response()->json([
+        'cakes' => $paginator->items(),
+        'pagination' => [
+            'current_page' => $paginator->currentPage(),
+            'last_page'    => $paginator->lastPage(),
+            'per_page'     => $paginator->perPage(),
+            'total'        => $paginator->total(),
+        ],
+    ]);
+
+    // Cách gọn hơn: response()->json($paginator) — Laravel tự
+    // serialize LengthAwarePaginator kèm sẵn meta {data, links, meta}.
 }`,
 
 				cprs: [

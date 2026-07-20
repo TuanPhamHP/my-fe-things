@@ -278,51 +278,52 @@
 						],
 					},
 				],
-				b1: `namespace App\Models;
+				b1: `<?php
+namespace App\\Models;
 
-	use Illuminate\Database\Eloquent\Model;
+use Illuminate\\Database\\Eloquent\\Model;
 
-	class User extends Model
-	{
-	    protected $fillable = ['name', 'email', 'password'];
-	}`,
-				b2: `<!-- resources/views/users/index.blade.php -->
-	<!DOCTYPE html>
-	<html>
-	<head>
-	    <title>Users</title>
-	</head>
-	<body>
-	    <h1>Users List</h1>
-	    <ul>
-	        @foreach ($users as $user)
-	            <li>{{ $user->name }}</li>
-	        @endforeach
-	    </ul>
-	</body>
-	</html>
-	`,
-				b3: `namespace App\Http\Controllers;
+class Cake extends Model
+{
+    protected $fillable = ['name', 'description', 'price', 'category_id', 'is_active'];
+}
+`,
+				b2: `{{-- resources/views/cakes/index.blade.php --}}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách bánh</title>
+</head>
+<body>
+    <h1>Danh sách bánh</h1>
+    <ul>
+        @foreach ($cakes as $cake)
+            <li>{{ $cake->name }} — {{ number_format($cake->price) }}đ</li>
+        @endforeach
+    </ul>
+</body>
+</html>
+`,
+				b3: `<?php
+namespace App\\Http\\Controllers;
 
-	use App\Models\User;
-	use Illuminate\Http\Request;
+use App\\Models\\Cake;
 
-	class UserController extends Controller
-	{
-	    public function index()
-	    {
-	        $users = User::all();
-	        return view('users.index', compact('users'));
-	    }
+class CakeController extends Controller
+{
+    public function index()
+    {
+        $cakes = Cake::all();
+        return view('cakes.index', compact('cakes'));
+    }
 
-	    public function show($id)
-	    {
-	        $user = User::find($id);
-	        return view('users.show', compact('user'));
-	    }
-	}
-
-	`,
+    public function show($id)
+    {
+        $cake = Cake::findOrFail($id);
+        return view('cakes.show', compact('cake'));
+    }
+}
+`,
 				pagePagination: {
 					next: {
 						title: 'HTML Styles',

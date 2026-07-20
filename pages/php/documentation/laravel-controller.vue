@@ -33,9 +33,9 @@
 					</table>
 				</div>
 
-				<PageHeading text="CRUD với TodoController" addOnClass="text-left" markedAs="controller-crud" :lvl="1" />
+				<PageHeading text="CRUD với CakeController" addOnClass="text-left" markedAs="controller-crud" :lvl="1" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Dưới đây là 4 method CRUD cơ bản trong <FilePath>TodoController</FilePath>. Đầu tiên khai báo Model và
+					Dưới đây là 4 method CRUD cơ bản trong <FilePath>CakeController</FilePath>. Đầu tiên khai báo Model và
 					namespace:
 				</p>
 				<VCodeBlock :code="b1" highlightjs lang="php" theme="atom-one-dark" />
@@ -79,7 +79,7 @@
 					<p class="text-slate-900 dark:text-white font-semibold mb-2">Lưu ý</p>
 					<ul class="list-disc pl-5 space-y-1 text-slate-900 dark:text-white text-sm">
 						<li>Dùng <FilePath>findOrFail($id)</FilePath> thay vì <FilePath>find($id)</FilePath> — tự throw 404 nếu không tìm thấy, không cần if check thủ công.</li>
-						<li>Dùng <FilePath>Route::resource('/todos', TodoController::class)</FilePath> để tự động bind đủ 7 routes RESTful (index, create, store, show, edit, update, destroy).</li>
+						<li>Dùng <FilePath>Route::resource('/cakes', CakeController::class)</FilePath> để tự động bind đủ 7 routes RESTful (index, create, store, show, edit, update, destroy).</li>
 					</ul>
 				</div>
 
@@ -100,53 +100,68 @@
 		components: { PageMarkBook, PageHeading, FakeTerminalUI, DocNextPage, VCodeBlock },
 		data() {
 			return {
-				b1: `// app/Http/Controllers/TodoController.php
+				b1: `<?php
+// app/Http/Controllers/CakeController.php
 namespace App\\Http\\Controllers;
 
-use App\\Models\\Todo;
+use App\\Models\\Cake;
 use Illuminate\\Http\\Request;
 
-class TodoController extends Controller
+class CakeController extends Controller
 {
     // methods bên dưới
 }`,
 				b2: `public function index()
 {
-    $todos = Todo::all();
-    return view('todos.index', compact('todos'));
+    // Eager load 'category' để tránh N+1, paginate 15 bánh/trang
+    $cakes = Cake::with('category')->latest()->paginate(15);
+    return view('cakes.index', compact('cakes'));
 }`,
 				b3: `public function store(Request $request)
 {
-    Todo::create([
-        'title'     => $request->input('title'),
-        'completed' => false,
+    $data = $request->validate([
+        'name'        => 'required|string|max:255',
+        'price'       => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+        'description' => 'nullable|string',
     ]);
-    return redirect()->route('todos.index');
+
+    Cake::create($data);
+
+    return redirect()->route('cakes.index')->with('success', 'Đã thêm bánh mới!');
 }`,
 				b4: `public function update(Request $request, $id)
 {
-    $todo = Todo::findOrFail($id);
-    $todo->update(['completed' => $request->boolean('completed')]);
-    return redirect()->route('todos.index');
+    $cake = Cake::findOrFail($id);
+
+    $data = $request->validate([
+        'name'      => 'required|string|max:255',
+        'price'     => 'required|numeric|min:0',
+        'is_active' => 'boolean',
+    ]);
+
+    $cake->update($data);
+
+    return redirect()->route('cakes.index')->with('success', 'Đã cập nhật bánh!');
 }`,
 				b5: `public function destroy($id)
 {
-    Todo::findOrFail($id)->delete();
-    return redirect()->route('todos.index')->with('success', 'Đã xóa!');
+    Cake::findOrFail($id)->delete();
+    return redirect()->route('cakes.index')->with('success', 'Đã xoá bánh!');
 }`,
 				controllerTypes: [
 					{
 						id: 0,
 						type: 'Basic Controller',
 						desc: 'Tự định nghĩa method theo nhu cầu',
-						artisan: 'php artisan make:controller TodoController',
+						artisan: 'php artisan make:controller CakeController',
 						when: 'CRUD tùy biến, logic riêng',
 					},
 					{
 						id: 1,
 						type: 'Resource Controller',
 						desc: 'Laravel gen sẵn 7 method RESTful',
-						artisan: 'php artisan make:controller TodoController --resource',
+						artisan: 'php artisan make:controller CakeController --resource',
 						when: 'CRUD chuẩn cho 1 model',
 					},
 					{
@@ -162,19 +177,19 @@ class TodoController extends Controller
 						id: 0,
 						fn: "view('path')",
 						when: 'Trả về giao diện HTML',
-						eg: "return view('todos.index', compact('todos'));",
+						eg: "return view('cakes.index', compact('cakes'));",
 					},
 					{
 						id: 1,
 						fn: 'redirect()',
 						when: 'Chuyển hướng sau action',
-						eg: "return redirect()->route('todos.index');",
+						eg: "return redirect()->route('cakes.index');",
 					},
 					{
 						id: 2,
 						fn: 'response()->json()',
 						when: 'API trả về JSON',
-						eg: "return response()->json(['data' => $todos]);",
+						eg: "return response()->json(['data' => $cakes]);",
 					},
 					{
 						id: 3,

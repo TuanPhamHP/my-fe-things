@@ -52,9 +52,7 @@
 					<br />
 					Chạy lệnh migrate của artisan ở terminal để chạy tất cả các migration chưa được thực hiện:
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan migrate'">
-					<p>php artisan migrate</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan migrate" />
 				<div class="flex gap-3">
 					<div>
 						<p class="text-slate-900 dark:text-white my-3">
@@ -75,19 +73,17 @@
 				</div>
 				<PageHeading text="B3 - Tạo bảng" addOnClass="text-left" markedAs="database-create-table" :lvl="2" />
 				<p class="text-slate-900 dark:text-white my-3">
-					Tự tạo một migration để tạo bảng <b>Todo</b> của chúng ta, Tiếp tục sử dụng <b>artisan make:migration</b> để
-					tạo ra file định nghĩa cấu trúc bảng
+					Tự tạo một migration để tạo bảng <b>Cake</b> — bảng chính chúng ta sẽ dùng xuyên suốt các bài Laravel tiếp
+					theo. Tiếp tục sử dụng <b>artisan make:migration</b> để tạo ra file định nghĩa cấu trúc bảng:
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan make:migration create_todos_table'">
-					<p>php artisan make:migration create_todos_table</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan make:migration create_cakes_table" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Laravel sẽ tạo cho chúng ta một file migration trong <b>database/migrations</b> với tên là
-					<b>*time*create_todos_table.php</b>
+					<b>*time*_create_cakes_table.php</b>
 					<br />
 					Trong file migration này là một Class chứa 2 method là <b>up()</b> và <b>down()</b> được dùng để tương tác khi
 					chạy migration hoặc rollback. Trong đó <b>up()</b> là nơi để chúng ta định nghĩa bảng, thêm cột hay thực hiện
-					thay đổi nói chung
+					thay đổi nói chung.
 				</p>
 				<div class="flex gap-4">
 					<div class="w-full">
@@ -102,9 +98,7 @@
 					Sau khi đã hoàn thành việc khai báo/thiết kế table thì ta sẽ phải chạy lại migrate để thực thi các file
 					migration mới.
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan migrate'">
-					<p>php artisan migrate</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan migrate" />
 				<div class="py-2"></div>
 				<p class="text-slate-900 dark:text-white my-3">
 					<b class="text-xl">Xoá / Update bảng</b>
@@ -113,23 +107,17 @@
 					Trong trường hợp chúng ta tạo sai bảng, và cần phải xoá đi để tạo lại thay vì update thì chúng ta cần rollback
 					lần lượt bằng lệnh:
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan migrate:rollback'">
-					<p>php artisan migrate:rollback</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan migrate:rollback" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Còn nếu chỉ thiếu cột hoặc muốn update để thêm tính năng thì ta cần tạo file migration riêng để thao tác chứ
-					không được sửa các file migration đã tạo. Ví dụ, ở bảng <b>todos</b> ở trên tôi muốn có thêm một cột
-					<b>title</b> thì thay vì update vào file migration cũ, tôi cần phải tạo hẳn 1 file migration mới để tránh việc
-					conflict.
+					không được sửa các file migration đã tạo. Ví dụ, ở bảng <b>cakes</b> ở trên tôi muốn có thêm một cột
+					<b>stock</b> (số lượng tồn kho) thì thay vì update vào file migration cũ, tôi cần phải tạo hẳn 1 file
+					migration mới để tránh việc conflict.
 				</p>
-				<FakeTerminalUI :textCoppy="'php artisan make:migration update_title_to_todos_table'">
-					<p>php artisan make:migration update_title_to_todos_table</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan make:migration add_stock_to_cakes_table" />
 				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
 				<p class="text-slate-900 dark:text-white my-3">Tiếp theo đương nhiên phải chạy lại migrate</p>
-				<FakeTerminalUI :textCoppy="'php artisan migrate'">
-					<p>php artisan migrate</p>
-				</FakeTerminalUI>
+				<FakeTerminalUI textCoppy="php artisan migrate" />
 				<p class="text-slate-900 dark:text-white font-bold mb-1">Artisan-Migrate Commands</p>
 				<DocumentTable :operators="migrateCmd" />
 				<p class="text-slate-900 dark:text-white my-3">
@@ -188,63 +176,60 @@ DB_PASSWORD=
 	],
 	...
 `,
-				b3: `public function up()
-{
-    Schema::create('todos', function (Blueprint $table) {
-			$table->id();
-			$table->string('content');
-			// Quan hệ với bảng statuses
-			$table->foreignId('status_id')->constrained('statuses')->onDelete('cascade');
+				b3: `<?php
+// database/migrations/2026_xx_xx_create_cakes_table.php
+use Illuminate\\Database\\Migrations\\Migration;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Support\\Facades\\Schema;
 
-			// Quan hệ với bảng categories
-			$table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::create('cakes', function (Blueprint $table) {
+            $table->id();
 
-			$table->timestamps();
-    });
-}
+            // Quan hệ với bảng categories — 1 cake thuộc 1 category
+            $table->foreignId('category_id')
+                  ->nullable()
+                  ->constrained()          // tự tạo FK → categories(id)
+                  ->nullOnDelete();        // ON DELETE SET NULL
+
+            $table->string('name');                        // Tên bánh
+            $table->text('description')->nullable();       // Mô tả
+            $table->decimal('price', 10, 2);               // Giá (VND)
+            $table->boolean('is_active')->default(true);   // Còn bán không
+
+            $table->timestamps();                          // created_at + updated_at
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('cakes');
+    }
+};
 `,
-				b4: `// file:  time*update_title_to_todos_table.php
-public function up(): void
-{
-		Schema::table('todos', function (Blueprint $table) {
-				//
-				$table->string('title');
-		});
-}
-// ...down
-`,
-				b5: `namespace App/Models;
+				b4: `<?php
+// database/migrations/2026_xx_xx_add_stock_to_cakes_table.php
+use Illuminate\\Database\\Migrations\\Migration;
+use Illuminate\\Database\\Schema\\Blueprint;
+use Illuminate\\Support\\Facades\\Schema;
 
-use Illuminate/Database/Eloquent/Factories/HasFactory;
-use Illuminate/Database/Eloquent/Model;
+return new class extends Migration {
+    public function up(): void
+    {
+        Schema::table('cakes', function (Blueprint $table) {
+            $table->integer('stock')->default(0)->after('price');
+        });
+    }
 
-/**
- * Class Todo
- * @package App/Models
- *
- * @property string $title
- * @property string $content
- * @property int $status_id
- *
- * Accessors
- *
- * Relations
- *
- *
- */
-class Todo extends Model
-{
-		use HasFactory;
-
-		protected $table;
-
-		protected $fillable = ['title', 'content', 'status_id'];
-
-		protected $casts = [
-			'updated_at' => 'datetime',
-			'created_at'=>'datetime'
-    ];
-}
+    public function down(): void
+    {
+        Schema::table('cakes', function (Blueprint $table) {
+            $table->dropColumn('stock');
+        });
+    }
+};
 `,
 				migrateCmd: [
 					{
@@ -285,7 +270,7 @@ class Todo extends Model
 						id: 6,
 						name: 'php artisan make:migration migration_file_name',
 						desc: 'Tạo file migration mới với tên file được gen từ *migration_file_name.',
-						syntax: 'php artisan make:migration create_users_table',
+						syntax: 'php artisan make:migration create_cakes_table',
 					},
 					{
 						id: 7,

@@ -200,15 +200,18 @@
 `,
 				b3: `public function add(Request $request)
 {
-		// xử lý validate dữ liệu
-		$validated = $request->validate([
-			'name' => 'required|string|max:255',
-			'price' => 'required|numeric|min:0',
-			'category_id' => 'required|exists:categories,id',
-		]);
-		// lưu vào db từ model
+    // 1. Validate dữ liệu — throw ValidationException nếu fail
+    $validated = $request->validate([
+        'name'        => 'required|string|max:255',
+        'price'       => 'required|numeric|min:0',
+        'category_id' => 'required|exists:categories,id',
+    ]);
 
-		// trả về view hoặc json tuỳ theo yêu cầu
+    // 2. Lưu vào DB qua model (chỉ field trong $fillable được nhận)
+    Cake::create($validated);
+
+    // 3. Redirect về trang danh sách kèm flash message
+    return redirect()->route('cakes.index')->with('success', 'Đã thêm bánh mới!');
 }
 `,
 				b4: `@if ($errors->any())
@@ -223,31 +226,38 @@
 `,
 				b5: `<input type="hidden" name="_token" value="abc123...">
 `,
-				b6: `// trên header của blade
+				b6: `// 1. Trong <head> của blade layout: gắn token vào meta
 <meta name="csrf-token" content="{{ csrf_token() }}">
-// dùng với fetch
-fetch('/your-route', {
+
+// 2. JS: đọc token từ meta rồi gắn vào request header
+const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+fetch('/cakes', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'X-CSRF-TOKEN': csrfToken
+    'X-CSRF-TOKEN': csrfToken,
   },
   body: JSON.stringify({
-    name: 'Capybara',
-    email: 'capy@example.com'
-  })
-})
+    name: 'Bánh su kem',
+    price: 25000,
+    category_id: 1,
+  }),
+});
 `,
-				b7: `$validator = Validator::make($request->all(), [
-	'name' => 'required|string|max:255',
-	'email' => 'required|email',
-	'password' => 'required|min:6',
+				b7: `<?php
+use Illuminate\\Support\\Facades\\Validator;
+
+$validator = Validator::make($request->all(), [
+    'name'        => 'required|string|max:255',
+    'price'       => 'required|numeric|min:0',
+    'category_id' => 'required|exists:categories,id',
 ]);
 
-	if ($validator->fails()) {
-		return redirect()->back()
-			->withErrors($validator)
-			->withInput();
+if ($validator->fails()) {
+    return redirect()->back()
+        ->withErrors($validator)
+        ->withInput();
 }`,
 				b8: `$validated = $request->validate([
 	'name' => 'required|string|max:255',
@@ -255,20 +265,37 @@ fetch('/your-route', {
 ], [
     'name.required' => 'Bạn chưa nhập tên bánh!',
 ]);`,
-				b9: `public function rules()
-{
-    return [
-        'name' => 'required|string|max:255',
-        'category_id' => 'required|exists:categories,id',
-    ];
+				b9: `<?php
+// app/Http/Requests/StoreCakeRequest.php
+namespace App\\Http\\Requests;
 
-public function messages(): array
+use Illuminate\\Foundation\\Http\\FormRequest;
+
+class StoreCakeRequest extends FormRequest
 {
-    return [
-        'name.required' => 'Bạn chưa nhập tên bánh',
-        'category_id.required' => 'Bạn chưa chọn danh mục bánh',
-        'category_id.exists' => 'Danh mục được chọn không đúng',
-    ];
+    public function authorize(): bool
+    {
+        return true;   // set false nếu cần check quyền
+    }
+
+    public function rules(): array
+    {
+        return [
+            'name'        => 'required|string|max:255',
+            'price'       => 'required|numeric|min:0',
+            'category_id' => 'required|exists:categories,id',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required'        => 'Bạn chưa nhập tên bánh',
+            'price.required'       => 'Bạn chưa nhập giá bánh',
+            'category_id.required' => 'Bạn chưa chọn danh mục bánh',
+            'category_id.exists'   => 'Danh mục được chọn không đúng',
+        ];
+    }
 }`,
 				cprs: [
 					{

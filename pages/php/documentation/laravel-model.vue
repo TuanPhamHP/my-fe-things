@@ -88,7 +88,7 @@
 								<th scope="row" class="px-5 py-4 text-black">cakes</th>
 							</tr>
 							<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-								<th scope="row" class="px-5 py-4 text-black">Categories</th>
+								<th scope="row" class="px-5 py-4 text-black">Category</th>
 								<th scope="row" class="px-5 py-4 text-black">categories</th>
 							</tr>
 						</tbody>
@@ -224,29 +224,32 @@
 		},
 		data() {
 			return {
-				b5: `namespace App/Models;
+				b5: `<?php
+namespace App\\Models;
 
-use Illuminate/Database/Eloquent/Factories/HasFactory;
-use Illuminate/Database/Eloquent/Model;
+use Illuminate\\Database\\Eloquent\\Factories\\HasFactory;
+use Illuminate\\Database\\Eloquent\\Model;
 
 class Cake extends Model
 {
-		use HasFactory;
+    use HasFactory;
 
-		protected $table= 'cakes';
+    protected $table = 'cakes';
 
-		protected $fillable = ['id', 'name', 'description', 'price', 'category_id'];
+    protected $fillable = ['name', 'description', 'price', 'category_id', 'is_active', 'stock'];
 
-		protected $casts = [
-			'updated_at' => 'datetime',
-			'created_at'=>'datetime'
+    protected $casts = [
+        'is_active'  => 'boolean',
+        'price'      => 'decimal:2',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
     ];
 }
 `,
 				b6: `// method trong model Cake
-public function categories()
+public function category()
 {
-    return $this->belongsTo(Categories::class, 'category_id'); // định nghĩa được mối quan hệ của Todo và TodoStatus
+    return $this->belongsTo(Category::class, 'category_id'); // định nghĩa quan hệ Cake ↔ Category
 }
 `,
 				b7: `// method trong model Cake
@@ -261,14 +264,16 @@ public function setDescriptionAttribute($value)
     $this->attributes['description'] = strtolower($value);
 }
 `,
-				b9: ` public function definition()
-    {
-        return [
-            'name' => $this->faker->word(),
-            'price' => $this->faker->randomFloat(2, 5, 100),
-           	// 'category_id' => Category::factory(), // tạo category kèm luôn!
-        ];
-    }`,
+				b9: `public function definition(): array
+{
+    return [
+        'name'        => 'Bánh ' . $this->faker->word(),
+        'description' => $this->faker->sentence(),
+        'price'       => $this->faker->numberBetween(15_000, 500_000),
+        'is_active'   => true,
+        // 'category_id' => Category::factory(), // tạo category kèm luôn!
+    ];
+}`,
 				b10: `// Tạo một bản ghi
 Cake::factory()->create();
 // Tạo nhiều bản ghi
