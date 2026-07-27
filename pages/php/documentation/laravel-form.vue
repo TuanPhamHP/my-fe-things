@@ -51,6 +51,81 @@
 					Cuối cùng, chúng mình có thể xử lí lỗi trả ra từ <b>$validate</b> nè
 				</p>
 				<VCodeBlock :code="b4" highlightjs lang="php" theme="atom-one-dark" />
+
+				<PageHeading text="5. Flash Message — thông báo qua 1 request" addOnClass="text-left mt-3" markedAs="form-flash" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Vấn đề:</b> user submit form thành công → Controller <FilePath>redirect()</FilePath> về trang danh sách.
+					Muốn hiển thị <b>"Đã tạo bánh mới!"</b> trên trang mới đó, nhưng thông báo này chỉ nên xuất hiện <b>1
+					lần</b> (refresh trang thì biến mất). Không thể:
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						Nhồi qua URL query string — URL xấu, có giới hạn ký tự, phải encode phiền.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						Lưu vào session thường — không tự xoá, refresh vẫn thấy.
+					</li>
+				</ul>
+				<div class="mt-3 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
+					<p class="text-slate-900 dark:text-white text-sm leading-7">
+						<b>📝 Ví như:</b> tờ giấy nhớ dán trên bàn — người đến đọc 1 lần rồi tờ giấy tự bay đi. Không cần chủ
+						động xoá, không sợ quên.
+					</p>
+				</div>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Flash message</b> = dữ liệu lưu trong session, chỉ tồn tại <b>1 request kế tiếp</b> rồi tự xoá. Đây là
+					pattern chuẩn cho luồng <b>POST → Redirect → GET</b> (PRG).
+				</p>
+
+				<PageHeading text="Set flash trong Controller" addOnClass="text-left mt-3" markedAs="form-flash-set" :lvl="3" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					Dùng <FilePath>->with('key', $value)</FilePath> gắn vào redirect. Convention keys phổ biến:
+					<FilePath>success</FilePath>, <FilePath>error</FilePath>, <FilePath>warning</FilePath>,
+					<FilePath>info</FilePath> — dễ style CSS theo.
+				</p>
+				<ClientOnly>
+					<VCodeBlock :code="bFlashSet" highlightjs lang="php" theme="atom-one-dark" />
+				</ClientOnly>
+
+				<PageHeading text="Đọc flash trong Blade" addOnClass="text-left mt-3" markedAs="form-flash-read" :lvl="3" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					Trong view dùng helper <FilePath>session('key')</FilePath> — trả về giá trị flash hoặc
+					<FilePath>null</FilePath> nếu không có:
+				</p>
+				<ClientOnly>
+					<VCodeBlock :code="bFlashRead" highlightjs lang="html" theme="atom-one-dark" />
+				</ClientOnly>
+
+				<PageHeading text="Đặt trong layout để reuse" addOnClass="text-left mt-3" markedAs="form-flash-layout" :lvl="3" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					Copy-paste 4 lần cho mỗi type = mệt. Loop 1 lần trong layout, mọi page tự có:
+				</p>
+				<ClientOnly>
+					<VCodeBlock :code="bFlashLayout" highlightjs lang="html" theme="atom-one-dark" />
+				</ClientOnly>
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					Sau đó ở controller chỉ cần <FilePath>->with('success', '...')</FilePath> là banner tự hiện lên toàn site.
+				</p>
+
+				<div class="mt-3 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20">
+					<p class="text-slate-900 dark:text-white text-sm leading-7">
+						<b>💡 Bạn đã dùng flash mà không biết:</b> <FilePath>$errors</FilePath> ở section 4 chính là flash mà
+						Laravel <b>tự set</b> khi validation fail! Kèm theo là <FilePath>old('name')</FilePath> — cũng flash
+						(input cũ, tồn tại 1 request để giữ giá trị đã nhập). Tương đương với gọi tay
+						<FilePath>->withErrors($validator)->withInput()</FilePath>.
+					</p>
+				</div>
+
+				<div class="mt-3 p-4 rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20">
+					<p class="text-slate-900 dark:text-white text-sm leading-7">
+						<b>⚠️ Lưu ý:</b> <FilePath>->with()</FilePath> có 2 nghĩa khác nhau tuỳ object gọi nó:
+						<br />• Trên <FilePath>redirect()</FilePath> → flash vào session (dùng ở đây).
+						<br />• Trên <FilePath>view()</FilePath> → truyền data trực tiếp cho view (VD
+						<FilePath>view('cakes.index')->with('cakes', $data)</FilePath>).
+						<br />Đừng nhầm 2 cái này.
+					</p>
+				</div>
+
 				<PageHeading text="Validator" addOnClass="text-left mt-3" markedAs="laravel-validator" />
 				<p class="text-slate-900 dark:text-white my-3">
 					Ở phần này chúng ta cùng tìm hiểu cách để validate dữ liệu từ Request nhá 😎.
@@ -159,6 +234,109 @@
 					Khi dùng AJAX (fetch, axios...), bạn cần thêm token vào header:
 				</p>
 				<VCodeBlock :code="b6" highlightjs lang="js" theme="atom-one-dark" />
+
+				<PageHeading text="🏋️ Luyện tập nhẹ" addOnClass="text-left mt-5" markedAs="form-practice" :lvl="1" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					Sau khi đã nắm 4 bước cơ bản (View → Route → Controller → Errors) và biết cả 2 cách validate (inline +
+					Form Request class), hãy tự làm 4 bài dưới đây. Mỗi bài có skeleton sẵn — bạn điền phần
+					<FilePath>// TODO</FilePath>.
+				</p>
+
+				<PageHeading text="Bài 1: Form contact — validate inline" addOnClass="text-left mt-3" markedAs="form-practice-1" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Yêu cầu:</b> tạo form liên hệ (name, email, message), validate trực tiếp trong Controller, redirect về
+					lại form với flash success.
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>name</FilePath> — bắt buộc, chuỗi, tối đa 100 ký tự.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>email</FilePath> — bắt buộc, đúng định dạng email.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>message</FilePath> — bắt buộc, tối thiểu 20 ký tự, tối đa 2000.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						Custom message tiếng Việt cho <FilePath>required</FilePath> và <FilePath>email</FilePath>.
+					</li>
+				</ul>
+				<ClientOnly>
+					<VCodeBlock :code="bPractice1" highlightjs lang="php" theme="atom-one-dark" />
+				</ClientOnly>
+
+				<PageHeading text="Bài 2: Đăng ký user — Form Request class" addOnClass="text-left mt-3" markedAs="form-practice-2" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Yêu cầu:</b> tách validation ra class riêng bằng
+					<FilePath textCoppy="php artisan make:request RegisterUserRequest">php artisan make:request RegisterUserRequest</FilePath>.
+					Controller chỉ inject class — không cần gọi <FilePath>validate()</FilePath> nữa.
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>name</FilePath> — required, string, max 255.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>email</FilePath> — required, email, <b>unique</b> trong bảng <FilePath>users</FilePath>.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>password</FilePath> — required, min 8, <b>confirmed</b> (form phải có field
+						<FilePath>password_confirmation</FilePath>).
+					</li>
+				</ul>
+				<ClientOnly>
+					<VCodeBlock :code="bPractice2" highlightjs lang="php" theme="atom-one-dark" />
+				</ClientOnly>
+
+				<PageHeading text="Bài 3: Update Cake — authorize + rules phức tạp" addOnClass="text-left mt-3" markedAs="form-practice-3" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Yêu cầu:</b> tạo <FilePath>UpdateCakeRequest</FilePath> với method <FilePath>authorize()</FilePath> chỉ
+					cho admin. Nếu <FilePath>authorize()</FilePath> return <FilePath>false</FilePath>, Laravel tự trả HTTP
+					403 mà không cần code thêm.
+				</p>
+				<ul class="pl-10">
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>name</FilePath> — required, string, max 255.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>price</FilePath> — required, numeric, tối thiểu 1000đ.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>stock</FilePath> — integer, tối thiểu 0.
+					</li>
+					<li class="text-slate-900 dark:text-white leading-8 list-disc marker:text-sky-400">
+						<FilePath>is_active</FilePath> — boolean.
+					</li>
+				</ul>
+				<ClientOnly>
+					<VCodeBlock :code="bPractice3" highlightjs lang="php" theme="atom-one-dark" />
+				</ClientOnly>
+
+				<PageHeading text="Bài 4 (bonus): Debug 419 Page Expired" addOnClass="text-left mt-3" markedAs="form-practice-4" :lvl="2" />
+				<p class="text-slate-900 dark:text-white my-3 leading-8">
+					<b>Tình huống:</b> đồng nghiệp gửi PR với đoạn form dưới đây. Khi submit thì browser hiện lỗi
+					<b>419 Page Expired</b>. Bạn tìm ra thiếu gì và fix bằng cách nào?
+				</p>
+				<ClientOnly>
+					<VCodeBlock :code="bPractice4" highlightjs lang="html" theme="atom-one-dark" />
+				</ClientOnly>
+				<div class="mt-3 p-4 rounded-lg border border-yellow-200 dark:border-yellow-800 bg-yellow-50 dark:bg-yellow-900/20">
+					<p class="text-slate-900 dark:text-white text-sm leading-7">
+						<b>💡 Gợi ý:</b> so sánh với form ở phần <b>1. Tạo View</b> ở đầu bài. So sánh xem thiếu directive
+						Blade nào giữa <FilePath>&lt;form&gt;</FilePath> và <FilePath>&lt;input&gt;</FilePath>. Xem lại
+						section <b>CSRF</b> để biết vì sao Laravel bắt buộc directive đó với form POST/PUT/PATCH/DELETE.
+					</p>
+				</div>
+
+				<div class="mt-4 p-4 rounded-lg border border-neutral-200 dark:border-gray-600 bg-neutral-50 dark:bg-gray-800">
+					<p class="text-slate-900 dark:text-white text-sm leading-7">
+						<b>💬 Cách test nhanh:</b> tạo route + form trong project Laravel mới, dùng
+						<FilePath textCoppy="php artisan serve">php artisan serve</FilePath> rồi submit form ở browser. Nếu
+						validate fail, redirect back → dùng <FilePath>old('name')</FilePath> trong Blade để giữ lại giá trị đã
+						nhập:
+						<FilePath>&lt;input name="name" value="&#123;&#123; old('name') &#125;&#125;"&gt;</FilePath>.
+					</p>
+				</div>
+
 				<doc-next-page :pagination="pagePagination" />
 			</div>
 			<PageMarkBook />
@@ -297,6 +475,225 @@ class StoreCakeRequest extends FormRequest
         ];
     }
 }`,
+				bFlashSet: `<?php
+// app/Http/Controllers/CakeController.php
+class CakeController extends Controller
+{
+    // ---- Success sau khi tạo mới ----
+    public function store(Request $request)
+    {
+        Cake::create($request->validated());
+
+        return redirect()
+            ->route('cakes.index')
+            ->with('success', 'Đã tạo bánh mới!');   // ← flash key='success'
+    }
+
+    // ---- Error khi xoá fail ----
+    public function destroy(Cake $cake)
+    {
+        if ($cake->orders()->exists()) {
+            return back()->with('error', 'Không thể xoá bánh đã có order.');
+        }
+        $cake->delete();
+        return redirect()->route('cakes.index')->with('success', 'Đã xoá bánh.');
+    }
+
+    // ---- Nhiều flash cùng lúc — chain nhiều ->with() ----
+    public function updatePrice(Cake $cake)
+    {
+        return redirect()->route('cakes.index')
+            ->with('success', 'Đã cập nhật giá!')
+            ->with('info', "Giá mới: {$cake->price}đ");
+    }
+
+    // ---- Flash object phức tạp (VD danh sách item vừa thêm) ----
+    public function bulkCreate()
+    {
+        return redirect()->back()->with('created_ids', [1, 2, 3]);
+    }
+}`,
+				bFlashRead: `{{-- resources/views/cakes/index.blade.php --}}
+
+{{-- Cách 1: đọc trực tiếp ----}}
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+{{-- Cách 2: with default value ----}}
+<div>{{ session('info', 'Không có thông báo') }}</div>
+
+{{-- Cách 3: check trước, dùng biến ----}}
+@if ($msg = session('success'))
+    <div class="alert alert-success">{{ $msg }}</div>
+@endif
+
+{{-- Đọc flash phức tạp ----}}
+@if (session('created_ids'))
+    <p>Vừa tạo {{ count(session('created_ids')) }} bánh mới.</p>
+@endif`,
+				bFlashLayout: `{{-- resources/views/layouts/app.blade.php --}}
+<!DOCTYPE html>
+<html>
+<body>
+    <nav>...</nav>
+
+    {{-- Loop 4 type — mọi page kế thừa layout đều tự có --}}
+    @foreach (['success', 'error', 'warning', 'info'] as $type)
+        @if (session($type))
+            <div class="alert alert-{{ $type === 'error' ? 'danger' : $type }}">
+                {{ session($type) }}
+            </div>
+        @endif
+    @endforeach
+
+    @yield('content')
+</body>
+</html>`,
+				bPractice1: `<?php
+// routes/web.php
+Route::view('/contact', 'contact.create')->name('contact.form');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+// resources/views/contact/create.blade.php
+// <form action="{{ route('contact.send') }}" method="POST">
+//     @csrf
+//     <input name="name"    value="{{ old('name') }}">
+//     <input name="email"   value="{{ old('email') }}">
+//     <textarea name="message">{{ old('message') }}</textarea>
+//     <button type="submit">Gửi</button>
+// </form>
+
+// app/Http/Controllers/ContactController.php
+class ContactController extends Controller
+{
+    public function send(Request $request)
+    {
+        $data = $request->validate([
+            // TODO: điền 3 rules cho name / email / message
+        ], [
+            // TODO: điền custom message tiếng Việt
+            // 'name.required'    => 'Bạn chưa nhập tên',
+            // ...
+        ]);
+
+        // TODO: lưu $data vào DB hoặc Mail::to(...)->send(...)
+
+        return redirect()->route('contact.form')
+            ->with('success', 'Đã gửi liên hệ, cảm ơn bạn!');
+    }
+}`,
+				bPractice2: `<?php
+// app/Http/Requests/RegisterUserRequest.php
+namespace App\\Http\\Requests;
+
+use Illuminate\\Foundation\\Http\\FormRequest;
+
+class RegisterUserRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;   // ai cũng đăng ký được — không cần check quyền
+    }
+
+    public function rules(): array
+    {
+        return [
+            // TODO: điền rules cho name / email (unique users) / password (confirmed, min 8)
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            // TODO: custom message VN cho các rule quan trọng
+            // 'email.unique' => 'Email này đã có người dùng.',
+            // 'password.confirmed' => 'Xác nhận mật khẩu không khớp.',
+        ];
+    }
+}
+
+// app/Http/Controllers/AuthController.php — chỉ cần type-hint, Laravel tự validate
+class AuthController extends Controller
+{
+    public function register(RegisterUserRequest $request)
+    {
+        // Nếu đến được đây = validation đã PASS
+        // $request->validated() = mảng chỉ chứa field đã pass rules
+        $user = User::create([
+            'name'     => $request->validated('name'),
+            'email'    => $request->validated('email'),
+            'password' => bcrypt($request->validated('password')),
+        ]);
+
+        auth()->login($user);
+        return redirect()->route('home')->with('success', 'Đăng ký thành công!');
+    }
+}`,
+				bPractice3: `<?php
+// app/Http/Requests/UpdateCakeRequest.php
+namespace App\\Http\\Requests;
+
+use Illuminate\\Foundation\\Http\\FormRequest;
+
+class UpdateCakeRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        // TODO: return true nếu user hiện tại là admin
+        // Hint: $this->user()?->is_admin
+        return false;   // sửa lại
+    }
+
+    public function rules(): array
+    {
+        return [
+            // TODO: điền 4 rules
+            // 'name'      => ...,
+            // 'price'     => ...,
+            // 'stock'     => ...,
+            // 'is_active' => ...,
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'price.min' => 'Giá bánh phải từ 1.000đ trở lên.',
+        ];
+    }
+}
+
+// app/Http/Controllers/CakeController.php
+class CakeController extends Controller
+{
+    // Route Model Binding: {cake} tự resolve sang instance Cake
+    public function update(UpdateCakeRequest $request, Cake $cake)
+    {
+        // Đến đây = user đã là admin + data đã pass rules
+        $cake->update($request->validated());
+        return back()->with('success', 'Cập nhật bánh thành công!');
+    }
+}
+
+// routes/web.php
+// Route::put('/cakes/{cake}', [CakeController::class, 'update'])->name('cakes.update');`,
+				bPractice4: `{{-- resources/views/cakes/create.blade.php --}}
+<form action="{{ route('cakes.add') }}" method="POST">
+    <input name="name" placeholder="Tên bánh">
+    <input name="price" placeholder="Giá">
+    <button type="submit">Lưu</button>
+</form>
+
+{{-- Submit → HTTP 419 Page Expired. Vì sao? Fix thế nào? --}}`,
 				cprs: [
 					{
 						id: 1,
@@ -312,7 +709,15 @@ class StoreCakeRequest extends FormRequest
 					},
 					{
 						id: 4,
-						content: `Biết validate dữ liệu form đầu vào.`,
+						content: `Biết validate dữ liệu form đầu vào — cả inline lẫn Form Request class.`,
+					},
+					{
+						id: 5,
+						content: `Hiểu CSRF là gì và cách Laravel bảo vệ form.`,
+					},
+					{
+						id: 6,
+						content: `Hoàn thành 4 bài luyện tập tự áp dụng vào Cake Shop.`,
 					},
 				],
 				formDesc: [
@@ -400,12 +805,12 @@ class StoreCakeRequest extends FormRequest
 				],
 				pagePagination: {
 					next: {
-						title: 'HTML Styles',
-						link: '/html-css-js-basic/documentation/ep-2',
+						title: 'Trở về danh sách Doc',
+						link: '/php/documentation',
 					},
 					prev: {
 						title: 'Trở về danh sách Doc',
-						link: '/html-css-js-basic/documentation',
+						link: '/php/documentation',
 					},
 				},
 			};

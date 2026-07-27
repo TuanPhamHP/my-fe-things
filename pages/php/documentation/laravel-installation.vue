@@ -308,7 +308,7 @@ Browser ──▶ public/index.php  (single entry point)
 					<b>🎨 Blade</b> — <b>vấn đề:</b> template PHP thuần đầy
 					<code class="inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">&lt;?= ?&gt;</code>
 					rối mắt, quên escape 1 lần là dính <b>XSS</b>. Blade cho cú pháp gọn
-					(<code class="inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">{{ '{{ }}' }}</code>,
+					(<code v-pre class="inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">{{ }}</code>,
 					<code class="inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">@if</code>,
 					<code class="inline-block whitespace-nowrap px-1 rounded bg-neutral-200 dark:bg-neutral-200 text-slate-900">@foreach</code>)
 					và <b>auto-escape</b> mọi biến in ra HTML:
