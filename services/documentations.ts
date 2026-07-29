@@ -909,6 +909,16 @@ const PHPAndLaravelBasicDocs = [
 		apps: ['php'],
 	},
 	{
+		id: 'php-21-5',
+		vneseName: 'Laravel - JWT Authentication',
+		eng: 'AJAX',
+		description: 'Xác thực API với JWT (php-open-source-saver/jwt-auth) và AuthValidatorService',
+		link: '/php/documentation/jwt-auth',
+		previewImage: 'course_php.png',
+		status_id: 1,
+		apps: ['php'],
+	},
+	{
 		id: 'php-22',
 		vneseName: 'Laravel - Middleware',
 		eng: 'AJAX',
